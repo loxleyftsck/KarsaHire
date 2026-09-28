@@ -1,0 +1,37 @@
+Jaylen Whitcombe
+Junior Mobile Developer(IOS/Android)
+jaylen.whitcombe@example.com · +1 555-0174 · Columbus, United States
+Summary
+Junior mobile developer with a couple of years of hands-on experience shipping consumer-facing iOS and Android apps. I enjoy turning rough product ideas into clean, responsive interfaces and learning from senior engineers on every release. I care about smooth user experiences and writing code that is easy for the next person to pick up.
+Experience
+Junior Mobile Developer — Brightloom Mobile Studio
+Oct 2024 - Jan 2026
+Columbus, USA
+Built and maintained features for a cross-platform consumer app used by a growing user base. Worked alongside designers to translate mockups into polished screens and fixed defects reported through the support queue. Took part in code reviews and gradually owned small modules end to end.
+Associate Mobile Engineer — Riverbend App Collective
+Jan 2024 - Oct 2024
+Cincinnati, US
+Contributed to the early-stage release of a lifestyle application, focusing on navigation flows and offline behavior. Paired regularly with a senior developer to learn release processes and store submission steps. Helped triage crash reports and improve overall app stability before launch.
+Education
+Bachelor of Science in Computer Science
+2019 - 2023
+Hollistone Institute of Technology, Columbus, US
+Associate Degree in Software Development
+2015 - 2019
+Maple Crossing Community College, Dayton, USA
+Skills
+Gitlab
+Android Development (Java, Kotlin)
+Avalonia
+Kotlin
+Xamarin/MAUI
+CI/CD (Gitlab, Jenkins)
+iOS Development (Swift, Objective-C)
+Flutter
+Cyber Security
+Spring
+MySQL
+Languages
+English (Native)
+Preferences
+Permanent

@@ -1,0 +1,45 @@
+Florian Whitcombe
+Junior UI / UX Designer
+florian.whitcombe@example.com · +1 555-0169 · Bristol, United Kingdom
+Experience
+Junior UI / UX Designer — Brindlewood Pixel Studio
+Jul 2025 - Present
+Bristol, England
+Designed wireframes and interactive prototypes for a client portal, collaborating closely with developers to refine layouts through several rounds of usability feedback. Maintained a shared component library and documented interaction patterns so the wider team could reuse them consistently.
+UX Design Intern — Marlowe & Quill Digital
+Jan 2025 - Jul 2025
+Bath, England
+Supported senior designers on redesigning a booking flow, producing low-fidelity sketches and helping run moderated user testing sessions. Compiled findings into clear summaries that informed the next iteration of the interface.
+Projects
+Threat Console Dashboard Refresh
+Redesigned the monitoring dashboard for a managed security service, focusing on clearer alert hierarchies and faster triage for analysts. Worked with the operations team to align the visual language with their existing deployment workflows and validated the layout through walkthrough sessions.
+Tech: Linux, CI/CD (Gitlab, Jenkins)
+Campus Learning Portal Revamp
+Contributed to the interface design of a portal connecting students and faculty across several departments. Mapped the core journeys, simplified the navigation, and produced annotated mockups that the engineering team used during build.
+Tech: Python, Communication, TypeScript, Laravel
+Service Desk Self-Help Interface
+Created a streamlined self-service interface for an IT support product, reducing the number of steps users needed to log and track requests. Designed the empty states and onboarding screens to make first-time use feel approachable.
+Tech: Rust, WPF, C
+Education
+Bachelor of Arts in Interaction and Digital Design
+2021 - 2024
+Harrowgate Institute of Design, Bristol, United Kingdom
+Foundation Diploma in Art and Design
+2019 - 2021
+Eastfield College of Creative Studies, Bath, United Kingdom
+Skills
+Communication
+CSS
+Docker
+Linux
+CI/CD (Gitlab, Jenkins)
+Confluence
+Jira
+Photoshop
+Ruby
+Perl
+React
+Languages
+English (Bilingual)
+Preferences
+Contract

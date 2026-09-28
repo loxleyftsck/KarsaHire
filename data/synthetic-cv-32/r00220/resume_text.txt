@@ -1,0 +1,51 @@
+Edwina Pemberton-Hollis
+Senior Software Tester
+edwina.pembertonhollis@example.com · +1 555-0144 · Manchester, UK
+Summary
+Software tester who treats quality as a shared responsibility rather than a final gate. Over the past several years I have built a habit of asking the awkward questions early, automating the tedious checks, and keeping a close eye on the edges where defects love to hide.
+Experience
+Senior Software Tester — Pennine Quality Forge
+Oct 2023 - Jan 2026
+Manchester, England
+Lead testing strategy for a multi-team product, combining exploratory testing with a growing automation suite. Embed quality practices into the delivery process and mentor newer testers. Work closely with developers to catch issues long before release.
+Software Test Engineer — Rheinblick Testlabor
+Mar 2021 - Oct 2023
+Cologne, Germany
+Designed and maintained automated regression suites for a complex enterprise application. Partnered with cross-border teams to clarify requirements and reproduce defects. Improved test coverage and reporting visibility for stakeholders.
+QA Analyst — Cedarpoint Verification Inc
+Jan 2019 - Mar 2021
+Denver, U.S.
+Performed functional and exploratory testing across web and desktop products. Wrote detailed defect reports and collaborated with developers to confirm fixes. Began building automated checks for repetitive test scenarios.
+Projects
+Heavy Machinery Control Validation
+Built and executed a testing program for a desktop control application used in heavy machinery manufacturing. Focused on boundary conditions and failure modes that mattered most on the factory floor. Reduced escaped defects through structured exploratory sessions.
+Tech: Python, C#, Windows Forms
+Biotech Data Integrity Verification
+Led testing for a biotechnology data platform with strict integrity and security requirements. Validated complex workflows and probed for vulnerabilities alongside the security team. Helped ensure reliable behavior under unusual data conditions.
+Tech: Cyber Security, Unity, NoSql
+Legal Workflow Assurance Suite
+Owned quality verification for a corporate counsel workflow application. Designed test cases covering intricate approval paths and edge scenarios. Collaborated with developers to harden the platform ahead of each release.
+Tech: Blazor, WCF, C#, .NET
+Education
+Bachelor of Science in Computer Science
+2016 - 2018
+Greywater Metropolitan University, Leeds, UK
+Skills
+Linux
+JavaScript
+Jira
+Python
+Java
+Gitlab
+Agile Scrum
+Communication
+Rust
+Postgresql
+Languages
+English (Native), Uzbek (Fluent), German (B2)
+Looking for
+Looking for a senior testing role on a product team that values early involvement, strong automation, and close collaboration with developers.
+Preferences
+Part-time
+Hobbies
+Trail running, cryptic crosswords, and tinkering with retro electronics.

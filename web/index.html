@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f1">
+  <title>KarsaHire — AI Recruitment Copilot</title>
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/approval.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="KarsaHire beranda">
+      <span class="brand-mark">K</span>
+      <span>Karsa<strong>Hire</strong></span>
+    </a>
+    <div class="topbar-right">
+      <span class="local-pill"><i></i> OCR melalui API internal</span>
+      <span class="avatar">HR</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="intake-column">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">WORKSPACE</p>
+          <h1>Requisition</h1>
+        </div>
+        <span class="step-count">01 / 04</span>
+      </div>
+      <p class="muted intro">Sepakati kriteria bersama hiring manager sebelum kandidat diranking.</p>
+
+      <form id="job-form" class="panel intake-form">
+        <label for="job-title">Nama posisi <span class="required">*</span></label>
+        <input id="job-title" name="title" placeholder="Contoh: Backend Engineer" required maxlength="160">
+
+        <label for="department">Tim / departemen</label>
+        <input id="department" name="department" placeholder="Contoh: Platform Engineering" maxlength="120">
+
+        <label for="description">Ringkasan pekerjaan</label>
+        <textarea id="description" name="description" rows="4" maxlength="12000" placeholder="Tanggung jawab utama dan konteks peran..."></textarea>
+
+        <div class="label-row">
+          <label for="criteria">Kriteria yang disetujui <span class="required">*</span></label>
+          <button id="fill-example" class="text-button" type="button">Isi contoh</button>
+        </div>
+        <textarea id="criteria" name="criteria" rows="7" required placeholder="Satu kriteria per baris:&#10;Wajib | Python&#10;Wajib | FastAPI&#10;Diutamakan | PostgreSQL&#10;Diutamakan | Kolaborasi lintas fungsi"></textarea>
+        <p class="field-hint">Bobot kriteria wajib = 2, diutamakan = 1. “Belum ada bukti” tidak sama dengan tidak memenuhi.</p>
+
+        <button class="button button-primary button-wide" type="submit"><span>＋</span> Buat requisition</button>
+        <button id="demo-button" class="button button-secondary button-wide" type="button">Coba dengan data sintetis</button>
+      </form>
+      <div id="jobs-list" class="jobs-list"></div>
+    </aside>
+
+    <section class="review-column">
+      <div class="page-title-row">
+        <div>
+          <p class="eyebrow">CANDIDATE REVIEW</p>
+          <h2 id="active-title">Belum ada requisition</h2>
+          <p id="active-subtitle" class="muted">Buat requisition atau muat contoh sintetis untuk memulai.</p>
+        </div>
+        <div id="pipeline-chip" class="pipeline-chip"><span class="pulse"></span> Setup</div>
+      </div>
+
+      <div id="active-workspace" class="workspace hidden">
+        <div class="workflow-rail" aria-label="Tahapan rekrutmen">
+          <span class="workflow-step active"><b>1</b> Kriteria</span><span class="workflow-line"></span>
+          <span class="workflow-step active"><b>2</b> Review</span><span class="workflow-line"></span>
+          <span class="workflow-step"><b>3</b> Wawancara</span><span class="workflow-line"></span>
+          <span class="workflow-step"><b>4</b> Keputusan</span>
+        </div>
+
+        <section id="approval-panel" class="approval-panel">
+          <div class="approval-copy"><p class="eyebrow">DUAL REVIEW</p><h3>Persetujuan kriteria</h3><p class="muted">Recruiter dan hiring manager menandatangani kriteria secara terpisah sebelum CV diproses.</p><div id="approval-status" class="approval-status"></div></div>
+          <form id="approval-form" class="approval-form">
+            <input name="reviewer" placeholder="Nama approver" aria-label="Nama approver" required maxlength="100">
+            <select name="role" aria-label="Peran approver"><option value="recruiter">Recruiter</option><option value="hiring_manager">Hiring manager</option></select>
+            <button class="button button-secondary" type="submit">Catat persetujuan</button>
+          </form>
+        </section>
+
+        <div class="toolbar">
+          <div class="candidate-heading">
+            <h3>Kandidat <span id="candidate-count" class="count-badge">0</span></h3>
+            <span class="sort-label">Urut dari kecocokan evidence</span>
+          </div>
+          <div class="toolbar-actions">
+            <button id="load-synthetic-button" class="button button-secondary" type="button" disabled>Muat CV uji</button>
+            <label id="upload-label" class="button button-primary upload-button" for="resume-file">＋ Tambah CV</label>
+          </div>
+          <input id="resume-file" class="visually-hidden" type="file" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg">
+        </div>
+        <p class="privacy-note"><span>◈</span> File unggahan tidak disimpan. Batch uji lokal memakai teks sintetis dan tanpa OCR. OCR unggahan manual memerlukan API internal yang dikonfigurasi (maksimal 6 request/menit).</p>
+
+        <div id="candidate-list" class="candidate-list"></div>
+        <div id="empty-candidates" class="empty-state">
+          <div class="empty-icon">↥</div>
+          <h3>Belum ada kandidat</h3>
+          <p>Unggah CV PDF teks, DOCX, atau TXT untuk melihat bukti kecocokan per kriteria.</p>
+        </div>
+
+        <div class="lower-grid">
+          <section class="panel rag-panel">
+            <div class="panel-title-row">
+              <div><p class="eyebrow">JOB KNOWLEDGE</p><h3>Tanya requisition</h3></div>
+              <span class="source-tag">Sumber disetujui</span>
+            </div>
+            <p class="muted">Cari jawaban pada deskripsi dan kriteria requisition ini.</p>
+            <form id="ask-form" class="ask-form">
+              <input id="question" placeholder="Contoh: skill mana yang wajib?" maxlength="500">
+              <button class="button button-dark" type="submit" aria-label="Cari">↗</button>
+            </form>
+            <div id="ask-result" class="ask-result"></div>
+          </section>
+          <section class="panel activity-panel">
+            <div class="panel-title-row"><div><p class="eyebrow">AUDIT TRAIL</p><h3>Aktivitas tim</h3></div><span class="lock-icon">⌑</span></div>
+            <div id="activity-list" class="activity-list"><p class="muted">Aktivitas akan muncul setelah review dicatat.</p></div>
+          </section>
+        </div>
+      </div>
+
+      <div id="setup-state" class="setup-state">
+        <div class="setup-illustration"><span>✳</span><div class="mini-card mini-card-one"></div><div class="mini-card mini-card-two"></div></div>
+        <p class="eyebrow">EVIDENCE FIRST</p>
+        <h3>Shortlist yang bisa ditelusuri.</h3>
+        <p>Setiap sinyal kecocokan terhubung ke kutipan CV dan kriteria yang sudah disepakati. Keputusan tetap di tangan tim.</p>
+      </div>
+      <footer class="footer-note">KarsaHire · ranking leksikal baseline · keputusan manusia</footer>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

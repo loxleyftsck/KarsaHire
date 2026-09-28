@@ -1,0 +1,208 @@
+{
+  "first_name": "Jovliyon",
+  "last_name": "Tursunbaev",
+  "date_of_birth": "1988-01-06",
+  "email": "jovliyon.tursunbaev@example.com",
+  "phone": "+1 555-0186",
+  "desired_position": "System Administrator",
+  "about": null,
+  "job_experience": 14,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "Uzbekistan",
+    "region_name": "Tashkent"
+  },
+  "skills": [
+    {
+      "skill_name": "Communication",
+      "level": 0
+    },
+    {
+      "skill_name": "MySQL",
+      "level": 2
+    },
+    {
+      "skill_name": "Ansible",
+      "level": null
+    },
+    {
+      "skill_name": "Docker",
+      "level": null
+    },
+    {
+      "skill_name": "NoSql",
+      "level": 4
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": 4
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 0
+    },
+    {
+      "skill_name": "PHP",
+      "level": 4
+    },
+    {
+      "skill_name": "iOS Development (Swift, Objective-C)",
+      "level": 4
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Silkroad Datavault Holdings",
+      "job": "Lead System Administrator",
+      "date_from": "2023-01-01",
+      "date_to": null,
+      "description": "Lead a small team responsible for the company's core server estate, virtualization hosts, and internal directory services. Own incident response, capacity planning, and the rollout of automated patch and backup routines across the fleet. Coordinate with developers to keep staging and production environments consistent and reliably available.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Baltijas Serveru Nams",
+      "job": "Senior Infrastructure Administrator",
+      "date_from": "2020-07-01",
+      "date_to": "2023-01-01",
+      "description": "Maintained multi-tenant hosting infrastructure and led the migration of legacy physical workloads onto a consolidated virtualization platform. Set up monitoring and alerting that cut unplanned downtime and gave the team early warning of disk and memory pressure. Documented runbooks so on-call rotations could resolve common faults without escalation.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Zarafshan Cloud Systems",
+      "job": "Systems Administrator",
+      "date_from": "2017-11-01",
+      "date_to": "2020-05-01",
+      "description": "Administered Linux and Windows servers supporting a regional services provider, including mail, file shares, and internal web applications. Built scripted provisioning so new servers could be brought online consistently within hours instead of days. Handled routine hardening, access reviews, and recovery drills.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Oltin Vodiy Networks",
+      "job": "IT Operations Administrator",
+      "date_from": "2015-10-01",
+      "date_to": "2017-09-01",
+      "description": "Kept the day-to-day IT operations running for a growing technology firm, covering servers, network gear, and end-user support escalations. Introduced a ticketing discipline that made workload visible and helped prioritise recurring problems. Assisted with the first office-wide structured backup strategy.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Registon Software Works",
+      "job": "Junior System Administrator",
+      "date_from": "2014-01-01",
+      "date_to": "2015-10-01",
+      "description": "Supported a development house by maintaining build servers, version control hosts, and shared development environments. Automated repetitive maintenance tasks and helped keep the engineering team unblocked during releases. Learned to triage hardware and network faults quickly under deadline pressure.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Chust Digital Infrastructure",
+      "job": "IT Support Specialist",
+      "date_from": "2011-12-01",
+      "date_to": "2014-01-01",
+      "description": "Provided first- and second-line support for staff workstations, printers, and core line-of-business applications. Maintained inventory and helped standardise software images across departments. Took on early server-room responsibilities such as monitoring power, cooling, and routine reboots.",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Tashkent Institute of Applied Computing",
+      "degree": "Master of Science",
+      "location": "Tashkent",
+      "programme": "Information Systems Engineering",
+      "date_from": "2007-01-01",
+      "date_to": "2010-12-31",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "name": "Zeravshan Technical University",
+      "degree": "Bachelor of Science",
+      "location": "Samarkand",
+      "programme": "Computer Networks and Administration",
+      "date_from": "2004-01-01",
+      "date_to": "2007-12-31",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "name": "Fergana College of Information Technology",
+      "degree": "Diploma",
+      "location": "Fergana",
+      "programme": "Computer Hardware and Systems Support",
+      "date_from": "2002-01-01",
+      "date_to": "2004-12-31",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Russian",
+      "level": 2
+    },
+    {
+      "language_name": "French",
+      "level": 6
+    },
+    {
+      "language_name": "Hebrew",
+      "level": 2
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Provider Edge Routing Mesh",
+      "summary": "Designed and operated the routing and ingress layer for a market-research data platform shared across several regional network providers. Built a self-service deployment pipeline so analysts could publish dashboards without manual intervention. Focused on resilient traffic routing and predictable failover between regions.",
+      "used_technologies": [
+        "Gitlab",
+        "Nginx",
+        "Traefik",
+        "Haskell"
+      ],
+      "role": "Cloud Engineer",
+      "industries": [
+        "Market Research",
+        "Network Providers"
+      ]
+    },
+    {
+      "title": "Electronics Yield Reporting Console",
+      "summary": "Built a reporting layer over a manufacturing data warehouse that turned raw production records into readable yield and defect summaries. Designed the queries and styling so plant supervisors could read trends at a glance. The console replaced a fragile spreadsheet process and reduced reporting effort considerably.",
+      "used_technologies": [
+        "Sql",
+        "CSS"
+      ],
+      "role": "Data Analyst",
+      "industries": [
+        "Software Development",
+        "Manufacturing - Electronics"
+      ]
+    },
+    {
+      "title": "Security Operations Toolkit",
+      "summary": "Assembled an internal toolkit that unified host monitoring, access auditing, and a small operator dashboard for a security and marketing analytics team. Tied together several services so administrators could investigate alerts from one place. Emphasised tamper-evident logging and clear, role-based access.",
+      "used_technologies": [
+        "Avalonia",
+        "ASP.NET",
+        "Python",
+        "Unity",
+        "C"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Cybersecurity",
+        "Marketing"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+Spencer Hartwell
+Product Owner
+spencer.hartwell@example.com · +1 555-0127 · Seattle, USA · DOB: 20 Feb 1999
+Summary
+Product owner who enjoys turning fuzzy customer problems into clear, shippable roadmaps. I work closely with engineering and design to prioritize ruthlessly and keep teams focused on outcomes that matter. I lean on data and direct customer conversations to make sure we build the right thing.
+Experience
+Product Owner — Northwind Product Studio
+May 2025 - Present
+Seattle, U.S.
+Own the backlog and roadmap for a customer-facing product line, balancing user needs against technical constraints. Partner with engineering and design to define and prioritize work each sprint. Translate stakeholder goals into clear acceptance criteria the team can build against.
+Associate Product Owner — Cascade Forge Apps
+Jul 2024 - May 2025
+Portland, USA
+Supported product planning by refining the backlog and writing detailed user stories. Ran discovery sessions with customers to validate ideas before committing engineering effort. Tracked release outcomes and fed learnings back into the roadmap.
+Product Analyst — Granite Harbor Software
+Jun 2023 - Jul 2024
+Denver, U.S.
+Analyzed usage and feedback data to inform product decisions and prioritization. Built lightweight prototypes and specs that helped teams align early. Coordinated across engineering and support to keep delivery on track.
+Business Analyst — Dzintarkrasts Digital
+Dec 2021 - May 2023
+Riga, Latvia
+Gathered and documented requirements for software delivery teams serving regional clients. Mapped business processes into clear specifications for developers. Acted as a bridge between non-technical stakeholders and the engineering team.
+Projects
+Infrastructure Service Catalog Revamp
+Led the product direction for an internal service catalog used to manage ICT infrastructure requests. Reworked the request flows and data model so teams could provision and track services with far less friction. Prioritized the roadmap around the requests that were costing teams the most time.
+Tech: Java, NoSql
+Secure Workforce Access Portal
+Drove requirements for a secure access portal serving network providers and HR functions. Worked alongside security specialists to balance tight access controls against a smooth user experience. Coordinated delivery through shared pipelines so changes shipped safely and predictably.
+Tech: Gitlab, Spring
+Clinic Operations Companion Platform
+Owned the product vision for a companion platform supporting hospital and clinic operations across web and mobile. Prioritized features that reduced administrative load for clinical staff. Aligned a cross-functional team around a clear, outcome-driven roadmap and shared documentation.
+Tech: Linux, Confluence, Traefik, Xamarin/MAUI, Golang
+Education
+Master of Business Administration in Technology Product Management
+2017 - 2020
+Puget Sound Institute of Management, Seattle, United States
+Bachelor of Science in Information Systems
+2015 - 2017
+Cascadia State University, Tacoma, USA
+Associate of Arts in Business Administration
+2013 - 2015
+Rainier Community College, Everett, U.S.
+Skills
+Jira
+CI/CD (Gitlab, Jenkins)
+Gitlab
+Communication
+Sql
+Agile Scrum
+Linux
+Confluence
+Unity
+NoSql
+CSS
+Languages
+English (Bilingual), Spanish (C2), German (B1)
+Preferences
+On-site, Hybrid · Full-time
+Hobbies
+Cycling, cooking, and weekend photography.

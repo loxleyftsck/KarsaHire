@@ -1,0 +1,173 @@
+{
+  "first_name": "Marcus",
+  "last_name": "Wexley",
+  "date_of_birth": "1985-12-24",
+  "email": "marcus.wexley@example.com",
+  "phone": "+1 555-0137",
+  "desired_position": "Data Specialist",
+  "about": "Lead data specialist with a long track record of turning messy operational records into trustworthy reporting that teams actually rely on. I enjoy mentoring analysts and untangling the kind of legacy pipelines that everyone else has given up on.",
+  "job_experience": 17,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [
+    "Temporary"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Bristol"
+  },
+  "skills": [
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 4
+    },
+    {
+      "skill_name": "MySQL",
+      "level": null
+    },
+    {
+      "skill_name": "Communication",
+      "level": 2
+    },
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "Python",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 0
+    },
+    {
+      "skill_name": "Linux",
+      "level": 2
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Nginx",
+      "level": null
+    },
+    {
+      "skill_name": "C",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Harrowgate Insight Partners",
+      "job": "Lead Data Specialist",
+      "date_from": "2022-12-01",
+      "date_to": null,
+      "description": "Lead a small team responsible for the integrity of the company's core reporting platform, setting standards for validation and lineage. I own the relationship with downstream stakeholders and translate fuzzy business questions into reliable, repeatable datasets.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Pellmire Analytics Group",
+      "job": "Principal Data Engineer",
+      "date_from": "2020-01-01",
+      "date_to": "2022-10-01",
+      "description": "Rebuilt a brittle batch reporting estate into a tested, well-documented pipeline that finance and operations could finally trust. I also introduced a review process for new data sources that cut recurring quality incidents substantially.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Crowthorne Data Labs",
+      "job": "Senior Data Engineer",
+      "date_from": "2016-10-01",
+      "date_to": "2019-11-01",
+      "description": "Designed and maintained ingestion processes feeding the customer analytics warehouse, working closely with product teams on event tracking. I mentored two junior engineers and led the migration away from a fragile hand-rolled scheduler.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Vauntley Information Systems",
+      "job": "Data Engineer",
+      "date_from": "2014-02-01",
+      "date_to": "2016-08-01",
+      "description": "Built reporting datasets for the commercial team and acted as the go-to person for reconciling figures across disparate source systems. I documented previously tribal knowledge so the team could onboard new starters without weeks of hand-holding.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Brennick Quantitative Services",
+      "job": "Business Intelligence Developer",
+      "date_from": "2011-09-01",
+      "date_to": "2014-02-01",
+      "description": "Developed dashboards and curated datasets for a fast-growing operations group, partnering with analysts to define consistent metrics. I helped retire a sprawl of conflicting spreadsheets into a single agreed source of truth.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Tindlewood Reporting Co.",
+      "job": "Junior Data Analyst",
+      "date_from": "2008-06-01",
+      "date_to": "2011-08-01",
+      "description": "Produced regular operational reports and investigated data discrepancies for the support and logistics teams. This is where I learned how much careful validation matters before anyone makes a decision from a number.",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Aldermere University of Technology",
+      "degree": "BSc",
+      "location": "Nottingham",
+      "programme": "Computing and Information Systems",
+      "date_from": "2004-01-01",
+      "date_to": "2007-12-31",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Data Quality Practitioner",
+      "certificate_programme": "Enterprise Data Stewardship Track",
+      "issuing_date": "2022-05-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Site Telemetry Consolidation Platform",
+      "summary": "Led the data workstream for a platform that pulled equipment telemetry from dozens of construction sites into a single analytical store. My focus was defining the canonical schema and the validation rules that kept noisy field readings from corrupting downstream reporting.",
+      "used_technologies": [
+        "Unity",
+        ".NET 6",
+        "Agile Scrum",
+        "ASP.NET 4.5+"
+      ],
+      "role": "Data Specialist",
+      "industries": [
+        "Construction and Engineering"
+      ]
+    },
+    {
+      "title": "Learner Progress Data Hub",
+      "summary": "Built the data layer behind a hub combining course engagement and fulfilment records for an online learning provider. I designed the reconciliation logic that married learner activity with shipment and access data so the team could report on outcomes end to end.",
+      "used_technologies": [
+        "Haskell",
+        "ASP.NET 4.5+",
+        "Sql"
+      ],
+      "role": "Data Specialist",
+      "industries": [
+        "Online Learning Platforms",
+        "Logistics"
+      ]
+    }
+  ]
+}

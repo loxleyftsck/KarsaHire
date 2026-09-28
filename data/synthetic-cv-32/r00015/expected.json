@@ -1,0 +1,144 @@
+{
+  "first_name": "Imogen",
+  "last_name": "Featherwick",
+  "date_of_birth": null,
+  "email": "imogen.featherwick@example.com",
+  "phone": "+1 555-0163",
+  "desired_position": "Data Scientist",
+  "about": "Data scientist who turns messy operational records into models people actually trust and act on. I enjoy the unglamorous parts as much as the modelling: framing the question, cleaning the inputs, and explaining the trade-offs to non-technical stakeholders. Most of my work has sat close to product and operations teams, where a clear answer matters more than a clever one.",
+  "job_experience": 5,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "OnSite",
+    "Hybrid"
+  ],
+  "employment_types": [],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Leeds"
+  },
+  "skills": [
+    {
+      "skill_name": "Python",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 4
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Docker",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 2
+    },
+    {
+      "skill_name": "NoSql",
+      "level": 2
+    },
+    {
+      "skill_name": "Jira",
+      "level": 2
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Delphi",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Marlowe Quay Analytics",
+      "job": "Data Scientist",
+      "date_from": "2024-03-01",
+      "date_to": null,
+      "description": "Lead the modelling track for the customer retention squad, owning everything from feature design to the dashboards leaders check each morning. I rebuilt our churn scoring pipeline so it retrains on a schedule and flags drift before it reaches the business. I also mentor two junior analysts and run the weekly review where we sanity-check model behaviour against real outcomes.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Hartwell Loop Data Studio",
+      "job": "Data Scientist",
+      "date_from": "2022-06-01",
+      "date_to": "2024-02-01",
+      "description": "Built demand-forecasting and segmentation models for a portfolio of retail and logistics clients. I worked directly with each client to scope the problem, then delivered models packaged with plain-language documentation so their own teams could maintain them. A recurring win was replacing spreadsheet guesswork with forecasts the planners genuinely relied on.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Pennington Drift Insights",
+      "job": "Junior Data Scientist",
+      "date_from": "2021-06-01",
+      "date_to": "2022-06-01",
+      "description": "Supported the senior modelling team on experimentation and reporting for a subscription business. I owned the A/B test analysis backlog and wrote the reusable scripts that turned raw event logs into clean cohort tables. This was where I learned to defend a result under hard questioning and to admit when the data simply could not say.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Caldecott Bridge Research",
+      "job": "Data Analyst",
+      "date_from": "2020-11-01",
+      "date_to": "2021-05-01",
+      "description": "Produced recurring performance reporting and ad-hoc analysis for an internal operations group. I automated several manual reports that had eaten a day each week and built the first shared definitions for the metrics everyone had been calculating differently. The role gave me a strong grounding in data quality before I moved fully into modelling.",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Wexhall University",
+      "degree": "BSc",
+      "location": "Leeds",
+      "programme": "Mathematics and Statistics",
+      "date_from": "2015-01-01",
+      "date_to": "2019-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Tenancy Yield Forecasting Platform",
+      "summary": "Acted as scrum master for a small cross-functional team building a forecasting tool for a commercial property portfolio. I ran the planning and review cadence, kept the backlog honest, and shielded the engineers from shifting requirements so the modelling work could land on time. The result was a single forecast view that the asset managers checked weekly.",
+      "used_technologies": [
+        ".NET",
+        "Ruby"
+      ],
+      "role": "Scrum Master",
+      "industries": [
+        "Commercial Real Estate"
+      ]
+    },
+    {
+      "title": "Itinerary Demand Modelling Engine",
+      "summary": "Led the data science work on a shared engine serving a property-development group and a set of travel-booking partners. I designed the feature pipeline and the evaluation harness so each partner could see how the model behaved on their own segment. The hardest part was reconciling very different data shapes into one consistent training set.",
+      "used_technologies": [
+        "Delphi",
+        "Gitlab"
+      ],
+      "role": "Data Scientist",
+      "industries": [
+        "Real Estate Development",
+        "Travel Agencies"
+      ]
+    }
+  ]
+}

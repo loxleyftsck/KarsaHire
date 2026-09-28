@@ -1,0 +1,160 @@
+{
+  "first_name": "Edwina",
+  "last_name": "Pemberton-Hollis",
+  "date_of_birth": null,
+  "email": "edwina.pembertonhollis@example.com",
+  "phone": "+1 555-0144",
+  "desired_position": "Software Tester",
+  "about": "Software tester who treats quality as a shared responsibility rather than a final gate. Over the past several years I have built a habit of asking the awkward questions early, automating the tedious checks, and keeping a close eye on the edges where defects love to hide.",
+  "job_experience": 7,
+  "job_expectations": "Looking for a senior testing role on a product team that values early involvement, strong automation, and close collaboration with developers.",
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [],
+  "hobbies": "Trail running, cryptic crosswords, and tinkering with retro electronics.",
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Manchester"
+  },
+  "skills": [
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "JavaScript",
+      "level": 4
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Python",
+      "level": 4
+    },
+    {
+      "skill_name": "Java",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 0
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": "Communication",
+      "level": 4
+    },
+    {
+      "skill_name": "Rust",
+      "level": null
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Pennine Quality Forge",
+      "job": "Senior Software Tester",
+      "date_from": "2023-10-01",
+      "date_to": "2026-01-01",
+      "description": "Lead testing strategy for a multi-team product, combining exploratory testing with a growing automation suite. Embed quality practices into the delivery process and mentor newer testers. Work closely with developers to catch issues long before release.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Rheinblick Testlabor",
+      "job": "Software Test Engineer",
+      "date_from": "2021-03-01",
+      "date_to": "2023-10-01",
+      "description": "Designed and maintained automated regression suites for a complex enterprise application. Partnered with cross-border teams to clarify requirements and reproduce defects. Improved test coverage and reporting visibility for stakeholders.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Cedarpoint Verification Inc",
+      "job": "QA Analyst",
+      "date_from": "2019-01-01",
+      "date_to": "2021-03-01",
+      "description": "Performed functional and exploratory testing across web and desktop products. Wrote detailed defect reports and collaborated with developers to confirm fixes. Began building automated checks for repetitive test scenarios.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Greywater Metropolitan University",
+      "degree": "Bachelor of Science",
+      "location": "Leeds",
+      "programme": "Computer Science",
+      "date_from": "2016-01-01",
+      "date_to": "2018-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Uzbek",
+      "level": 5
+    },
+    {
+      "language_name": "German",
+      "level": 3
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Heavy Machinery Control Validation",
+      "summary": "Built and executed a testing program for a desktop control application used in heavy machinery manufacturing. Focused on boundary conditions and failure modes that mattered most on the factory floor. Reduced escaped defects through structured exploratory sessions.",
+      "used_technologies": [
+        "Python",
+        "C#",
+        "Windows Forms"
+      ],
+      "role": "Software Tester",
+      "industries": [
+        "Manufacturing - Heavy Machinery"
+      ]
+    },
+    {
+      "title": "Biotech Data Integrity Verification",
+      "summary": "Led testing for a biotechnology data platform with strict integrity and security requirements. Validated complex workflows and probed for vulnerabilities alongside the security team. Helped ensure reliable behavior under unusual data conditions.",
+      "used_technologies": [
+        "Cyber Security",
+        "Unity",
+        "NoSql"
+      ],
+      "role": "Software Tester",
+      "industries": [
+        "Biotechnology"
+      ]
+    },
+    {
+      "title": "Legal Workflow Assurance Suite",
+      "summary": "Owned quality verification for a corporate counsel workflow application. Designed test cases covering intricate approval paths and edge scenarios. Collaborated with developers to harden the platform ahead of each release.",
+      "used_technologies": [
+        "Blazor",
+        "WCF",
+        "C#",
+        ".NET"
+      ],
+      "role": "Software Tester",
+      "industries": [
+        "Corporate Counsel"
+      ]
+    }
+  ]
+}

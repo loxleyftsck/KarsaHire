@@ -1,0 +1,56 @@
+Toms Liepkalns
+System Administrator
+toms.liepkalns@example.com · +1 555-0163 · Riga, Latvia
+Summary
+System administrator who keeps infrastructure quiet, secure, and well-documented so teams can focus on their work. I like automating the dull, repetitive tasks and building monitoring that catches problems before users notice.
+Experience
+System Administrator — Baltā Egle Infrastructure
+Mar 2024 - Present
+Riga, Latvia
+Maintain and harden internal servers, networking, and identity systems across the organisation. I automated patching and backup verification, which cut manual effort and improved recovery confidence.
+Systems Engineer — Ziemeļvārti Hosting Group
+Aug 2022 - Mar 2024
+Riga, Latvia
+Operated hosting infrastructure for several client environments, owning provisioning and incident response. I built monitoring dashboards that shortened detection and resolution times for recurring faults.
+IT Operations Specialist — Saulesvēja Tech Services
+Sep 2021 - Aug 2022
+Jūrmala, Latvia
+Supported end-user systems and shared services, balancing helpdesk demand with planned maintenance. I standardised workstation configuration, which reduced onboarding time for new staff.
+Junior System Administrator — Akmensloks Digital Works
+May 2020 - Jul 2021
+Jelgava, Latvia
+Assisted with server maintenance, user account management, and routine backups under senior supervision. I documented common procedures so the team could resolve repeat issues faster.
+IT Support Technician — Pērkons Network Solutions
+Sep 2019 - Mar 2020
+Riga, Latvia
+Handled first-line support for hardware, software, and connectivity issues across the office. I learned the fundamentals of system administration while keeping daily operations running smoothly.
+Projects
+Learning and Logistics Test Harness
+Acted as software tester on a platform spanning online learning and supply chain coordination. I designed and ran test cases across both modules, catching integration defects where course scheduling met inventory workflows.
+Tech: Perl, Jira, React, ASP.NET, ASP.NET 4.5+
+AI Services Provisioning Platform
+Served as system administrator for a platform delivering AI-driven ICT services to internal teams. I managed the runtime environments, automated deployments, and kept the supporting infrastructure stable under variable demand.
+Tech: .NET 6, Scala, Flutter, JavaScript, Python
+Education
+Bachelor of Science in Systems and Network Administration
+2015 - 2018
+Riga College of Network Technology, Riga, USA
+Professional Diploma in Infrastructure Operations
+2012 - 2015
+Zemgale Technical Academy, Jelgava, Latvia
+Associate Diploma in Computer Support and Maintenance
+2008 - 2012
+Jūrmala Institute of Information Systems, Jūrmala, Latvia
+Skills
+Jira
+MySQL
+Traefik
+NoSql
+Gitlab
+Confluence
+CI/CD (Gitlab, Jenkins)
+Postgresql
+C
+Golang
+Languages
+English (Bilingual)

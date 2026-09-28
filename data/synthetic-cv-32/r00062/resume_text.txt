@@ -1,0 +1,57 @@
+Annelie Vorberg
+Senior Software Tester
+annelie.vorberg@example.com · +1 555-0144 · Leipzig, Germany · DOB: 06 Aug 1993
+Summary
+Senior software tester with ten years spent making sure complex systems behave the way users expect them to. I am at my best designing test strategies for messy integrations and coaching developers to think about quality before code is written.
+Experience
+Senior Software Tester — Nordlicht Quality Works
+Sep 2024 - Jan 2026
+Leipzig, Germany
+Own the test strategy for a multi-team platform and mentor testers across squads on risk-based planning. I built the shared automation suite that the whole department now relies on for nightly verification.
+Test Lead — Sternfeld Software Manufaktur
+May 2023 - Sep 2024
+Dresden, Germany
+Coordinated testing across several parallel feature streams and acted as the bridge between developers and stakeholders on quality questions. I introduced exploratory testing sessions that surfaced defects the scripted runs kept missing.
+QA Engineer — Oydin Tech Verification Group
+Jul 2021 - Mar 2023
+Tashkent, Uzbekistan
+Set up the first structured test process for a fast-growing product team that had been shipping on gut feeling. I balanced manual exploration with a growing regression suite as the codebase matured.
+Software Tester — Blauturm Testlabor
+May 2019 - Jul 2021
+Hamburg, Germany
+Validated releases for a regulated product where traceability mattered as much as coverage. I wrote clear, reproducible defect reports that developers actually thanked me for.
+QA Analyst — Samarqand Digital Solutions
+Dec 2017 - May 2019
+Samarkand, Uzbekistan
+Tested web and back-office applications and helped define acceptance criteria with business analysts. This role taught me to read a specification critically and spot the gaps before they reached production.
+Junior Software Tester — Eichengrund Testpartner
+Dec 2015 - Dec 2017
+Leipzig, Germany
+Began my testing career executing manual test plans and learning how a defect travels from discovery to resolution. I quickly took on writing test cases for new modules as the team trusted me with more.
+Education
+Master of Science in Software Quality Engineering
+2011 - 2014
+Universitat Wendelstein, Leipzig, United Kingdom
+Bachelor of Engineering in Information Technology
+2009 - 2011
+Fachhochschule Talheim, Dresden, Germany
+Diploma in Computer Systems
+2005 - 2009
+Tashkent Institute of Applied Computing, Tashkent, Germany
+Skills
+Java
+Confluence
+CI/CD (Gitlab, Jenkins)
+JavaScript
+Docker
+Communication
+TypeScript
+Python
+.NET 7
+Linux
+Languages
+English (B1)
+Preferences
+Full-time
+Hobbies
+Open-water swimming, fermenting vegetables, and collecting old maps.

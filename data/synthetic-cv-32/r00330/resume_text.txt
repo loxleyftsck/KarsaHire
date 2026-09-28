@@ -1,0 +1,57 @@
+Fenwick Marlbrook
+Lead Data Analyst
+fenwick.marlbrook@example.com · +1 555-0123 · Bristol, UK
+Summary
+Lead Data Analyst with nearly two decades of experience turning messy operational data into decisions leaders can act on. I have built and mentored analytics teams across finance, energy, and security-focused organisations. My focus is pairing rigorous modelling with clear, honest storytelling.
+Experience
+Lead Data Analyst — Harrowgate Insight Partners
+Jan 2023 - Present
+Bristol, UK
+Lead a team of analysts delivering reporting and forecasting for a portfolio of enterprise clients. I set the analytical standards, review modelling work, and present findings directly to client executives. Much of my time goes into translating ambiguous business questions into tractable measurement plans.
+Senior Data Analyst — Caldermoor Analytics Group
+Sep 2019 - Nov 2022
+Manchester, United Kingdom
+Owned the analytics workstream for a major retail forecasting programme, coordinating with engineering and finance stakeholders. I rebuilt the demand model and cut reconciliation effort considerably. I also coached three junior analysts who later moved into lead roles.
+Data Analyst — Pellingdon Data Works
+Oct 2016 - Sep 2019
+Leeds, England
+Delivered recurring performance dashboards and ad hoc deep dives for the commercial team. I standardised the reporting layer so that figures finally agreed across departments. The work became the basis for the company's first self-serve reporting initiative.
+Business Intelligence Analyst — Brennweiler Insight Studio
+Aug 2013 - Oct 2016
+Munich, Germany
+Supported a cross-border logistics operation with reporting and root-cause analysis. I built the first reliable view of fulfilment timing across multiple warehouses. The findings drove a restructuring of how regional targets were set.
+Reporting Analyst — Ridgevale Metrics Company
+Sep 2010 - Jun 2013
+Austin, United States
+Produced operational and financial reporting for a mid-sized services firm. I introduced version-controlled query templates that reduced reporting errors. I worked closely with finance to align definitions used across teams.
+Junior Data Analyst — Thornlea Information Services
+Sep 2007 - Sep 2010
+Sheffield, United Kingdom
+Started my career cleaning and validating data for a customer analytics team. I gradually took on small modelling tasks and built my first end-to-end dashboards. The role gave me a strong grounding in data quality discipline.
+Projects
+Pipeline Integrity Threat Dashboard
+Designed an analytics layer that fused operational telemetry with security event data for an energy operator. The dashboard surfaced anomalous access patterns alongside equipment readings so analysts could triage incidents faster. It became the standard view used during incident reviews.
+Tech: Spring, CSS, Cyber Security, .NET 7
+Education
+Master of Science in Applied Statistics
+2004 - 2006
+Wexcombe Institute of Applied Sciences, Edinburgh, United Kingdom
+Bachelor of Science in Mathematics and Economics
+2001 - 2004
+Marsh Hollow University College, Nottingham, United Kingdom
+Skills
+Scala
+Jira
+Sql
+CI/CD (Gitlab, Jenkins)
+MySQL
+Confluence
+C++
+.NET 6
+CSS
+Languages
+English (Native), Spanish (Advanced), Russian (Fluent), French (C1)
+Preferences
+Remote · Permanent
+Hobbies
+Long-distance cycling, restoring vintage radios, and amateur astronomy.

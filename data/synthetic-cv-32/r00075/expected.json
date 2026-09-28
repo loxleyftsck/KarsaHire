@@ -1,0 +1,191 @@
+{
+  "first_name": "Nathaniel",
+  "last_name": "Pemberton",
+  "date_of_birth": null,
+  "email": "nathaniel.pemberton@example.com",
+  "phone": "+1 555-0107",
+  "desired_position": "Architect",
+  "about": "Senior architect who enjoys turning tangled legacy estates into clean, well-bounded service landscapes. I care about pragmatic decisions, clear documentation, and bringing engineering teams along rather than dictating from an ivory tower.",
+  "job_experience": 7,
+  "job_expectations": null,
+  "min_salary": 104016,
+  "max_salary": 121707,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "OnSite"
+  ],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Bristol"
+  },
+  "skills": [
+    {
+      "skill_name": "Ansible",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 0
+    },
+    {
+      "skill_name": "ASP.NET 4.5+",
+      "level": 0
+    },
+    {
+      "skill_name": "Haskell",
+      "level": null
+    },
+    {
+      "skill_name": "WCF",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 4
+    },
+    {
+      "skill_name": "C",
+      "level": 2
+    },
+    {
+      "skill_name": "Docker",
+      "level": 2
+    },
+    {
+      "skill_name": "Confluence",
+      "level": 4
+    },
+    {
+      "skill_name": "Cyber Security",
+      "level": null
+    },
+    {
+      "skill_name": "Flutter",
+      "level": 0
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Marrowfield Digital Foundry",
+      "job": "Principal Solution Architect",
+      "date_from": "2024-06-01",
+      "date_to": null,
+      "description": "Owns the target architecture for a multi-team platform modernisation, defining service boundaries and integration contracts across squads. Chairs the architecture review board and coaches lead engineers on trade-off analysis. Acts as the technical face to senior stakeholders during quarterly planning.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Silverquay Software Collective",
+      "job": "Lead Architect",
+      "date_from": "2023-05-01",
+      "date_to": "2024-06-01",
+      "description": "Led the architectural redesign of a regional fulfilment platform serving several business lines. Established reference architectures and a lightweight governance process that cut delivery friction between teams. Mentored a growing group of mid-level engineers stepping into design ownership.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Greythorn Systems House",
+      "job": "Senior Software Architect",
+      "date_from": "2021-06-01",
+      "date_to": "2023-05-01",
+      "description": "Designed the backbone for a customer-facing portal rebuilt from a monolith into independently deployable services. Partnered with product leads to sequence the migration so the business kept shipping throughout. Introduced design records that became the team's shared decision log.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Holbeck Lane Technologies",
+      "job": "Solutions Engineer",
+      "date_from": "2019-08-01",
+      "date_to": "2021-06-01",
+      "description": "Built integration layers connecting internal tooling to several third-party platforms. Drove proof-of-concept work that de-risked a major replatforming initiative. Worked closely with delivery managers to keep scope honest and deadlines realistic.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Pennyworth Application Studio",
+      "job": "Software Engineer",
+      "date_from": "2019-01-01",
+      "date_to": "2019-08-01",
+      "description": "Delivered features across a shared services codebase and helped stabilise a flaky release pipeline. Paired regularly with junior developers to lift overall code quality. Contributed to early design discussions that shaped the team's component conventions.",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Ashdale University of Technology",
+      "degree": "Master of Science",
+      "location": "Sheffield",
+      "programme": "Distributed Systems Engineering",
+      "date_from": "2014-01-01",
+      "date_to": "2018-12-31",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "name": "Northgate Polytechnic Institute",
+      "degree": "Bachelor of Science",
+      "location": "Coventry",
+      "programme": "Computer Science",
+      "date_from": "2012-01-01",
+      "date_to": "2014-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Counsel Document Review Simulator",
+      "summary": "Built an automated testing harness for an interactive review tool used by an in-house legal team. Defined the test strategy and regression suites that caught defects before each release. The work gave the legal staff confidence to adopt the tool for high-stakes matters.",
+      "used_technologies": [
+        "Unity",
+        ".NET 6"
+      ],
+      "role": "Automated QA",
+      "industries": [
+        "Corporate Counsel"
+      ]
+    },
+    {
+      "title": "Retail Banking Migration Programme",
+      "summary": "Coordinated a cross-functional effort to move a core banking workflow onto a new data and deployment foundation. Managed the delivery plan, dependencies, and risk register across infrastructure and mobile streams. Kept stakeholders aligned through a phased rollout with clear go/no-go gates.",
+      "used_technologies": [
+        "MySQL",
+        "Linux",
+        "Ansible",
+        "Microsoft SQL",
+        "Flutter"
+      ],
+      "role": "Project Manager",
+      "industries": [
+        "Banking"
+      ]
+    },
+    {
+      "title": "Omnichannel Catalogue Platform",
+      "summary": "Architected a shared catalogue service spanning fashion retail and a regulated pharmaceuticals line. Reconciled very different compliance and performance needs into one extensible design. Set the integration patterns that downstream teams reused for later channels.",
+      "used_technologies": [
+        "C++",
+        ".NET",
+        "Python",
+        "ASP.NET 4.5+"
+      ],
+      "role": "Architect",
+      "industries": [
+        "Retail - Fashion",
+        "Pharmaceuticals"
+      ]
+    }
+  ]
+}

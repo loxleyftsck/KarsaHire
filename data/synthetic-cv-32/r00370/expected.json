@@ -1,0 +1,157 @@
+{
+  "first_name": "Florian",
+  "last_name": "Whitcombe",
+  "date_of_birth": null,
+  "email": "florian.whitcombe@example.com",
+  "phone": "+1 555-0169",
+  "desired_position": "UI / UX Designer",
+  "about": null,
+  "job_experience": 1,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Bristol"
+  },
+  "skills": [
+    {
+      "skill_name": "Communication",
+      "level": 4
+    },
+    {
+      "skill_name": "CSS",
+      "level": null
+    },
+    {
+      "skill_name": "Docker",
+      "level": 0
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 4
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "Photoshop",
+      "level": 0
+    },
+    {
+      "skill_name": "Ruby",
+      "level": null
+    },
+    {
+      "skill_name": "Perl",
+      "level": 4
+    },
+    {
+      "skill_name": "React",
+      "level": 0
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Brindlewood Pixel Studio",
+      "job": "Junior UI / UX Designer",
+      "date_from": "2025-07-01",
+      "date_to": null,
+      "description": "Designed wireframes and interactive prototypes for a client portal, collaborating closely with developers to refine layouts through several rounds of usability feedback. Maintained a shared component library and documented interaction patterns so the wider team could reuse them consistently.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Marlowe & Quill Digital",
+      "job": "UX Design Intern",
+      "date_from": "2025-01-01",
+      "date_to": "2025-07-01",
+      "description": "Supported senior designers on redesigning a booking flow, producing low-fidelity sketches and helping run moderated user testing sessions. Compiled findings into clear summaries that informed the next iteration of the interface.",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Harrowgate Institute of Design",
+      "degree": "Bachelor of Arts",
+      "location": "Bristol",
+      "programme": "Interaction and Digital Design",
+      "date_from": "2021-01-01",
+      "date_to": "2024-12-31",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "name": "Eastfield College of Creative Studies",
+      "degree": "Foundation Diploma",
+      "location": "Bath",
+      "programme": "Art and Design",
+      "date_from": "2019-01-01",
+      "date_to": "2021-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Threat Console Dashboard Refresh",
+      "summary": "Redesigned the monitoring dashboard for a managed security service, focusing on clearer alert hierarchies and faster triage for analysts. Worked with the operations team to align the visual language with their existing deployment workflows and validated the layout through walkthrough sessions.",
+      "used_technologies": [
+        "Linux",
+        "CI/CD (Gitlab, Jenkins)"
+      ],
+      "role": "UI / UX Designer",
+      "industries": [
+        "IT Services",
+        "Cybersecurity"
+      ]
+    },
+    {
+      "title": "Campus Learning Portal Revamp",
+      "summary": "Contributed to the interface design of a portal connecting students and faculty across several departments. Mapped the core journeys, simplified the navigation, and produced annotated mockups that the engineering team used during build.",
+      "used_technologies": [
+        "Python",
+        "Communication",
+        "TypeScript",
+        "Laravel"
+      ],
+      "role": "DevOps Engineer",
+      "industries": [
+        "Schools and Universities"
+      ]
+    },
+    {
+      "title": "Service Desk Self-Help Interface",
+      "summary": "Created a streamlined self-service interface for an IT support product, reducing the number of steps users needed to log and track requests. Designed the empty states and onboarding screens to make first-time use feel approachable.",
+      "used_technologies": [
+        "Rust",
+        "WPF",
+        "C"
+      ],
+      "role": "UI / UX Designer",
+      "industries": [
+        "IT Services"
+      ]
+    }
+  ]
+}

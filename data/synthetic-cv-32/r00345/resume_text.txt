@@ -1,0 +1,42 @@
+Wieland Stahlberg
+Senior System Administrator
+wieland.stahlberg@example.com · +1 555-0125 · Dresden, Germany
+Summary
+Senior system administrator with nearly a decade of hands-on experience keeping mixed on-premise and cloud environments stable, secure, and audited. I enjoy untangling brittle legacy infrastructure and replacing it with documented, automated, repeatable processes that the whole team can trust.
+Experience
+Senior System Administrator — Falkenried Datendienste
+Feb 2024 - Jan 2026
+Dresden, Germany
+Owned the operational health of a multi-site server estate, leading patch cycles, backup verification, and incident response for business-critical services. Mentored two junior administrators and introduced a change-control process that sharply reduced unplanned outages.
+System Administrator — Nordwind Hosting Werke
+Aug 2021 - Feb 2024
+Leipzig, Germany
+Maintained virtualization hosts and storage clusters for a managed-hosting customer base, handling capacity planning and after-hours escalations. Automated routine provisioning so that new customer environments could be stood up in hours rather than days.
+Infrastructure Administrator — Habichtsberg IT-Systeme
+Apr 2019 - Jun 2021
+Chemnitz, Germany
+Administered directory services, mail, and file infrastructure for an organization of several hundred users. Drove a migration off aging hardware while keeping downtime within tight maintenance windows.
+Junior System Administrator — Tannensee Rechenzentrum
+Dec 2016 - Feb 2019
+Erfurt, Germany
+Supported daily operations of a regional data center, monitoring systems and responding to first-line infrastructure tickets. Documented recurring fixes into a shared knowledge base that became the team's go-to reference.
+Education
+Bachelor of Science in Network and Systems Administration
+2013 - 2015
+Saxon Polytechnic of Applied Informatics, Dresden, Germany
+Skills
+Ansible
+Jira
+Linux
+CI/CD (Gitlab, Jenkins)
+NoSql
+Azure
+Traefik
+Gitlab
+C#
+Microsoft SQL
+Scala
+Languages
+English (Native), Russian (C2)
+Preferences
+Remote

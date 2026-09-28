@@ -1,0 +1,69 @@
+Bertrand Castellano
+Senior Integration Specialist
+bertrand.castellano@example.com · +1 555-0116 · Austin, US
+Summary
+Integration specialist with roughly a decade of experience wiring disparate systems together so they behave like one. I enjoy the unglamorous work of mapping fields, taming flaky APIs, and making sure data lands where it should without surprises.
+Experience
+Senior Integration Specialist — Brightford Conduit Systems
+Sep 2023 - Present
+Austin, United States
+Own the integration platform connecting our commerce, billing, and fulfillment systems, and set the standards other teams build against. I led a migration off a brittle point-to-point setup toward a documented, event-driven approach that cut failed handoffs dramatically.
+Integration Engineer — Whitmore Lattice Technologies
+Nov 2021 - Sep 2023
+Manchester, UK
+Delivered partner integrations for a logistics platform, handling everything from auth handshakes to retry and reconciliation logic. I built a shared connector toolkit that turned multi-week onboarding into a few days for each new partner.
+Integration Developer — Cobblepath Interlink Group
+Sep 2020 - Oct 2021
+Denver, USA
+Built and maintained data-sync flows between internal CRM and finance systems. I introduced contract tests at the integration boundaries, which caught breaking schema changes before they reached production.
+Systems Integration Analyst — Marrowgate Bridgeworks
+Aug 2018 - Sep 2020
+Phoenix, U.S.
+Coordinated integrations across several legacy services during a platform consolidation. I documented the undocumented interfaces and untangled a handful of circular dependencies that had blocked earlier attempts.
+Junior Integration Engineer — Quillshire Datalink Partners
+Dec 2016 - Jun 2018
+Portland, U.S.
+Supported message-queue and file-based integrations between back-office systems. I owned the monitoring dashboards and gradually reduced the volume of silent failures the team had grown used to.
+Integration Support Engineer — Aldersgate Signal Works
+Oct 2015 - Dec 2016
+Riga, Latvia
+Handled day-to-day support for inbound and outbound data interfaces, triaging failures and coordinating fixes with upstream providers. I built a runbook that let the support rotation resolve common breakages without escalating.
+Projects
+Unified Provisioning Gateway
+Built a central integration gateway that orchestrated provisioning across several cloud services for a hosting product. I designed the pipeline so each environment promotion was automated and auditable, and added the messaging layer that decoupled the slow upstream calls.
+Tech: JavaScript, CI/CD (Gitlab, Jenkins), Kotlin, Microsoft SQL
+Education
+Master of Science in Software Engineering
+2012 - 2014
+Pennington Strand University, Austin, US
+Bachelor of Science in Computer Science
+2009 - 2012
+Holloway Crest College, San Antonio, Latvia
+Diploma in Network Administration
+2006 - 2009
+Westmere Technical Institute, El Paso, Germany
+Skills
+Postgresql
+C
+Microsoft SQL
+MySQL
+Communication
+Agile Scrum
+.NET 6
+Spring
+Rust
+PHP
+Xamarin/MAUI
+JavaScript
+Languages
+English (Bilingual), Uzbek (Upper-Intermediate), German (C2)
+Certificates
+Certified Integration Professional
+Mar 2021
+Enterprise Connectivity
+Preferences
+On-site · Part-time · Temporary
+Looking for
+Looking for a role where integration work is treated as a first-class engineering problem, with room to standardize patterns rather than fight one-off fires.
+Hobbies
+Restoring vintage bicycles and long weekend hikes.

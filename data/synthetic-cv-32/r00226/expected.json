@@ -1,0 +1,161 @@
+{
+  "first_name": "Gulchehra",
+  "last_name": "Yusupova",
+  "date_of_birth": null,
+  "email": "gulchehra.yusupova@example.com",
+  "phone": "+1 555-0183",
+  "desired_position": "Data Scientist",
+  "about": "Junior data scientist who likes turning messy operational records into clear, decision-ready insight. I enjoy framing business questions as testable models and pairing closely with analysts to validate what the numbers actually mean.",
+  "job_experience": 1,
+  "job_expectations": null,
+  "min_salary": 47565,
+  "max_salary": 65000,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "Hybrid",
+    "Remote"
+  ],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [],
+  "hobbies": "Long-distance cycling, sketching, and casual chess tournaments.",
+  "address": {
+    "country_name": "Uzbekistan",
+    "region_name": "Tashkent"
+  },
+  "skills": [
+    {
+      "skill_name": "Confluence",
+      "level": 0
+    },
+    {
+      "skill_name": "MySQL",
+      "level": 4
+    },
+    {
+      "skill_name": "NoSql",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 2
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": 4
+    },
+    {
+      "skill_name": "Docker",
+      "level": null
+    },
+    {
+      "skill_name": "Docker Swarm",
+      "level": 4
+    },
+    {
+      "skill_name": "Azure",
+      "level": null
+    },
+    {
+      "skill_name": "Drupal",
+      "level": 0
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Silkstream Analytics Collective",
+      "job": "Junior Data Scientist",
+      "date_from": "2025-07-01",
+      "date_to": null,
+      "description": "Build and evaluate predictive models for customer behaviour and help the analytics team automate recurring reporting. I prepare cleaned datasets, run experiments, and present findings to non-technical stakeholders in plain language.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Cobalt Harbor Insights",
+      "job": "Data Science Intern",
+      "date_from": "2025-01-01",
+      "date_to": "2025-07-01",
+      "description": "Supported a small research team on feature engineering and exploratory analysis for early-stage modelling work. I documented data pipelines and contributed reusable notebooks that sped up onboarding for new analysts.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Zarafshan Institute of Applied Sciences",
+      "degree": "BSc",
+      "location": "Tashkent",
+      "programme": "Applied Mathematics and Statistics",
+      "date_from": "2021-01-01",
+      "date_to": "2024-12-31",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "name": "Oxus Valley Polytechnic",
+      "degree": "Diploma",
+      "location": "Samarkand",
+      "programme": "Data Analytics",
+      "date_from": "2018-01-01",
+      "date_to": "2021-12-31",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Spanish",
+      "level": 4
+    },
+    {
+      "language_name": "Russian",
+      "level": 5
+    },
+    {
+      "language_name": "Hebrew",
+      "level": 3
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Applied Machine Learning Practitioner",
+      "certificate_programme": "Predictive Modelling Track",
+      "issuing_date": "2026-04-01",
+      "expiring_date": "2029-04-01"
+    },
+    {
+      "certificate_name": "Statistical Foundations for Data Science",
+      "certificate_programme": null,
+      "issuing_date": "2026-04-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Regional Water Demand Forecasting Platform",
+      "summary": "Built a forecasting tool that estimated household and municipal water demand using historical consumption and survey panels, helping a market research team prioritise field studies. The work combined a desktop dashboard with an automated provisioning layer so analysts could refresh forecasts without engineering support.",
+      "used_technologies": [
+        "Avalonia",
+        "Ansible",
+        "Haskell",
+        "Postgresql",
+        "Swift"
+      ],
+      "role": "Data Scientist",
+      "industries": [
+        "Market Research",
+        "Water Supply"
+      ]
+    }
+  ]
+}

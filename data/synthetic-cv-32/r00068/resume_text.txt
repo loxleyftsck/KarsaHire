@@ -1,0 +1,61 @@
+Inguna Briedkalne
+Senior Manual QA
+inguna.briedkalne@example.com · +1 555-0136 · Riga, Latvia
+Skills
+TypeScript
+Docker
+Gitlab
+Confluence
+Linux
+CI/CD (Gitlab, Jenkins)
+Agile Scrum
+Microsoft SQL
+.NET
+Languages
+English (Native), German (B2), Russian (C1)
+Preferences
+On-site, Remote · Full-time
+Summary
+Manual QA with over a decade of experience finding the defects that automated checks miss. I enjoy exploratory testing and building a deep mental model of how a product is actually used, then pushing on the edges. Over the years I have grown into a senior role where I shape test strategy and mentor newer testers.
+Experience
+Senior Manual QA Engineer — Saulriets Quality Labs
+Nov 2023 - Present
+Riga, Latvia
+Own the manual test strategy for a complex enterprise product and lead exploratory testing across major releases. Built a structured regression suite that gave the team confidence to ship on a tighter schedule. Mentor junior testers and act as the quality gatekeeper for high-risk features.
+Manual QA Lead — Pavasaris Testing House
+Nov 2021 - Sep 2023
+Riga, Latvia
+Coordinated manual testing across two product teams and standardised how defects were reported and triaged. Introduced session-based exploratory testing that surfaced several severe issues before release. Worked closely with developers to shorten the feedback loop on bug fixes.
+Manual QA Engineer — Ledus Software Assurance
+Aug 2019 - Nov 2021
+Riga, Latvia
+Tested web and desktop applications across many releases, focusing on usability and edge-case behaviour. Wrote clear, reproducible defect reports that developers consistently praised for saving time. Helped define acceptance criteria during planning to head off ambiguity early.
+Quality Assurance Specialist — Rudens Digital Quality
+Mar 2018 - Aug 2019
+Jelgava, Latvia
+Ran manual test cycles for a logistics product and validated complex data-driven workflows. Built a reusable library of test scenarios that cut the time to prepare each release. Partnered with support to turn recurring customer complaints into targeted test coverage.
+Junior QA Tester — Ziema Verification Studio
+Sep 2016 - Jan 2018
+Riga, Latvia
+Executed test plans and logged defects for a small team building internal business tools. Grew comfortable with exploratory testing and started owning whole feature areas. Learned to write precise reproduction steps that reduced back-and-forth with developers.
+QA Trainee — Migla Test Foundry
+Sep 2014 - Sep 2016
+Riga, Latvia
+Supported senior testers by running scripted test cases and verifying bug fixes. Built early foundations in defect tracking and structured reporting. Progressed quickly from following test plans to suggesting improvements to them.
+Projects
+Heavy Machinery Training Simulator QA
+Led manual verification for a training simulator used by both a university programme and a heavy-machinery manufacturer. Designed exploratory test charters around realistic operator workflows, uncovering timing defects that scripted tests had missed. The structured reporting helped developers prioritise fixes ahead of a critical demonstration.
+Tech: MySQL, C++, C, ASP.NET, Avalonia
+Supply Chain Dashboard Validation
+Owned manual testing for a supply-chain management dashboard handling large volumes of live operational data. Built scenario-based checks that caught subtle calculation errors in the reporting views before they reached customers. Coordinated closely with the development team to verify each fix end to end.
+Tech: Blazor, Python, Jira, Html
+Education
+BSc in Software Engineering
+2009 - 2013
+Riga College of Software Quality, Riga, Latvia
+Professional Diploma in Software Testing
+2007 - 2009
+Kurzeme Institute of Technology, Liepaja, Latvia
+Foundation Certificate in Information Technology
+2004 - 2007
+Vidusupe Academy of Computing, Riga, Latvia

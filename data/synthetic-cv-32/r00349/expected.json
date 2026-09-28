@@ -1,0 +1,166 @@
+{
+  "first_name": "Ritvars",
+  "last_name": "Salenieks",
+  "date_of_birth": null,
+  "email": "ritvars.salenieks@example.com",
+  "phone": "+1 555-0162",
+  "desired_position": "Networking Specialist",
+  "about": "Senior networking specialist with over a decade spent designing, securing, and troubleshooting enterprise networks. I like the discipline of network engineering: clear topologies, tight change windows, and monitoring that tells you about a problem before a user does.",
+  "job_experience": 11,
+  "job_expectations": null,
+  "min_salary": 113363,
+  "max_salary": 128017,
+  "ready_to_relocation": false,
+  "work_modes": [],
+  "employment_types": [],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Latvia",
+    "region_name": "Riga"
+  },
+  "skills": [
+    {
+      "skill_name": "Microsoft SQL",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 0
+    },
+    {
+      "skill_name": "Nginx",
+      "level": 2
+    },
+    {
+      "skill_name": "Traefik",
+      "level": 0
+    },
+    {
+      "skill_name": "Docker Swarm",
+      "level": 2
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": ".NET 6",
+      "level": 0
+    },
+    {
+      "skill_name": ".NET",
+      "level": 0
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Daugava Network Systems",
+      "job": "Senior Networking Specialist",
+      "date_from": "2023-12-01",
+      "date_to": null,
+      "description": "Own the design and operation of a multi-site enterprise network, leading segmentation and resilience improvements. Coordinate maintenance windows and vendor work so that critical links stay redundant and observable.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Baltic Mesh Communications",
+      "job": "Network Engineer",
+      "date_from": "2021-09-01",
+      "date_to": "2023-12-01",
+      "description": "Maintained core routing and switching for a regional service provider and resolved complex connectivity incidents. Rolled out improved monitoring that caught capacity issues well before they affected customers.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Vidzeme Fiber Works",
+      "job": "Network Administrator",
+      "date_from": "2019-11-01",
+      "date_to": "2021-08-01",
+      "description": "Administered campus networks and wireless infrastructure for a large organization, handling configuration and access control. Standardized device configurations to make troubleshooting faster and audits cleaner.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Kurzeme Link Solutions",
+      "job": "Network Support Engineer",
+      "date_from": "2017-06-01",
+      "date_to": "2019-09-01",
+      "description": "Supported branch-office connectivity and VPN access for distributed teams, responding to outages on call. Documented recurring failure patterns that informed later hardware refresh decisions.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Gauja Datacom",
+      "job": "Junior Network Technician",
+      "date_from": "2016-05-01",
+      "date_to": "2017-06-01",
+      "description": "Installed and configured switches and access points, and assisted senior engineers with cabling and labeling. Built the habit of meticulous documentation that I carried through the rest of my career.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Amber Route Networks",
+      "job": "Network Operations Technician",
+      "date_from": "2014-09-01",
+      "date_to": "2016-04-01",
+      "description": "Monitored network health from an operations center and escalated incidents according to defined procedures. Helped tune alert thresholds to cut down on noise without missing real problems.",
+      "country_name": "Latvia"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Riga Technical College of Communications",
+      "degree": "Bachelor of Engineering",
+      "location": "Riga",
+      "programme": "Telecommunications and Networking",
+      "date_from": "2009-01-01",
+      "date_to": "2013-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Latgale Institute of Information Technology",
+      "degree": "Professional Diploma",
+      "location": "Rezekne",
+      "programme": "Network Infrastructure Engineering",
+      "date_from": "2007-01-01",
+      "date_to": "2009-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Zemgale Polytechnic",
+      "degree": "Vocational Certificate",
+      "location": "Jelgava",
+      "programme": "Computer Network Systems",
+      "date_from": "2005-01-01",
+      "date_to": "2007-12-31",
+      "country_name": "Latvia"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Hebrew",
+      "level": 2
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Connected Insights Platform for Supply Chain Research",
+      "summary": "Acted as product owner for an interactive analytics tool that visualized market and logistics data for research teams. Shaped the roadmap and prioritized features so that complex supply-chain signals were presented in a way decision-makers could explore directly.",
+      "used_technologies": [
+        "Unity",
+        "JavaScript",
+        "C++"
+      ],
+      "role": "Product Owner",
+      "industries": [
+        "Market Research",
+        "Supply Chain Management"
+      ]
+    }
+  ]
+}

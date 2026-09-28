@@ -1,0 +1,201 @@
+{
+  "first_name": "Gottfried",
+  "last_name": "Hallwachs",
+  "date_of_birth": "1982-03-09",
+  "email": "gottfried.hallwachs@example.com",
+  "phone": "+1 555-0198",
+  "desired_position": "Technical Writer",
+  "about": "Seasoned technical writer who turns dense engineering material into documentation that readers actually finish. I have spent close to two decades building docs sets, style guides, and authoring pipelines for product teams. My focus is on clarity, consistency, and reducing the friction between developers and the people who use what they build.",
+  "job_experience": 17,
+  "job_expectations": "Looking to lead a documentation function where writing quality and tooling are treated as first-class engineering concerns.",
+  "min_salary": 139633,
+  "max_salary": 155260,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "Remote",
+    "Hybrid"
+  ],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Düsseldorf"
+  },
+  "skills": [
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": 0
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 2
+    },
+    {
+      "skill_name": "Sql",
+      "level": 0
+    },
+    {
+      "skill_name": "Docker",
+      "level": 0
+    },
+    {
+      "skill_name": "Flutter",
+      "level": 2
+    },
+    {
+      "skill_name": "MySQL",
+      "level": 4
+    },
+    {
+      "skill_name": "Spring",
+      "level": 2
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Markwald Documentation Forge",
+      "job": "Lead Technical Writer",
+      "date_from": "2023-01-01",
+      "date_to": null,
+      "description": "Lead a small team of writers producing reference and task documentation for a platform with thousands of daily readers. I own the docs-as-code pipeline, run editorial reviews, and partner with engineering to keep API references accurate. Much of my time goes to mentoring writers and trimming a sprawling content set down to something maintainable.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Quellenbach Software Atelier",
+      "job": "Senior Technical Writer",
+      "date_from": "2020-07-01",
+      "date_to": "2023-01-01",
+      "description": "Built the documentation set for a new product line from an empty repository to a fully searchable portal. I established the structure, the contribution workflow, and the review checklist the team still uses. I also coached engineers on writing usable first drafts so editing scaled past me.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Lindenhof Content Systems",
+      "job": "Technical Writer",
+      "date_from": "2017-11-01",
+      "date_to": "2020-07-01",
+      "description": "Wrote installation guides, troubleshooting articles, and release notes for an on-premise product with a demanding enterprise audience. I worked closely with support to identify the questions that documentation should have answered. Over time I rebuilt the troubleshooting section around the most common real failures.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Vesterholt Technical Communications",
+      "job": "Technical Writer",
+      "date_from": "2014-06-01",
+      "date_to": "2017-10-01",
+      "description": "Produced user manuals and integration guides for a B2B platform sold to large operators. I introduced a lightweight terminology list that cut the back-and-forth over wording in reviews. I also handled the localization handoff, preparing source text that translated cleanly.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Brunnstein Editorial Works",
+      "job": "Documentation Specialist",
+      "date_from": "2011-06-01",
+      "date_to": "2014-06-01",
+      "description": "Maintained a large legacy knowledge base, auditing articles for accuracy and retiring content that no longer applied. I standardized templates so new articles followed a predictable shape. The cleanup measurably reduced duplicate and contradictory entries.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Aldenmoor Publishing Group",
+      "job": "Junior Technical Writer",
+      "date_from": "2009-02-01",
+      "date_to": "2011-06-01",
+      "description": "Started my writing career drafting help topics and quick-start guides under close editorial supervision. I learned to interview engineers efficiently and to test my own instructions by following them literally. This is where my habit of writing for the reader rather than the author took hold.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Rheinwerk University of Applied Sciences",
+      "degree": "Master of Arts",
+      "location": "Cologne",
+      "programme": "Technical Communication",
+      "date_from": "2005-01-01",
+      "date_to": "2008-12-31",
+      "country_name": "Germany"
+    },
+    {
+      "name": "Hochschule Tannberg",
+      "degree": "Bachelor of Arts",
+      "location": "Münster",
+      "programme": "Linguistics and Media Studies",
+      "date_from": "2001-01-01",
+      "date_to": "2005-12-31",
+      "country_name": "Germany"
+    },
+    {
+      "name": "Falkenried Institute of Information Design",
+      "degree": "Diploma",
+      "location": "Düsseldorf",
+      "programme": "Information Architecture",
+      "date_from": "1997-01-01",
+      "date_to": "2001-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 5
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Operator Manual Overhaul for Heavy Assembly Lines",
+      "summary": "Rebuilt the operator and maintenance documentation for a heavy machinery control suite used on factory floors. I restructured the content around real maintenance tasks and added a fault-isolation flow that technicians could follow under time pressure. The new structure cut the number of support escalations tied to documentation gaps.",
+      "used_technologies": [
+        "Postgresql",
+        "Avalonia",
+        "Perl"
+      ],
+      "role": "Technical Writer",
+      "industries": [
+        "Manufacturing - Heavy Machinery"
+      ]
+    },
+    {
+      "title": "Compliance Documentation for a Property and Workforce Platform",
+      "summary": "Authored the security and onboarding documentation for a platform spanning real estate development and HR workflows. I worked with the security team to document hardening steps in language non-specialists could act on. The deliverable doubled as the reference auditors reviewed during certification.",
+      "used_technologies": [
+        ".NET 6",
+        "Rust",
+        "Cyber Security",
+        "Kotlin"
+      ],
+      "role": "Technical Writer",
+      "industries": [
+        "Real Estate Development",
+        "HR"
+      ]
+    },
+    {
+      "title": "Course Authoring Portal Knowledge Base",
+      "summary": "Created the contributor and administrator documentation for a training and development portal. I designed a layered guide that served both first-time course authors and platform operators. The portal team adopted my templates as the standard for all future modules.",
+      "used_technologies": [
+        "Drupal",
+        "Docker Swarm"
+      ],
+      "role": "Technical Writer",
+      "industries": [
+        "Training and Development"
+      ]
+    }
+  ]
+}

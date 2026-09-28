@@ -1,0 +1,182 @@
+{
+  "first_name": "Gerlinde",
+  "last_name": "Brunnemann",
+  "date_of_birth": null,
+  "email": "gerlinde.brunnemann@example.com",
+  "phone": "+1 555-0194",
+  "desired_position": "Quality Assurance (QA) Engineer",
+  "about": "Quality assurance engineer who enjoys breaking things before customers do. Comfortable owning test strategy end to end, from early planning sessions to release sign-off, and partnering closely with developers to keep defects from slipping through.",
+  "job_experience": 5,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Stuttgart"
+  },
+  "skills": [
+    {
+      "skill_name": "TypeScript",
+      "level": 0
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": 0
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": "JavaScript",
+      "level": 0
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": 4
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": null
+    },
+    {
+      "skill_name": ".NET 6",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Hollerbach Quality Labs",
+      "job": "Quality Assurance Engineer",
+      "date_from": "2024-12-01",
+      "date_to": null,
+      "description": "Lead test planning and execution across several product squads, balancing manual exploratory passes with automated regression coverage. Mentor newer testers on writing clear, reproducible defect reports and shaping acceptance criteria with product owners. Drove a noticeable drop in escaped defects through tighter release checklists.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Vogelsang Digital Werk",
+      "job": "QA Engineer",
+      "date_from": "2023-04-01",
+      "date_to": "2024-12-01",
+      "description": "Owned the regression suite for a fast-moving web platform and coordinated test cycles around frequent releases. Worked side by side with developers during sprint reviews to catch edge cases early. Helped introduce a shared bug triage routine that cut duplicate reports significantly.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Kettwig Software Manufaktur",
+      "job": "Software Test Engineer",
+      "date_from": "2021-07-01",
+      "date_to": "2023-03-01",
+      "description": "Designed and maintained test cases for customer-facing modules and verified fixes ahead of each deployment. Partnered with support staff to reproduce field issues and turn them into actionable tickets. Contributed to a more disciplined approach to test documentation.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Lindhorst Testing Studio",
+      "job": "Junior QA Tester",
+      "date_from": "2020-12-01",
+      "date_to": "2021-07-01",
+      "description": "Executed manual test scripts and logged defects against a growing feature backlog. Learned to prioritize testing effort around the riskiest changes under tight deadlines. Began contributing small automated checks to speed up repetitive verification.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Rheinmark University of Applied Sciences",
+      "degree": "Bachelor of Science",
+      "location": "Karlsruhe",
+      "programme": "Software Engineering",
+      "date_from": "2017-01-01",
+      "date_to": "2019-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "French",
+      "level": 3
+    },
+    {
+      "language_name": "Russian",
+      "level": 6
+    },
+    {
+      "language_name": "German",
+      "level": 4
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Software Test Practitioner",
+      "certificate_programme": "Foundations of Test Design",
+      "issuing_date": "2024-02-01",
+      "expiring_date": "2027-02-01"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Resort Booking Verification Suite",
+      "summary": "Built and maintained the test coverage for a combined hotel-stay and online retail checkout flow, focusing on payment edge cases and inventory consistency. Coordinated test cycles inside an iterative delivery rhythm so each release stayed shippable. Caught several subtle pricing bugs before they reached production.",
+      "used_technologies": [
+        "Kotlin",
+        "Sql",
+        "PHP",
+        "Agile Scrum"
+      ],
+      "role": "Quality Assurance (QA) Engineer",
+      "industries": [
+        "Hotels and Resorts",
+        "Retail - E-commerce"
+      ]
+    },
+    {
+      "title": "Campaign Delivery Reliability Initiative",
+      "summary": "Validated a marketing delivery platform with heavy backend routing and pipeline automation, ensuring messages flowed correctly under load. Designed test scenarios that exercised failover behavior across the gateway layer. Helped stabilize the release pipeline so deployments became routine rather than risky.",
+      "used_technologies": [
+        "Traefik",
+        "Scala",
+        "C",
+        "CI/CD (Gitlab, Jenkins)"
+      ],
+      "role": "Quality Assurance (QA) Engineer",
+      "industries": [
+        "Marketing"
+      ]
+    },
+    {
+      "title": "Field Sensor Data Validation",
+      "summary": "Tested a desktop monitoring tool used to review readings from remote oil and gas equipment, verifying data integrity across noisy inputs. Wrote scenario-based checks that mirrored real operator workflows. Surfaced rounding and unit-conversion defects that would have skewed reports.",
+      "used_technologies": [
+        "Python",
+        "Avalonia"
+      ],
+      "role": "Quality Assurance (QA) Engineer",
+      "industries": [
+        "Oil and Gas"
+      ]
+    }
+  ]
+}

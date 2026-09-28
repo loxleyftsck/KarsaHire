@@ -1,0 +1,60 @@
+Marcus Wexley
+Lead Data Specialist
+marcus.wexley@example.com · +1 555-0137 · Bristol, UK · DOB: 24 Dec 1985
+Summary
+Lead data specialist with a long track record of turning messy operational records into trustworthy reporting that teams actually rely on. I enjoy mentoring analysts and untangling the kind of legacy pipelines that everyone else has given up on.
+Experience
+Lead Data Specialist — Harrowgate Insight Partners
+Dec 2022 - Present
+Bristol, UK
+Lead a small team responsible for the integrity of the company's core reporting platform, setting standards for validation and lineage. I own the relationship with downstream stakeholders and translate fuzzy business questions into reliable, repeatable datasets.
+Principal Data Engineer — Pellmire Analytics Group
+Jan 2020 - Oct 2022
+Reading, United Kingdom
+Rebuilt a brittle batch reporting estate into a tested, well-documented pipeline that finance and operations could finally trust. I also introduced a review process for new data sources that cut recurring quality incidents substantially.
+Senior Data Engineer — Crowthorne Data Labs
+Oct 2016 - Nov 2019
+Manchester, United Kingdom
+Designed and maintained ingestion processes feeding the customer analytics warehouse, working closely with product teams on event tracking. I mentored two junior engineers and led the migration away from a fragile hand-rolled scheduler.
+Data Engineer — Vauntley Information Systems
+Feb 2014 - Aug 2016
+Leeds, UK
+Built reporting datasets for the commercial team and acted as the go-to person for reconciling figures across disparate source systems. I documented previously tribal knowledge so the team could onboard new starters without weeks of hand-holding.
+Business Intelligence Developer — Brennick Quantitative Services
+Sep 2011 - Feb 2014
+Chicago, United States
+Developed dashboards and curated datasets for a fast-growing operations group, partnering with analysts to define consistent metrics. I helped retire a sprawl of conflicting spreadsheets into a single agreed source of truth.
+Junior Data Analyst — Tindlewood Reporting Co.
+Jun 2008 - Aug 2011
+Sheffield, UK
+Produced regular operational reports and investigated data discrepancies for the support and logistics teams. This is where I learned how much careful validation matters before anyone makes a decision from a number.
+Projects
+Site Telemetry Consolidation Platform
+Led the data workstream for a platform that pulled equipment telemetry from dozens of construction sites into a single analytical store. My focus was defining the canonical schema and the validation rules that kept noisy field readings from corrupting downstream reporting.
+Tech: Unity, .NET 6, Agile Scrum, ASP.NET 4.5+
+Learner Progress Data Hub
+Built the data layer behind a hub combining course engagement and fulfilment records for an online learning provider. I designed the reconciliation logic that married learner activity with shipment and access data so the team could report on outcomes end to end.
+Tech: Haskell, ASP.NET 4.5+, Sql
+Education
+BSc in Computing and Information Systems
+2004 - 2007
+Aldermere University of Technology, Nottingham, Uzbekistan
+Skills
+CI/CD (Gitlab, Jenkins)
+MySQL
+Communication
+Jira
+Python
+Agile Scrum
+Linux
+Confluence
+Nginx
+C
+Languages
+English (Native)
+Certificates
+Certified Data Quality Practitioner
+May 2022
+Enterprise Data Stewardship Track
+Preferences
+Contract · Temporary

@@ -1,0 +1,169 @@
+{
+  "first_name": "Sukhrob",
+  "last_name": "Tursunqulov",
+  "date_of_birth": null,
+  "email": "sukhrob.tursunqulov@example.com",
+  "phone": "+1 555-0110",
+  "desired_position": "Networking Specialist",
+  "about": "Senior Networking Specialist with over a decade of experience designing, securing, and operating enterprise networks. I have led infrastructure across telecom, banking, and logistics environments, from core routing to campus wireless. I take pride in building resilient networks that stay quiet under pressure.",
+  "job_experience": 12,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "Hybrid",
+    "OnSite"
+  ],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [],
+  "hobbies": "Mountain trekking, ham radio, and tinkering with home lab hardware.",
+  "address": {
+    "country_name": "Uzbekistan",
+    "region_name": "Tashkent"
+  },
+  "skills": [
+    {
+      "skill_name": "Postgresql",
+      "level": null
+    },
+    {
+      "skill_name": "Ansible",
+      "level": null
+    },
+    {
+      "skill_name": "Sql",
+      "level": null
+    },
+    {
+      "skill_name": "Docker Swarm",
+      "level": null
+    },
+    {
+      "skill_name": "Nginx",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 0
+    },
+    {
+      "skill_name": "NoSql",
+      "level": 2
+    },
+    {
+      "skill_name": "Communication",
+      "level": 0
+    },
+    {
+      "skill_name": "Scala",
+      "level": null
+    },
+    {
+      "skill_name": "C++",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Chirchiq Network Systems",
+      "job": "Senior Networking Specialist",
+      "date_from": "2023-08-01",
+      "date_to": null,
+      "description": "Lead the design and operation of the core network for a national logistics provider. I oversee capacity planning, segmentation, and incident response across multiple sites. I also mentor a small team of network engineers and set our operational standards.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Amudarya Telecom Solutions",
+      "job": "Network Infrastructure Engineer",
+      "date_from": "2021-04-01",
+      "date_to": "2023-08-01",
+      "description": "Managed the regional backbone and access layer for a growing telecom operator. I led a migration to a more resilient routing design that cut major outages significantly. I worked closely with the security team on hardening edge devices.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Sirdaryo Data Networks",
+      "job": "Network Engineer",
+      "date_from": "2018-12-01",
+      "date_to": "2021-04-01",
+      "description": "Operated and expanded the network for a data centre serving financial clients. I handled switching, firewall policy, and monitoring across a high-availability environment. I introduced structured change management that reduced configuration errors.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Zomin Communications Group",
+      "job": "Systems and Network Administrator",
+      "date_from": "2016-09-01",
+      "date_to": "2018-12-01",
+      "description": "Maintained the combined server and network estate for a mid-sized services company. I rebuilt the campus wireless and tightened access controls across the site. The role gave me broad exposure to both infrastructure and security work.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Nurota IT Services",
+      "job": "Network Support Engineer",
+      "date_from": "2015-07-01",
+      "date_to": "2016-09-01",
+      "description": "Provided second-line support for client networks across several industries. I diagnosed connectivity and performance issues and documented recurring fixes. I also assisted with small office deployments and cabling projects.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Angren Tech Collective",
+      "job": "Junior Network Technician",
+      "date_from": "2014-03-01",
+      "date_to": "2015-07-01",
+      "description": "Started my career supporting routers, switches, and end-user connectivity. I learned to read and trace network configurations and resolve common faults. The position built my foundation in everyday network operations.",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Tashkent Institute of Communications Technology",
+      "degree": "Master of Science",
+      "location": "Tashkent",
+      "programme": "Telecommunications Engineering",
+      "date_from": "2011-01-01",
+      "date_to": "2013-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Fergana Technical University",
+      "degree": "Bachelor of Science",
+      "location": "Fergana",
+      "programme": "Computer Networks",
+      "date_from": "2009-01-01",
+      "date_to": "2011-12-31",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "name": "Navoi Polytechnic College",
+      "degree": "Diploma",
+      "location": "Navoi",
+      "programme": "Information Technology",
+      "date_from": "2007-01-01",
+      "date_to": "2009-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Advanced Enterprise Routing Specialist",
+      "certificate_programme": "Network Infrastructure Track",
+      "issuing_date": "2021-03-01",
+      "expiring_date": "2024-03-01"
+    },
+    {
+      "certificate_name": "Network Security Operations Professional",
+      "certificate_programme": null,
+      "issuing_date": "2019-10-01",
+      "expiring_date": "2022-10-01"
+    }
+  ],
+  "projects": []
+}

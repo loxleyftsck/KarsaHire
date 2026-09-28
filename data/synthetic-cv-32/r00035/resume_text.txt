@@ -1,0 +1,39 @@
+Friederike Wendelstein
+Support Specialist
+friederike.wendelstein@example.com · +1 555-0120 · Leipzig, Germany
+Experience
+Support Specialist — Margrave Cloud Helpdesk
+Jan 2024 - Present
+Leipzig, Germany
+Handle inbound customer tickets for a subscription platform, triaging issues and guiding users through resolution steps. Coordinate with engineering on recurring defects and maintain the internal troubleshooting knowledge base. Act as the first point of contact for high-priority accounts during business hours.
+Customer Support Associate — Brightfen Service Desk Group
+Feb 2022 - Dec 2023
+Halle, Germany
+Resolved day-to-day support requests across chat, email, and phone for a mid-sized client base. Documented common problems into reusable templates that cut average handling time for the team. Escalated complex cases with detailed reproduction notes so they could be picked up smoothly by senior staff.
+Education
+Bachelor of Arts in Business Communication and Service Management
+2019 - 2021
+Oberwald University of Applied Sciences, Erfurt, Germany
+Skills
+MySQL
+CI/CD (Gitlab, Jenkins)
+Gitlab
+Postgresql
+Communication
+Microsoft SQL
+Nginx
+Sql
+Java
+Azure
+Languages
+English (Native), Uzbek (B1), French (Intermediate), German (Bilingual)
+Certificates
+Certified Service Desk Professional
+Jan 2024
+Customer Support Operations Track
+Foundations of IT Service Management
+Mar 2025
+Looking for
+Looking for a support role where I can take ownership of the customer ticket queue and help shape clearer escalation processes for a growing product team.
+Preferences
+Hybrid, Remote · Part-time

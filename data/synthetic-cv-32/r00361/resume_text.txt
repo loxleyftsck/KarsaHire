@@ -1,0 +1,48 @@
+Damaris Kellerman
+Senior Frontend Developer
+damaris.kellerman@example.com · +1 555-0134 · Austin, US · DOB: 20 Jan 1992
+Skills
+CSS
+Linux
+Jira
+Gitlab
+React
+Communication
+TypeScript
+Agile Scrum
+Html
+Sql
+Languages
+English (Bilingual), Russian (Full Professional), German (Bilingual), Spanish (Advanced)
+Preferences
+Remote · Contract
+Experience
+Senior Frontend Developer — Brightloom Interface Labs
+May 2024 - Present
+Austin, US
+I lead frontend architecture for a customer-facing analytics suite, owning the component library and the patterns the rest of the team builds on. A big part of the role is mentoring two mid-level engineers and steering technical reviews so we keep the codebase consistent. I also partner closely with design to make sure what ships actually matches the intent.
+Frontend Engineer — Halcyon Pixel Works
+Jul 2022 - May 2024
+Denver, USA
+Built and maintained the web client for a subscription commerce product used by tens of thousands of shoppers. I drove a migration off an aging stack onto a modern component model, which cut our build times and made onboarding faster. I owned accessibility work and helped set the team's testing conventions.
+UI Developer — Northgate Cascade Systems
+Oct 2020 - May 2022
+Seattle, US
+Worked on dashboards and configuration screens for an internal operations platform. My focus was untangling a sprawling state-management layer into something predictable and easy to reason about. I collaborated with backend engineers to redesign the contracts between our services and the client.
+Junior Frontend Developer — Meridian Quill Software
+Sep 2018 - Aug 2020
+Portland, United States
+My first software role, building screens for a content management tool and fixing a steady stream of UI defects. I learned how to read a design spec, ask the right clarifying questions, and ship reviewed code on a regular cadence. Over time I took on small features end to end and started reviewing peers' pull requests.
+Projects
+Shelfwise Storefront Refresh
+A ground-up rebuild of the storefront experience for a consumer goods retailer, focused on speed and a cleaner browsing flow. I owned the interface work and coordinated tightly with merchandising and support stakeholders to keep everyone aligned. The result was a noticeably faster catalog and far fewer checkout drop-offs.
+Tech: JavaScript, Communication
+Tenant Cloud Console
+A self-service console that lets property managers provision and monitor their cloud-hosted units. I built the frontend that surfaced complex provisioning state in a way non-technical operators could follow. It bridged several backend services behind a single coherent interface.
+Tech: Traefik, Xamarin/MAUI, Rust, ASP.NET
+Education
+Bachelor of Science in Human-Computer Interaction
+2013 - 2017
+Cascadia Polytechnic University, Portland, Germany
+Hobbies
+Long-distance trail running, restoring vintage synthesizers, and weekend pottery.

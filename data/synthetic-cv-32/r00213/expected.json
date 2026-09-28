@@ -1,0 +1,170 @@
+{
+  "first_name": "Anselm",
+  "last_name": "Rauchberg",
+  "date_of_birth": null,
+  "email": "anselm.rauchberg@example.com",
+  "phone": "+1 555-0164",
+  "desired_position": "System Administrator",
+  "about": "Systems administrator who keeps infrastructure quietly dependable, with a habit of automating the repetitive work before it becomes a fire drill. I enjoy untangling messy environments and leaving behind clear documentation and predictable maintenance routines.",
+  "job_experience": 6,
+  "job_expectations": null,
+  "min_salary": 75372,
+  "max_salary": 92779,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Hybrid"
+  ],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [
+    "Temporary"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Stuttgart"
+  },
+  "skills": [
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "Docker Swarm",
+      "level": 0
+    },
+    {
+      "skill_name": "NoSql",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": 0
+    },
+    {
+      "skill_name": "Azure",
+      "level": null
+    },
+    {
+      "skill_name": "Golang",
+      "level": 0
+    },
+    {
+      "skill_name": "Linux",
+      "level": 0
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": null
+    },
+    {
+      "skill_name": "Flutter",
+      "level": 0
+    },
+    {
+      "skill_name": "iOS Development (Swift, Objective-C)",
+      "level": null
+    },
+    {
+      "skill_name": "WCF",
+      "level": 0
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Schwarzwald Vector Hosting",
+      "job": "System Administrator",
+      "date_from": "2024-06-01",
+      "date_to": null,
+      "description": "Maintain and harden the server and network estate for a mid-sized hosting operation, handling patching, backups, and incident response. Automate routine provisioning and monitoring so the team can focus on the cases that genuinely need attention.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Neckar Summit Datatech",
+      "job": "IT Systems Engineer",
+      "date_from": "2023-05-01",
+      "date_to": "2024-06-01",
+      "description": "Ran the internal infrastructure for a growing engineering office, covering identity, storage, and virtualization. Led a migration to a more resilient backup scheme and cut recurring outages by stabilizing the update process.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Alpenglass Cloud Werke",
+      "job": "Infrastructure Administrator",
+      "date_from": "2021-03-01",
+      "date_to": "2023-05-01",
+      "description": "Administered hybrid environments spanning on-premise servers and cloud workloads, focusing on monitoring and capacity planning. Built scripted health checks that caught failures before users noticed them.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Eisvogel Netzwerke",
+      "job": "Junior System Administrator",
+      "date_from": "2020-01-01",
+      "date_to": "2021-03-01",
+      "description": "Supported the operations team with ticket resolution, user account management, and routine server maintenance. Documented common procedures and helped standardize the onboarding setup for new workstations.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Stuttgart University of Applied Informatics",
+      "degree": "Bachelor",
+      "location": "Stuttgart",
+      "programme": "Network and Systems Engineering",
+      "date_from": "2015-01-01",
+      "date_to": "2019-12-31",
+      "country_name": "Germany"
+    },
+    {
+      "name": "Rheinland Technical Academy",
+      "degree": "Diploma",
+      "location": "Mannheim",
+      "programme": "IT Infrastructure Administration",
+      "date_from": "2012-01-01",
+      "date_to": "2015-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Booking Platform Failover Overhaul",
+      "summary": "Re-architected the hosting and recovery setup for a travel agency's cloud-based booking platform so peak-season load no longer threatened uptime. Introduced automated failover and clearer runbooks, which shortened recovery during incidents and reduced manual intervention.",
+      "used_technologies": [
+        "MySQL",
+        "Drupal",
+        "Communication",
+        "Haskell"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Travel Agencies",
+        "Cloud computing"
+      ]
+    },
+    {
+      "title": "Property Portal Build Toolchain",
+      "summary": "Stood up the administration and build environment behind a real estate development portal, supporting cross-platform client applications on Linux servers. Tuned the deployment pipeline and access controls so developers could ship without stepping on shared infrastructure.",
+      "used_technologies": [
+        "C++",
+        "Swift",
+        "Xamarin/MAUI",
+        "Linux"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Real Estate Development"
+      ]
+    }
+  ]
+}

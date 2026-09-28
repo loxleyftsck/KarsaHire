@@ -1,0 +1,68 @@
+Gottfried Hallwachs
+Lead Technical Writer
+gottfried.hallwachs@example.com · +1 555-0198 · Düsseldorf, Germany · DOB: 09 Mar 1982
+Summary
+Seasoned technical writer who turns dense engineering material into documentation that readers actually finish. I have spent close to two decades building docs sets, style guides, and authoring pipelines for product teams. My focus is on clarity, consistency, and reducing the friction between developers and the people who use what they build.
+Experience
+Lead Technical Writer — Markwald Documentation Forge
+Jan 2023 - Present
+Düsseldorf, Germany
+Lead a small team of writers producing reference and task documentation for a platform with thousands of daily readers. I own the docs-as-code pipeline, run editorial reviews, and partner with engineering to keep API references accurate. Much of my time goes to mentoring writers and trimming a sprawling content set down to something maintainable.
+Senior Technical Writer — Quellenbach Software Atelier
+Jul 2020 - Jan 2023
+Cologne, Germany
+Built the documentation set for a new product line from an empty repository to a fully searchable portal. I established the structure, the contribution workflow, and the review checklist the team still uses. I also coached engineers on writing usable first drafts so editing scaled past me.
+Technical Writer — Lindenhof Content Systems
+Nov 2017 - Jul 2020
+Essen, Germany
+Wrote installation guides, troubleshooting articles, and release notes for an on-premise product with a demanding enterprise audience. I worked closely with support to identify the questions that documentation should have answered. Over time I rebuilt the troubleshooting section around the most common real failures.
+Technical Writer — Vesterholt Technical Communications
+Jun 2014 - Oct 2017
+Dortmund, Germany
+Produced user manuals and integration guides for a B2B platform sold to large operators. I introduced a lightweight terminology list that cut the back-and-forth over wording in reviews. I also handled the localization handoff, preparing source text that translated cleanly.
+Documentation Specialist — Brunnstein Editorial Works
+Jun 2011 - Jun 2014
+Wuppertal, Germany
+Maintained a large legacy knowledge base, auditing articles for accuracy and retiring content that no longer applied. I standardized templates so new articles followed a predictable shape. The cleanup measurably reduced duplicate and contradictory entries.
+Junior Technical Writer — Aldenmoor Publishing Group
+Feb 2009 - Jun 2011
+Bochum, Germany
+Started my writing career drafting help topics and quick-start guides under close editorial supervision. I learned to interview engineers efficiently and to test my own instructions by following them literally. This is where my habit of writing for the reader rather than the author took hold.
+Projects
+Operator Manual Overhaul for Heavy Assembly Lines
+Rebuilt the operator and maintenance documentation for a heavy machinery control suite used on factory floors. I restructured the content around real maintenance tasks and added a fault-isolation flow that technicians could follow under time pressure. The new structure cut the number of support escalations tied to documentation gaps.
+Tech: Postgresql, Avalonia, Perl
+Compliance Documentation for a Property and Workforce Platform
+Authored the security and onboarding documentation for a platform spanning real estate development and HR workflows. I worked with the security team to document hardening steps in language non-specialists could act on. The deliverable doubled as the reference auditors reviewed during certification.
+Tech: .NET 6, Rust, Cyber Security, Kotlin
+Course Authoring Portal Knowledge Base
+Created the contributor and administrator documentation for a training and development portal. I designed a layered guide that served both first-time course authors and platform operators. The portal team adopted my templates as the standard for all future modules.
+Tech: Drupal, Docker Swarm
+Education
+Master of Arts in Technical Communication
+2005 - 2008
+Rheinwerk University of Applied Sciences, Cologne, Germany
+Bachelor of Arts in Linguistics and Media Studies
+2001 - 2005
+Hochschule Tannberg, Münster, Germany
+Diploma in Information Architecture
+1997 - 2001
+Falkenried Institute of Information Design, Düsseldorf, Germany
+Skills
+CI/CD (Gitlab, Jenkins)
+Linux
+Communication
+Jira
+Confluence
+Agile Scrum
+Sql
+Docker
+Flutter
+MySQL
+Spring
+Languages
+English (Full Professional)
+Looking for
+Looking to lead a documentation function where writing quality and tooling are treated as first-class engineering concerns.
+Preferences
+Remote, Hybrid · Part-time

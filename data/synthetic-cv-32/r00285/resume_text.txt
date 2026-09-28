@@ -1,0 +1,70 @@
+Magnus Ashbrook
+Lead Data Specialist
+magnus.ashbrook@example.com · +1 555-0154 · Manchester, UK · DOB: 01 Mar 1984
+Summary
+Lead data specialist with deep experience spanning the full lifecycle of large-scale data platforms, from ingestion pipelines to governance and reporting. I enjoy turning fragmented operational data into reliable, decision-ready assets and mentoring engineers along the way.
+Experience
+Lead Data Specialist — Halcyon Drift Analytics
+Mar 2023 - Present
+Manchester, England
+Lead a cross-functional data practice responsible for the integrity and availability of the company's core reporting platform. I set the technical direction for ingestion, modelling, and quality controls, and partner with product teams to translate ambiguous requirements into durable data products. Much of my time goes into mentoring and unblocking a small team of analysts and engineers.
+Principal Data Engineer — Meridian Tollgate Systems
+Sep 2019 - Feb 2023
+Leeds, UK
+Owned the design and operation of the warehouse that consolidated data from a dozen siloed source systems. I introduced rigorous validation and lineage tracking that cut reconciliation disputes dramatically. I also acted as the main escalation point for complex query performance and modelling questions.
+Senior Data Engineer — Quillfeather Data Works
+Jul 2016 - Sep 2019
+Birmingham, UK
+Rebuilt a brittle batch reporting stack into a maintainable, well-documented platform serving finance and operations stakeholders. I established coding standards and review practices that became the team's baseline. Worked closely with analysts to make sure the underlying models matched how the business actually reasoned about its numbers.
+Data Engineer — Brackenfield Insight Group
+Oct 2013 - May 2016
+Bristol, UK
+Built and maintained the data pipelines feeding a growing suite of internal dashboards. I focused on making the flows observable and recoverable so failures were caught early rather than discovered by frustrated stakeholders. Contributed heavily to onboarding documentation for new joiners.
+Database Developer — Northgate Sable Consulting
+Oct 2010 - Oct 2013
+Sheffield, UK
+Developed and tuned the relational schemas behind several client reporting engagements. I spent a lot of time profiling slow queries and reshaping models to keep response times predictable as data volumes grew. This role gave me a strong grounding in the practical tradeoffs of data design.
+Junior Database Analyst — Cinderport Logic Labs
+Aug 2008 - Aug 2010
+Austin, U.S.
+Supported a team maintaining the operational databases for a mid-sized logistics client. My responsibilities ranged from writing reporting queries to assisting with data clean-up and migration tasks. It was an early role where I learned how messy real-world data tends to be.
+Projects
+Harbourline Cargo Integrity Suite
+Acted as software tester on a platform that validated and secured cargo manifest data for a freight operator. I designed test scenarios that probed both the hardened security boundaries and the automated provisioning workflows, surfacing several edge cases before release. The work demanded close attention to how the system behaved under malformed and adversarial inputs.
+Tech: Cyber Security, Gitlab, C, Ansible, .NET 6
+Ledgerwind Reconciliation Engine
+Served as data specialist on an accounting platform that reconciled transactions across multiple ledgers in near real time. I modelled the canonical transaction schema and built the validation rules that flagged discrepancies for review. The cloud-hosted services I helped shape handled steadily growing throughput without manual intervention.
+Tech: Python, Golang, Azure
+Beaconmoor Service Portal
+Contributed as data specialist to a full-service IT solutions portal used by clients to track support engagements. I focused on structuring the data layer so the containerised services and the mobile client stayed consistent. The result was a single coherent view of each client's open work across channels.
+Tech: Docker, Flutter
+Education
+Master of Science in Information Systems and Data Management
+2003 - 2007
+Wexbridge Polytechnic Institute, Manchester, UK
+Bachelor of Science in Computer Science
+2000 - 2003
+Thornwell University College, Liverpool, USA
+Skills
+Scala
+Gitlab
+Postgresql
+Jira
+Docker
+Agile Scrum
+NoSql
+Sql
+MySQL
+Cyber Security
+Vue.js
+Kotlin
+Languages
+English (Fluent), German (C2), Hebrew (Upper-Intermediate), Spanish (Upper-Intermediate)
+Certificates
+Certified Data Platform Architect
+Oct 2026
+Advanced Data Engineering Track
+Professional Data Governance Practitioner
+Oct 2026
+Preferences
+On-site · Full-time · Permanent

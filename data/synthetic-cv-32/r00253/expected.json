@@ -1,0 +1,160 @@
+{
+  "first_name": "Sanjarbek",
+  "last_name": "Yusupbek",
+  "date_of_birth": null,
+  "email": "sanjarbek.yusupbek@example.com",
+  "phone": "+1 555-0199",
+  "desired_position": "System Administrator",
+  "about": null,
+  "job_experience": 0,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Hybrid"
+  ],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Uzbekistan",
+    "region_name": "Tashkent"
+  },
+  "skills": [
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Sql",
+      "level": 0
+    },
+    {
+      "skill_name": "Communication",
+      "level": 0
+    },
+    {
+      "skill_name": "Linux",
+      "level": 0
+    },
+    {
+      "skill_name": "Python",
+      "level": 0
+    },
+    {
+      "skill_name": "Ansible",
+      "level": null
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": 0
+    },
+    {
+      "skill_name": "Perl",
+      "level": null
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": 2
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Chirchik Systems House",
+      "job": "Junior System Administrator",
+      "date_from": "2025-07-01",
+      "date_to": null,
+      "description": "Support day-to-day infrastructure for a growing services company, handling user accounts, backups, and routine server maintenance. I monitor system health, document recurring fixes into runbooks, and escalate the trickier incidents with clear context. This is my first full-time role and where I am building hands-on operations habits.",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Zarafshan Polytechnic Institute",
+      "degree": "Bachelor of Science",
+      "location": "Tashkent",
+      "programme": "Computer Engineering",
+      "date_from": "2020-01-01",
+      "date_to": "2024-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Oqtosh Technical College",
+      "degree": "Diploma",
+      "location": "Samarkand",
+      "programme": "Network Administration",
+      "date_from": "2017-01-01",
+      "date_to": "2020-12-31",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 5
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Foundations of System Administration",
+      "certificate_programme": "Infrastructure Operations Track",
+      "issuing_date": "2025-08-01",
+      "expiring_date": null
+    },
+    {
+      "certificate_name": "Network Security Essentials",
+      "certificate_programme": null,
+      "issuing_date": "2025-10-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Resort Operations Server Backbone",
+      "summary": "Set up and maintained the on-premise servers for a hospitality IT solution serving several resort properties. I configured services for reliability, scripted routine maintenance, and kept the booking backend available during peak periods. The hardening work reduced unplanned downtime across the pilot sites.",
+      "used_technologies": [
+        "iOS Development (Swift, Objective-C)",
+        "C",
+        "Golang",
+        ".NET"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Full-service IT solutions",
+        "Hotels and Resorts"
+      ]
+    },
+    {
+      "title": "Campus Secure Access Initiative",
+      "summary": "Administered systems and access controls for a platform shared by schools and law offices, with a strong focus on data protection. I tightened authentication policies, segmented sensitive data stores, and ran regular integrity checks. The improvements closed several gaps flagged in an internal review.",
+      "used_technologies": [
+        ".NET",
+        "Microsoft SQL",
+        "NoSql",
+        "Cyber Security"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Schools and Universities",
+        "Law Firms"
+      ]
+    },
+    {
+      "title": "DevPortal Hosting Environment",
+      "summary": "Maintained the hosting environment for an internal developer portal used by a software team and a property group. I managed the database layer and web services, automating restarts and routine health checks. My monitoring setup caught capacity issues before they reached users.",
+      "used_technologies": [
+        "Postgresql",
+        "JavaScript",
+        "React"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Software Development",
+        "Commercial Real Estate"
+      ]
+    }
+  ]
+}

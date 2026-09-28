@@ -1,0 +1,193 @@
+{
+  "first_name": "Spencer",
+  "last_name": "Hartwell",
+  "date_of_birth": "1999-02-20",
+  "email": "spencer.hartwell@example.com",
+  "phone": "+1 555-0127",
+  "desired_position": "Product Owner",
+  "about": "Product owner who enjoys turning fuzzy customer problems into clear, shippable roadmaps. I work closely with engineering and design to prioritize ruthlessly and keep teams focused on outcomes that matter. I lean on data and direct customer conversations to make sure we build the right thing.",
+  "job_experience": 4,
+  "job_expectations": null,
+  "min_salary": 78145,
+  "max_salary": 90169,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "OnSite",
+    "Hybrid"
+  ],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [],
+  "hobbies": "Cycling, cooking, and weekend photography.",
+  "address": {
+    "country_name": "UnitedStates",
+    "region_name": "Seattle"
+  },
+  "skills": [
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 4
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "Sql",
+      "level": 4
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 0
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Unity",
+      "level": 4
+    },
+    {
+      "skill_name": "NoSql",
+      "level": 0
+    },
+    {
+      "skill_name": "CSS",
+      "level": 2
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Northwind Product Studio",
+      "job": "Product Owner",
+      "date_from": "2025-05-01",
+      "date_to": null,
+      "description": "Own the backlog and roadmap for a customer-facing product line, balancing user needs against technical constraints. Partner with engineering and design to define and prioritize work each sprint. Translate stakeholder goals into clear acceptance criteria the team can build against.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Cascade Forge Apps",
+      "job": "Associate Product Owner",
+      "date_from": "2024-07-01",
+      "date_to": "2025-05-01",
+      "description": "Supported product planning by refining the backlog and writing detailed user stories. Ran discovery sessions with customers to validate ideas before committing engineering effort. Tracked release outcomes and fed learnings back into the roadmap.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Granite Harbor Software",
+      "job": "Product Analyst",
+      "date_from": "2023-06-01",
+      "date_to": "2024-07-01",
+      "description": "Analyzed usage and feedback data to inform product decisions and prioritization. Built lightweight prototypes and specs that helped teams align early. Coordinated across engineering and support to keep delivery on track.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Dzintarkrasts Digital",
+      "job": "Business Analyst",
+      "date_from": "2021-12-01",
+      "date_to": "2023-05-01",
+      "description": "Gathered and documented requirements for software delivery teams serving regional clients. Mapped business processes into clear specifications for developers. Acted as a bridge between non-technical stakeholders and the engineering team.",
+      "country_name": "Latvia"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Puget Sound Institute of Management",
+      "degree": "Master of Business Administration",
+      "location": "Seattle",
+      "programme": "Technology Product Management",
+      "date_from": "2017-01-01",
+      "date_to": "2020-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Cascadia State University",
+      "degree": "Bachelor of Science",
+      "location": "Tacoma",
+      "programme": "Information Systems",
+      "date_from": "2015-01-01",
+      "date_to": "2017-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Rainier Community College",
+      "degree": "Associate of Arts",
+      "location": "Everett",
+      "programme": "Business Administration",
+      "date_from": "2013-01-01",
+      "date_to": "2015-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Spanish",
+      "level": 5
+    },
+    {
+      "language_name": "German",
+      "level": 2
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Infrastructure Service Catalog Revamp",
+      "summary": "Led the product direction for an internal service catalog used to manage ICT infrastructure requests. Reworked the request flows and data model so teams could provision and track services with far less friction. Prioritized the roadmap around the requests that were costing teams the most time.",
+      "used_technologies": [
+        "Java",
+        "NoSql"
+      ],
+      "role": "Product Owner",
+      "industries": [
+        "ICT infrastructure"
+      ]
+    },
+    {
+      "title": "Secure Workforce Access Portal",
+      "summary": "Drove requirements for a secure access portal serving network providers and HR functions. Worked alongside security specialists to balance tight access controls against a smooth user experience. Coordinated delivery through shared pipelines so changes shipped safely and predictably.",
+      "used_technologies": [
+        "Gitlab",
+        "Spring"
+      ],
+      "role": "Security Specialist",
+      "industries": [
+        "Network Providers",
+        "HR"
+      ]
+    },
+    {
+      "title": "Clinic Operations Companion Platform",
+      "summary": "Owned the product vision for a companion platform supporting hospital and clinic operations across web and mobile. Prioritized features that reduced administrative load for clinical staff. Aligned a cross-functional team around a clear, outcome-driven roadmap and shared documentation.",
+      "used_technologies": [
+        "Linux",
+        "Confluence",
+        "Traefik",
+        "Xamarin/MAUI",
+        "Golang"
+      ],
+      "role": "Product Owner",
+      "industries": [
+        "Hospitals and Clinics"
+      ]
+    }
+  ]
+}

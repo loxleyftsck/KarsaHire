@@ -1,0 +1,290 @@
+[
+  {
+    "sample_id": "r00003",
+    "desired_position": "Software Tester",
+    "years_experience": 4,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00005",
+    "desired_position": "Data Specialist",
+    "years_experience": 17,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00015",
+    "desired_position": "Data Scientist",
+    "years_experience": 5,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00035",
+    "desired_position": "Support Specialist",
+    "years_experience": 4,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00062",
+    "desired_position": "Software Tester",
+    "years_experience": 10,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00068",
+    "desired_position": "Manual QA",
+    "years_experience": 11,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "modern"
+  },
+  {
+    "sample_id": "r00075",
+    "desired_position": "Architect",
+    "years_experience": 7,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00099",
+    "desired_position": "System Administrator",
+    "years_experience": 6,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00160",
+    "desired_position": "Cloud Engineer",
+    "years_experience": 8,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00169",
+    "desired_position": "Quality Assurance (QA) Engineer",
+    "years_experience": 5,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "modern"
+  },
+  {
+    "sample_id": "r00193",
+    "desired_position": "Mobile Developer(IOS/Android)",
+    "years_experience": 10,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00196",
+    "desired_position": "Integration Specialist",
+    "years_experience": 10,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "modern"
+  },
+  {
+    "sample_id": "r00213",
+    "desired_position": "System Administrator",
+    "years_experience": 6,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00220",
+    "desired_position": "Software Tester",
+    "years_experience": 7,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00226",
+    "desired_position": "Data Scientist",
+    "years_experience": 1,
+    "num_pages": 1,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00244",
+    "desired_position": "Manual QA",
+    "years_experience": 5,
+    "num_pages": 1,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "modern"
+  },
+  {
+    "sample_id": "r00248",
+    "desired_position": "System Administrator",
+    "years_experience": 0,
+    "num_pages": 1,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00253",
+    "desired_position": "System Administrator",
+    "years_experience": 0,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00285",
+    "desired_position": "Data Specialist",
+    "years_experience": 17,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00292",
+    "desired_position": "Networking Specialist",
+    "years_experience": 0,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00295",
+    "desired_position": "Technical Writer",
+    "years_experience": 17,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00330",
+    "desired_position": "Data Analyst",
+    "years_experience": 18,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00334",
+    "desired_position": "Networking Specialist",
+    "years_experience": 12,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00344",
+    "desired_position": "Product Owner",
+    "years_experience": 4,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00345",
+    "desired_position": "System Administrator",
+    "years_experience": 9,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00349",
+    "desired_position": "Networking Specialist",
+    "years_experience": 11,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00361",
+    "desired_position": "Frontend Developer",
+    "years_experience": 7,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "sidebar",
+    "theme_id": "oxford"
+  },
+  {
+    "sample_id": "r00370",
+    "desired_position": "UI / UX Designer",
+    "years_experience": 1,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00375",
+    "desired_position": "System Administrator",
+    "years_experience": 14,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "slate"
+  },
+  {
+    "sample_id": "r00380",
+    "desired_position": "Mobile Developer(IOS/Android)",
+    "years_experience": 2,
+    "num_pages": 1,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "compact"
+  },
+  {
+    "sample_id": "r00402",
+    "desired_position": "Security Specialist",
+    "years_experience": 17,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "classic",
+    "theme_id": "modern"
+  },
+  {
+    "sample_id": "r00420",
+    "desired_position": "Quality Assurance (QA) Engineer",
+    "years_experience": 21,
+    "num_pages": 2,
+    "split": "test",
+    "template_id": "two_column",
+    "theme_id": "compact"
+  }
+]

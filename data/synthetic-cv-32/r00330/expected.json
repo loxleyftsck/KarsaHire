@@ -1,0 +1,170 @@
+{
+  "first_name": "Fenwick",
+  "last_name": "Marlbrook",
+  "date_of_birth": null,
+  "email": "fenwick.marlbrook@example.com",
+  "phone": "+1 555-0123",
+  "desired_position": "Data Analyst",
+  "about": "Lead Data Analyst with nearly two decades of experience turning messy operational data into decisions leaders can act on. I have built and mentored analytics teams across finance, energy, and security-focused organisations. My focus is pairing rigorous modelling with clear, honest storytelling.",
+  "job_experience": 18,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Remote"
+  ],
+  "employment_types": [],
+  "employment_durations": [
+    "Permanent"
+  ],
+  "hobbies": "Long-distance cycling, restoring vintage radios, and amateur astronomy.",
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Bristol"
+  },
+  "skills": [
+    {
+      "skill_name": "Scala",
+      "level": 0
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Sql",
+      "level": 4
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "MySQL",
+      "level": 2
+    },
+    {
+      "skill_name": "Confluence",
+      "level": 0
+    },
+    {
+      "skill_name": "C++",
+      "level": null
+    },
+    {
+      "skill_name": ".NET 6",
+      "level": null
+    },
+    {
+      "skill_name": "CSS",
+      "level": 0
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Harrowgate Insight Partners",
+      "job": "Lead Data Analyst",
+      "date_from": "2023-01-01",
+      "date_to": null,
+      "description": "Lead a team of analysts delivering reporting and forecasting for a portfolio of enterprise clients. I set the analytical standards, review modelling work, and present findings directly to client executives. Much of my time goes into translating ambiguous business questions into tractable measurement plans.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Caldermoor Analytics Group",
+      "job": "Senior Data Analyst",
+      "date_from": "2019-09-01",
+      "date_to": "2022-11-01",
+      "description": "Owned the analytics workstream for a major retail forecasting programme, coordinating with engineering and finance stakeholders. I rebuilt the demand model and cut reconciliation effort considerably. I also coached three junior analysts who later moved into lead roles.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Pellingdon Data Works",
+      "job": "Data Analyst",
+      "date_from": "2016-10-01",
+      "date_to": "2019-09-01",
+      "description": "Delivered recurring performance dashboards and ad hoc deep dives for the commercial team. I standardised the reporting layer so that figures finally agreed across departments. The work became the basis for the company's first self-serve reporting initiative.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Brennweiler Insight Studio",
+      "job": "Business Intelligence Analyst",
+      "date_from": "2013-08-01",
+      "date_to": "2016-10-01",
+      "description": "Supported a cross-border logistics operation with reporting and root-cause analysis. I built the first reliable view of fulfilment timing across multiple warehouses. The findings drove a restructuring of how regional targets were set.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Ridgevale Metrics Company",
+      "job": "Reporting Analyst",
+      "date_from": "2010-09-01",
+      "date_to": "2013-06-01",
+      "description": "Produced operational and financial reporting for a mid-sized services firm. I introduced version-controlled query templates that reduced reporting errors. I worked closely with finance to align definitions used across teams.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Thornlea Information Services",
+      "job": "Junior Data Analyst",
+      "date_from": "2007-09-01",
+      "date_to": "2010-09-01",
+      "description": "Started my career cleaning and validating data for a customer analytics team. I gradually took on small modelling tasks and built my first end-to-end dashboards. The role gave me a strong grounding in data quality discipline.",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Wexcombe Institute of Applied Sciences",
+      "degree": "Master of Science",
+      "location": "Edinburgh",
+      "programme": "Applied Statistics",
+      "date_from": "2004-01-01",
+      "date_to": "2006-12-31",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "name": "Marsh Hollow University College",
+      "degree": "Bachelor of Science",
+      "location": "Nottingham",
+      "programme": "Mathematics and Economics",
+      "date_from": "2001-01-01",
+      "date_to": "2004-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Spanish",
+      "level": 4
+    },
+    {
+      "language_name": "Russian",
+      "level": 5
+    },
+    {
+      "language_name": "French",
+      "level": 4
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Pipeline Integrity Threat Dashboard",
+      "summary": "Designed an analytics layer that fused operational telemetry with security event data for an energy operator. The dashboard surfaced anomalous access patterns alongside equipment readings so analysts could triage incidents faster. It became the standard view used during incident reviews.",
+      "used_technologies": [
+        "Spring",
+        "CSS",
+        "Cyber Security",
+        ".NET 7"
+      ],
+      "role": "Data Analyst",
+      "industries": [
+        "Cybersecurity",
+        "Oil and Gas"
+      ]
+    }
+  ]
+}

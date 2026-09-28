@@ -1,0 +1,42 @@
+Roscoe Hartfield
+Manual QA
+roscoe.hartfield@example.com · +1 555-0125 · Portland, USA
+Skills
+Python
+Jira
+Docker
+JavaScript
+Agile Scrum
+CI/CD (Gitlab, Jenkins)
+Communication
+Cyber Security
+Perl
+Languages
+English (Native), Russian (C2)
+Preferences
+On-site · Full-time
+Summary
+Manual QA tester who takes pride in finding the awkward edge cases everyone else misses. Methodical about reproducing issues clearly so developers can fix them on the first try.
+Experience
+Manual QA Engineer — Cedarmount Quality Works
+Jan 2023 - Jan 2026
+Portland, USA
+Own the manual test effort for a web and mobile product, writing and executing test plans across each release. Triage incoming bug reports and reproduce intermittent issues that automated checks miss. Work closely with developers to verify fixes and prevent regressions from slipping back in.
+QA Tester — Pinegrove Testing Partners
+Jan 2021 - Jan 2023
+Seattle, United States
+Executed test cases and exploratory sessions for several client applications and logged detailed, reproducible defect reports. Helped maintain the regression suite and verified fixes before each handoff. Supported user acceptance rounds and gathered structured feedback.
+Education
+Bachelor of Arts in Information Sciences
+2018 - 2020
+Westbrook State University, Portland, Uzbekistan
+Associate of Science in Software Quality and Testing
+2015 - 2018
+Harborlight Community College, Seattle, USA
+Certificate of Completion in Software Testing Fundamentals
+2012 - 2015
+Ashford Technical Institute, Tacoma, USA
+Certificates
+Certified Manual Testing Professional
+Aug 2024
+Functional and Exploratory Testing

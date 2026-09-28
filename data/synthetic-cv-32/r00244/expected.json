@@ -1,0 +1,130 @@
+{
+  "first_name": "Roscoe",
+  "last_name": "Hartfield",
+  "date_of_birth": null,
+  "email": "roscoe.hartfield@example.com",
+  "phone": "+1 555-0125",
+  "desired_position": "Manual QA",
+  "about": "Manual QA tester who takes pride in finding the awkward edge cases everyone else misses. Methodical about reproducing issues clearly so developers can fix them on the first try.",
+  "job_experience": 5,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "OnSite"
+  ],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedStates",
+    "region_name": "Portland"
+  },
+  "skills": [
+    {
+      "skill_name": "Python",
+      "level": 2
+    },
+    {
+      "skill_name": "Jira",
+      "level": 2
+    },
+    {
+      "skill_name": "Docker",
+      "level": null
+    },
+    {
+      "skill_name": "JavaScript",
+      "level": 4
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "Communication",
+      "level": 2
+    },
+    {
+      "skill_name": "Cyber Security",
+      "level": null
+    },
+    {
+      "skill_name": "Perl",
+      "level": 4
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Cedarmount Quality Works",
+      "job": "Manual QA Engineer",
+      "date_from": "2023-01-01",
+      "date_to": "2026-01-01",
+      "description": "Own the manual test effort for a web and mobile product, writing and executing test plans across each release. Triage incoming bug reports and reproduce intermittent issues that automated checks miss. Work closely with developers to verify fixes and prevent regressions from slipping back in.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Pinegrove Testing Partners",
+      "job": "QA Tester",
+      "date_from": "2021-01-01",
+      "date_to": "2023-01-01",
+      "description": "Executed test cases and exploratory sessions for several client applications and logged detailed, reproducible defect reports. Helped maintain the regression suite and verified fixes before each handoff. Supported user acceptance rounds and gathered structured feedback.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Westbrook State University",
+      "degree": "Bachelor of Arts",
+      "location": "Portland",
+      "programme": "Information Sciences",
+      "date_from": "2018-01-01",
+      "date_to": "2020-12-31",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "name": "Harborlight Community College",
+      "degree": "Associate of Science",
+      "location": "Seattle",
+      "programme": "Software Quality and Testing",
+      "date_from": "2015-01-01",
+      "date_to": "2018-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Ashford Technical Institute",
+      "degree": "Certificate of Completion",
+      "location": "Tacoma",
+      "programme": "Software Testing Fundamentals",
+      "date_from": "2012-01-01",
+      "date_to": "2015-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Russian",
+      "level": 5
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Manual Testing Professional",
+      "certificate_programme": "Functional and Exploratory Testing",
+      "issuing_date": "2024-08-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": []
+}

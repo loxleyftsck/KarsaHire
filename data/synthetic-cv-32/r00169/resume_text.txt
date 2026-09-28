@@ -1,0 +1,55 @@
+Gerlinde Brunnemann
+Quality Assurance (QA) Engineer
+gerlinde.brunnemann@example.com · +1 555-0194 · Stuttgart, Germany
+Summary
+Quality assurance engineer who enjoys breaking things before customers do. Comfortable owning test strategy end to end, from early planning sessions to release sign-off, and partnering closely with developers to keep defects from slipping through.
+Experience
+Quality Assurance Engineer — Hollerbach Quality Labs
+Dec 2024 - Present
+Stuttgart, Germany
+Lead test planning and execution across several product squads, balancing manual exploratory passes with automated regression coverage. Mentor newer testers on writing clear, reproducible defect reports and shaping acceptance criteria with product owners. Drove a noticeable drop in escaped defects through tighter release checklists.
+QA Engineer — Vogelsang Digital Werk
+Apr 2023 - Dec 2024
+Munich, Germany
+Owned the regression suite for a fast-moving web platform and coordinated test cycles around frequent releases. Worked side by side with developers during sprint reviews to catch edge cases early. Helped introduce a shared bug triage routine that cut duplicate reports significantly.
+Software Test Engineer — Kettwig Software Manufaktur
+Jul 2021 - Mar 2023
+Cologne, Germany
+Designed and maintained test cases for customer-facing modules and verified fixes ahead of each deployment. Partnered with support staff to reproduce field issues and turn them into actionable tickets. Contributed to a more disciplined approach to test documentation.
+Junior QA Tester — Lindhorst Testing Studio
+Dec 2020 - Jul 2021
+Nuremberg, Germany
+Executed manual test scripts and logged defects against a growing feature backlog. Learned to prioritize testing effort around the riskiest changes under tight deadlines. Began contributing small automated checks to speed up repetitive verification.
+Projects
+Resort Booking Verification Suite
+Built and maintained the test coverage for a combined hotel-stay and online retail checkout flow, focusing on payment edge cases and inventory consistency. Coordinated test cycles inside an iterative delivery rhythm so each release stayed shippable. Caught several subtle pricing bugs before they reached production.
+Tech: Kotlin, Sql, PHP, Agile Scrum
+Campaign Delivery Reliability Initiative
+Validated a marketing delivery platform with heavy backend routing and pipeline automation, ensuring messages flowed correctly under load. Designed test scenarios that exercised failover behavior across the gateway layer. Helped stabilize the release pipeline so deployments became routine rather than risky.
+Tech: Traefik, Scala, C, CI/CD (Gitlab, Jenkins)
+Field Sensor Data Validation
+Tested a desktop monitoring tool used to review readings from remote oil and gas equipment, verifying data integrity across noisy inputs. Wrote scenario-based checks that mirrored real operator workflows. Surfaced rounding and unit-conversion defects that would have skewed reports.
+Tech: Python, Avalonia
+Education
+Bachelor of Science in Software Engineering
+2017 - 2019
+Rheinmark University of Applied Sciences, Karlsruhe, Germany
+Skills
+TypeScript
+Gitlab
+Linux
+Jira
+Agile Scrum
+JavaScript
+CI/CD (Gitlab, Jenkins)
+Confluence
+Postgresql
+.NET 6
+Languages
+English (Native), French (B2), Russian (Bilingual), German (C1)
+Certificates
+Certified Software Test Practitioner
+Feb 2024 – Feb 2027
+Foundations of Test Design
+Preferences
+Part-time · Project-based

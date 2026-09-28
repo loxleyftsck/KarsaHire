@@ -1,0 +1,222 @@
+{
+  "first_name": "Magnus",
+  "last_name": "Ashbrook",
+  "date_of_birth": "1984-03-01",
+  "email": "magnus.ashbrook@example.com",
+  "phone": "+1 555-0154",
+  "desired_position": "Data Specialist",
+  "about": "Lead data specialist with deep experience spanning the full lifecycle of large-scale data platforms, from ingestion pipelines to governance and reporting. I enjoy turning fragmented operational data into reliable, decision-ready assets and mentoring engineers along the way.",
+  "job_experience": 17,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "OnSite"
+  ],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [
+    "Permanent"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Manchester"
+  },
+  "skills": [
+    {
+      "skill_name": "Scala",
+      "level": 2
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Docker",
+      "level": 0
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": "NoSql",
+      "level": null
+    },
+    {
+      "skill_name": "Sql",
+      "level": 4
+    },
+    {
+      "skill_name": "MySQL",
+      "level": 0
+    },
+    {
+      "skill_name": "Cyber Security",
+      "level": null
+    },
+    {
+      "skill_name": "Vue.js",
+      "level": null
+    },
+    {
+      "skill_name": "Kotlin",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Halcyon Drift Analytics",
+      "job": "Lead Data Specialist",
+      "date_from": "2023-03-01",
+      "date_to": null,
+      "description": "Lead a cross-functional data practice responsible for the integrity and availability of the company's core reporting platform. I set the technical direction for ingestion, modelling, and quality controls, and partner with product teams to translate ambiguous requirements into durable data products. Much of my time goes into mentoring and unblocking a small team of analysts and engineers.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Meridian Tollgate Systems",
+      "job": "Principal Data Engineer",
+      "date_from": "2019-09-01",
+      "date_to": "2023-02-01",
+      "description": "Owned the design and operation of the warehouse that consolidated data from a dozen siloed source systems. I introduced rigorous validation and lineage tracking that cut reconciliation disputes dramatically. I also acted as the main escalation point for complex query performance and modelling questions.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Quillfeather Data Works",
+      "job": "Senior Data Engineer",
+      "date_from": "2016-07-01",
+      "date_to": "2019-09-01",
+      "description": "Rebuilt a brittle batch reporting stack into a maintainable, well-documented platform serving finance and operations stakeholders. I established coding standards and review practices that became the team's baseline. Worked closely with analysts to make sure the underlying models matched how the business actually reasoned about its numbers.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Brackenfield Insight Group",
+      "job": "Data Engineer",
+      "date_from": "2013-10-01",
+      "date_to": "2016-05-01",
+      "description": "Built and maintained the data pipelines feeding a growing suite of internal dashboards. I focused on making the flows observable and recoverable so failures were caught early rather than discovered by frustrated stakeholders. Contributed heavily to onboarding documentation for new joiners.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Northgate Sable Consulting",
+      "job": "Database Developer",
+      "date_from": "2010-10-01",
+      "date_to": "2013-10-01",
+      "description": "Developed and tuned the relational schemas behind several client reporting engagements. I spent a lot of time profiling slow queries and reshaping models to keep response times predictable as data volumes grew. This role gave me a strong grounding in the practical tradeoffs of data design.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Cinderport Logic Labs",
+      "job": "Junior Database Analyst",
+      "date_from": "2008-08-01",
+      "date_to": "2010-08-01",
+      "description": "Supported a team maintaining the operational databases for a mid-sized logistics client. My responsibilities ranged from writing reporting queries to assisting with data clean-up and migration tasks. It was an early role where I learned how messy real-world data tends to be.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Wexbridge Polytechnic Institute",
+      "degree": "Master of Science",
+      "location": "Manchester",
+      "programme": "Information Systems and Data Management",
+      "date_from": "2003-01-01",
+      "date_to": "2007-12-31",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "name": "Thornwell University College",
+      "degree": "Bachelor of Science",
+      "location": "Liverpool",
+      "programme": "Computer Science",
+      "date_from": "2000-01-01",
+      "date_to": "2003-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 5
+    },
+    {
+      "language_name": "German",
+      "level": 5
+    },
+    {
+      "language_name": "Hebrew",
+      "level": 3
+    },
+    {
+      "language_name": "Spanish",
+      "level": 3
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Data Platform Architect",
+      "certificate_programme": "Advanced Data Engineering Track",
+      "issuing_date": "2026-10-01",
+      "expiring_date": null
+    },
+    {
+      "certificate_name": "Professional Data Governance Practitioner",
+      "certificate_programme": null,
+      "issuing_date": "2026-10-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Harbourline Cargo Integrity Suite",
+      "summary": "Acted as software tester on a platform that validated and secured cargo manifest data for a freight operator. I designed test scenarios that probed both the hardened security boundaries and the automated provisioning workflows, surfacing several edge cases before release. The work demanded close attention to how the system behaved under malformed and adversarial inputs.",
+      "used_technologies": [
+        "Cyber Security",
+        "Gitlab",
+        "C",
+        "Ansible",
+        ".NET 6"
+      ],
+      "role": "Software Tester",
+      "industries": [
+        "Freight and Shipping"
+      ]
+    },
+    {
+      "title": "Ledgerwind Reconciliation Engine",
+      "summary": "Served as data specialist on an accounting platform that reconciled transactions across multiple ledgers in near real time. I modelled the canonical transaction schema and built the validation rules that flagged discrepancies for review. The cloud-hosted services I helped shape handled steadily growing throughput without manual intervention.",
+      "used_technologies": [
+        "Python",
+        "Golang",
+        "Azure"
+      ],
+      "role": "Data Specialist",
+      "industries": [
+        "Accounting"
+      ]
+    },
+    {
+      "title": "Beaconmoor Service Portal",
+      "summary": "Contributed as data specialist to a full-service IT solutions portal used by clients to track support engagements. I focused on structuring the data layer so the containerised services and the mobile client stayed consistent. The result was a single coherent view of each client's open work across channels.",
+      "used_technologies": [
+        "Docker",
+        "Flutter"
+      ],
+      "role": "Data Specialist",
+      "industries": [
+        "Full-service IT solutions"
+      ]
+    }
+  ]
+}

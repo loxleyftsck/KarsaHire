@@ -1,0 +1,48 @@
+Henrik Brauwald
+Senior Cloud Engineer
+henrik.brauwald@example.com · +1 555-0141 · Dusseldorf, Germany
+Skills
+Linux
+Azure
+Docker Swarm
+Nginx
+Gitlab
+Ansible
+CI/CD (Gitlab, Jenkins)
+ASP.NET
+C++
+Languages
+English (B2)
+Preferences
+On-site · Part-time · Temporary
+Summary
+Cloud engineer with a long track record of building and operating resilient platform infrastructure for high-traffic services. I enjoy turning brittle manual processes into automated, observable systems that teams can trust. Comfortable owning architecture decisions end to end while mentoring engineers along the way.
+Experience
+Senior Cloud Engineer — Nordlicht Cloud Forge
+Jan 2025 - Present
+Dusseldorf, Germany
+Lead the platform engineering group responsible for the company's multi-region infrastructure and internal developer tooling. I drive migrations toward self-service provisioning and own the reliability targets for our most critical customer-facing services. Much of my time goes to standardizing how teams deploy and observe their workloads.
+Cloud Platform Engineer — Halberstadt Datawerk
+Dec 2023 - Jan 2025
+Cologne, Germany
+Designed and maintained the shared infrastructure layer that hosted dozens of product teams. I introduced automated provisioning pipelines and tightened cost governance across environments. Worked closely with security to bake compliance checks directly into the delivery flow.
+Infrastructure Engineer — Sturmkern Systems
+Aug 2022 - Nov 2023
+Essen, Germany
+Operated the production environment for a fast-growing logistics platform and improved its uptime through better failover design. I rebuilt the on-call runbooks and reduced repetitive incident toil with targeted automation. Also led the rollout of a centralized monitoring stack.
+DevOps Engineer — Eichhorn Verteilte Technik
+May 2021 - Aug 2022
+Dortmund, Germany
+Built continuous delivery pipelines that let product teams ship daily with confidence. I containerized several legacy applications and standardized how they were configured across stages. Spent considerable effort closing gaps between development and operations practices.
+Systems Engineer — Tannberg Rechenzentrum
+Apr 2019 - May 2021
+Bochum, Germany
+Managed hybrid infrastructure spanning on-premise hardware and early cloud workloads. I automated routine maintenance tasks and scripted the provisioning of new service nodes. Helped the team plan a phased move of stateful services into managed environments.
+Junior Systems Administrator — Greifwald Netzlabor
+Jan 2018 - Apr 2019
+Wuppertal, Germany
+Supported the operations team in keeping internal servers and networking healthy. I handled patching cycles, backup verification, and first-line infrastructure troubleshooting. This role gave me the operational grounding that shaped how I think about reliability today.
+Education
+Bachelor of Science in Computer Systems Engineering
+2014 - 2017
+Rheinau Institute of Applied Computing, Dusseldorf, Germany

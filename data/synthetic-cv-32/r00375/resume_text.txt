@@ -1,0 +1,62 @@
+Jovliyon Tursunbaev
+Lead System Administrator
+jovliyon.tursunbaev@example.com · +1 555-0186 · Tashkent, Uzbekistan · DOB: 06 Jan 1988
+Experience
+Lead System Administrator — Silkroad Datavault Holdings
+Jan 2023 - Present
+Tashkent, Uzbekistan
+Lead a small team responsible for the company's core server estate, virtualization hosts, and internal directory services. Own incident response, capacity planning, and the rollout of automated patch and backup routines across the fleet. Coordinate with developers to keep staging and production environments consistent and reliably available.
+Senior Infrastructure Administrator — Baltijas Serveru Nams
+Jul 2020 - Jan 2023
+Riga, Latvia
+Maintained multi-tenant hosting infrastructure and led the migration of legacy physical workloads onto a consolidated virtualization platform. Set up monitoring and alerting that cut unplanned downtime and gave the team early warning of disk and memory pressure. Documented runbooks so on-call rotations could resolve common faults without escalation.
+Systems Administrator — Zarafshan Cloud Systems
+Nov 2017 - May 2020
+Samarkand, Uzbekistan
+Administered Linux and Windows servers supporting a regional services provider, including mail, file shares, and internal web applications. Built scripted provisioning so new servers could be brought online consistently within hours instead of days. Handled routine hardening, access reviews, and recovery drills.
+IT Operations Administrator — Oltin Vodiy Networks
+Oct 2015 - Sep 2017
+Tashkent, Uzbekistan
+Kept the day-to-day IT operations running for a growing technology firm, covering servers, network gear, and end-user support escalations. Introduced a ticketing discipline that made workload visible and helped prioritise recurring problems. Assisted with the first office-wide structured backup strategy.
+Junior System Administrator — Registon Software Works
+Jan 2014 - Oct 2015
+Bukhara, Uzbekistan
+Supported a development house by maintaining build servers, version control hosts, and shared development environments. Automated repetitive maintenance tasks and helped keep the engineering team unblocked during releases. Learned to triage hardware and network faults quickly under deadline pressure.
+IT Support Specialist — Chust Digital Infrastructure
+Dec 2011 - Jan 2014
+Tashkent, Uzbekistan
+Provided first- and second-line support for staff workstations, printers, and core line-of-business applications. Maintained inventory and helped standardise software images across departments. Took on early server-room responsibilities such as monitoring power, cooling, and routine reboots.
+Projects
+Provider Edge Routing Mesh
+Designed and operated the routing and ingress layer for a market-research data platform shared across several regional network providers. Built a self-service deployment pipeline so analysts could publish dashboards without manual intervention. Focused on resilient traffic routing and predictable failover between regions.
+Tech: Gitlab, Nginx, Traefik, Haskell
+Electronics Yield Reporting Console
+Built a reporting layer over a manufacturing data warehouse that turned raw production records into readable yield and defect summaries. Designed the queries and styling so plant supervisors could read trends at a glance. The console replaced a fragile spreadsheet process and reduced reporting effort considerably.
+Tech: Sql, CSS
+Security Operations Toolkit
+Assembled an internal toolkit that unified host monitoring, access auditing, and a small operator dashboard for a security and marketing analytics team. Tied together several services so administrators could investigate alerts from one place. Emphasised tamper-evident logging and clear, role-based access.
+Tech: Avalonia, ASP.NET, Python, Unity, C
+Education
+Master of Science in Information Systems Engineering
+2007 - 2010
+Tashkent Institute of Applied Computing, Tashkent, Uzbekistan
+Bachelor of Science in Computer Networks and Administration
+2004 - 2007
+Zeravshan Technical University, Samarkand, Uzbekistan
+Diploma in Computer Hardware and Systems Support
+2002 - 2004
+Fergana College of Information Technology, Fergana, Uzbekistan
+Skills
+Communication
+MySQL
+Ansible
+Docker
+NoSql
+Microsoft SQL
+Agile Scrum
+PHP
+iOS Development (Swift, Objective-C)
+Languages
+English (Bilingual), Russian (Intermediate), French (Bilingual), Hebrew (Intermediate)
+Preferences
+Full-time · Project-based

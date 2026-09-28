@@ -1,0 +1,66 @@
+Tobiah Marsden
+Lead Mobile Developer(IOS/Android)
+tobiah.marsden@example.com · +1 555-0153 · Seattle, US
+Skills
+Gitlab
+Jira
+Xamarin/MAUI
+CI/CD (Gitlab, Jenkins)
+Docker
+Linux
+Agile Scrum
+Flutter
+Python
+Postgresql
+CSS
+Languages
+English (B2), Spanish (Intermediate), French (B1)
+Preferences
+Hybrid · Part-time · Project-based
+Experience
+Lead Mobile Engineer — Cascadia Mobile Forge
+Mar 2024 - Present
+Seattle, USA
+Lead a cross-platform mobile team building consumer apps for iOS and Android. I set the architecture direction, own the release process, and review the toughest pull requests. I also coach engineers on performance profiling and crash triage.
+Senior Mobile Developer — Hanseatic App Schmiede
+Feb 2022 - Mar 2024
+Hamburg, Germany
+Built and maintained the flagship native apps for a logistics-facing product. I drove a major refactor of the navigation layer and introduced a shared design-system component library. The changes cut the time to ship new feature screens noticeably.
+Senior iOS Developer — Emberline Studios
+Jul 2020 - Dec 2021
+Portland, United States
+Owned the iOS codebase for a media-streaming application with a large active user base. I led the migration to a modern concurrency model and improved cold-start time substantially. I mentored two junior developers through their first major releases.
+Mobile Developer — Driftwood Interactive
+Jan 2019 - Jul 2020
+San Diego, USA
+Developed features across both iOS and Android for a social fitness app. I implemented the offline sync layer and integrated several third-party SDKs. My work on background sync reduced user-reported data loss.
+iOS Developer — Brassline Apps Co.
+Aug 2017 - Jan 2019
+Sacramento, USA
+Built native iOS features for an e-commerce client and maintained the checkout flow. I introduced automated UI smoke tests that caught regressions before release. The team adopted my testing pattern across other modules.
+Junior Mobile Developer — Lumen Pocket Software
+Sep 2015 - Jun 2017
+Reno, United States
+Contributed to a utility app while learning native development end to end. I fixed defects, implemented small UI components, and helped maintain the release checklist. This role started my path toward platform leadership.
+Projects
+Tokenized Property Marketplace Coordination
+Served as project manager for a platform pairing real-estate development listings with a tokenized investment layer. I coordinated cross-functional delivery across backend, mobile, and compliance, ran the planning cadence, and kept the roadmap honest against shifting regulatory input. The team shipped the pilot marketplace on schedule with clear stakeholder communication throughout.
+Tech: NoSql, .NET, Communication
+Education
+Master of Science in Mobile and Embedded Software
+2011 - 2014
+Puget Sound Institute of Technology, Tacoma, US
+Bachelor of Science in Computer Science
+2008 - 2011
+Westbrook State University, Eugene, United States
+Associate Degree in Software Development
+2006 - 2008
+Coastal Ridge Community College, Bend, U.S.
+Certificates
+Advanced Mobile Architecture Certificate
+Dec 2020
+Native Platforms Track
+Looking for
+Seeking a lead mobile role where I can shape native architecture across iOS and Android while mentoring a product-focused engineering team.
+Hobbies
+Trail running, analog photography, and restoring vintage synthesizers.

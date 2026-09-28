@@ -1,0 +1,176 @@
+{
+  "first_name": "Toms",
+  "last_name": "Liepkalns",
+  "date_of_birth": null,
+  "email": "toms.liepkalns@example.com",
+  "phone": "+1 555-0163",
+  "desired_position": "System Administrator",
+  "about": "System administrator who keeps infrastructure quiet, secure, and well-documented so teams can focus on their work. I like automating the dull, repetitive tasks and building monitoring that catches problems before users notice.",
+  "job_experience": 6,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [],
+  "employment_types": [],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Latvia",
+    "region_name": "Riga"
+  },
+  "skills": [
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "MySQL",
+      "level": null
+    },
+    {
+      "skill_name": "Traefik",
+      "level": null
+    },
+    {
+      "skill_name": "NoSql",
+      "level": 0
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 2
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 2
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": 0
+    },
+    {
+      "skill_name": "C",
+      "level": null
+    },
+    {
+      "skill_name": "Golang",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Baltā Egle Infrastructure",
+      "job": "System Administrator",
+      "date_from": "2024-03-01",
+      "date_to": null,
+      "description": "Maintain and harden internal servers, networking, and identity systems across the organisation. I automated patching and backup verification, which cut manual effort and improved recovery confidence.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Ziemeļvārti Hosting Group",
+      "job": "Systems Engineer",
+      "date_from": "2022-08-01",
+      "date_to": "2024-03-01",
+      "description": "Operated hosting infrastructure for several client environments, owning provisioning and incident response. I built monitoring dashboards that shortened detection and resolution times for recurring faults.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Saulesvēja Tech Services",
+      "job": "IT Operations Specialist",
+      "date_from": "2021-09-01",
+      "date_to": "2022-08-01",
+      "description": "Supported end-user systems and shared services, balancing helpdesk demand with planned maintenance. I standardised workstation configuration, which reduced onboarding time for new staff.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Akmensloks Digital Works",
+      "job": "Junior System Administrator",
+      "date_from": "2020-05-01",
+      "date_to": "2021-07-01",
+      "description": "Assisted with server maintenance, user account management, and routine backups under senior supervision. I documented common procedures so the team could resolve repeat issues faster.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Pērkons Network Solutions",
+      "job": "IT Support Technician",
+      "date_from": "2019-09-01",
+      "date_to": "2020-03-01",
+      "description": "Handled first-line support for hardware, software, and connectivity issues across the office. I learned the fundamentals of system administration while keeping daily operations running smoothly.",
+      "country_name": "Latvia"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Riga College of Network Technology",
+      "degree": "Bachelor of Science",
+      "location": "Riga",
+      "programme": "Systems and Network Administration",
+      "date_from": "2015-01-01",
+      "date_to": "2018-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Zemgale Technical Academy",
+      "degree": "Professional Diploma",
+      "location": "Jelgava",
+      "programme": "Infrastructure Operations",
+      "date_from": "2012-01-01",
+      "date_to": "2015-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Jūrmala Institute of Information Systems",
+      "degree": "Associate Diploma",
+      "location": "Jūrmala",
+      "programme": "Computer Support and Maintenance",
+      "date_from": "2008-01-01",
+      "date_to": "2012-12-31",
+      "country_name": "Latvia"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Learning and Logistics Test Harness",
+      "summary": "Acted as software tester on a platform spanning online learning and supply chain coordination. I designed and ran test cases across both modules, catching integration defects where course scheduling met inventory workflows.",
+      "used_technologies": [
+        "Perl",
+        "Jira",
+        "React",
+        "ASP.NET",
+        "ASP.NET 4.5+"
+      ],
+      "role": "Software Tester",
+      "industries": [
+        "Online Learning Platforms",
+        "Supply Chain Management"
+      ]
+    },
+    {
+      "title": "AI Services Provisioning Platform",
+      "summary": "Served as system administrator for a platform delivering AI-driven ICT services to internal teams. I managed the runtime environments, automated deployments, and kept the supporting infrastructure stable under variable demand.",
+      "used_technologies": [
+        ".NET 6",
+        "Scala",
+        "Flutter",
+        "JavaScript",
+        "Python"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Artificial intelligence",
+        "ICT services"
+      ]
+    }
+  ]
+}

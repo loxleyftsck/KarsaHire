@@ -1,0 +1,182 @@
+{
+  "first_name": "Ravshan",
+  "last_name": "Tokhtaev",
+  "date_of_birth": "1998-01-12",
+  "email": "ravshan.tokhtaev@example.com",
+  "phone": "+1 555-0194",
+  "desired_position": "System Administrator",
+  "about": null,
+  "job_experience": 0,
+  "job_expectations": "Seeking an entry-level system administrator position where I can support real infrastructure while continuing to learn automation and on-call practices.",
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "OnSite",
+    "Hybrid"
+  ],
+  "employment_types": [],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": "Astronomy, long-distance running, and building small home-lab servers.",
+  "address": {
+    "country_name": "Uzbekistan",
+    "region_name": "Tashkent"
+  },
+  "skills": [
+    {
+      "skill_name": "MySQL",
+      "level": null
+    },
+    {
+      "skill_name": "Docker Swarm",
+      "level": null
+    },
+    {
+      "skill_name": "Nginx",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Traefik",
+      "level": 0
+    },
+    {
+      "skill_name": "Golang",
+      "level": 2
+    },
+    {
+      "skill_name": "Ansible",
+      "level": null
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": 4
+    },
+    {
+      "skill_name": "WCF",
+      "level": 2
+    },
+    {
+      "skill_name": "Sql",
+      "level": 4
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Lindenwave Hosting GmbH",
+      "job": "Junior System Administrator",
+      "date_from": "2025-07-01",
+      "date_to": null,
+      "description": "Assist the operations team with server provisioning, account management, and routine monitoring of internal services. Handle first-line tickets, document recurring fixes, and help keep backup and patch routines running on schedule.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Tashkent Institute of Applied Informatics",
+      "degree": "Bachelor of Science",
+      "location": "Tashkent",
+      "programme": "Computer Systems and Networks",
+      "date_from": "2020-01-01",
+      "date_to": "2024-12-31",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "name": "Samarkand Technical Lyceum",
+      "degree": "Secondary Vocational Diploma",
+      "location": "Samarkand",
+      "programme": "Information Technologies",
+      "date_from": "2017-01-01",
+      "date_to": "2020-12-31",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "name": "Chirchik Polytechnic College",
+      "degree": "Diploma of Higher Education",
+      "location": "Chirchik",
+      "programme": "Network Administration",
+      "date_from": "2015-01-01",
+      "date_to": "2017-12-31",
+      "country_name": "Uzbekistan"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Spanish",
+      "level": 2
+    },
+    {
+      "language_name": "Hebrew",
+      "level": 3
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Foundations of Server Administration",
+      "certificate_programme": "Infrastructure Operations Track",
+      "issuing_date": "2025-11-01",
+      "expiring_date": "2028-11-01"
+    },
+    {
+      "certificate_name": "Network Fundamentals Practitioner",
+      "certificate_programme": null,
+      "issuing_date": "2026-04-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Course Logistics Scheduler",
+      "summary": "Built a scheduling tool that coordinated training sessions, instructors, and equipment deliveries for a vocational learning center. As project manager I organized the small build team, set milestones, and made sure the logistics side stayed in sync with the training calendar.",
+      "used_technologies": [
+        "Flutter",
+        "MySQL",
+        "C",
+        "Ansible"
+      ],
+      "role": "Project Manager",
+      "industries": [
+        "Training and Development",
+        "Logistics"
+      ]
+    },
+    {
+      "title": "Clinic Helpdesk Companion",
+      "summary": "Developed a lightweight internal support tool to track maintenance requests across several small clinics. Acting as system administrator, I set up the hosting environment, managed access for staff, and kept the service patched and backed up.",
+      "used_technologies": [
+        "Ruby",
+        "Haskell"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "Hospitals and Clinics",
+        "IT Services"
+      ]
+    },
+    {
+      "title": "Lab Sample Tracking Portal",
+      "summary": "Created a portal for biotech lab staff to register and trace sample batches through processing stages. I administered the database and mobile access layer, configured user roles, and kept the issue board organized so fixes shipped predictably.",
+      "used_technologies": [
+        "Microsoft SQL",
+        "Blazor",
+        "Android Development (Java, Kotlin)",
+        "Kotlin",
+        "Jira"
+      ],
+      "role": "System Administrator",
+      "industries": [
+        "ICT services",
+        "Biotechnology"
+      ]
+    }
+  ]
+}

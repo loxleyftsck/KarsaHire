@@ -1,0 +1,177 @@
+{
+  "first_name": "Ilze",
+  "last_name": "Berzkalne",
+  "date_of_birth": "1996-04-20",
+  "email": "ilze.berzkalne@example.com",
+  "phone": "+1 555-0167",
+  "desired_position": "Software Tester",
+  "about": "Software tester who believes the most valuable bug is the one caught before it ever reaches a user. I enjoy building the scaffolding that lets a team test confidently and quickly, and I am just as comfortable digging through edge cases by hand as automating the boring runs. Curious by default and happy to ask the awkward question about how a feature is actually supposed to behave.",
+  "job_experience": 4,
+  "job_expectations": "Seeking a QA role where automation and exploratory testing are treated as equal partners.",
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Hybrid"
+  ],
+  "employment_types": [],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Latvia",
+    "region_name": "Riga"
+  },
+  "skills": [
+    {
+      "skill_name": "Confluence",
+      "level": 0
+    },
+    {
+      "skill_name": "JavaScript",
+      "level": 2
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "TypeScript",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": 4
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "Python",
+      "level": null
+    },
+    {
+      "skill_name": "Haskell",
+      "level": 2
+    },
+    {
+      "skill_name": "NoSql",
+      "level": null
+    },
+    {
+      "skill_name": "ASP.NET",
+      "level": 0
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Wexford Quality Foundry",
+      "job": "Software Test Engineer",
+      "date_from": "2024-05-01",
+      "date_to": null,
+      "description": "Owned the test strategy for a product squad shipping on a weekly cadence. Built out an automation suite that caught regressions the manual passes kept missing and folded it into the release pipeline. Partnered with developers early in each feature so testability stopped being an afterthought.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Zilkalns Assurance Group",
+      "job": "QA Engineer",
+      "date_from": "2022-10-01",
+      "date_to": "2024-05-01",
+      "description": "Tested a multi-platform application across a broad matrix of devices and configurations. Set up a structured defect-triage process that gave the team a shared, honest picture of release readiness. Wrote the first batch of automated checks that later grew into the squad's regression backbone.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Smiltis Software Lab",
+      "job": "Junior QA Analyst",
+      "date_from": "2021-11-01",
+      "date_to": "2022-08-01",
+      "description": "Ran manual and exploratory test passes for a small product team and reported findings in a way developers could act on without a meeting. Learned to write clear, reproducible bug reports and to spot the difference between a real defect and a misunderstanding of the spec. Took ownership of the smoke-test checklist for each release.",
+      "country_name": "Latvia"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Vidzeme Institute of Computing",
+      "degree": "Bachelor of Science",
+      "location": "Valmiera",
+      "programme": "Software Engineering",
+      "date_from": "2017-01-01",
+      "date_to": "2020-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Kurzeme Vocational College",
+      "degree": "Diploma",
+      "location": "Liepaja",
+      "programme": "Software Quality and Testing",
+      "date_from": "2013-01-01",
+      "date_to": "2017-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 2
+    },
+    {
+      "language_name": "Spanish",
+      "level": 4
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Test Automation Practitioner",
+      "certificate_programme": null,
+      "issuing_date": "2024-05-01",
+      "expiring_date": "2027-05-01"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Ledger Reconciliation Test Harness",
+      "summary": "Designed the test harness for an accounting and supply-chain tool where a single miscount could cascade into a costly reconciliation error. Built cross-platform checks that exercised the mobile and core flows against the same expected-balance fixtures. The harness turned a nerve-wracking month-end release into a routine, well-covered event.",
+      "used_technologies": [
+        "Rust",
+        "Flutter"
+      ],
+      "role": "Software Tester",
+      "industries": [
+        "Accounting",
+        "Supply Chain Management"
+      ]
+    },
+    {
+      "title": "Threat Console Architecture Review",
+      "summary": "Contributed to the architecture for a cybersecurity console that pulled signals from several data stores into one operator view. Helped shape the service boundaries so the mobile and web clients could share a single, well-defined backend contract. Defined how the components would be validated end to end before any of them were built.",
+      "used_technologies": [
+        "Swift",
+        "NoSql",
+        "Sql",
+        "Laravel",
+        "Android Development (Java, Kotlin)"
+      ],
+      "role": "Solution Architect",
+      "industries": [
+        "Cybersecurity"
+      ]
+    },
+    {
+      "title": "Learning Platform Integration Bridge",
+      "summary": "Worked as the integration specialist connecting a corporate legal team's case system to an external online-learning platform. Built the connective layer that kept training records and compliance status consistent between the two systems. Added monitoring so a failed sync raised an alert instead of silently drifting out of step.",
+      "used_technologies": [
+        "Golang",
+        "Perl"
+      ],
+      "role": "Integration Specialist",
+      "industries": [
+        "Corporate Counsel",
+        "Online Learning Platforms"
+      ]
+    }
+  ]
+}

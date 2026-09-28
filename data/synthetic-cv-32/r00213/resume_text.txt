@@ -1,0 +1,53 @@
+Anselm Rauchberg
+System Administrator
+anselm.rauchberg@example.com · +1 555-0164 · Stuttgart, Germany
+Summary
+Systems administrator who keeps infrastructure quietly dependable, with a habit of automating the repetitive work before it becomes a fire drill. I enjoy untangling messy environments and leaving behind clear documentation and predictable maintenance routines.
+Experience
+System Administrator — Schwarzwald Vector Hosting
+Jun 2024 - Present
+Stuttgart, Germany
+Maintain and harden the server and network estate for a mid-sized hosting operation, handling patching, backups, and incident response. Automate routine provisioning and monitoring so the team can focus on the cases that genuinely need attention.
+IT Systems Engineer — Neckar Summit Datatech
+May 2023 - Jun 2024
+Heilbronn, Germany
+Ran the internal infrastructure for a growing engineering office, covering identity, storage, and virtualization. Led a migration to a more resilient backup scheme and cut recurring outages by stabilizing the update process.
+Infrastructure Administrator — Alpenglass Cloud Werke
+Mar 2021 - May 2023
+Augsburg, Germany
+Administered hybrid environments spanning on-premise servers and cloud workloads, focusing on monitoring and capacity planning. Built scripted health checks that caught failures before users noticed them.
+Junior System Administrator — Eisvogel Netzwerke
+Jan 2020 - Mar 2021
+Ulm, Germany
+Supported the operations team with ticket resolution, user account management, and routine server maintenance. Documented common procedures and helped standardize the onboarding setup for new workstations.
+Projects
+Booking Platform Failover Overhaul
+Re-architected the hosting and recovery setup for a travel agency's cloud-based booking platform so peak-season load no longer threatened uptime. Introduced automated failover and clearer runbooks, which shortened recovery during incidents and reduced manual intervention.
+Tech: MySQL, Drupal, Communication, Haskell
+Property Portal Build Toolchain
+Stood up the administration and build environment behind a real estate development portal, supporting cross-platform client applications on Linux servers. Tuned the deployment pipeline and access controls so developers could ship without stepping on shared infrastructure.
+Tech: C++, Swift, Xamarin/MAUI, Linux
+Education
+Bachelor in Network and Systems Engineering
+2015 - 2019
+Stuttgart University of Applied Informatics, Stuttgart, Germany
+Diploma in IT Infrastructure Administration
+2012 - 2015
+Rheinland Technical Academy, Mannheim, UK
+Skills
+Communication
+Docker Swarm
+NoSql
+Confluence
+Postgresql
+Azure
+Golang
+Linux
+Microsoft SQL
+Flutter
+iOS Development (Swift, Objective-C)
+WCF
+Languages
+English (Bilingual)
+Preferences
+Hybrid · Contract · Temporary

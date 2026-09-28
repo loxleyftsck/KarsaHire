@@ -1,0 +1,191 @@
+{
+  "first_name": "Tobiah",
+  "last_name": "Marsden",
+  "date_of_birth": null,
+  "email": "tobiah.marsden@example.com",
+  "phone": "+1 555-0153",
+  "desired_position": "Mobile Developer(IOS/Android)",
+  "about": null,
+  "job_experience": 10,
+  "job_expectations": "Seeking a lead mobile role where I can shape native architecture across iOS and Android while mentoring a product-focused engineering team.",
+  "min_salary": 137933,
+  "max_salary": 157447,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Hybrid"
+  ],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": "Trail running, analog photography, and restoring vintage synthesizers.",
+  "address": {
+    "country_name": "UnitedStates",
+    "region_name": "Seattle"
+  },
+  "skills": [
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "Xamarin/MAUI",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 4
+    },
+    {
+      "skill_name": "Docker",
+      "level": 4
+    },
+    {
+      "skill_name": "Linux",
+      "level": 4
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": "Flutter",
+      "level": null
+    },
+    {
+      "skill_name": "Python",
+      "level": 4
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": 0
+    },
+    {
+      "skill_name": "CSS",
+      "level": 2
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Cascadia Mobile Forge",
+      "job": "Lead Mobile Engineer",
+      "date_from": "2024-03-01",
+      "date_to": null,
+      "description": "Lead a cross-platform mobile team building consumer apps for iOS and Android. I set the architecture direction, own the release process, and review the toughest pull requests. I also coach engineers on performance profiling and crash triage.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Hanseatic App Schmiede",
+      "job": "Senior Mobile Developer",
+      "date_from": "2022-02-01",
+      "date_to": "2024-03-01",
+      "description": "Built and maintained the flagship native apps for a logistics-facing product. I drove a major refactor of the navigation layer and introduced a shared design-system component library. The changes cut the time to ship new feature screens noticeably.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Emberline Studios",
+      "job": "Senior iOS Developer",
+      "date_from": "2020-07-01",
+      "date_to": "2021-12-01",
+      "description": "Owned the iOS codebase for a media-streaming application with a large active user base. I led the migration to a modern concurrency model and improved cold-start time substantially. I mentored two junior developers through their first major releases.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Driftwood Interactive",
+      "job": "Mobile Developer",
+      "date_from": "2019-01-01",
+      "date_to": "2020-07-01",
+      "description": "Developed features across both iOS and Android for a social fitness app. I implemented the offline sync layer and integrated several third-party SDKs. My work on background sync reduced user-reported data loss.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Brassline Apps Co.",
+      "job": "iOS Developer",
+      "date_from": "2017-08-01",
+      "date_to": "2019-01-01",
+      "description": "Built native iOS features for an e-commerce client and maintained the checkout flow. I introduced automated UI smoke tests that caught regressions before release. The team adopted my testing pattern across other modules.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Lumen Pocket Software",
+      "job": "Junior Mobile Developer",
+      "date_from": "2015-09-01",
+      "date_to": "2017-06-01",
+      "description": "Contributed to a utility app while learning native development end to end. I fixed defects, implemented small UI components, and helped maintain the release checklist. This role started my path toward platform leadership.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Puget Sound Institute of Technology",
+      "degree": "Master of Science",
+      "location": "Tacoma",
+      "programme": "Mobile and Embedded Software",
+      "date_from": "2011-01-01",
+      "date_to": "2014-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Westbrook State University",
+      "degree": "Bachelor of Science",
+      "location": "Eugene",
+      "programme": "Computer Science",
+      "date_from": "2008-01-01",
+      "date_to": "2011-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Coastal Ridge Community College",
+      "degree": "Associate Degree",
+      "location": "Bend",
+      "programme": "Software Development",
+      "date_from": "2006-01-01",
+      "date_to": "2008-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 3
+    },
+    {
+      "language_name": "Spanish",
+      "level": 2
+    },
+    {
+      "language_name": "French",
+      "level": 2
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Advanced Mobile Architecture Certificate",
+      "certificate_programme": "Native Platforms Track",
+      "issuing_date": "2020-12-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Tokenized Property Marketplace Coordination",
+      "summary": "Served as project manager for a platform pairing real-estate development listings with a tokenized investment layer. I coordinated cross-functional delivery across backend, mobile, and compliance, ran the planning cadence, and kept the roadmap honest against shifting regulatory input. The team shipped the pilot marketplace on schedule with clear stakeholder communication throughout.",
+      "used_technologies": [
+        "NoSql",
+        ".NET",
+        "Communication"
+      ],
+      "role": "Project Manager",
+      "industries": [
+        "Real Estate Development",
+        "Cryptocurrency"
+      ]
+    }
+  ]
+}

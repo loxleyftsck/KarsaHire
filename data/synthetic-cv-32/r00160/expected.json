@@ -1,0 +1,135 @@
+{
+  "first_name": "Henrik",
+  "last_name": "Brauwald",
+  "date_of_birth": null,
+  "email": "henrik.brauwald@example.com",
+  "phone": "+1 555-0141",
+  "desired_position": "Cloud Engineer",
+  "about": "Cloud engineer with a long track record of building and operating resilient platform infrastructure for high-traffic services. I enjoy turning brittle manual processes into automated, observable systems that teams can trust. Comfortable owning architecture decisions end to end while mentoring engineers along the way.",
+  "job_experience": 8,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "OnSite"
+  ],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [
+    "Temporary"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Dusseldorf"
+  },
+  "skills": [
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Azure",
+      "level": null
+    },
+    {
+      "skill_name": "Docker Swarm",
+      "level": 0
+    },
+    {
+      "skill_name": "Nginx",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 2
+    },
+    {
+      "skill_name": "Ansible",
+      "level": 2
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "ASP.NET",
+      "level": 0
+    },
+    {
+      "skill_name": "C++",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Nordlicht Cloud Forge",
+      "job": "Senior Cloud Engineer",
+      "date_from": "2025-01-01",
+      "date_to": null,
+      "description": "Lead the platform engineering group responsible for the company's multi-region infrastructure and internal developer tooling. I drive migrations toward self-service provisioning and own the reliability targets for our most critical customer-facing services. Much of my time goes to standardizing how teams deploy and observe their workloads.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Halberstadt Datawerk",
+      "job": "Cloud Platform Engineer",
+      "date_from": "2023-12-01",
+      "date_to": "2025-01-01",
+      "description": "Designed and maintained the shared infrastructure layer that hosted dozens of product teams. I introduced automated provisioning pipelines and tightened cost governance across environments. Worked closely with security to bake compliance checks directly into the delivery flow.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Sturmkern Systems",
+      "job": "Infrastructure Engineer",
+      "date_from": "2022-08-01",
+      "date_to": "2023-11-01",
+      "description": "Operated the production environment for a fast-growing logistics platform and improved its uptime through better failover design. I rebuilt the on-call runbooks and reduced repetitive incident toil with targeted automation. Also led the rollout of a centralized monitoring stack.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Eichhorn Verteilte Technik",
+      "job": "DevOps Engineer",
+      "date_from": "2021-05-01",
+      "date_to": "2022-08-01",
+      "description": "Built continuous delivery pipelines that let product teams ship daily with confidence. I containerized several legacy applications and standardized how they were configured across stages. Spent considerable effort closing gaps between development and operations practices.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Tannberg Rechenzentrum",
+      "job": "Systems Engineer",
+      "date_from": "2019-04-01",
+      "date_to": "2021-05-01",
+      "description": "Managed hybrid infrastructure spanning on-premise hardware and early cloud workloads. I automated routine maintenance tasks and scripted the provisioning of new service nodes. Helped the team plan a phased move of stateful services into managed environments.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Greifwald Netzlabor",
+      "job": "Junior Systems Administrator",
+      "date_from": "2018-01-01",
+      "date_to": "2019-04-01",
+      "description": "Supported the operations team in keeping internal servers and networking healthy. I handled patching cycles, backup verification, and first-line infrastructure troubleshooting. This role gave me the operational grounding that shaped how I think about reliability today.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Rheinau Institute of Applied Computing",
+      "degree": "Bachelor of Science",
+      "location": "Dusseldorf",
+      "programme": "Computer Systems Engineering",
+      "date_from": "2014-01-01",
+      "date_to": "2017-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 3
+    }
+  ],
+  "certificates": [],
+  "projects": []
+}

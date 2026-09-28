@@ -1,0 +1,161 @@
+{
+  "first_name": "Damaris",
+  "last_name": "Kellerman",
+  "date_of_birth": "1992-01-20",
+  "email": "damaris.kellerman@example.com",
+  "phone": "+1 555-0134",
+  "desired_position": "Frontend Developer",
+  "about": null,
+  "job_experience": 7,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Remote"
+  ],
+  "employment_types": [
+    "Contract"
+  ],
+  "employment_durations": [],
+  "hobbies": "Long-distance trail running, restoring vintage synthesizers, and weekend pottery.",
+  "address": {
+    "country_name": "UnitedStates",
+    "region_name": "Austin"
+  },
+  "skills": [
+    {
+      "skill_name": "CSS",
+      "level": 2
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 2
+    },
+    {
+      "skill_name": "React",
+      "level": 0
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "TypeScript",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": 4
+    },
+    {
+      "skill_name": "Html",
+      "level": 4
+    },
+    {
+      "skill_name": "Sql",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Brightloom Interface Labs",
+      "job": "Senior Frontend Developer",
+      "date_from": "2024-05-01",
+      "date_to": null,
+      "description": "I lead frontend architecture for a customer-facing analytics suite, owning the component library and the patterns the rest of the team builds on. A big part of the role is mentoring two mid-level engineers and steering technical reviews so we keep the codebase consistent. I also partner closely with design to make sure what ships actually matches the intent.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Halcyon Pixel Works",
+      "job": "Frontend Engineer",
+      "date_from": "2022-07-01",
+      "date_to": "2024-05-01",
+      "description": "Built and maintained the web client for a subscription commerce product used by tens of thousands of shoppers. I drove a migration off an aging stack onto a modern component model, which cut our build times and made onboarding faster. I owned accessibility work and helped set the team's testing conventions.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Northgate Cascade Systems",
+      "job": "UI Developer",
+      "date_from": "2020-10-01",
+      "date_to": "2022-05-01",
+      "description": "Worked on dashboards and configuration screens for an internal operations platform. My focus was untangling a sprawling state-management layer into something predictable and easy to reason about. I collaborated with backend engineers to redesign the contracts between our services and the client.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Meridian Quill Software",
+      "job": "Junior Frontend Developer",
+      "date_from": "2018-09-01",
+      "date_to": "2020-08-01",
+      "description": "My first software role, building screens for a content management tool and fixing a steady stream of UI defects. I learned how to read a design spec, ask the right clarifying questions, and ship reviewed code on a regular cadence. Over time I took on small features end to end and started reviewing peers' pull requests.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Cascadia Polytechnic University",
+      "degree": "Bachelor of Science",
+      "location": "Portland",
+      "programme": "Human-Computer Interaction",
+      "date_from": "2013-01-01",
+      "date_to": "2017-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Russian",
+      "level": 5
+    },
+    {
+      "language_name": "German",
+      "level": 6
+    },
+    {
+      "language_name": "Spanish",
+      "level": 4
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Shelfwise Storefront Refresh",
+      "summary": "A ground-up rebuild of the storefront experience for a consumer goods retailer, focused on speed and a cleaner browsing flow. I owned the interface work and coordinated tightly with merchandising and support stakeholders to keep everyone aligned. The result was a noticeably faster catalog and far fewer checkout drop-offs.",
+      "used_technologies": [
+        "JavaScript",
+        "Communication"
+      ],
+      "role": "Frontend Developer",
+      "industries": [
+        "Retail - Consumer Goods"
+      ]
+    },
+    {
+      "title": "Tenant Cloud Console",
+      "summary": "A self-service console that lets property managers provision and monitor their cloud-hosted units. I built the frontend that surfaced complex provisioning state in a way non-technical operators could follow. It bridged several backend services behind a single coherent interface.",
+      "used_technologies": [
+        "Traefik",
+        "Xamarin/MAUI",
+        "Rust",
+        "ASP.NET"
+      ],
+      "role": "Frontend Developer",
+      "industries": [
+        "Property Management",
+        "Cloud computing"
+      ]
+    }
+  ]
+}

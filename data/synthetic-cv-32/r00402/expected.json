@@ -1,0 +1,133 @@
+{
+  "first_name": "Hollis",
+  "last_name": "Wexcombe",
+  "date_of_birth": null,
+  "email": "hollis.wexcombe@example.com",
+  "phone": "+1 555-0169",
+  "desired_position": "Security Specialist",
+  "about": "A security specialist focused on hardening systems before attackers find the gaps, with a steady record of leading detection and response efforts. Equally comfortable in a threat-modelling workshop and in the middle of a live incident. Believes good security is mostly good habits made repeatable.",
+  "job_experience": 17,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [
+    "ProjectBased"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedKingdom",
+    "region_name": "Bristol"
+  },
+  "skills": [
+    {
+      "skill_name": "Python",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": 0
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": 4
+    },
+    {
+      "skill_name": "Cyber Security",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "C",
+      "level": null
+    },
+    {
+      "skill_name": "Traefik",
+      "level": 2
+    },
+    {
+      "skill_name": "Blazor",
+      "level": 2
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Ironvale Threat Defense Group",
+      "job": "Lead Security Specialist",
+      "date_from": "2023-05-01",
+      "date_to": "2026-01-01",
+      "description": "Leads a security operations team responsible for detection engineering, incident response, and threat hunting across a global estate. Sets the security baseline and reviews architecture changes for exposure before release. Mentors analysts and runs post-incident reviews that feed back into stronger controls.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Greyhallow Cyber Works",
+      "job": "Senior Security Engineer",
+      "date_from": "2020-03-01",
+      "date_to": "2023-05-01",
+      "description": "Built and tuned detection pipelines and led containment during high-severity incidents. Drove a programme to reduce standing access and enforce least-privilege across critical systems. Partnered with engineering teams to embed security checks into delivery pipelines.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Stonehaven Assurance Lab",
+      "job": "Information Security Analyst",
+      "date_from": "2017-07-01",
+      "date_to": "2020-02-01",
+      "description": "Monitored alerts, investigated suspicious activity, and coordinated remediation with system owners. Conducted vulnerability assessments and tracked findings to closure. Authored internal guidance that raised baseline security awareness across teams.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Mirefield Secure Systems",
+      "job": "Security Operations Analyst",
+      "date_from": "2014-04-01",
+      "date_to": "2017-07-01",
+      "description": "Triaged security events and escalated genuine threats with clear evidence and timelines. Maintained and improved alerting rules to cut down on noise. Supported access reviews and routine control audits.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Thornwick Risk Collective",
+      "job": "Junior Security Analyst",
+      "date_from": "2011-07-01",
+      "date_to": "2014-04-01",
+      "description": "Assisted with log review and basic incident triage under senior supervision. Helped maintain asset inventories and patch-status reporting. Built foundational skills in threat detection and secure configuration.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Ashcombe Network Guard",
+      "job": "IT Security Associate",
+      "date_from": "2009-01-01",
+      "date_to": "2011-06-01",
+      "description": "Supported day-to-day security operations including account provisioning and firewall change reviews. Documented procedures and helped enforce policy compliance. Provided first-line response to reported security concerns.",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Wessex Polytechnic of Computing",
+      "degree": "Bachelor of Science",
+      "location": "Bristol",
+      "programme": "Cyber Security and Networks",
+      "date_from": "2006-01-01",
+      "date_to": "2008-12-31",
+      "country_name": "UnitedKingdom"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": []
+}

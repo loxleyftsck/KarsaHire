@@ -1,0 +1,56 @@
+Ritvars Salenieks
+Senior Networking Specialist
+ritvars.salenieks@example.com · +1 555-0162 · Riga, Latvia
+Summary
+Senior networking specialist with over a decade spent designing, securing, and troubleshooting enterprise networks. I like the discipline of network engineering: clear topologies, tight change windows, and monitoring that tells you about a problem before a user does.
+Experience
+Senior Networking Specialist — Daugava Network Systems
+Dec 2023 - Present
+Riga, Latvia
+Own the design and operation of a multi-site enterprise network, leading segmentation and resilience improvements. Coordinate maintenance windows and vendor work so that critical links stay redundant and observable.
+Network Engineer — Baltic Mesh Communications
+Sep 2021 - Dec 2023
+Jurmala, Latvia
+Maintained core routing and switching for a regional service provider and resolved complex connectivity incidents. Rolled out improved monitoring that caught capacity issues well before they affected customers.
+Network Administrator — Vidzeme Fiber Works
+Nov 2019 - Aug 2021
+Cesis, Latvia
+Administered campus networks and wireless infrastructure for a large organization, handling configuration and access control. Standardized device configurations to make troubleshooting faster and audits cleaner.
+Network Support Engineer — Kurzeme Link Solutions
+Jun 2017 - Sep 2019
+Ventspils, Latvia
+Supported branch-office connectivity and VPN access for distributed teams, responding to outages on call. Documented recurring failure patterns that informed later hardware refresh decisions.
+Junior Network Technician — Gauja Datacom
+May 2016 - Jun 2017
+Valmiera, Latvia
+Installed and configured switches and access points, and assisted senior engineers with cabling and labeling. Built the habit of meticulous documentation that I carried through the rest of my career.
+Network Operations Technician — Amber Route Networks
+Sep 2014 - Apr 2016
+Liepaja, Latvia
+Monitored network health from an operations center and escalated incidents according to defined procedures. Helped tune alert thresholds to cut down on noise without missing real problems.
+Projects
+Connected Insights Platform for Supply Chain Research
+Acted as product owner for an interactive analytics tool that visualized market and logistics data for research teams. Shaped the roadmap and prioritized features so that complex supply-chain signals were presented in a way decision-makers could explore directly.
+Tech: Unity, JavaScript, C++
+Education
+Bachelor of Engineering in Telecommunications and Networking
+2009 - 2013
+Riga Technical College of Communications, Riga, United States
+Professional Diploma in Network Infrastructure Engineering
+2007 - 2009
+Latgale Institute of Information Technology, Rezekne, Latvia
+Vocational Certificate in Computer Network Systems
+2005 - 2007
+Zemgale Polytechnic, Jelgava, Latvia
+Skills
+Microsoft SQL
+Gitlab
+Nginx
+Traefik
+Docker Swarm
+Communication
+Agile Scrum
+.NET 6
+.NET
+Languages
+English (Bilingual), Hebrew (Intermediate)

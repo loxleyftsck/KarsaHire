@@ -1,0 +1,162 @@
+{
+  "first_name": "Leontine",
+  "last_name": "Brammertz",
+  "date_of_birth": null,
+  "email": "leontine.brammertz@example.com",
+  "phone": "+1 555-0129",
+  "desired_position": "Networking Specialist",
+  "about": "Early-career networking specialist who recently moved from coursework into hands-on infrastructure work. I am eager to deepen my skills in routing, switching, and network monitoring while learning from experienced engineers. I care about doing the unglamorous groundwork well so larger systems stay healthy.",
+  "job_experience": 0,
+  "job_expectations": "Looking for a junior networking role with strong mentorship and room to grow into deeper infrastructure responsibilities.",
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "OnSite"
+  ],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [
+    "Temporary"
+  ],
+  "hobbies": "Amateur radio, trail running, and tinkering with home lab setups.",
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Aachen"
+  },
+  "skills": [
+    {
+      "skill_name": "Docker Swarm",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "Nginx",
+      "level": null
+    },
+    {
+      "skill_name": "Python",
+      "level": null
+    },
+    {
+      "skill_name": "Communication",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "Postgresql",
+      "level": 0
+    },
+    {
+      "skill_name": "MySQL",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Swift",
+      "level": 4
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": 0
+    },
+    {
+      "skill_name": "Windows Forms",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Kupferdraht Netzwerke GmbH",
+      "job": "Junior Networking Specialist",
+      "date_from": "2025-07-01",
+      "date_to": null,
+      "description": "Support the operations team in maintaining campus network equipment and tracking connectivity issues. Help document network topology and assist with routine configuration changes under supervision. Monitor alerts and triage incidents before escalating to senior engineers.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Rheinmark University of Technology",
+      "degree": "Bachelor of Science",
+      "location": "Aachen",
+      "programme": "Computer Networks and Communications",
+      "date_from": "2020-01-01",
+      "date_to": "2024-12-31",
+      "country_name": "Germany"
+    },
+    {
+      "name": "Hochtor Polytechnic",
+      "degree": "Associate Diploma",
+      "location": "Bonn",
+      "programme": "Network Infrastructure",
+      "date_from": "2017-01-01",
+      "date_to": "2020-12-31",
+      "country_name": "Germany"
+    },
+    {
+      "name": "Talweg Secondary Technical School",
+      "degree": "Higher Secondary Certificate",
+      "location": "Duren",
+      "programme": "Information Technology",
+      "date_from": "2014-01-01",
+      "date_to": "2017-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 4
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Foundations of Enterprise Networking",
+      "certificate_programme": null,
+      "issuing_date": "2026-04-01",
+      "expiring_date": "2029-04-01"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Warehouse Device Mesh",
+      "summary": "Built a prototype that linked handheld scanners and shelf sensors across a simulated retail warehouse. As networking specialist I designed the segment layout and the lightweight data store behind the device fleet. The companion mobile app let floor staff see equipment status at a glance.",
+      "used_technologies": [
+        "NoSql",
+        "Android Development (Java, Kotlin)",
+        ".NET 7",
+        ".NET",
+        "C++"
+      ],
+      "role": "Networking Specialist",
+      "industries": [
+        "Equipment Manufacturers",
+        "Retail - Consumer Goods"
+      ]
+    },
+    {
+      "title": "Storefront Logistics Tracker",
+      "summary": "Developed a coursework project tracking goods from a distribution hub to e-commerce fulfillment points. Took the networking specialist role, mapping how location updates flowed between nodes reliably. Focused on clear status messaging so non-technical users could follow a shipment's progress.",
+      "used_technologies": [
+        "Communication",
+        "Kotlin"
+      ],
+      "role": "Networking Specialist",
+      "industries": [
+        "Supply Chain Management",
+        "Retail - E-commerce"
+      ]
+    }
+  ]
+}

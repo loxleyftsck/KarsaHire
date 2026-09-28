@@ -1,0 +1,153 @@
+{
+  "first_name": "Annelie",
+  "last_name": "Vorberg",
+  "date_of_birth": "1993-08-06",
+  "email": "annelie.vorberg@example.com",
+  "phone": "+1 555-0144",
+  "desired_position": "Software Tester",
+  "about": "Senior software tester with ten years spent making sure complex systems behave the way users expect them to. I am at my best designing test strategies for messy integrations and coaching developers to think about quality before code is written.",
+  "job_experience": 10,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": true,
+  "work_modes": [],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [],
+  "hobbies": "Open-water swimming, fermenting vegetables, and collecting old maps.",
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Leipzig"
+  },
+  "skills": [
+    {
+      "skill_name": "Java",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": 0
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 0
+    },
+    {
+      "skill_name": "JavaScript",
+      "level": null
+    },
+    {
+      "skill_name": "Docker",
+      "level": 4
+    },
+    {
+      "skill_name": "Communication",
+      "level": 4
+    },
+    {
+      "skill_name": "TypeScript",
+      "level": 0
+    },
+    {
+      "skill_name": "Python",
+      "level": null
+    },
+    {
+      "skill_name": ".NET 7",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Nordlicht Quality Works",
+      "job": "Senior Software Tester",
+      "date_from": "2024-09-01",
+      "date_to": "2026-01-01",
+      "description": "Own the test strategy for a multi-team platform and mentor testers across squads on risk-based planning. I built the shared automation suite that the whole department now relies on for nightly verification.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Sternfeld Software Manufaktur",
+      "job": "Test Lead",
+      "date_from": "2023-05-01",
+      "date_to": "2024-09-01",
+      "description": "Coordinated testing across several parallel feature streams and acted as the bridge between developers and stakeholders on quality questions. I introduced exploratory testing sessions that surfaced defects the scripted runs kept missing.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Oydin Tech Verification Group",
+      "job": "QA Engineer",
+      "date_from": "2021-07-01",
+      "date_to": "2023-03-01",
+      "description": "Set up the first structured test process for a fast-growing product team that had been shipping on gut feeling. I balanced manual exploration with a growing regression suite as the codebase matured.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Blauturm Testlabor",
+      "job": "Software Tester",
+      "date_from": "2019-05-01",
+      "date_to": "2021-07-01",
+      "description": "Validated releases for a regulated product where traceability mattered as much as coverage. I wrote clear, reproducible defect reports that developers actually thanked me for.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Samarqand Digital Solutions",
+      "job": "QA Analyst",
+      "date_from": "2017-12-01",
+      "date_to": "2019-05-01",
+      "description": "Tested web and back-office applications and helped define acceptance criteria with business analysts. This role taught me to read a specification critically and spot the gaps before they reached production.",
+      "country_name": "Uzbekistan"
+    },
+    {
+      "company_name": "Eichengrund Testpartner",
+      "job": "Junior Software Tester",
+      "date_from": "2015-12-01",
+      "date_to": "2017-12-01",
+      "description": "Began my testing career executing manual test plans and learning how a defect travels from discovery to resolution. I quickly took on writing test cases for new modules as the team trusted me with more.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Universitat Wendelstein",
+      "degree": "Master of Science",
+      "location": "Leipzig",
+      "programme": "Software Quality Engineering",
+      "date_from": "2011-01-01",
+      "date_to": "2014-12-31",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "name": "Fachhochschule Talheim",
+      "degree": "Bachelor of Engineering",
+      "location": "Dresden",
+      "programme": "Information Technology",
+      "date_from": "2009-01-01",
+      "date_to": "2011-12-31",
+      "country_name": "Germany"
+    },
+    {
+      "name": "Tashkent Institute of Applied Computing",
+      "degree": "Diploma",
+      "location": "Tashkent",
+      "programme": "Computer Systems",
+      "date_from": "2005-01-01",
+      "date_to": "2009-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 2
+    }
+  ],
+  "certificates": [],
+  "projects": []
+}

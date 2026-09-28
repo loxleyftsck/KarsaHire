@@ -1,0 +1,49 @@
+Gulchehra Yusupova
+Junior Data Scientist
+gulchehra.yusupova@example.com · +1 555-0183 · Tashkent, Uzbekistan
+Skills
+Confluence
+MySQL
+NoSql
+Jira
+Gitlab
+Agile Scrum
+Postgresql
+Docker
+Docker Swarm
+Azure
+Drupal
+Languages
+English (Bilingual), Spanish (C1), Russian (Full Professional), Hebrew (B2)
+Preferences
+Hybrid, Remote · Part-time
+Summary
+Junior data scientist who likes turning messy operational records into clear, decision-ready insight. I enjoy framing business questions as testable models and pairing closely with analysts to validate what the numbers actually mean.
+Experience
+Junior Data Scientist — Silkstream Analytics Collective
+Jul 2025 - Present
+Tashkent, Uzbekistan
+Build and evaluate predictive models for customer behaviour and help the analytics team automate recurring reporting. I prepare cleaned datasets, run experiments, and present findings to non-technical stakeholders in plain language.
+Data Science Intern — Cobalt Harbor Insights
+Jan 2025 - Jul 2025
+Austin, USA
+Supported a small research team on feature engineering and exploratory analysis for early-stage modelling work. I documented data pipelines and contributed reusable notebooks that sped up onboarding for new analysts.
+Projects
+Regional Water Demand Forecasting Platform
+Built a forecasting tool that estimated household and municipal water demand using historical consumption and survey panels, helping a market research team prioritise field studies. The work combined a desktop dashboard with an automated provisioning layer so analysts could refresh forecasts without engineering support.
+Tech: Avalonia, Ansible, Haskell, Postgresql, Swift
+Education
+BSc in Applied Mathematics and Statistics
+2021 - 2024
+Zarafshan Institute of Applied Sciences, Tashkent, Uzbekistan
+Diploma in Data Analytics
+2018 - 2021
+Oxus Valley Polytechnic, Samarkand, Uzbekistan
+Certificates
+Certified Applied Machine Learning Practitioner
+Apr 2026 – Apr 2029
+Predictive Modelling Track
+Statistical Foundations for Data Science
+Apr 2026
+Hobbies
+Long-distance cycling, sketching, and casual chess tournaments.

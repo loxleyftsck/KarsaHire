@@ -1,0 +1,195 @@
+{
+  "first_name": "Bertrand",
+  "last_name": "Castellano",
+  "date_of_birth": null,
+  "email": "bertrand.castellano@example.com",
+  "phone": "+1 555-0116",
+  "desired_position": "Integration Specialist",
+  "about": "Integration specialist with roughly a decade of experience wiring disparate systems together so they behave like one. I enjoy the unglamorous work of mapping fields, taming flaky APIs, and making sure data lands where it should without surprises.",
+  "job_experience": 10,
+  "job_expectations": "Looking for a role where integration work is treated as a first-class engineering problem, with room to standardize patterns rather than fight one-off fires.",
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "OnSite"
+  ],
+  "employment_types": [
+    "PartTime"
+  ],
+  "employment_durations": [
+    "Temporary"
+  ],
+  "hobbies": "Restoring vintage bicycles and long weekend hikes.",
+  "address": {
+    "country_name": "UnitedStates",
+    "region_name": "Austin"
+  },
+  "skills": [
+    {
+      "skill_name": "Postgresql",
+      "level": null
+    },
+    {
+      "skill_name": "C",
+      "level": 4
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": 0
+    },
+    {
+      "skill_name": "MySQL",
+      "level": null
+    },
+    {
+      "skill_name": "Communication",
+      "level": 4
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": ".NET 6",
+      "level": 4
+    },
+    {
+      "skill_name": "Spring",
+      "level": 0
+    },
+    {
+      "skill_name": "Rust",
+      "level": null
+    },
+    {
+      "skill_name": "PHP",
+      "level": null
+    },
+    {
+      "skill_name": "Xamarin/MAUI",
+      "level": null
+    },
+    {
+      "skill_name": "JavaScript",
+      "level": 4
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Brightford Conduit Systems",
+      "job": "Senior Integration Specialist",
+      "date_from": "2023-09-01",
+      "date_to": null,
+      "description": "Own the integration platform connecting our commerce, billing, and fulfillment systems, and set the standards other teams build against. I led a migration off a brittle point-to-point setup toward a documented, event-driven approach that cut failed handoffs dramatically.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Whitmore Lattice Technologies",
+      "job": "Integration Engineer",
+      "date_from": "2021-11-01",
+      "date_to": "2023-09-01",
+      "description": "Delivered partner integrations for a logistics platform, handling everything from auth handshakes to retry and reconciliation logic. I built a shared connector toolkit that turned multi-week onboarding into a few days for each new partner.",
+      "country_name": "UnitedKingdom"
+    },
+    {
+      "company_name": "Cobblepath Interlink Group",
+      "job": "Integration Developer",
+      "date_from": "2020-09-01",
+      "date_to": "2021-10-01",
+      "description": "Built and maintained data-sync flows between internal CRM and finance systems. I introduced contract tests at the integration boundaries, which caught breaking schema changes before they reached production.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Marrowgate Bridgeworks",
+      "job": "Systems Integration Analyst",
+      "date_from": "2018-08-01",
+      "date_to": "2020-09-01",
+      "description": "Coordinated integrations across several legacy services during a platform consolidation. I documented the undocumented interfaces and untangled a handful of circular dependencies that had blocked earlier attempts.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Quillshire Datalink Partners",
+      "job": "Junior Integration Engineer",
+      "date_from": "2016-12-01",
+      "date_to": "2018-06-01",
+      "description": "Supported message-queue and file-based integrations between back-office systems. I owned the monitoring dashboards and gradually reduced the volume of silent failures the team had grown used to.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Aldersgate Signal Works",
+      "job": "Integration Support Engineer",
+      "date_from": "2015-10-01",
+      "date_to": "2016-12-01",
+      "description": "Handled day-to-day support for inbound and outbound data interfaces, triaging failures and coordinating fixes with upstream providers. I built a runbook that let the support rotation resolve common breakages without escalating.",
+      "country_name": "Latvia"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Pennington Strand University",
+      "degree": "Master of Science",
+      "location": "Austin",
+      "programme": "Software Engineering",
+      "date_from": "2012-01-01",
+      "date_to": "2014-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Holloway Crest College",
+      "degree": "Bachelor of Science",
+      "location": "San Antonio",
+      "programme": "Computer Science",
+      "date_from": "2009-01-01",
+      "date_to": "2012-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Westmere Technical Institute",
+      "degree": "Diploma",
+      "location": "El Paso",
+      "programme": "Network Administration",
+      "date_from": "2006-01-01",
+      "date_to": "2009-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Uzbek",
+      "level": 3
+    },
+    {
+      "language_name": "German",
+      "level": 5
+    }
+  ],
+  "certificates": [
+    {
+      "certificate_name": "Certified Integration Professional",
+      "certificate_programme": "Enterprise Connectivity",
+      "issuing_date": "2021-03-01",
+      "expiring_date": null
+    }
+  ],
+  "projects": [
+    {
+      "title": "Unified Provisioning Gateway",
+      "summary": "Built a central integration gateway that orchestrated provisioning across several cloud services for a hosting product. I designed the pipeline so each environment promotion was automated and auditable, and added the messaging layer that decoupled the slow upstream calls.",
+      "used_technologies": [
+        "JavaScript",
+        "CI/CD (Gitlab, Jenkins)",
+        "Kotlin",
+        "Microsoft SQL"
+      ],
+      "role": "Integration Specialist",
+      "industries": [
+        "Cloud computing"
+      ]
+    }
+  ]
+}

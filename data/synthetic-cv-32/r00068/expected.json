@@ -1,0 +1,191 @@
+{
+  "first_name": "Inguna",
+  "last_name": "Briedkalne",
+  "date_of_birth": null,
+  "email": "inguna.briedkalne@example.com",
+  "phone": "+1 555-0136",
+  "desired_position": "Manual QA",
+  "about": "Manual QA with over a decade of experience finding the defects that automated checks miss. I enjoy exploratory testing and building a deep mental model of how a product is actually used, then pushing on the edges. Over the years I have grown into a senior role where I shape test strategy and mentor newer testers.",
+  "job_experience": 11,
+  "job_expectations": null,
+  "min_salary": 108854,
+  "max_salary": 120451,
+  "ready_to_relocation": true,
+  "work_modes": [
+    "OnSite",
+    "Remote"
+  ],
+  "employment_types": [
+    "FullTime"
+  ],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Latvia",
+    "region_name": "Riga"
+  },
+  "skills": [
+    {
+      "skill_name": "TypeScript",
+      "level": 4
+    },
+    {
+      "skill_name": "Docker",
+      "level": null
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": null
+    },
+    {
+      "skill_name": "Confluence",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": 2
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "Agile Scrum",
+      "level": null
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": null
+    },
+    {
+      "skill_name": ".NET",
+      "level": 2
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Saulriets Quality Labs",
+      "job": "Senior Manual QA Engineer",
+      "date_from": "2023-11-01",
+      "date_to": null,
+      "description": "Own the manual test strategy for a complex enterprise product and lead exploratory testing across major releases. Built a structured regression suite that gave the team confidence to ship on a tighter schedule. Mentor junior testers and act as the quality gatekeeper for high-risk features.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Pavasaris Testing House",
+      "job": "Manual QA Lead",
+      "date_from": "2021-11-01",
+      "date_to": "2023-09-01",
+      "description": "Coordinated manual testing across two product teams and standardised how defects were reported and triaged. Introduced session-based exploratory testing that surfaced several severe issues before release. Worked closely with developers to shorten the feedback loop on bug fixes.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Ledus Software Assurance",
+      "job": "Manual QA Engineer",
+      "date_from": "2019-08-01",
+      "date_to": "2021-11-01",
+      "description": "Tested web and desktop applications across many releases, focusing on usability and edge-case behaviour. Wrote clear, reproducible defect reports that developers consistently praised for saving time. Helped define acceptance criteria during planning to head off ambiguity early.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Rudens Digital Quality",
+      "job": "Quality Assurance Specialist",
+      "date_from": "2018-03-01",
+      "date_to": "2019-08-01",
+      "description": "Ran manual test cycles for a logistics product and validated complex data-driven workflows. Built a reusable library of test scenarios that cut the time to prepare each release. Partnered with support to turn recurring customer complaints into targeted test coverage.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Ziema Verification Studio",
+      "job": "Junior QA Tester",
+      "date_from": "2016-09-01",
+      "date_to": "2018-01-01",
+      "description": "Executed test plans and logged defects for a small team building internal business tools. Grew comfortable with exploratory testing and started owning whole feature areas. Learned to write precise reproduction steps that reduced back-and-forth with developers.",
+      "country_name": "Latvia"
+    },
+    {
+      "company_name": "Migla Test Foundry",
+      "job": "QA Trainee",
+      "date_from": "2014-09-01",
+      "date_to": "2016-09-01",
+      "description": "Supported senior testers by running scripted test cases and verifying bug fixes. Built early foundations in defect tracking and structured reporting. Progressed quickly from following test plans to suggesting improvements to them.",
+      "country_name": "Latvia"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Riga College of Software Quality",
+      "degree": "BSc",
+      "location": "Riga",
+      "programme": "Software Engineering",
+      "date_from": "2009-01-01",
+      "date_to": "2013-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Kurzeme Institute of Technology",
+      "degree": "Professional Diploma",
+      "location": "Liepaja",
+      "programme": "Software Testing",
+      "date_from": "2007-01-01",
+      "date_to": "2009-12-31",
+      "country_name": "Latvia"
+    },
+    {
+      "name": "Vidusupe Academy of Computing",
+      "degree": "Foundation Certificate",
+      "location": "Riga",
+      "programme": "Information Technology",
+      "date_from": "2004-01-01",
+      "date_to": "2007-12-31",
+      "country_name": "Latvia"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "German",
+      "level": 3
+    },
+    {
+      "language_name": "Russian",
+      "level": 4
+    }
+  ],
+  "certificates": [],
+  "projects": [
+    {
+      "title": "Heavy Machinery Training Simulator QA",
+      "summary": "Led manual verification for a training simulator used by both a university programme and a heavy-machinery manufacturer. Designed exploratory test charters around realistic operator workflows, uncovering timing defects that scripted tests had missed. The structured reporting helped developers prioritise fixes ahead of a critical demonstration.",
+      "used_technologies": [
+        "MySQL",
+        "C++",
+        "C",
+        "ASP.NET",
+        "Avalonia"
+      ],
+      "role": "Manual QA",
+      "industries": [
+        "Schools and Universities",
+        "Manufacturing - Heavy Machinery"
+      ]
+    },
+    {
+      "title": "Supply Chain Dashboard Validation",
+      "summary": "Owned manual testing for a supply-chain management dashboard handling large volumes of live operational data. Built scenario-based checks that caught subtle calculation errors in the reporting views before they reached customers. Coordinated closely with the development team to verify each fix end to end.",
+      "used_technologies": [
+        "Blazor",
+        "Python",
+        "Jira",
+        "Html"
+      ],
+      "role": "Manual QA",
+      "industries": [
+        "Supply Chain Management"
+      ]
+    }
+  ]
+}

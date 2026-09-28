@@ -1,0 +1,45 @@
+Sanjarbek Yusupbek
+Junior System Administrator
+sanjarbek.yusupbek@example.com · +1 555-0199 · Tashkent, Uzbekistan
+Experience
+Junior System Administrator — Chirchik Systems House
+Jul 2025 - Present
+Tashkent, Uzbekistan
+Support day-to-day infrastructure for a growing services company, handling user accounts, backups, and routine server maintenance. I monitor system health, document recurring fixes into runbooks, and escalate the trickier incidents with clear context. This is my first full-time role and where I am building hands-on operations habits.
+Projects
+Resort Operations Server Backbone
+Set up and maintained the on-premise servers for a hospitality IT solution serving several resort properties. I configured services for reliability, scripted routine maintenance, and kept the booking backend available during peak periods. The hardening work reduced unplanned downtime across the pilot sites.
+Tech: iOS Development (Swift, Objective-C), C, Golang, .NET
+Campus Secure Access Initiative
+Administered systems and access controls for a platform shared by schools and law offices, with a strong focus on data protection. I tightened authentication policies, segmented sensitive data stores, and ran regular integrity checks. The improvements closed several gaps flagged in an internal review.
+Tech: .NET, Microsoft SQL, NoSql, Cyber Security
+DevPortal Hosting Environment
+Maintained the hosting environment for an internal developer portal used by a software team and a property group. I managed the database layer and web services, automating restarts and routine health checks. My monitoring setup caught capacity issues before they reached users.
+Tech: Postgresql, JavaScript, React
+Education
+Bachelor of Science in Computer Engineering
+2020 - 2024
+Zarafshan Polytechnic Institute, Tashkent, Latvia
+Diploma in Network Administration
+2017 - 2020
+Oqtosh Technical College, Samarkand, Uzbekistan
+Skills
+Confluence
+Sql
+Communication
+Linux
+Python
+Ansible
+Microsoft SQL
+Perl
+Postgresql
+Languages
+English (Fluent)
+Certificates
+Foundations of System Administration
+Aug 2025
+Infrastructure Operations Track
+Network Security Essentials
+Oct 2025
+Preferences
+Hybrid · Contract

@@ -1,0 +1,48 @@
+Hollis Wexcombe
+Lead Security Specialist
+hollis.wexcombe@example.com · +1 555-0169 · Bristol, England
+Summary
+A security specialist focused on hardening systems before attackers find the gaps, with a steady record of leading detection and response efforts. Equally comfortable in a threat-modelling workshop and in the middle of a live incident. Believes good security is mostly good habits made repeatable.
+Experience
+Lead Security Specialist — Ironvale Threat Defense Group
+May 2023 - Jan 2026
+Austin, USA
+Leads a security operations team responsible for detection engineering, incident response, and threat hunting across a global estate. Sets the security baseline and reviews architecture changes for exposure before release. Mentors analysts and runs post-incident reviews that feed back into stronger controls.
+Senior Security Engineer — Greyhallow Cyber Works
+Mar 2020 - May 2023
+London, UK
+Built and tuned detection pipelines and led containment during high-severity incidents. Drove a programme to reduce standing access and enforce least-privilege across critical systems. Partnered with engineering teams to embed security checks into delivery pipelines.
+Information Security Analyst — Stonehaven Assurance Lab
+Jul 2017 - Feb 2020
+Bristol, England
+Monitored alerts, investigated suspicious activity, and coordinated remediation with system owners. Conducted vulnerability assessments and tracked findings to closure. Authored internal guidance that raised baseline security awareness across teams.
+Security Operations Analyst — Mirefield Secure Systems
+Apr 2014 - Jul 2017
+Manchester, UK
+Triaged security events and escalated genuine threats with clear evidence and timelines. Maintained and improved alerting rules to cut down on noise. Supported access reviews and routine control audits.
+Junior Security Analyst — Thornwick Risk Collective
+Jul 2011 - Apr 2014
+Leeds, United Kingdom
+Assisted with log review and basic incident triage under senior supervision. Helped maintain asset inventories and patch-status reporting. Built foundational skills in threat detection and secure configuration.
+IT Security Associate — Ashcombe Network Guard
+Jan 2009 - Jun 2011
+Glasgow, United Kingdom
+Supported day-to-day security operations including account provisioning and firewall change reviews. Documented procedures and helped enforce policy compliance. Provided first-line response to reported security concerns.
+Education
+Bachelor of Science in Cyber Security and Networks
+2006 - 2008
+Wessex Polytechnic of Computing, Bristol, England
+Skills
+Python
+Linux
+Communication
+Jira
+Cyber Security
+Confluence
+C
+Traefik
+Blazor
+Languages
+English (Bilingual)
+Preferences
+Full-time · Project-based

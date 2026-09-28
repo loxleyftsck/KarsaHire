@@ -1,0 +1,56 @@
+Dietmar Kellinghaus
+Lead Quality Assurance (QA) Engineer
+dietmar.kellinghaus@example.com · +1 555-0165 · Dortmund, Germany
+Summary
+Lead QA engineer with more than two decades of hands-on testing across enterprise platforms and distributed teams. I specialize in building durable test strategies, coaching junior testers, and turning flaky pipelines into trustworthy quality gates. I care most about shipping software that behaves the same in production as it did in review.
+Experience
+Lead Quality Assurance Engineer — Hollerbach & Strane Systems
+Jan 2022 - Jan 2026
+Dortmund, Germany
+Owned the end-to-end quality strategy for a multi-tenant billing platform and led a team of nine testers. Introduced risk-based test planning that cut escaped defects significantly and stabilized a previously brittle release pipeline. Mentored engineers on exploratory testing and defect triage.
+Senior QA Engineer — Marblefield Digital Works
+Aug 2018 - Nov 2021
+Tashkent, Uzbekistan
+Coordinated cross-border testing efforts between regional offices and the core product team. Designed regression suites for a logistics tracking product and reviewed automation coverage before each milestone. Acted as the quality liaison for stakeholder demos.
+QA Analyst — Quillward Software Collective
+Apr 2015 - Aug 2018
+Samarkand, Uzbekistan
+Validated complex workflows for an order-management product spanning several user roles. Built reusable test data sets and documented edge cases that fed directly into the developer handbook. Partnered closely with support to reproduce field-reported issues.
+Test Engineer — Brennholt Technical Group
+May 2011 - Mar 2015
+Cologne, Germany
+Executed functional and integration testing for a document-processing suite used by large clients. Helped establish the first formal bug lifecycle and severity rubric for the team. Reduced re-test cycles by clarifying acceptance criteria with product owners.
+Software Tester — Vesperline Interactive
+Jun 2007 - Mar 2011
+Hamburg, Germany
+Performed manual verification of release candidates for a consumer scheduling application. Tracked defects through resolution and verified fixes against original reproduction steps. Contributed checklists that shortened onboarding for new testers.
+Junior QA Tester — Aldermoor Computing Bureau
+Aug 2004 - Jun 2007
+Essen, Germany
+Supported senior testers in validating desktop utilities and recording reproducible defect reports. Learned structured test-case authoring and basic smoke-testing routines. Maintained the shared archive of test evidence and screenshots.
+Projects
+Portfolio Risk Analytics Rollout
+Acted as business analyst for a phased deployment of a portfolio risk reporting tool at an investment firm. Translated trader and compliance requirements into clear acceptance criteria and validated automated provisioning of the reporting environment. Bridged the gap between operations staff and the engineering team to keep the rollout on schedule.
+Tech: Ansible, Laravel
+Education
+Diploma in Software Engineering
+2001 - 2003
+Rheinwald Polytechnic Institute, Bochum, Germany
+Skills
+TypeScript
+Linux
+Docker
+CI/CD (Gitlab, Jenkins)
+Confluence
+Jira
+Python
+JavaScript
+Rust
+Java
+PHP
+Languages
+English (Native), Uzbek (Intermediate), Russian (Native)
+Preferences
+On-site, Hybrid
+Hobbies
+Restoring vintage radios and competitive orienteering on weekends.

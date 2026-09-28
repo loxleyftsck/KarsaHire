@@ -1,0 +1,127 @@
+{
+  "first_name": "Wieland",
+  "last_name": "Stahlberg",
+  "date_of_birth": null,
+  "email": "wieland.stahlberg@example.com",
+  "phone": "+1 555-0125",
+  "desired_position": "System Administrator",
+  "about": "Senior system administrator with nearly a decade of hands-on experience keeping mixed on-premise and cloud environments stable, secure, and audited. I enjoy untangling brittle legacy infrastructure and replacing it with documented, automated, repeatable processes that the whole team can trust.",
+  "job_experience": 9,
+  "job_expectations": null,
+  "min_salary": null,
+  "max_salary": null,
+  "ready_to_relocation": false,
+  "work_modes": [
+    "Remote"
+  ],
+  "employment_types": [],
+  "employment_durations": [],
+  "hobbies": null,
+  "address": {
+    "country_name": "Germany",
+    "region_name": "Dresden"
+  },
+  "skills": [
+    {
+      "skill_name": "Ansible",
+      "level": null
+    },
+    {
+      "skill_name": "Jira",
+      "level": null
+    },
+    {
+      "skill_name": "Linux",
+      "level": null
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": 2
+    },
+    {
+      "skill_name": "NoSql",
+      "level": 4
+    },
+    {
+      "skill_name": "Azure",
+      "level": null
+    },
+    {
+      "skill_name": "Traefik",
+      "level": 4
+    },
+    {
+      "skill_name": "Gitlab",
+      "level": 0
+    },
+    {
+      "skill_name": "C#",
+      "level": 4
+    },
+    {
+      "skill_name": "Microsoft SQL",
+      "level": 2
+    },
+    {
+      "skill_name": "Scala",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Falkenried Datendienste",
+      "job": "Senior System Administrator",
+      "date_from": "2024-02-01",
+      "date_to": "2026-01-01",
+      "description": "Owned the operational health of a multi-site server estate, leading patch cycles, backup verification, and incident response for business-critical services. Mentored two junior administrators and introduced a change-control process that sharply reduced unplanned outages.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Nordwind Hosting Werke",
+      "job": "System Administrator",
+      "date_from": "2021-08-01",
+      "date_to": "2024-02-01",
+      "description": "Maintained virtualization hosts and storage clusters for a managed-hosting customer base, handling capacity planning and after-hours escalations. Automated routine provisioning so that new customer environments could be stood up in hours rather than days.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Habichtsberg IT-Systeme",
+      "job": "Infrastructure Administrator",
+      "date_from": "2019-04-01",
+      "date_to": "2021-06-01",
+      "description": "Administered directory services, mail, and file infrastructure for an organization of several hundred users. Drove a migration off aging hardware while keeping downtime within tight maintenance windows.",
+      "country_name": "Germany"
+    },
+    {
+      "company_name": "Tannensee Rechenzentrum",
+      "job": "Junior System Administrator",
+      "date_from": "2016-12-01",
+      "date_to": "2019-02-01",
+      "description": "Supported daily operations of a regional data center, monitoring systems and responding to first-line infrastructure tickets. Documented recurring fixes into a shared knowledge base that became the team's go-to reference.",
+      "country_name": "Germany"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Saxon Polytechnic of Applied Informatics",
+      "degree": "Bachelor of Science",
+      "location": "Dresden",
+      "programme": "Network and Systems Administration",
+      "date_from": "2013-01-01",
+      "date_to": "2015-12-31",
+      "country_name": "Germany"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    },
+    {
+      "language_name": "Russian",
+      "level": 5
+    }
+  ],
+  "certificates": [],
+  "projects": []
+}

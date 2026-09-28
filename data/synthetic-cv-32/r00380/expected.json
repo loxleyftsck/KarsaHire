@@ -1,0 +1,116 @@
+{
+  "first_name": "Jaylen",
+  "last_name": "Whitcombe",
+  "date_of_birth": null,
+  "email": "jaylen.whitcombe@example.com",
+  "phone": "+1 555-0174",
+  "desired_position": "Mobile Developer(IOS/Android)",
+  "about": "Junior mobile developer with a couple of years of hands-on experience shipping consumer-facing iOS and Android apps. I enjoy turning rough product ideas into clean, responsive interfaces and learning from senior engineers on every release. I care about smooth user experiences and writing code that is easy for the next person to pick up.",
+  "job_experience": 2,
+  "job_expectations": null,
+  "min_salary": 43334,
+  "max_salary": 56839,
+  "ready_to_relocation": false,
+  "work_modes": [],
+  "employment_types": [],
+  "employment_durations": [
+    "Permanent"
+  ],
+  "hobbies": null,
+  "address": {
+    "country_name": "UnitedStates",
+    "region_name": "Columbus"
+  },
+  "skills": [
+    {
+      "skill_name": "Gitlab",
+      "level": 2
+    },
+    {
+      "skill_name": "Android Development (Java, Kotlin)",
+      "level": 0
+    },
+    {
+      "skill_name": "Avalonia",
+      "level": 4
+    },
+    {
+      "skill_name": "Kotlin",
+      "level": null
+    },
+    {
+      "skill_name": "Xamarin/MAUI",
+      "level": 2
+    },
+    {
+      "skill_name": "CI/CD (Gitlab, Jenkins)",
+      "level": null
+    },
+    {
+      "skill_name": "iOS Development (Swift, Objective-C)",
+      "level": null
+    },
+    {
+      "skill_name": "Flutter",
+      "level": null
+    },
+    {
+      "skill_name": "Cyber Security",
+      "level": 4
+    },
+    {
+      "skill_name": "Spring",
+      "level": 2
+    },
+    {
+      "skill_name": "MySQL",
+      "level": null
+    }
+  ],
+  "experiences": [
+    {
+      "company_name": "Brightloom Mobile Studio",
+      "job": "Junior Mobile Developer",
+      "date_from": "2024-10-01",
+      "date_to": "2026-01-01",
+      "description": "Built and maintained features for a cross-platform consumer app used by a growing user base. Worked alongside designers to translate mockups into polished screens and fixed defects reported through the support queue. Took part in code reviews and gradually owned small modules end to end.",
+      "country_name": "UnitedStates"
+    },
+    {
+      "company_name": "Riverbend App Collective",
+      "job": "Associate Mobile Engineer",
+      "date_from": "2024-01-01",
+      "date_to": "2024-10-01",
+      "description": "Contributed to the early-stage release of a lifestyle application, focusing on navigation flows and offline behavior. Paired regularly with a senior developer to learn release processes and store submission steps. Helped triage crash reports and improve overall app stability before launch.",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "educations": [
+    {
+      "name": "Hollistone Institute of Technology",
+      "degree": "Bachelor of Science",
+      "location": "Columbus",
+      "programme": "Computer Science",
+      "date_from": "2019-01-01",
+      "date_to": "2023-12-31",
+      "country_name": "UnitedStates"
+    },
+    {
+      "name": "Maple Crossing Community College",
+      "degree": "Associate Degree",
+      "location": "Dayton",
+      "programme": "Software Development",
+      "date_from": "2015-01-01",
+      "date_to": "2019-12-31",
+      "country_name": "UnitedStates"
+    }
+  ],
+  "languages": [
+    {
+      "language_name": "English",
+      "level": 6
+    }
+  ],
+  "certificates": [],
+  "projects": []
+}

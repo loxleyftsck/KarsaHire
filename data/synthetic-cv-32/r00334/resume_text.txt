@@ -1,0 +1,63 @@
+Sukhrob Tursunqulov
+Senior Networking Specialist
+sukhrob.tursunqulov@example.com · +1 555-0110 · Tashkent, Uzbekistan
+Summary
+Senior Networking Specialist with over a decade of experience designing, securing, and operating enterprise networks. I have led infrastructure across telecom, banking, and logistics environments, from core routing to campus wireless. I take pride in building resilient networks that stay quiet under pressure.
+Experience
+Senior Networking Specialist — Chirchiq Network Systems
+Aug 2023 - Present
+Tashkent, Uzbekistan
+Lead the design and operation of the core network for a national logistics provider. I oversee capacity planning, segmentation, and incident response across multiple sites. I also mentor a small team of network engineers and set our operational standards.
+Network Infrastructure Engineer — Amudarya Telecom Solutions
+Apr 2021 - Aug 2023
+Samarkand, Uzbekistan
+Managed the regional backbone and access layer for a growing telecom operator. I led a migration to a more resilient routing design that cut major outages significantly. I worked closely with the security team on hardening edge devices.
+Network Engineer — Sirdaryo Data Networks
+Dec 2018 - Apr 2021
+Tashkent, Uzbekistan
+Operated and expanded the network for a data centre serving financial clients. I handled switching, firewall policy, and monitoring across a high-availability environment. I introduced structured change management that reduced configuration errors.
+Systems and Network Administrator — Zomin Communications Group
+Sep 2016 - Dec 2018
+Bukhara, Uzbekistan
+Maintained the combined server and network estate for a mid-sized services company. I rebuilt the campus wireless and tightened access controls across the site. The role gave me broad exposure to both infrastructure and security work.
+Network Support Engineer — Nurota IT Services
+Jul 2015 - Sep 2016
+Tashkent, Uzbekistan
+Provided second-line support for client networks across several industries. I diagnosed connectivity and performance issues and documented recurring fixes. I also assisted with small office deployments and cabling projects.
+Junior Network Technician — Angren Tech Collective
+Mar 2014 - Jul 2015
+Angren, Uzbekistan
+Started my career supporting routers, switches, and end-user connectivity. I learned to read and trace network configurations and resolve common faults. The position built my foundation in everyday network operations.
+Education
+Master of Science in Telecommunications Engineering
+2011 - 2013
+Tashkent Institute of Communications Technology, Tashkent, Latvia
+Bachelor of Science in Computer Networks
+2009 - 2011
+Fergana Technical University, Fergana, Uzbekistan
+Diploma in Information Technology
+2007 - 2009
+Navoi Polytechnic College, Navoi, US
+Skills
+Postgresql
+Ansible
+Sql
+Docker Swarm
+Nginx
+CI/CD (Gitlab, Jenkins)
+NoSql
+Communication
+Scala
+C++
+Languages
+English (Native)
+Certificates
+Advanced Enterprise Routing Specialist
+Mar 2021 – Mar 2024
+Network Infrastructure Track
+Network Security Operations Professional
+Oct 2019 – Oct 2022
+Preferences
+Hybrid, On-site · Contract
+Hobbies
+Mountain trekking, ham radio, and tinkering with home lab hardware.

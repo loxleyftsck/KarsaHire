@@ -1,0 +1,53 @@
+Ravshan Tokhtaev
+Junior System Administrator
+ravshan.tokhtaev@example.com · +1 555-0194 · Tashkent, Uzbekistan · DOB: 12 Jan 1998
+Experience
+Junior System Administrator — Lindenwave Hosting GmbH
+Jul 2025 - Present
+Munich, Germany
+Assist the operations team with server provisioning, account management, and routine monitoring of internal services. Handle first-line tickets, document recurring fixes, and help keep backup and patch routines running on schedule.
+Projects
+Course Logistics Scheduler
+Built a scheduling tool that coordinated training sessions, instructors, and equipment deliveries for a vocational learning center. As project manager I organized the small build team, set milestones, and made sure the logistics side stayed in sync with the training calendar.
+Tech: Flutter, MySQL, C, Ansible
+Clinic Helpdesk Companion
+Developed a lightweight internal support tool to track maintenance requests across several small clinics. Acting as system administrator, I set up the hosting environment, managed access for staff, and kept the service patched and backed up.
+Tech: Ruby, Haskell
+Lab Sample Tracking Portal
+Created a portal for biotech lab staff to register and trace sample batches through processing stages. I administered the database and mobile access layer, configured user roles, and kept the issue board organized so fixes shipped predictably.
+Tech: Microsoft SQL, Blazor, Android Development (Java, Kotlin), Kotlin, Jira
+Education
+Bachelor of Science in Computer Systems and Networks
+2020 - 2024
+Tashkent Institute of Applied Informatics, Tashkent, England
+Secondary Vocational Diploma in Information Technologies
+2017 - 2020
+Samarkand Technical Lyceum, Samarkand, Uzbekistan
+Diploma of Higher Education in Network Administration
+2015 - 2017
+Chirchik Polytechnic College, Chirchik, Uzbekistan
+Skills
+MySQL
+Docker Swarm
+Nginx
+Linux
+Traefik
+Golang
+Ansible
+Microsoft SQL
+WCF
+Sql
+Languages
+English (Native), Spanish (B1), Hebrew (B2)
+Certificates
+Foundations of Server Administration
+Nov 2025 – Nov 2028
+Infrastructure Operations Track
+Network Fundamentals Practitioner
+Apr 2026
+Preferences
+On-site, Hybrid · Project-based
+Looking for
+Seeking an entry-level system administrator position where I can support real infrastructure while continuing to learn automation and on-call practices.
+Hobbies
+Astronomy, long-distance running, and building small home-lab servers.
