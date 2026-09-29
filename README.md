@@ -19,6 +19,19 @@ The repository includes a 32-record synthetic test corpus in `data/synthetic-cv-
 
 The local SQLite database and any OCR credentials are excluded from Git. A fresh checkout starts with an empty local database; run the app to create it.
 
+## Database
+
+KarsaHire uses SQLite at `data/copilot.sqlite3`. On startup, the server applies the canonical schema in [`database/schema.sql`](database/schema.sql), creating missing tables and indexes without replacing existing records. The database file is local-only and excluded from Git.
+
+| Table | Purpose |
+|---|---|
+| `jobs` | Requisitions, descriptions, criteria, and approval status |
+| `approvals` | Recruiter and hiring-manager approvals for each requisition |
+| `candidates` | Parsed profile summary, ranking score, and review status |
+| `evidence` | Per-criterion match result, confidence, and CV snippet |
+| `reviews` | Human reviewer decision and note |
+| `audit_events` | Append-style record of workflow actions |
+
 ## Enable the internal OCR API
 
 Before starting the server, provide the API key through `RECRUITMENT_COPILOT_OCR_API_KEY` and the OpenAI-compatible base URL through `RECRUITMENT_COPILOT_OCR_API_URL` in the current process environment or an approved secret manager. Do not put credentials or internal service URLs in source files, command history, or the SQLite database. The model defaults to `ocr-lighton` and can be changed with `RECRUITMENT_COPILOT_OCR_MODEL`.
