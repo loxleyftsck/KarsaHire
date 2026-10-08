@@ -4,6 +4,8 @@ KarsaHire is a local portfolio prototype for collaborative hiring teams. It help
 
 ## Run locally
 
+Continuing development in Antigravity or on another PC? Start with the [Antigravity handoff](ANTIGRAVITY_HANDOFF.md) for the current roadmap, verification limits, and next work.
+
 Requires Python 3.10+. Parser dependencies and their runtime transitive dependencies are pinned in `requirements.txt`; upgrade those pins together and rerun the synthetic smoke suite before staging. From PowerShell, create an isolated project environment, install dependencies, and start the app:
 
 ```powershell
