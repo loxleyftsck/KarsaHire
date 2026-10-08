@@ -1,0 +1,38 @@
+{
+  "status": "local_preflight_passed",
+  "production_ready": false,
+  "network_mode": "external_requests_not_made_by_preflight; smoke_checks_use_loopback",
+  "host_network_isolation_enforced": false,
+  "python_version": "3.12.14",
+  "venv": "C:\\Users\\heraldmichain.intern\\Documents\\CV-AI\\.venv",
+  "dependency_versions": {
+    "pypdf": "6.19.0",
+    "python-docx": "1.2.0",
+    "Pillow": "12.3.0",
+    "lxml": "6.1.3",
+    "typing-extensions": "4.16.0"
+  },
+  "requirements_sha256": "183ca06d4d2f0d76e56e3f94e6d0babd7d1fcf0fc7db703672b033e108845ed7",
+  "m2_dataset_manifest_sha256": "21916b5cd34e3a29a8e411c5a990d85a555d8cddb032950f3e8898de54a6fb86",
+  "m2_dataset_snapshot_sha256": "ccdcc7def2da8fedf37ecc58080b96391cbcaa38b542a117dc58f1d225c502d3",
+  "m2_synthetic_fixture_profile": {
+    "samples_with_expected_labels": 32,
+    "missing_given_names": 0,
+    "duplicate_given_name_groups": 0,
+    "samples_with_phone_labels": 32,
+    "missing_phone_labels": 0,
+    "phone_format_masks": 1
+  },
+  "pipeline_version": "local-163cb9f352f87d967f26ba6129440b1ccc1746c880d4a49d0f9c8ebe4b",
+  "m2_format_text_matches": {
+    "txt": 32,
+    "docx": 32,
+    "text_pdf": 32
+  },
+  "m2_samples_processed": 32,
+  "m2_ocr_preflight_requests_sent": 0,
+  "limitations": [
+    "This checks only the local synthetic prototype and does not deploy or certify production readiness.",
+    "M0 scope/approvals, SSO/RBAC, authorized adjudicated data, staging, managed services, and operational owners remain required."
+  ]
+}

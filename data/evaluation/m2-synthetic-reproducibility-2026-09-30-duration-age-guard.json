@@ -1,0 +1,108 @@
+{
+  "run_date": "2026-09-30",
+  "run_timestamp_utc": "2026-09-30T06:40:51+00:00",
+  "dataset": "synthetic-cv-32",
+  "base_revision": "d191aaa2838c5570dab8b862023b405a941d5b77",
+  "working_tree_state": "modified",
+  "network_mode": "disabled",
+  "python_version": "3.12.14",
+  "pipeline_version": "local-67f2a44c3e8e4ed513b1574b34b5675cf78a1be557805d61a22e66f1d7",
+  "dependency_versions": {
+    "pypdf": "6.19.0",
+    "python-docx": "1.2.0",
+    "Pillow": "12.3.0",
+    "lxml": "6.1.3",
+    "typing-extensions": "4.16.0"
+  },
+  "requirements_sha256": "183ca06d4d2f0d76e56e3f94e6d0babd7d1fcf0fc7db703672b033e108845ed7",
+  "report_builder_sha256": "8e4b69ed460c7dde9e1fd751c566f47e186439759bf338aab7c285dbf2ac2ecd",
+  "dataset_manifest_sha256": "21916b5cd34e3a29a8e411c5a990d85a555d8cddb032950f3e8898de54a6fb86",
+  "evaluations": {
+    "text_label_overlap": {
+      "samples_processed": 32,
+      "matched_predictions": 134,
+      "predictions_without_matching_reference_label": 95,
+      "available_reference_labels_without_prediction": 0,
+      "unsupported_reference_label_count": 196,
+      "strict_precision_if_unmatched_labels_are_errors": 0.5852,
+      "recall_against_available_in_vocabulary_labels": 1.0,
+      "f1_if_unmatched_labels_are_errors": 0.7383,
+      "dataset_content_sha256": "91f0bf582e31f480965eb15f29a06331b4c4a8661ae4142253d195b4853607cc",
+      "evaluator_sha256": "583bc7595c6541a70121a6160916d9049ac5df299888cf5ae19a4fe4f8eec0b0",
+      "interpretation": "Strict label overlap only. Predictions without a matching reference label are not verified errors; review source text and label completeness before calling them false positives. Recall covers only available in-vocabulary reference labels."
+    },
+    "experience_duration_mention_coverage": {
+      "samples_with_reference_years_metadata": 32,
+      "samples_with_explicit_duration_phrase": 11,
+      "samples_without_explicit_duration_phrase": 21,
+      "coverage": 0.3438,
+      "note": "Metadata years_experience describes career duration; it is not ground truth for an explicit phrase extractor."
+    },
+    "format_round_trip": {
+      "samples_processed": 32,
+      "dataset_content_sha256": "eed3ebede350642a01217d396fde993cf51c62c7776c4a5cb83446bf015ceb24",
+      "evaluator_sha256": "cbc778fbc3fb127dfdc70de99b8a82a47e1a1f6e42bdc6af34919e222ece8ed9",
+      "txt": {
+        "text_match_count": 32,
+        "profile_match_count": 32
+      },
+      "docx": {
+        "text_match_count": 32,
+        "profile_match_count": 32
+      },
+      "text_pdf": {
+        "text_match_count": 32,
+        "profile_match_count": 32
+      },
+      "pdf_ascii_punctuation_probe": {
+        "matched": true
+      },
+      "docx_table_order_probe": {
+        "text_order_matched": true,
+        "profile_matched": true
+      },
+      "pdf_page_attribution_probe": {
+        "expected_pages": 2,
+        "matched": true
+      },
+      "limitations": [
+        "The DOCX and text PDF files are generated directly from the same synthetic text references; this measures parser round-trip consistency, not independent document accuracy.",
+        "A separate synthetic DOCX probe checks paragraph/table block order and row-wise two-column flattening; it is not a representative sample of independently authored multi-column CVs.",
+        "The generated text PDF is a simple single-column fixture with wrapped lines, not an independently authored CV layout.",
+        "The text PDF uses a printable-ASCII projection; non-ASCII/control characters are replaced with spaces and whitespace is collapsed.",
+        "It does not evaluate scanned-PDF OCR, visual layout, languages outside the English synthetic corpus, or hiring quality/fairness.",
+        "No candidate text or profile values are printed or persisted; output contains aggregate counts, synthetic sample IDs, and reproducibility fingerprints."
+      ]
+    },
+    "scanned_pdf_preflight": {
+      "pdfs_expected": 32,
+      "pdfs_read": 32,
+      "pages_read": 60,
+      "pages_with_extractable_text": 0,
+      "pages_without_extractable_text": 60,
+      "ocr_required_for_textless_pages": true,
+      "network_mode": "disabled"
+    },
+    "ocr_preflight": {
+      "sample_id": "r00003",
+      "ocr_model": "ocr-lighton",
+      "sample_pdf_sha256": "49a872726708274653d5d51455d59c376d64895245c67cf8e339f1a46edc5dfc",
+      "reference_text_sha256": "12f8067f79583c900ab90ddc5e0dedba9f51f3a4ff31cf9750d8734c2da3d099",
+      "evaluator_sha256": "c9ba3fa30f49d2f1d75dc17fd3a0783a9fed9f2688da6ae0c8d302df8468c794",
+      "pdf_pages": 2,
+      "ocr_images_planned": 2,
+      "ocr_requests_sent": 0,
+      "network_mode": "disabled",
+      "status": "preflight_only",
+      "pipeline_version": "local-67f2a44c3e8e4ed513b1574b34b5675cf78a1be557805d61a22e66f1d7"
+    }
+  },
+  "limits": [
+    "The bundled corpus is synthetic, English-language, and IT-focused; it does not define the still-TBD M0 pilot language or job family.",
+    "Source labels may be incomplete; strict overlap counts are not verified false-positive rates.",
+    "Text/PDF/DOCX round-trip tests use controlled transformations from the same source text, not independently authored documents.",
+    "No independently reviewed/adjudicated sample was supplied, so human agreement and parser-vs-adjudication metrics remain unavailable.",
+    "Results do not establish real-CV accuracy, fairness, or production readiness."
+  ],
+  "privacy": "Aggregate counts and fingerprints only; no CV text, candidate profiles, or OCR payloads are included."
+}

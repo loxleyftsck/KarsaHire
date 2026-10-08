@@ -1,0 +1,162 @@
+{
+  "run_timestamp_utc": "2026-09-30T06:18:02+00:00",
+  "dataset": "synthetic-cv-32",
+  "network_mode": "disabled_local_windows_ocr",
+  "ocr_engine": "Windows.Media.Ocr",
+  "ocr_language": "en-US",
+  "ocr_engine_os_build": "10.0.26200",
+  "ocr_model_fingerprint": null,
+  "pipeline_version": "local-ce5ab0a3068761f1f4bf6e968c9cb8e23399d2057c6cbe201a2d1232f3",
+  "requirements_sha256": "183ca06d4d2f0d76e56e3f94e6d0babd7d1fcf0fc7db703672b033e108845ed7",
+  "dependency_versions": {
+    "pypdf": "6.19.0",
+    "python-docx": "1.2.0",
+    "Pillow": "12.3.0",
+    "lxml": "6.1.3",
+    "typing-extensions": "4.16.0"
+  },
+  "runner_sha256": "b3e8f2f8022535b5a74f7505b5282f15236190b1b19a863e8199c95099571551",
+  "ocr_bridge_sha256": "02de9e28b244705ed69e65741c0ed20fdb736b64fc93577b4d630d17c1022ae9",
+  "samples_attempted": 4,
+  "samples_processed": 4,
+  "samples_failed": 0,
+  "total_ocr_images": 8,
+  "status": "complete",
+  "aggregates": {
+    "original": {
+      "word_edits": 402,
+      "reference_word_count": 1957,
+      "ocr_word_count": 1951,
+      "micro_word_error_rate": 0.2054
+    },
+    "gray_autocontrast": {
+      "word_edits": 410,
+      "reference_word_count": 1957,
+      "ocr_word_count": 1952,
+      "micro_word_error_rate": 0.2095
+    },
+    "upscale_1p5_autocontrast": {
+      "word_edits": 448,
+      "reference_word_count": 1957,
+      "ocr_word_count": 1954,
+      "micro_word_error_rate": 0.2289
+    }
+  },
+  "per_sample_aggregate": [
+    {
+      "sample_id": "r00196",
+      "sample_pdf_sha256": "d25b0a9d29044afb813da9fb3c61ff5365593090323e6fed2541745b6033cf02",
+      "reference_text_sha256": "e6f8b3830d6953c5c840e4c73a49d5ac8423866af49c5abd9c32418cfd2a7a24",
+      "pdf_pages": 2,
+      "ocr_images_processed": 2,
+      "variants": {
+        "original": {
+          "word_edits": 193,
+          "reference_word_count": 484,
+          "ocr_word_count": 481,
+          "word_error_rate": 0.3988
+        },
+        "gray_autocontrast": {
+          "word_edits": 194,
+          "reference_word_count": 484,
+          "ocr_word_count": 482,
+          "word_error_rate": 0.4008
+        },
+        "upscale_1p5_autocontrast": {
+          "word_edits": 182,
+          "reference_word_count": 484,
+          "ocr_word_count": 482,
+          "word_error_rate": 0.376
+        }
+      }
+    },
+    {
+      "sample_id": "r00169",
+      "sample_pdf_sha256": "89ee1fb0e5af16c3f05921d9f21da658c8d3bd8d9dc44fa935ccd9236bf14a8e",
+      "reference_text_sha256": "6bdae9923a3d11b626319b9619eb30f6acd031be1fc0c782f6a8c7d855d5ddc6",
+      "pdf_pages": 2,
+      "ocr_images_processed": 2,
+      "variants": {
+        "original": {
+          "word_edits": 100,
+          "reference_word_count": 474,
+          "ocr_word_count": 471,
+          "word_error_rate": 0.211
+        },
+        "gray_autocontrast": {
+          "word_edits": 108,
+          "reference_word_count": 474,
+          "ocr_word_count": 471,
+          "word_error_rate": 0.2278
+        },
+        "upscale_1p5_autocontrast": {
+          "word_edits": 104,
+          "reference_word_count": 474,
+          "ocr_word_count": 472,
+          "word_error_rate": 0.2194
+        }
+      }
+    },
+    {
+      "sample_id": "r00344",
+      "sample_pdf_sha256": "22d1da916b172728f6ff951b6385c0ecb8727fb0e152fa04146c1564672202ac",
+      "reference_text_sha256": "95f5786cf1cd36852182ec18d017a4e8254fcc3a4dbfd4cef82bee424e2087bb",
+      "pdf_pages": 2,
+      "ocr_images_processed": 2,
+      "variants": {
+        "original": {
+          "word_edits": 93,
+          "reference_word_count": 473,
+          "ocr_word_count": 473,
+          "word_error_rate": 0.1966
+        },
+        "gray_autocontrast": {
+          "word_edits": 92,
+          "reference_word_count": 473,
+          "ocr_word_count": 473,
+          "word_error_rate": 0.1945
+        },
+        "upscale_1p5_autocontrast": {
+          "word_edits": 126,
+          "reference_word_count": 473,
+          "ocr_word_count": 473,
+          "word_error_rate": 0.2664
+        }
+      }
+    },
+    {
+      "sample_id": "r00003",
+      "sample_pdf_sha256": "49a872726708274653d5d51455d59c376d64895245c67cf8e339f1a46edc5dfc",
+      "reference_text_sha256": "12f8067f79583c900ab90ddc5e0dedba9f51f3a4ff31cf9750d8734c2da3d099",
+      "pdf_pages": 2,
+      "ocr_images_processed": 2,
+      "variants": {
+        "original": {
+          "word_edits": 16,
+          "reference_word_count": 526,
+          "ocr_word_count": 526,
+          "word_error_rate": 0.0304
+        },
+        "gray_autocontrast": {
+          "word_edits": 16,
+          "reference_word_count": 526,
+          "ocr_word_count": 526,
+          "word_error_rate": 0.0304
+        },
+        "upscale_1p5_autocontrast": {
+          "word_edits": 36,
+          "reference_word_count": 526,
+          "ocr_word_count": 527,
+          "word_error_rate": 0.0684
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "Sample selection is diagnostic and not a random or representative estimate of the corpus.",
+    "WER uses synthetic corpus text references, not human-adjudicated OCR ground truth.",
+    "Preprocessing results apply only to the Windows-managed OCR engine and do not select or establish a production OCR provider.",
+    "No OCR text is printed or persisted; the output contains aggregate metrics, sample IDs, and fingerprints only."
+  ]
+}
