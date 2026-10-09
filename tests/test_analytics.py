@@ -324,6 +324,96 @@ class TestRecruitmentAnalytics(unittest.TestCase):
         self.assertIn("funnel", summary)
         self.assertIn("inter_rater_agreement", summary)
         self.assertIn("criteria_health", summary)
+        self.assertIn("evidence_grounding", summary)
+        self.assertIn("ranking_quality", summary)
+        self.assertIn("fairness_audit", summary)
+        self.assertIn("academic_performance_summary", summary)
+
+    # -------------------------------------------------------------------------
+    # 5. Academic & Industry Performance Metrics Tests
+    # -------------------------------------------------------------------------
+    def test_calculate_cohens_kappa_values(self):
+        """Test Cohen's Kappa calculation on perfect, substantial, and empty agreement."""
+        # Perfect agreement
+        res_perfect = analytics_service.calculate_cohens_kappa(
+            ["advance", "not_selected", "advance"],
+            ["advance", "not_selected", "advance"],
+        )
+        self.assertEqual(res_perfect["kappa"], 1.0)
+        self.assertIn("Hampir Sempurna", res_perfect["interpretation"])
+
+        # Substantial / moderate agreement
+        res_sub = analytics_service.calculate_cohens_kappa(
+            ["advance", "advance", "not_selected", "needs_info"],
+            ["advance", "advance", "not_selected", "not_selected"],
+        )
+        self.assertGreater(res_sub["kappa"], 0.5)
+        self.assertLess(res_sub["kappa"], 1.0)
+
+        # Empty data
+        res_empty = analytics_service.calculate_cohens_kappa([], [])
+        self.assertEqual(res_empty["kappa"], 0.0)
+
+    def test_evidence_grounding_audit_faithfulness(self):
+        """Test faithfulness and attribution metrics on evidence table records."""
+        job_id = "job_grounding_test"
+        self.db.execute("INSERT INTO jobs VALUES (?, ?, ?, ?, ?, ?, ?)", (job_id, "Title", "Dept", "Desc", "[]", "criteria_approved", "2026-10-01T00:00:00Z"))
+        self.db.execute("INSERT INTO candidates VALUES (?, ?, ?, ?, ?, ?, ?)", ("c1", job_id, "pdf", "{}", 80.0, "needs_review", "2026-10-01T00:00:00Z"))
+
+        # Insert 2 positive evidence with snippets and page numbers, and 1 unknown
+        self.db.execute("INSERT INTO evidence VALUES ('e1', 'c1', 'crit1', 'Python', 'required', 1.0, 'matched', 1.0, 'Proficient in Python', 1)")
+        self.db.execute("INSERT INTO evidence VALUES ('e2', 'c1', 'crit2', 'SQL', 'required', 1.0, 'partial', 0.5, 'Basic SQL knowledge', 2)")
+        self.db.execute("INSERT INTO evidence VALUES ('e3', 'c1', 'crit3', 'Docker', 'required', 1.0, 'unknown', 0.0, '', NULL)")
+        self.db.commit()
+
+        audit = analytics_service.get_evidence_grounding_audit(self.db, job_id)
+        self.assertEqual(audit["total_criteria_evaluations"], 3)
+        self.assertEqual(audit["positive_matches_count"], 2)
+        self.assertEqual(audit["grounded_matches_count"], 2)
+        self.assertEqual(audit["faithfulness_score"], 100.0)
+        self.assertEqual(audit["hallucination_rate"], 0.0)
+        self.assertEqual(audit["attribution_precision"], 100.0)
+
+    def test_ranking_quality_metrics_ndcg_and_mrr(self):
+        """Test NDCG@K and MRR metrics comparing AI scores with human decisions."""
+        job_id = "job_ranking_test"
+        self.db.execute("INSERT INTO jobs VALUES (?, ?, ?, ?, ?, ?, ?)", (job_id, "Title", "Dept", "Desc", "[]", "criteria_approved", "2026-10-01T00:00:00Z"))
+
+        # Candidate 1: Score 90.0, Decision 'advance' (rel=2)
+        # Candidate 2: Score 80.0, Decision 'needs_info' (rel=1)
+        # Candidate 3: Score 50.0, Decision 'not_selected' (rel=0)
+        self.db.execute("INSERT INTO candidates VALUES ('c1', ?, 'pdf', '{}', 90.0, 'advance', '2026-10-01T00:00:00Z')", (job_id,))
+        self.db.execute("INSERT INTO candidates VALUES ('c2', ?, 'pdf', '{}', 80.0, 'needs_info', '2026-10-01T00:00:00Z')", (job_id,))
+        self.db.execute("INSERT INTO candidates VALUES ('c3', ?, 'pdf', '{}', 50.0, 'not_selected', '2026-10-01T00:00:00Z')", (job_id,))
+
+        self.db.execute("INSERT INTO reviews VALUES ('r1', 'c1', 'Alice', 'recruiter', 'advance', '', '2026-10-01T01:00:00Z')")
+        self.db.execute("INSERT INTO reviews VALUES ('r2', 'c2', 'Alice', 'recruiter', 'needs_info', '', '2026-10-01T02:00:00Z')")
+        self.db.execute("INSERT INTO reviews VALUES ('r3', 'c3', 'Alice', 'recruiter', 'not_selected', '', '2026-10-01T03:00:00Z')")
+        self.db.commit()
+
+        ranking = analytics_service.get_ranking_quality_metrics(self.db, job_id, k_list=[3, 5])
+        self.assertTrue(ranking["has_ground_truth"])
+        self.assertEqual(ranking["total_candidates"], 3)
+        # Perfectly sorted: score 90 (rel=2), 80 (rel=1), 50 (rel=0) -> NDCG = 1.0
+        self.assertEqual(ranking["ndcg"]["ndcg_3"], 1.0)
+        # First relevant candidate is at rank 1 -> MRR = 1.0
+        self.assertEqual(ranking["mrr"], 1.0)
+        # Precision@3: 2 out of 3 are relevant (rel >= 1) -> 2/3 = 0.667
+        self.assertAlmostEqual(ranking["precision_at_k"]["p_3"], 0.667, places=2)
+
+    def test_fairness_audit_metrics(self):
+        """Test fairness audit metrics and PII compliance checking."""
+        job_id = "job_fairness_test"
+        self.db.execute("INSERT INTO jobs VALUES (?, ?, ?, ?, ?, ?, ?)", (job_id, "Title", "Dept", "Desc", "[]", "criteria_approved", "2026-10-01T00:00:00Z"))
+        self.db.execute("INSERT INTO candidates VALUES ('c1', ?, 'pdf', '{}', 75.0, 'advance', '2026-10-01T00:00:00Z')", (job_id,))
+        self.db.execute("INSERT INTO evidence VALUES ('e1', 'c1', 'crit1', 'Python', 'required', 1.0, 'matched', 1.0, 'Contact [email removed] for code', 1)")
+        self.db.commit()
+
+        fairness = analytics_service.get_fairness_audit_metrics(self.db, job_id)
+        self.assertEqual(fairness["total_candidates"], 1)
+        self.assertEqual(fairness["pii_compliance_rate"], 100.0)
+        self.assertIn("COMPLIANT", fairness["pii_audit_status"])
+        self.assertTrue(fairness["blind_review_supported"])
 
 
 if __name__ == "__main__":

@@ -20,3 +20,5 @@ data/copilot.sqlite3-shm
 data/copilot.sqlite3-wal
 data/uploads/
 data/backups/
+data/benchmarks/
+data/*_report.json

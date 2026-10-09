@@ -196,13 +196,19 @@ KarsaHire menyertakan modul benchmark komprehensif di folder `scripts/` dan root
    python .\scripts\evaluate_synthetic_ocr_preprocessing.py --sample-id r00196 --sample-id r00169 --language en-US
    ```
 
-4. **Smoke Test Operasional Terisolasi (`scripts/smoke_test_local.py`)**:
+4. **Tolok Ukur Skala Korporat Enterprise (`scripts/benchmark_enterprise_corpus.py`)**:
+   ```powershell
+   .\.venv-ocr\Scripts\python.exe .\scripts\benchmark_enterprise_corpus.py
+   ```
+   Mengevaluasi korpus 2.484 CV multi-domain (`opensporks/resumes` / LiveCareer) lintas 24 kategori industri pada 4 posisi standar (Software Dev, IT & SysAdmin, Accountant, HR). Menguji throughput processing (CV/detik), latensi p95, rasio deteksi profil (skills, pengalaman, gelar), dan validitas diskriminatori relevansi lintas industri. Mendukung opsi `--limit <N>` dan `--categories <LIST>`.
+
+5. **Smoke Test Operasional Terisolasi (`scripts/smoke_test_local.py`)**:
    ```powershell
    python .\scripts\smoke_test_local.py
    ```
    Menguji batas konkurensi, penolakan slow-header, migrasi database, penghapusan kandidat, dan audit trails pada instance database terisolasi.
 
-5. **Preflight Rilis Lokal (`scripts/preflight_local_release.py`)**:
+6. **Preflight Rilis Lokal (`scripts/preflight_local_release.py`)**:
    ```powershell
    python .\scripts\preflight_local_release.py
    ```
