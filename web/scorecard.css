@@ -1,0 +1,1081 @@
+/* ==========================================================================
+   KarsaHire — Structured Interview Scorecard & Rubric Stylesheet
+   web/scorecard.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Candidate Scorecard Section Container
+   -------------------------------------------------------------------------- */
+.candidate-scorecard-section {
+  margin-top: 18px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e1e7e2;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30, 43, 39, 0.03);
+  transition: all 0.2s ease;
+}
+
+.candidate-scorecard-section:hover {
+  border-color: #cbd8cf;
+}
+
+/* Section Header Bar */
+.scorecard-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #edf0ec;
+  margin-bottom: 14px;
+}
+
+.scorecard-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scorecard-icon {
+  font-size: 20px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #edf4ef;
+  border-radius: 8px;
+  color: #335a48;
+}
+
+.scorecard-heading {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e2b27;
+  letter-spacing: -0.02em;
+}
+
+.scorecard-subheading {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #7e8983;
+}
+
+.scorecard-toggle-form-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #335a48;
+  background: #edf4ef;
+  border: 1px solid #c9d8ce;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.scorecard-toggle-form-btn:hover {
+  background: #335a48;
+  color: #ffffff;
+  border-color: #335a48;
+  transform: translateY(-1px);
+}
+
+.scorecard-toggle-form-btn.active {
+  background: #243e32;
+  color: #ffffff;
+  border-color: #1e352b;
+}
+
+/* Loading & Empty State */
+.scorecard-loading,
+.scorecard-empty {
+  padding: 20px;
+  text-align: center;
+  color: #7e8983;
+  font-size: 12px;
+  background: #fafbfa;
+  border-radius: 8px;
+  border: 1px dashed #dbe2dd;
+}
+
+.scorecard-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #c9d8ce;
+  border-top-color: #335a48;
+  border-radius: 50%;
+  animation: scorecard-spin 0.6s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+@keyframes scorecard-spin {
+  to { transform: rotate(360deg); }
+}
+
+.scorecard-empty-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+  display: block;
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   2. Dual-Role Comparison Header (Recruiter vs Hiring Manager)
+   -------------------------------------------------------------------------- */
+.scorecard-dual-comparison {
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #f7fbf8 0%, #edf5f0 100%);
+  border: 1px solid #c6dcce;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(47, 78, 63, 0.05);
+}
+
+.comparison-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(198, 220, 206, 0.7);
+}
+
+.comparison-banner-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1f382b;
+}
+
+.comparison-dual-tag {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  background: #ffffff;
+  color: #275338;
+  border: 1px solid #bcd1c3;
+  border-radius: 12px;
+}
+
+.comparison-grid-3col {
+  display: grid;
+  grid-template-columns: 1fr 140px 1fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.comparison-role-card {
+  background: #ffffff;
+  border: 1px solid #d5e2d8;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comparison-role-card.is-recruiter {
+  border-top: 3px solid #335a48;
+}
+
+.comparison-role-card.is-hiring-manager {
+  border-top: 3px solid #3d4a7d;
+}
+
+.comparison-role-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.role-pill {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 7px;
+  border-radius: 6px;
+}
+
+.role-pill.recruiter {
+  background: #e4efe7;
+  color: #264e37;
+  border: 1px solid #c2dbcb;
+}
+
+.role-pill.hiring_manager {
+  background: #eaeefb;
+  color: #2a3b75;
+  border: 1px solid #c8d3f7;
+}
+
+.comparison-reviewer-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #3b4d45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comparison-score-display {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.comparison-score-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e2b27;
+  line-height: 1;
+}
+
+.comparison-score-max {
+  font-size: 11px;
+  color: #7e8983;
+}
+
+.comparison-score-rubric {
+  font-size: 10px;
+  color: #4a735f;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.comparison-rec-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Middle VS / Consensus Card */
+.comparison-vs-card {
+  background: #ffffff;
+  border: 1px dashed #bcd1c3;
+  border-radius: 8px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+}
+
+.vs-icon-badge {
+  font-size: 11px;
+  font-weight: 800;
+  background: #edf4ef;
+  color: #275338;
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid #c9d8ce;
+}
+
+.vs-delta-indicator {
+  font-size: 10px;
+  font-weight: 700;
+  color: #4b6354;
+}
+
+.consensus-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 6px;
+  line-height: 1.2;
+}
+
+.consensus-badge.aligned {
+  background: #def0e3;
+  color: #1c522b;
+  border: 1px solid #b8dfc2;
+}
+
+.consensus-badge.divergent {
+  background: #fdf3d8;
+  color: #7d5210;
+  border: 1px solid #f6deb0;
+}
+
+/* Criteria Comparison Table / Matrix */
+.scorecard-criteria-matrix {
+  margin-top: 12px;
+  background: #ffffff;
+  border: 1px solid #d5e2d8;
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 11px;
+}
+
+.matrix-header-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 6px 10px;
+  background: #f2f7f3;
+  font-weight: 700;
+  color: #3b4d45;
+  border-bottom: 1px solid #d5e2d8;
+}
+
+.matrix-data-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 6px 10px;
+  align-items: center;
+  border-bottom: 1px solid #eef2ef;
+  transition: background 0.15s ease;
+}
+
+.matrix-data-row:last-child {
+  border-bottom: none;
+}
+
+.matrix-data-row:hover {
+  background: #f7faf8;
+}
+
+.matrix-crit-name {
+  font-weight: 600;
+  color: #1e2b27;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.matrix-score-val {
+  font-weight: 700;
+  text-align: center;
+}
+
+.matrix-score-val.is-recruiter {
+  color: #275338;
+}
+
+.matrix-score-val.is-hiring-manager {
+  color: #2a3b75;
+}
+
+.matrix-diff-indicator {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 1px 4px;
+}
+
+.matrix-diff-indicator.equal {
+  color: #28633b;
+  background: #e6f4ea;
+}
+
+.matrix-diff-indicator.diff {
+  color: #8c5b16;
+  background: #fdf3df;
+}
+
+/* Single Role Notice Banner */
+.scorecard-single-role-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fbfbf9;
+  border: 1px solid #e0e5e1;
+  border-left: 4px solid #4a735f;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 11px;
+  color: #3f5247;
+}
+
+.single-role-icon {
+  font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Previous Scorecards History List
+   -------------------------------------------------------------------------- */
+.scorecard-history-section {
+  margin-bottom: 14px;
+}
+
+.scorecard-history-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #55675c;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
+}
+
+.scorecard-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scorecard-history-item {
+  background: #fbfdfb;
+  border: 1px solid #e2e8e3;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.15s ease;
+}
+
+.scorecard-history-item:hover {
+  background: #ffffff;
+  border-color: #cbd8cf;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.scorecard-item-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.scorecard-item-reviewer-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.scorecard-reviewer-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e2b27;
+}
+
+.scorecard-date {
+  font-size: 10px;
+  color: #8c9891;
+}
+
+.scorecard-item-badges {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.scorecard-avg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: #edf4ef;
+  color: #275338;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
+  border: 1px solid #cfe0d4;
+}
+
+.scorecard-avg-badge .max-label {
+  font-size: 9px;
+  color: #6d8276;
+}
+
+/* Final Recommendation Badges */
+.rec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  line-height: 1.2;
+}
+
+.rec-badge.advance {
+  background: #def0e3;
+  color: #175428;
+  border: 1px solid #b3dcbe;
+}
+
+.rec-badge.needs_info {
+  background: #fef4dc;
+  color: #8a5c10;
+  border: 1px solid #f8dfaa;
+}
+
+.rec-badge.not_selected {
+  background: #fde8e8;
+  color: #8c2a2a;
+  border: 1px solid #f6c4c4;
+}
+
+/* Notes Quote Box */
+.scorecard-item-notes {
+  margin: 6px 0 10px;
+  padding: 8px 10px;
+  background: #f5f8f5;
+  border-left: 3px solid #7c9f8a;
+  border-radius: 0 6px 6px 0;
+  font-size: 11px;
+  color: #3b4d45;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* Criteria Scores Details Breakdown */
+.scorecard-breakdown-details {
+  border-top: 1px dashed #e2e8e3;
+  padding-top: 8px;
+  margin-top: 6px;
+}
+
+.scorecard-breakdown-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 10px;
+  font-weight: 600;
+  color: #4a735f;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.scorecard-breakdown-toggle:hover {
+  color: #264e37;
+  text-decoration: underline;
+}
+
+.scorecard-breakdown-list {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.scorecard-breakdown-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 6px;
+  background: #ffffff;
+  border: 1px solid #edf2ee;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.breakdown-crit-label {
+  font-weight: 600;
+  color: #2a3d34;
+}
+
+.breakdown-crit-evidence {
+  display: block;
+  font-size: 10px;
+  color: #697a70;
+  margin-top: 2px;
+  font-style: normal;
+}
+
+.breakdown-crit-score-chip {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   4. Scorecard Input Form (.scorecard-form)
+   -------------------------------------------------------------------------- */
+.scorecard-form-wrapper {
+  margin-top: 14px;
+  padding: 16px;
+  background: #fbfdfb;
+  border: 1px solid #c9d8ce;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(47, 78, 63, 0.05);
+  animation: scorecard-form-slide 0.2s ease-out;
+}
+
+@keyframes scorecard-form-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scorecard-form-wrapper.hidden {
+  display: none;
+}
+
+.scorecard-form-title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e1ebe3;
+}
+
+.scorecard-form-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1e2b27;
+}
+
+.scorecard-form-close-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #7e8983;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.scorecard-form-close-btn:hover {
+  background: #edf2ee;
+  color: #1e2b27;
+}
+
+/* Reviewer & Role Fields */
+.scorecard-form-reviewer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.scorecard-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scorecard-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #3b4d45;
+}
+
+.scorecard-field-label .required-star {
+  color: #a04c4c;
+}
+
+.scorecard-input-text,
+.scorecard-select {
+  padding: 7px 10px;
+  font-size: 12px;
+  border: 1px solid #cfd8d2;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1e2b27;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.scorecard-input-text:focus,
+.scorecard-select:focus,
+.scorecard-textarea:focus {
+  border-color: #4a735f;
+  box-shadow: 0 0 0 2px rgba(74, 115, 95, 0.15);
+}
+
+/* Role Radio Pills */
+.scorecard-role-toggle-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.scorecard-role-radio-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid #cfd8d2;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  color: #3b4d45;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.scorecard-role-radio-label input[type="radio"] {
+  display: none;
+}
+
+.scorecard-role-radio-label:hover {
+  background: #f2f7f3;
+  border-color: #b5c7bb;
+}
+
+.scorecard-role-radio-label.is-selected {
+  background: #335a48;
+  color: #ffffff;
+  border-color: #243e32;
+  box-shadow: 0 2px 4px rgba(51, 90, 72, 0.2);
+}
+
+/* Criteria List in Form */
+.scorecard-form-criteria-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.scorecard-criterion-card {
+  background: #ffffff;
+  border: 1px solid #d9e2dc;
+  border-radius: 8px;
+  padding: 12px;
+  transition: border-color 0.15s ease;
+}
+
+.scorecard-criterion-card:hover {
+  border-color: #b8ccbe;
+}
+
+.scorecard-criterion-card.has-error {
+  border-color: #d9534f;
+  background: #fffafa;
+}
+
+.scorecard-crit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.scorecard-crit-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e2b27;
+}
+
+.scorecard-crit-type-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.scorecard-crit-type-badge.required {
+  background: #faebeb;
+  color: #9c3333;
+  border: 1px solid #f3c7c7;
+}
+
+.scorecard-crit-type-badge.preferred {
+  background: #ebf3fb;
+  color: #27528a;
+  border: 1px solid #c7ddf5;
+}
+
+/* --------------------------------------------------------------------------
+   5. Visual Rating Selector (1 to 5)
+   -------------------------------------------------------------------------- */
+.scorecard-rating-scale-wrap {
+  margin-bottom: 8px;
+}
+
+.scorecard-rating-selector-bar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.rating-btn-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 2px;
+  border: 1px solid #d4ded6;
+  border-radius: 6px;
+  background: #fafbfa;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.rating-btn-label input[type="radio"] {
+  display: none;
+}
+
+.rating-score-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: #2b3d34;
+  line-height: 1;
+}
+
+.rating-score-text {
+  font-size: 9px;
+  font-weight: 600;
+  color: #6d7f74;
+  margin-top: 3px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.rating-btn-label:hover {
+  background: #edf4ef;
+  border-color: #b5c9bb;
+  transform: translateY(-1px);
+}
+
+/* Specific styling for selected ratings (1 to 5 color coding) */
+.rating-btn-label.selected-1 {
+  background: #fbebeb;
+  border-color: #e09f9f;
+  color: #8c2828;
+}
+.rating-btn-label.selected-1 .rating-score-num,
+.rating-btn-label.selected-1 .rating-score-text {
+  color: #8c2828;
+}
+
+.rating-btn-label.selected-2 {
+  background: #fdf3e7;
+  border-color: #f2c794;
+  color: #8f5817;
+}
+.rating-btn-label.selected-2 .rating-score-num,
+.rating-btn-label.selected-2 .rating-score-text {
+  color: #8f5817;
+}
+
+.rating-btn-label.selected-3 {
+  background: #eef6ec;
+  border-color: #b8dcaf;
+  color: #376e28;
+}
+.rating-btn-label.selected-3 .rating-score-num,
+.rating-btn-label.selected-3 .rating-score-text {
+  color: #376e28;
+}
+
+.rating-btn-label.selected-4 {
+  background: #e1efe5;
+  border-color: #8ec09f;
+  color: #1e5a36;
+}
+.rating-btn-label.selected-4 .rating-score-num,
+.rating-btn-label.selected-4 .rating-score-text {
+  color: #1e5a36;
+}
+
+.rating-btn-label.selected-5 {
+  background: #275338;
+  border-color: #1b3d29;
+  color: #ffffff;
+}
+.rating-btn-label.selected-5 .rating-score-num,
+.rating-btn-label.selected-5 .rating-score-text {
+  color: #ffffff;
+}
+
+/* Criterion Observation Notes */
+.scorecard-crit-notes-wrap {
+  margin-top: 6px;
+}
+
+.scorecard-textarea {
+  width: 100%;
+  padding: 6px 9px;
+  font-size: 11px;
+  border: 1px solid #d5ded7;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1e2b27;
+  resize: vertical;
+  min-height: 48px;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   6. Final Recommendation Selector
+   -------------------------------------------------------------------------- */
+.scorecard-rec-selector-section {
+  margin-bottom: 14px;
+}
+
+.scorecard-rec-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.rec-option-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1px solid #cfd8d2;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  transition: all 0.15s ease;
+  user-select: none;
+  text-align: center;
+}
+
+.rec-option-label input[type="radio"] {
+  display: none;
+}
+
+.rec-option-label:hover {
+  background: #f7faf8;
+  border-color: #b5c7bb;
+}
+
+.rec-option-label.is-selected.advance {
+  background: #def0e3;
+  color: #175428;
+  border-color: #8ec09f;
+  box-shadow: 0 2px 6px rgba(23, 84, 40, 0.15);
+}
+
+.rec-option-label.is-selected.needs_info {
+  background: #fef4dc;
+  color: #8a5c10;
+  border-color: #f2c794;
+  box-shadow: 0 2px 6px rgba(138, 92, 16, 0.15);
+}
+
+.rec-option-label.is-selected.not_selected {
+  background: #fde8e8;
+  color: #8c2a2a;
+  border-color: #e09f9f;
+  box-shadow: 0 2px 6px rgba(140, 42, 42, 0.15);
+}
+
+/* Overall Notes & Submit Button Bar */
+.scorecard-general-notes-section {
+  margin-bottom: 14px;
+}
+
+.scorecard-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid #e1ebe3;
+}
+
+.scorecard-btn-cancel {
+  padding: 7px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #65756c;
+  background: transparent;
+  border: 1px solid #d2ddd5;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.scorecard-btn-cancel:hover {
+  background: #edf2ee;
+  color: #273830;
+}
+
+.scorecard-btn-submit {
+  padding: 7px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #335a48;
+  border: 1px solid #243e32;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.scorecard-btn-submit:hover:not(:disabled) {
+  background: #243e32;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(36, 62, 50, 0.25);
+}
+
+.scorecard-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Responsive Adaptations
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .comparison-grid-3col {
+    grid-template-columns: 1fr;
+  }
+  .scorecard-form-reviewer-row {
+    grid-template-columns: 1fr;
+  }
+  .scorecard-rec-options-grid {
+    grid-template-columns: 1fr;
+  }
+  .matrix-header-row,
+  .matrix-data-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    font-size: 10px;
+  }
+  .rating-score-text {
+    font-size: 8px;
+  }
+}

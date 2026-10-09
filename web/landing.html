@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f5f1">
+  <meta name="description" content="KarsaHire membantu tim rekrutmen menyepakati kriteria bersama, meninjau bukti kecocokan dari CV, dan mencatat keputusan kolaboratif.">
+  <title>KarsaHire — Rekrutmen kolaboratif berbasis bukti</title>
+  <link rel="stylesheet" href="/landing.css">
+  <script src="/landing.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+
+  <header class="site-header" role="banner">
+    <div class="nav-wrap">
+      <a class="brand" href="/" aria-label="KarsaHire, beranda">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Karsa<strong>Hire</strong></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Buka navigasi">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Navigasi utama">
+        <a href="#alur">Cara kerja</a>
+        <a href="#bukti">Explainability</a>
+        <a href="#teknologi">Teknologi</a>
+        <a href="https://github.com/loxleyftsck/KarsaHire/blob/main/KarsaHire-Architecture-Plan.md" target="_blank" rel="noreferrer">Arsitektur <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/loxleyftsck/KarsaHire" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="/app">Buka prototype <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero section-shell" aria-labelledby="hero-title">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><i aria-hidden="true"></i> AI RECRUITMENT COPILOT · PROTOTYPE</p>
+        <h1 id="hero-title">Rekrutmen yang dimulai dari <span>kriteria bersama.</span></h1>
+        <p class="hero-lede">KarsaHire membantu recruiter dan hiring manager menyepakati kebutuhan, menelusuri bukti di CV, lalu mengambil keputusan bersama.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#alur">Lihat cara kerja <span aria-hidden="true">↓</span></a>
+          <a class="button button-light" href="/app">Jelajahi prototype <span aria-hidden="true">↗</span></a>
+          <a class="button button-subtle" href="https://github.com/loxleyftsck/KarsaHire" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="hero-caption"><b aria-hidden="true">✓</b> Keputusan akhir tetap di tangan manusia.</p>
+      </div>
+      <div class="hero-art reveal">
+        <div class="orbit orbit-one" aria-hidden="true"></div>
+        <div class="orbit orbit-two" aria-hidden="true"></div>
+        <div class="hero-image-frame">
+          <img src="/assets/karsahire-shortlist-dashboard.png" alt="Tampilan antarmuka shortlist kandidat KarsaHire dengan bukti keterampilan yang ditinjau recruiter" width="1200" height="780">
+          <span class="image-label"><i aria-hidden="true"></i> DATA SINTETIS · CONTOH UI</span>
+        </div>
+        <div class="float-note note-approval"><b aria-hidden="true">✓</b><span><strong>Kriteria disepakati</strong><small>Recruiter + hiring manager</small></span></div>
+        <div class="float-note note-evidence"><b aria-hidden="true">✳</b><span><strong>Bukti bisa ditelusuri</strong><small>Per kriteria, dari CV</small></span></div>
+      </div>
+    </section>
+
+    <section class="principles section-shell" aria-label="Prinsip KarsaHire">
+      <div><i aria-hidden="true">✓</i><span><strong>Kriteria disepakati</strong><small>Sebelum CV diproses</small></span></div>
+      <hr aria-hidden="true">
+      <div><i aria-hidden="true">⌕</i><span><strong>Bukti terlihat</strong><small>Terhubung ke teks CV</small></span></div>
+      <hr aria-hidden="true">
+      <div><i aria-hidden="true">◎</i><span><strong>Manusia memutuskan</strong><small>Dengan jejak review tim</small></span></div>
+    </section>
+
+    <section class="workflow section-shell section-space" id="alur" aria-labelledby="workflow-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">ALUR REVIEW BERSAMA</p>
+          <h2 id="workflow-title">Dari kebutuhan peran<br>ke keputusan yang tercatat.</h2>
+        </div>
+        <p>Satu alur yang membantu tim bekerja dari standar yang sama—dengan bukti yang bisa diperiksa di setiap langkah.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card reveal">
+          <div><small>01</small><i aria-hidden="true">☷</i></div>
+          <h3>Sepakati kriteria</h3>
+          <p>Recruiter dan hiring manager menyetujui kriteria wajib serta yang diutamakan.</p>
+          <label>Persetujuan dua peran</label>
+        </article>
+        <article class="step-card reveal">
+          <div><small>02</small><i aria-hidden="true">↥</i></div>
+          <h3>Ekstrak isi CV</h3>
+          <p>Parsing PDF, DOCX, dan TXT; halaman scan bisa dibaca dengan PaddleOCR lokal.</p>
+          <label>Unggahan tidak disimpan</label>
+        </article>
+        <article class="step-card reveal">
+          <div><small>03</small><i aria-hidden="true">⌕</i></div>
+          <h3>Tinjau bukti</h3>
+          <p>Lihat kecocokan per kriteria, kutipan sumber, dan bagian yang perlu diverifikasi.</p>
+          <label>Evidence, bukan tebakan</label>
+        </article>
+        <article class="step-card reveal">
+          <div><small>04</small><i aria-hidden="true">✓</i></div>
+          <h3>Catat keputusan</h3>
+          <p>Reviewer mencatat langkah kandidat dan alasan dalam audit trail lokal.</p>
+          <label>Keputusan oleh manusia</label>
+        </article>
+      </div>
+    </section>
+
+    <section class="evidence-section section-space" id="bukti" aria-labelledby="evidence-title">
+      <div class="section-shell evidence-layout">
+        <div class="evidence-copy reveal">
+          <p class="eyebrow">EXPLAINABILITY BY DESIGN</p>
+          <h2 id="evidence-title">Skor bukan jawaban.<br><span>Bukti adalah awal review.</span></h2>
+          <p>KarsaHire menghubungkan sinyal kecocokan ke kriteria dan teks CV yang mendasarinya. Jika informasi tidak ditemukan, tandai sebagai belum diketahui—bukan otomatis dianggap tidak memenuhi.</p>
+          <ul>
+            <li><b aria-hidden="true">✓</b> Frasa yang cocok ditampilkan bersama sumber kutipan CV.</li>
+            <li><b aria-hidden="true">✓</b> Bukti parsial dan yang belum ditemukan dibedakan dengan tegas.</li>
+            <li><b aria-hidden="true">✓</b> Tidak ada penolakan otomatis berbasis skor semata.</li>
+          </ul>
+        </div>
+        <div class="candidate-preview reveal" role="region" aria-label="Contoh kartu review berbasis data sintetis">
+          <div class="preview-top">
+            <small>CONTOH REVIEW · SINTETIS</small>
+            <span aria-hidden="true">•••</span>
+          </div>
+          <div class="person">
+            <i aria-hidden="true">AR</i>
+            <span><strong>Kandidat · 0421</strong><small>Backend Engineer · CV PDF</small></span>
+            <b>83<small>indikator evidence</small></b>
+          </div>
+          <div class="legend" aria-label="Keterangan status bukti">
+            <span>Ada bukti</span>
+            <span>Perlu verifikasi</span>
+          </div>
+          <div class="criterion">
+            <b aria-hidden="true">✓</b>
+            <span><strong>Python</strong><small>“Built Python services for internal APIs…”</small></span>
+            <em>Ada bukti</em>
+          </div>
+          <div class="criterion">
+            <b aria-hidden="true">✓</b>
+            <span><strong>PostgreSQL</strong><small>“Designed PostgreSQL schemas…”</small></span>
+            <em>Ada bukti</em>
+          </div>
+          <div class="criterion">
+            <b class="unknown" aria-hidden="true">•</b>
+            <span><strong>FastAPI</strong><small>Tidak ditemukan pada teks CV yang diekstrak.</small></span>
+            <em class="unknown-label">Belum diketahui</em>
+          </div>
+          <div class="review-prompt">
+            <i aria-hidden="true">R</i>
+            <span><strong>Langkah berikutnya?</strong><small>Reviewer memilih, memberi catatan, lalu menyimpan review.</small></span>
+            <b aria-hidden="true">↗</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="motion section-shell section-space" aria-labelledby="motion-title">
+      <div class="motion-card reveal">
+        <div>
+          <p class="eyebrow">SATU WORKFLOW, SATU TIM</p>
+          <h2 id="motion-title">Konteks tetap terlihat dari awal sampai akhir.</h2>
+          <p>Kriteria, bukti, dan review berjalan dalam satu urutan yang bisa diikuti bersama.</p>
+          <a href="/app">Coba workflow lokal <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="motion-art">
+          <img class="workflow-gif" src="/assets/karsahire-workflow-loop.gif" alt="Animasi alur KarsaHire: kriteria bersama, bukti dari CV, lalu review oleh tim" loading="lazy">
+          <div class="workflow-static" aria-hidden="true">
+            <b>Kriteria</b><i>→</i><b>Bukti CV</b><i>→</i><b>Review tim</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="collaboration section-space" id="kolaborasi" aria-labelledby="collab-title">
+      <div class="section-shell collaboration-layout">
+        <div class="collab-art reveal">
+          <img src="/assets/karsahire-team-review.png" alt="Ilustrasi recruiter dan hiring manager meninjau bukti kandidat bersama" loading="lazy">
+        </div>
+        <div class="collab-copy reveal">
+          <p class="eyebrow">REVIEW BERSAMA</p>
+          <h2 id="collab-title">Standar dibicarakan.<br>Keputusan dipertanggungjawabkan.</h2>
+          <p>Requisition baru dibuka setelah dua peran menyetujui kriteria. Recruiter dan hiring manager memberi review terpisah; setiap keputusan kandidat tersimpan dalam jejak aktivitas.</p>
+          <div class="approval-demo">
+            <i aria-hidden="true">✓</i>
+            <span><strong>Recruiter</strong><small>Kriteria ditinjau</small></span>
+            <i aria-hidden="true">✓</i>
+            <span><strong>Hiring manager</strong><small>Kriteria disetujui</small></span>
+          </div>
+          <small class="collab-note">Prototype ini mendemonstrasikan alur persetujuan; nama dan peran belum menggunakan autentikasi akun.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="technology section-shell section-space" id="teknologi" aria-labelledby="tech-title">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">DI BALIK PROTOTYPE</p>
+          <h2 id="tech-title">Alur teknis yang transparan.</h2>
+        </div>
+        <p>Fondasi lokal untuk mengeksplorasi parsing, retrieval, ranking yang bisa diterangkan, dan review kolaboratif.</p>
+      </div>
+      <div class="pipeline reveal" aria-label="Alur teknis pemrosesan KarsaHire">
+        <article><small>01</small><strong>Requisition</strong><span>Kriteria + persetujuan</span></article>
+        <b class="pipeline-arrow" aria-hidden="true">→</b>
+        <article><small>02</small><strong>Parsing CV</strong><span>PDF · DOCX · TXT · OCR*</span></article>
+        <b class="pipeline-arrow" aria-hidden="true">→</b>
+        <article><small>03</small><strong>Evidence</strong><span>Ekstrak per kriteria</span></article>
+        <b class="pipeline-arrow" aria-hidden="true">→</b>
+        <article><small>04</small><strong>Review manusia</strong><span>Catatan + audit trail</span></article>
+      </div>
+      <p class="footnote">* PaddleOCR berjalan lokal setelah dependensi terpasang; API internal juga tersedia sebagai opsi. Pencocokan saat ini adalah baseline leksikal; Tanya requisition memakai retrieval-only, tanpa jawaban LLM.</p>
+      <div class="tech-facts">
+        <article>
+          <i aria-hidden="true">◉</i>
+          <span><strong>Python + SQLite</strong><small>Prototype lokal, data tersimpan di mesin ini.</small></span>
+        </article>
+        <article>
+          <i aria-hidden="true">⌕</i>
+          <span><strong>Evidence baseline</strong><small>Frasa, kecocokan parsial, dan unknown dipisahkan.</small></span>
+        </article>
+        <article>
+          <i aria-hidden="true">◇</i>
+          <span><strong>Uji sintetis</strong><small>Corpus 32 CV sintetis untuk eksplorasi.</small></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="roadmap section-shell section-space" aria-labelledby="roadmap-title">
+      <div class="roadmap-heading reveal">
+        <p class="eyebrow">STUDI KASUS PORTOFOLIO</p>
+        <h2 id="roadmap-title">Prototype hari ini.<br><span>Ruang berkembang esok hari.</span></h2>
+        <p>KarsaHire menunjukkan cara kerja evidence-first. Penguatan untuk penggunaan organisasi masih menjadi pekerjaan berikutnya.</p>
+      </div>
+      <div class="roadmap-cards">
+        <article class="roadmap-current reveal">
+          <label>● SUDAH DI PROTOTYPE</label>
+          <h3>Alur lokal end-to-end</h3>
+          <ul>
+            <li>Persetujuan kriteria dua peran</li>
+            <li>Parsing dan evidence per kriteria</li>
+            <li>Ranking leksikal yang transparan</li>
+            <li>Review manusia dan audit trail</li>
+          </ul>
+        </article>
+        <article class="roadmap-next reveal">
+          <label>● ARAH PENGEMBANGAN</label>
+          <h3>Validasi untuk skala tim</h3>
+          <ul>
+            <li>Autentikasi dan kontrol akses</li>
+            <li>Evaluasi fairness dan kualitas retrieval</li>
+            <li>Retensi, kebijakan, serta integrasi HRIS</li>
+            <li>Uji bersama pengguna dan hiring team</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="final-cta-title">
+      <div class="section-shell cta-inner reveal">
+        <div>
+          <p class="eyebrow">KARSAHIRE · PROTOTYPE LOKAL</p>
+          <h2 id="final-cta-title">Lihat alurnya bekerja.</h2>
+          <p>Mulai dengan contoh sintetis di workspace atau pelajari keputusan desain di repositori.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button button-mint" href="/app">Buka workspace <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="https://github.com/loxleyftsck/KarsaHire" target="_blank" rel="noreferrer">Lihat repository <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="https://github.com/loxleyftsck/KarsaHire/blob/main/KarsaHire-Architecture-Plan.md" target="_blank" rel="noreferrer">Rencana arsitektur <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="section-shell footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/" aria-label="KarsaHire, beranda">
+          <span class="brand-mark" aria-hidden="true">K</span>
+          <span>Karsa<strong>Hire</strong></span>
+        </a>
+        <p class="footer-desc">Prototype portofolio · AI recruitment copilot berbasis bukti · Keputusan akhir di tangan manusia.</p>
+        <p class="footer-disclaimer">Privasi: Sistem tidak menyimpan file asli maupun teks CV mentah. PII disaring secara lokal sebelum penyimpanan bukti.</p>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-group">
+          <span class="footer-heading">Navigasi Alur</span>
+          <a href="#alur">Cara kerja</a>
+          <a href="#bukti">Explainability</a>
+          <a href="#teknologi">Alur teknologi</a>
+          <a href="/app">Workspace prototype ↗</a>
+        </div>
+        <div class="footer-group">
+          <span class="footer-heading">Dokumentasi & Lisensi</span>
+          <a href="https://github.com/loxleyftsck/KarsaHire" target="_blank" rel="noreferrer">Repositori GitHub ↗</a>
+          <a href="https://github.com/loxleyftsck/KarsaHire/blob/main/KarsaHire-Architecture-Plan.md" target="_blank" rel="noreferrer">Rencana arsitektur ↗</a>
+          <a href="/assets/ATTRIBUTION.md" target="_blank" rel="noreferrer">Atribusi & Lisensi Aset ↗</a>
+          <a href="https://huggingface.co/datasets/sukhrobnurali/resume-parsing-vision" target="_blank" rel="noreferrer">Dataset sintetis (HF) ↗</a>
+        </div>
+      </div>
+    </div>
+    <div class="section-shell footer-bottom">
+      <p>© KarsaHire Prototype. Dibuat untuk evaluasi portofolio alur rekrutmen kolaboratif transparan.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,13 +1,16 @@
 """Local, evidence-first recruitment copilot prototype.
 
-Uses standard-library HTTP/SQLite plus bundled document packages. An optional
-internal OCR endpoint receives image pages; no public LLM endpoint is called.
+Uses standard-library HTTP/SQLite plus document packages. OCR runs locally with
+PaddleOCR by default; an internal OCR API is an optional alternative. No public
+LLM endpoint is called.
 Matching is lexical and keeps unknown evidence separate from a negative human decision.
 """
 
 from __future__ import annotations
 
 import base64
+import csv
+import importlib.util
 import io
 import json
 import os
@@ -26,6 +29,18 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from matching import (
+    ALIASES,
+    SKILLS,
+    criterion_aliases,
+    match_criterion,
+    normalize,
+    profile_from_text,
+    rank_retrieval,
+    redact_for_evidence,
+    score_candidate,
+)
+
 
 ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "web"
@@ -40,45 +55,12 @@ MAX_UPLOAD_BYTES = 8 * 1024 * 1024
 MAX_BODY_BYTES = MAX_UPLOAD_BYTES + 1024 * 1024
 OCR_KEY_ENV = "RECRUITMENT_COPILOT_OCR_API_KEY"
 OCR_MODEL = os.environ.get("RECRUITMENT_COPILOT_OCR_MODEL", "ocr-lighton")
+OCR_BACKEND = os.environ.get("RECRUITMENT_COPILOT_OCR_BACKEND", "paddle").strip().lower()
+OCR_URL_ENV = "RECRUITMENT_COPILOT_OCR_API_URL"
 OCR_REQUESTS_PER_MINUTE = 6
 OCR_CALLS: deque[float] = deque()
 OCR_LOCK = threading.Lock()
 OCR_SEMAPHORE = threading.BoundedSemaphore(5)
-
-EMAIL_RE = re.compile(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b")
-PHONE_RE = re.compile(r"(?<!\w)(?:\+?\d[\d ().-]{7,}\d)(?!\w)")
-SENSITIVE_LINE_RE = re.compile(
-    r"^\s*(?:full\s+name|candidate\s+name|name|email|e-mail|phone|mobile|"
-    r"date\s+of\s+birth|dob|birthday|address|home\s+address)\s*[:|–-]",
-    re.IGNORECASE,
-)
-
-SKILLS = [
-    "python", "java", "javascript", "typescript", "c++", "c#", "go", "golang",
-    "rust", "sql", "postgresql", "mysql", "mongodb", "redis", "fastapi", "django",
-    "flask", "react", "react.js", "node.js", "node", "next.js", "vue", "angular",
-    "html", "css", "aws", "azure", "gcp", "docker", "kubernetes", "terraform",
-    "linux", "git", "machine learning", "deep learning", "pytorch", "tensorflow",
-    "scikit-learn", "nlp", "llm", "rag", "data analysis", "pandas", "spark",
-    "airflow", "tableau", "power bi", "project management", "agile", "scrum",
-    "stakeholder management", "cross-functional collaboration", "communication",
-]
-
-ALIASES = {
-    "python": ["python", "python3"],
-    "javascript": ["javascript", "js", "ecmascript"],
-    "typescript": ["typescript", "ts"],
-    "postgresql": ["postgresql", "postgres", "postgres db"],
-    "fastapi": ["fastapi", "fast api"],
-    "react": ["react", "react.js", "reactjs"],
-    "node.js": ["node.js", "nodejs", "node"],
-    "machine learning": ["machine learning", "ml"],
-    "deep learning": ["deep learning", "dl"],
-    "cross-functional collaboration": [
-        "cross-functional collaboration", "cross functional collaboration",
-        "worked across teams", "cross-functional team",
-    ],
-}
 
 
 def now() -> str:
@@ -104,6 +86,12 @@ def init_db() -> None:
         job_columns = {row["name"] for row in db.execute("PRAGMA table_info(jobs)").fetchall()}
         if "status" not in job_columns:
             db.execute("ALTER TABLE jobs ADD COLUMN status TEXT NOT NULL DEFAULT 'awaiting_approval'")
+        try:
+            from interview_service import init_interview_tables
+            init_interview_tables(db)
+        except Exception:
+            pass
+
 
 
 def audit(db: sqlite3.Connection, job_id: str, actor: str, event_type: str,
@@ -115,31 +103,6 @@ def audit(db: sqlite3.Connection, job_id: str, actor: str, event_type: str,
     )
 
 
-def normalize(value: str) -> str:
-    return re.sub(r"\s+", " ", value.casefold().replace("–", "-")).strip()
-
-
-def redact_for_evidence(value: str) -> str:
-    """Remove common direct identifiers before evidence is written to SQLite."""
-    def redact_phone(match: re.Match[str]) -> str:
-        # Avoid mistaking common date ranges such as 2019 - 2023 for phone numbers.
-        digits = re.sub(r"\D", "", match.group(0))
-        return "[phone removed]" if len(digits) >= 10 else match.group(0)
-
-    lines = []
-    for line in value.splitlines():
-        if SENSITIVE_LINE_RE.match(line):
-            continue
-        line = EMAIL_RE.sub("[email removed]", line)
-        line = PHONE_RE.sub(redact_phone, line)
-        line = re.sub(
-            r"\b(?:DOB|date of birth|birthday)\s*[:|-]?\s*[^,;|]+",
-            "[birth date removed]", line, flags=re.IGNORECASE,
-        )
-        lines.append(line)
-    return " ".join(" ".join(lines).split())[:700]
-
-
 def extract_document(filename: str, payload: bytes) -> tuple[str, list[tuple[int | None, str]]]:
     ext = Path(filename).suffix.lower()
     if ext == ".txt":
@@ -147,7 +110,7 @@ def extract_document(filename: str, payload: bytes) -> tuple[str, list[tuple[int
         pages = [(1, line) for line in text.splitlines() if line.strip()]
     elif ext in (".png", ".jpg", ".jpeg"):
         image = normalize_image(payload)
-        text = call_ocr_api(image)
+        text = call_ocr(image)
         pages = [(1, line) for line in text.splitlines() if line.strip()]
     elif ext == ".pdf":
         try:
@@ -172,11 +135,14 @@ def extract_document(filename: str, payload: bytes) -> tuple[str, list[tuple[int
                 if not embedded_images:
                     raise ValueError(f"Halaman {page_num} tidak memiliki teks atau gambar yang bisa dikirim ke OCR.")
         if ocr_images:
-            if not os.environ.get(OCR_KEY_ENV):
-                raise ValueError(f"PDF ini perlu OCR. Atur environment variable {OCR_KEY_ENV} untuk mengaktifkan OCR internal.")
-            reserve_ocr_calls(len(ocr_images))
+            if OCR_BACKEND == "api":
+                if not os.environ.get(OCR_KEY_ENV) or not os.environ.get(OCR_URL_ENV):
+                    raise ValueError("PDF ini memerlukan OCR. Konfigurasikan API internal atau instal backend PaddleOCR lokal.")
+                reserve_ocr_calls(len(ocr_images))
+            elif OCR_BACKEND != "paddle":
+                raise ValueError("Backend OCR harus bernilai 'paddle' atau 'api'.")
             for page_num, image in ocr_images:
-                text = call_ocr_api(image, reservation_made=True)
+                text = call_ocr(image, reservation_made=OCR_BACKEND == "api")
                 pages.extend((page_num, line) for line in text.splitlines() if line.strip())
         if not pages:
             raise ValueError("Tidak ada teks yang berhasil diekstrak dari PDF.")
@@ -274,88 +240,27 @@ def call_ocr_api(png_image: bytes, reservation_made: bool = False) -> str:
     return content
 
 
-def profile_from_text(text: str) -> dict:
-    ntext = normalize(text)
-    skills = [skill for skill in SKILLS if re.search(rf"(?<!\w){re.escape(skill)}(?!\w)", ntext)]
-    exp = re.findall(r"\b(\d{1,2})\s*\+?\s+years?\b", ntext)
-    years = max((int(value) for value in exp), default=None)
-    degrees = [
-        label for pattern, label in [
-            (r"\b(ph\.?d|doctorate)\b", "Doctorate"),
-            (r"\b(master'?s|m\.s\.|m\.sc\.|mba)\b", "Master's"),
-            (r"\b(bachelor'?s|b\.s\.|b\.sc\.|b\.a\.)\b", "Bachelor's"),
-            (r"\b(associate'?s)\b", "Associate's"),
-        ] if re.search(pattern, ntext)
-    ]
-    return {"skills": skills, "experience_years_mentioned": years, "education_levels_mentioned": degrees}
+def call_ocr(png_image: bytes, reservation_made: bool = False) -> str:
+    if OCR_BACKEND == "paddle":
+        try:
+            from ocr_local import recognize_png
+            return recognize_png(png_image)
+        except RuntimeError as exc:
+            raise ValueError(str(exc)) from exc
+    if OCR_BACKEND == "api":
+        return call_ocr_api(png_image, reservation_made=reservation_made)
+    raise ValueError("Backend OCR tidak valid. Gunakan 'paddle' atau 'api'.")
 
 
-def criterion_aliases(label: str) -> list[str]:
-    base = normalize(label)
-    found = [base]
-    for key, aliases in ALIASES.items():
-        if base == key or base in aliases:
-            found.extend(aliases)
-    return list(dict.fromkeys(term for term in found if term))
-
-
-def match_criterion(criterion: dict, pages: list[tuple[int | None, str]]) -> dict:
-    aliases = criterion_aliases(criterion["label"])
-    tokens = [t for t in re.findall(r"[a-z0-9+#.]+", normalize(criterion["label"])) if len(t) > 1]
-    exact = []
-    partial = []
-    for page_num, line in pages:
-        normalized_line = normalize(line)
-        if any(re.search(rf"(?<!\w){re.escape(alias)}(?!\w)", normalized_line) for alias in aliases):
-            exact.append((page_num, line))
-            continue
-        present = sum(1 for token in tokens if re.search(rf"(?<!\w){re.escape(token)}(?!\w)", normalized_line))
-        if len(tokens) >= 2 and present >= max(2, (len(tokens) + 1) // 2):
-            partial.append((page_num, line))
-    if exact:
-        page_num, line = exact[0]
-        # This value encodes lexical match strength only; it is not a probability.
-        return {"result": "matched", "confidence": 1.0,
-                "snippet": redact_for_evidence(line), "page_number": page_num}
-    if partial:
-        page_num, line = partial[0]
-        return {"result": "partial", "confidence": 0.5,
-                "snippet": redact_for_evidence(line), "page_number": page_num}
-    return {"result": "unknown", "confidence": 0.0, "snippet": "", "page_number": None}
-
-
-def score_candidate(criteria: list[dict], pages: list[tuple[int | None, str]]) -> tuple[float, list[dict]]:
-    total_weight = sum(float(c["weight"]) for c in criteria) or 1.0
-    matched_total = 0.0
-    evidence_rows = []
-    for criterion in criteria:
-        result = match_criterion(criterion, pages)
-        match_value = {"matched": 1.0, "partial": 0.5, "unknown": 0.0}[result["result"]]
-        matched_total += match_value * float(criterion["weight"])
-        evidence_rows.append({**criterion, **result})
-    return round(100 * matched_total / total_weight, 1), evidence_rows
-
-
-def rank_retrieval(query: str, job: dict) -> list[dict]:
-    """Small retrieval-only RAG baseline over approved requisition content."""
-    criteria = json.loads(job["criteria_json"])
-    sources = [
-        {"source": "Deskripsi lowongan", "text": job["description"]},
-        *[{"source": f"Kriteria: {c['label']}", "text": c["label"]} for c in criteria],
-    ]
-    terms = set(re.findall(r"[a-z0-9+#.]{2,}", normalize(query)))
-    ranked = []
-    for entry in sources:
-        text = entry["text"]
-        if not text:
-            continue
-        sentences = re.split(r"(?<=[.!?])\s+|\n+", text)
-        for sentence in sentences:
-            overlap = terms.intersection(re.findall(r"[a-z0-9+#.]{2,}", normalize(sentence)))
-            if overlap:
-                ranked.append({**entry, "text": sentence.strip(), "overlap": len(overlap)})
-    ranked.sort(key=lambda x: x["overlap"], reverse=True)
-    return ranked[:5]
+def ocr_is_configured() -> bool:
+    if OCR_BACKEND == "paddle":
+        try:
+            return importlib.util.find_spec("paddleocr") is not None and importlib.util.find_spec("paddle") is not None
+        except (ImportError, ValueError):
+            return False
+    if OCR_BACKEND == "api":
+        return bool(os.environ.get(OCR_KEY_ENV) and os.environ.get(OCR_URL_ENV))
+    return False
 
 
 def multipart_file(handler: BaseHTTPRequestHandler) -> tuple[str, bytes]:
@@ -427,10 +332,46 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802
         path = urlsplit(self.path).path
-        if path in ("/", "/index.html", "/app.js", "/app.css", "/approval.css"):
-            filename = "index.html" if path in ("/", "/index.html") else path.rsplit("/", 1)[-1]
-            types = {"index.html": "text/html; charset=utf-8", "app.js": "text/javascript; charset=utf-8", "app.css": "text/css; charset=utf-8", "approval.css": "text/css; charset=utf-8"}
-            target = WEB / filename
+        static_types = {
+            "landing.html": "text/html; charset=utf-8",
+            "index.html": "text/html; charset=utf-8",
+            "landing.css": "text/css; charset=utf-8",
+            "landing.js": "text/javascript; charset=utf-8",
+            "app.js": "text/javascript; charset=utf-8",
+            "app.css": "text/css; charset=utf-8",
+            "approval.css": "text/css; charset=utf-8",
+            "role-templates.css": "text/css; charset=utf-8",
+            "comparison.css": "text/css; charset=utf-8",
+            "comparison.js": "text/javascript; charset=utf-8",
+            "scorecard.css": "text/css; charset=utf-8",
+            "scorecard.js": "text/javascript; charset=utf-8",
+            "analytics-modal.css": "text/css; charset=utf-8",
+            "analytics-modal.js": "text/javascript; charset=utf-8",
+            "karsahire-shortlist-dashboard.png": "image/png",
+            "karsahire-workflow-loop.gif": "image/gif",
+            "karsahire-team-review.png": "image/png",
+            "ATTRIBUTION.md": "text/markdown; charset=utf-8",
+        }
+        static_paths = {
+            "/", "/index.html", "/app", "/app.html", "/landing.css", "/landing.js",
+            "/app.js", "/app.css", "/approval.css", "/role-templates.css",
+            "/comparison.css", "/comparison.js",
+            "/scorecard.css", "/scorecard.js",
+            "/analytics-modal.css", "/analytics-modal.js",
+            "/assets/karsahire-shortlist-dashboard.png",
+            "/assets/karsahire-workflow-loop.gif",
+            "/assets/karsahire-team-review.png",
+            "/assets/ATTRIBUTION.md",
+        }
+        if path in static_paths:
+            if path in ("/", "/index.html"):
+                filename = "landing.html"
+            elif path in ("/app", "/app.html"):
+                filename = "index.html"
+            else:
+                filename = path.rsplit("/", 1)[-1]
+            target = WEB / "assets" / filename if path.startswith("/assets/") else WEB / filename
+            types = static_types
             if not target.is_file():
                 self.send_error(404)
                 return
@@ -443,7 +384,8 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == "/api/health":
             self.send_json(200, {"ok": True, "matching": "lexical-evidence-v1",
-                                 "ocr_configured": bool(os.environ.get(OCR_KEY_ENV)),
+                                 "ocr_backend": OCR_BACKEND,
+                                 "ocr_configured": ocr_is_configured(),
                                  "external_llm": False})
             return
         if path == "/api/jobs":
@@ -463,7 +405,34 @@ class Handler(BaseHTTPRequestHandler):
                 rows = db.execute("SELECT * FROM audit_events WHERE job_id=? ORDER BY created_at DESC LIMIT 100", (parts[2],)).fetchall()
             self.send_json(200, [{**dict(row), "details": json.loads(row["details_json"])} for row in rows])
             return
+        if len(parts) == 5 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "export":
+            if parts[4] == "csv":
+                self.export_job_csv(parts[2])
+                return
+            if parts[4] == "json":
+                self.export_job_json(parts[2])
+                return
+        if len(parts) == 4 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "analytics":
+            with connect() as db:
+                try:
+                    from analytics_service import get_hiring_analytics_summary
+                    summary = get_hiring_analytics_summary(db, parts[2])
+                    self.send_json(200, summary)
+                except ValueError as exc:
+                    self.send_json(404, {"error": str(exc)})
+            return
+        if len(parts) == 4 and parts[0] == "api" and parts[1] == "candidates" and parts[3] == "scorecards":
+            with connect() as db:
+                try:
+                    from interview_service import get_candidate_scorecards, get_candidate_interview_summary
+                    scorecards = get_candidate_scorecards(db, parts[2])
+                    summary = get_candidate_interview_summary(db, parts[2])
+                    self.send_json(200, {"scorecards": scorecards, "summary": summary})
+                except Exception as exc:
+                    self.send_json(400, {"error": str(exc)})
+            return
         self.send_json(404, {"error": "Endpoint tidak ditemukan."})
+
 
     def get_job(self, job_id: str) -> None:
         with connect() as db:
@@ -500,6 +469,137 @@ class Handler(BaseHTTPRequestHandler):
                              "approvals": [dict(row) for row in approvals], "candidates": out,
                              "synthetic_data": {"available": synthetic_available, "loaded": synthetic_loaded}})
 
+    def export_job_csv(self, job_id: str) -> None:
+        with connect() as db:
+            job = db.execute("SELECT * FROM jobs WHERE id=?", (job_id,)).fetchone()
+            if not job:
+                self.send_json(404, {"error": "Lowongan tidak ditemukan."})
+                return
+            candidates = db.execute(
+                "SELECT * FROM candidates WHERE job_id=? ORDER BY score DESC, created_at ASC", (job_id,)
+            ).fetchall()
+            output = io.StringIO()
+            writer = csv.writer(output)
+            writer.writerow([
+                "ID Kandidat",
+                "Label",
+                "Skor Evidence",
+                "Status Review",
+                "Format CV",
+                "Pengalaman (Tahun)",
+                "Pendidikan",
+                "Skills",
+                "Kriteria Cocok (Matched)",
+                "Kriteria Parsial (Partial)",
+                "Kriteria Belum Diketahui",
+                "Reviewer Terakhir",
+                "Peran Reviewer",
+                "Keputusan Terakhir",
+                "Catatan Reviewer",
+                "Tanggal Unggah",
+            ])
+            status_map = {
+                "needs_review": "Perlu review",
+                "advance": "Lanjut proses",
+                "needs_info": "Perlu informasi",
+                "not_selected": "Tidak lanjut",
+            }
+            for candidate in candidates:
+                profile = json.loads(candidate["profile_json"])
+                evidence = db.execute(
+                    "SELECT result, criterion FROM evidence WHERE candidate_id=?", (candidate["id"],)
+                ).fetchall()
+                matched_count = sum(1 for e in evidence if e["result"] == "matched")
+                partial_count = sum(1 for e in evidence if e["result"] == "partial")
+                unknown_count = sum(1 for e in evidence if e["result"] == "unknown")
+                last_review = db.execute(
+                    "SELECT reviewer, role, decision, note FROM reviews WHERE candidate_id=? ORDER BY created_at DESC LIMIT 1",
+                    (candidate["id"],),
+                ).fetchone()
+
+                skills_str = ", ".join(profile.get("skills") or [])
+                edu_str = ", ".join(profile.get("education_levels_mentioned") or [])
+                exp_years = profile.get("experience_years_mentioned")
+                exp_str = str(exp_years) if exp_years is not None else "-"
+                cand_label = f"Kandidat · {candidate['id'][-4:].upper()}"
+                status_label = status_map.get(candidate["status"], candidate["status"])
+
+                writer.writerow([
+                    candidate["id"],
+                    cand_label,
+                    f"{round(candidate['score'])}",
+                    status_label,
+                    candidate["file_type"].upper(),
+                    exp_str,
+                    edu_str,
+                    skills_str,
+                    matched_count,
+                    partial_count,
+                    unknown_count,
+                    last_review["reviewer"] if last_review else "-",
+                    last_review["role"] if last_review else "-",
+                    status_map.get(last_review["decision"], last_review["decision"]) if last_review else "-",
+                    last_review["note"] if last_review else "",
+                    candidate["created_at"],
+                ])
+
+        safe_slug = re.sub(r"[^a-zA-Z0-9_-]", "_", job["title"])[:30].strip("_") or "job"
+        filename = f"rekap-kandidat-{safe_slug}-{job_id[:8]}.csv"
+        content = output.getvalue()
+        data = ("\ufeff" + content).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "text/csv; charset=utf-8")
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+
+    def export_job_json(self, job_id: str) -> None:
+        with connect() as db:
+            job = db.execute("SELECT * FROM jobs WHERE id=?", (job_id,)).fetchone()
+            if not job:
+                self.send_json(404, {"error": "Lowongan tidak ditemukan."})
+                return
+            approvals = db.execute("SELECT reviewer, role, created_at FROM approvals WHERE job_id=? ORDER BY created_at", (job_id,)).fetchall()
+            candidates = db.execute(
+                "SELECT * FROM candidates WHERE job_id=? ORDER BY score DESC, created_at ASC", (job_id,)
+            ).fetchall()
+            out = []
+            for candidate in candidates:
+                item = dict(candidate)
+                profile = json.loads(item.pop("profile_json"))
+                item["profile"] = profile
+                item["evidence"] = [dict(row) for row in db.execute(
+                    "SELECT * FROM evidence WHERE candidate_id=? ORDER BY weight DESC, criterion", (candidate["id"],)
+                ).fetchall()]
+                item["reviews"] = [dict(row) for row in db.execute(
+                    "SELECT reviewer,role,decision,note,created_at FROM reviews WHERE candidate_id=? ORDER BY created_at DESC", (candidate["id"],)
+                ).fetchall()]
+                out.append(item)
+
+        payload = {
+            "job_id": job["id"],
+            "title": job["title"],
+            "department": job["department"],
+            "description": job["description"],
+            "criteria": json.loads(job["criteria_json"]),
+            "approvals": [dict(row) for row in approvals],
+            "exported_at": datetime.now(timezone.utc).isoformat(),
+            "candidate_count": len(out),
+            "candidates": out,
+        }
+        safe_slug = re.sub(r"[^a-zA-Z0-9_-]", "_", job["title"])[:30].strip("_") or "job"
+        filename = f"debrief-kandidat-{safe_slug}-{job_id[:8]}.json"
+        data = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+
     def do_POST(self) -> None:  # noqa: N802
         path = urlsplit(self.path).path
         try:
@@ -514,8 +614,11 @@ class Handler(BaseHTTPRequestHandler):
                 self.add_candidate(parts[2])
             elif len(parts) == 4 and parts[0] == "api" and parts[1] == "candidates" and parts[3] == "reviews":
                 self.add_review(parts[2])
+            elif len(parts) == 4 and parts[0] == "api" and parts[1] == "candidates" and parts[3] == "scorecards":
+                self.add_scorecard(parts[2])
             elif len(parts) == 4 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "ask":
                 self.ask_job(parts[2])
+
             else:
                 self.send_json(404, {"error": "Endpoint tidak ditemukan."})
         except (ValueError, json.JSONDecodeError) as exc:
@@ -701,7 +804,28 @@ class Handler(BaseHTTPRequestHandler):
                   {"role": role, "decision": decision})
         self.send_json(201, {"ok": True, "message": "Review manusia tercatat."})
 
+    def add_scorecard(self, candidate_id: str) -> None:
+        data = self.read_json()
+        with connect() as db:
+            candidate = db.execute("SELECT * FROM candidates WHERE id=?", (candidate_id,)).fetchone()
+            if not candidate:
+                self.send_json(404, {"error": "Kandidat tidak ditemukan."})
+                return
+            from interview_service import record_scorecard
+            scorecard_data = {
+                "job_id": candidate["job_id"],
+                "candidate_id": candidate_id,
+                "reviewer": data.get("reviewer"),
+                "role": data.get("role"),
+                "overall_recommendation": data.get("overall_recommendation"),
+                "notes": data.get("notes", ""),
+                "criterion_scores": data.get("criterion_scores", []),
+            }
+            scorecard_id = record_scorecard(db, scorecard_data)
+        self.send_json(201, {"ok": True, "id": scorecard_id, "message": "Scorecard wawancara tersimpan."})
+
     def ask_job(self, job_id: str) -> None:
+
         data = self.read_json()
         question = str(data.get("question", "")).strip()[:500]
         if not question:
@@ -711,12 +835,23 @@ class Handler(BaseHTTPRequestHandler):
         if not job:
             self.send_json(404, {"error": "Lowongan tidak ditemukan."})
             return
-        sources = rank_retrieval(question, dict(job))
-        self.send_json(200, {
-            "answer": "Saya menemukan bagian requisition yang paling relevan. Jawaban ini hanya mengambil sumber yang disetujui; reviewer tetap perlu memeriksa konteks.",
-            "sources": sources,
-            "mode": "retrieval_only",
-        })
+        try:
+            from rag_service import retrieve_job_context
+            rag_res = retrieve_job_context(question, dict(job))
+            self.send_json(200, {
+                "answer": rag_res["answer"],
+                "sources": rag_res["sources"],
+                "query": rag_res["query"],
+                "total_sources_evaluated": rag_res["total_sources_evaluated"],
+                "mode": "retrieval_only",
+            })
+        except Exception:
+            sources = rank_retrieval(question, dict(job))
+            self.send_json(200, {
+                "answer": "Saya menemukan bagian requisition yang paling relevan. Jawaban ini hanya mengambil sumber yang disetujui; reviewer tetap perlu memeriksa konteks.",
+                "sources": sources,
+                "mode": "retrieval_only",
+            })
 
     def do_DELETE(self) -> None:  # noqa: N802
         parts = [unquote(p) for p in urlsplit(self.path).path.strip("/").split("/")]

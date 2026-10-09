@@ -1,0 +1,22 @@
+.intake-form select {
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 10px 11px;
+  border: 1px solid #e4e8e3;
+  border-radius: 8px;
+  background: #fdfefc;
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+}
+
+.intake-form select:focus {
+  border-color: #96b5a0;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(106, 154, 119, .11);
+}
+
+.intake-form .template-hint {
+  min-height: 30px;
+  margin: 0 0 16px;
+}

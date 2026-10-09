@@ -7,6 +7,10 @@
   <title>KarsaHire — AI Recruitment Copilot</title>
   <link rel="stylesheet" href="/app.css">
   <link rel="stylesheet" href="/approval.css">
+  <link rel="stylesheet" href="/role-templates.css">
+  <link rel="stylesheet" href="/comparison.css">
+  <link rel="stylesheet" href="/scorecard.css">
+  <link rel="stylesheet" href="/analytics-modal.css">
 </head>
 <body>
   <header class="topbar">
@@ -15,7 +19,7 @@
       <span>Karsa<strong>Hire</strong></span>
     </a>
     <div class="topbar-right">
-      <span class="local-pill"><i></i> OCR melalui API internal</span>
+      <span id="ocr-indicator" class="local-pill" aria-live="polite"><i></i> Memeriksa OCR…</span>
       <span class="avatar">HR</span>
     </div>
   </header>
@@ -32,6 +36,28 @@
       <p class="muted intro">Sepakati kriteria bersama hiring manager sebelum kandidat diranking.</p>
 
       <form id="job-form" class="panel intake-form">
+        <label for="role-template">Pilih posisi / template</label>
+        <select id="role-template" aria-describedby="template-hint">
+          <option value="">Pilih template posisi (opsional)</option>
+          <optgroup label="IT">
+            <option value="software-developer">Software Developer</option>
+            <option value="systems-administrator">Network &amp; Systems Administrator</option>
+            <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
+          </optgroup>
+          <optgroup label="HR">
+            <option value="recruiter">Recruiter / Talent Acquisition</option>
+            <option value="learning-development">Learning &amp; Development Specialist</option>
+            <option value="hr-manager">HR Manager</option>
+          </optgroup>
+          <optgroup label="Akuntansi &amp; Finance Ops">
+            <option value="accountant">Accountant / Financial Reporting</option>
+            <option value="accounting-clerk">Accounting Clerk (AP/AR)</option>
+            <option value="payroll-specialist">Payroll Specialist / Timekeeping</option>
+          </optgroup>
+          <option value="custom">Custom / posisi lain</option>
+        </select>
+        <p id="template-hint" class="field-hint template-hint" aria-live="polite">Template mengisi posisi, ringkasan, dan kriteria awal. Semua kolom tetap bisa disunting.</p>
+
         <label for="job-title">Nama posisi <span class="required">*</span></label>
         <input id="job-title" name="title" placeholder="Contoh: Backend Engineer" required maxlength="160">
 
@@ -42,10 +68,10 @@
         <textarea id="description" name="description" rows="4" maxlength="12000" placeholder="Tanggung jawab utama dan konteks peran..."></textarea>
 
         <div class="label-row">
-          <label for="criteria">Kriteria yang disetujui <span class="required">*</span></label>
+          <label for="criteria">Kriteria penilaian <span class="required">*</span></label>
           <button id="fill-example" class="text-button" type="button">Isi contoh</button>
         </div>
-        <textarea id="criteria" name="criteria" rows="7" required placeholder="Satu kriteria per baris:&#10;Wajib | Python&#10;Wajib | FastAPI&#10;Diutamakan | PostgreSQL&#10;Diutamakan | Kolaborasi lintas fungsi"></textarea>
+        <textarea id="criteria" name="criteria" rows="8" required placeholder="Satu kriteria per baris:&#10;Wajib | Python&#10;Wajib | FastAPI&#10;Diutamakan | PostgreSQL&#10;Diutamakan | Kolaborasi lintas fungsi"></textarea>
         <p class="field-hint">Bobot kriteria wajib = 2, diutamakan = 1. “Belum ada bukti” tidak sama dengan tidak memenuhi.</p>
 
         <button class="button button-primary button-wide" type="submit"><span>＋</span> Buat requisition</button>
@@ -84,15 +110,65 @@
         <div class="toolbar">
           <div class="candidate-heading">
             <h3>Kandidat <span id="candidate-count" class="count-badge">0</span></h3>
-            <span class="sort-label">Urut dari kecocokan evidence</span>
+            <span class="sort-label">Kecocokan bukti &amp; profil</span>
           </div>
           <div class="toolbar-actions">
+            <button id="blind-mode-toggle" class="button button-blind" type="button" aria-pressed="false" title="Mode Review Buta: Samarkan identitas nama/file dan avatar untuk objektivitas">
+              <span class="blind-icon">👁</span> <span class="blind-text">Mode Buta</span>
+            </button>
+            <button id="compare-selected-button" class="button button-secondary button-compare" type="button" disabled title="Pilih 2-3 kandidat untuk dibandingkan">
+              <span class="compare-icon">⚖</span> Bandingkan <span id="compare-count-badge" class="count-badge hidden">0/3</span>
+            </button>
+            <button id="analytics-button" class="button button-secondary" type="button"><span class="btn-icon">📊</span> Analisis Seleksi</button>
+            <div class="export-actions" role="group" aria-label="Ekspor data kandidat">
+              <button id="export-csv-button" class="button button-secondary button-export" type="button" title="Ekspor rekap data kandidat ke format CSV">
+                <span class="btn-icon">⤓</span> Ekspor CSV Rekap
+              </button>
+              <button id="export-json-button" class="button button-secondary button-export" type="button" title="Ekspor data debrief lengkap ke format JSON">
+                <span class="btn-icon">⤓</span> Ekspor JSON Debrief
+              </button>
+            </div>
             <button id="load-synthetic-button" class="button button-secondary" type="button" disabled>Muat CV uji</button>
             <label id="upload-label" class="button button-primary upload-button" for="resume-file">＋ Tambah CV</label>
           </div>
           <input id="resume-file" class="visually-hidden" type="file" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg">
         </div>
-        <p class="privacy-note"><span>◈</span> File unggahan tidak disimpan. Batch uji lokal memakai teks sintetis dan tanpa OCR. OCR unggahan manual memerlukan API internal yang dikonfigurasi (maksimal 6 request/menit).</p>
+        <div id="blind-mode-banner" class="blind-mode-banner hidden" role="status">
+          <div class="blind-mode-banner-content">
+            <span class="blind-mode-banner-icon">🕶️</span>
+            <div>
+              <strong>Mode Review Buta (Blind-First) Aktif</strong> — Identitas file, label personal, dan avatar disamarkan. Evaluasi murni berbasis bukti kriteria untuk mitigasi bias.
+            </div>
+          </div>
+          <span class="blind-mode-banner-badge">Blind-First</span>
+        </div>
+        <p class="privacy-note"><span>◈</span> File unggahan tidak disimpan. Batch uji lokal memakai teks sintetis dan tanpa OCR. OCR lokal memakai PaddleOCR setelah dependensi dipasang; API internal tetap tersedia sebagai opsi.</p>
+
+        <div class="candidate-controls" aria-label="Kontrol pencarian dan pengurutan kandidat">
+          <div class="search-input-wrapper">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input id="candidate-search" class="candidate-search-input" type="search" placeholder="Cari ID kandidat, skill, atau kata kunci profil…" aria-label="Cari kandidat berdasarkan ID atau skill/profil">
+            <button id="candidate-search-clear" class="search-clear-button hidden" type="button" aria-label="Hapus kata kunci pencarian">✕</button>
+          </div>
+          <div class="sort-control-wrapper">
+            <label for="candidate-sort" class="sort-label-text">Urutkan:</label>
+            <select id="candidate-sort" class="candidate-sort-select" aria-label="Urutkan kandidat">
+              <option value="score_desc">Nilai tertinggi (default)</option>
+              <option value="score_asc">Nilai terendah</option>
+              <option value="date_desc">Terbaru diunggah</option>
+              <option value="date_asc">Terlama diunggah</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="candidate-filters" class="candidate-filters" role="group" aria-label="Filter status kandidat">
+          <button class="candidate-filter active" type="button" data-filter="all" aria-pressed="true">Semua <span data-filter-count="all">0</span></button>
+          <button class="candidate-filter" type="button" data-filter="needs_review" aria-pressed="false">Perlu review <span data-filter-count="needs_review">0</span></button>
+          <button class="candidate-filter" type="button" data-filter="advance" aria-pressed="false">Lanjut proses <span data-filter-count="advance">0</span></button>
+          <button class="candidate-filter" type="button" data-filter="needs_info" aria-pressed="false">Perlu informasi <span data-filter-count="needs_info">0</span></button>
+          <button class="candidate-filter" type="button" data-filter="not_selected" aria-pressed="false">Tidak lanjut <span data-filter-count="not_selected">0</span></button>
+          <span id="candidate-filter-summary" class="candidate-filter-summary" aria-live="polite"></span>
+        </div>
 
         <div id="candidate-list" class="candidate-list"></div>
         <div id="empty-candidates" class="empty-state">
@@ -130,7 +206,27 @@
       <footer class="footer-note">KarsaHire · ranking leksikal baseline · keputusan manusia</footer>
     </section>
   </main>
+  <div id="comparison-dock" class="comparison-dock hidden" role="region" aria-label="Aksi Perbandingan Kandidat">
+    <div class="comparison-dock-inner">
+      <div class="comparison-dock-info">
+        <span class="dock-badge">⚖ Perbandingan</span>
+        <span id="comparison-dock-text">0 dari 3 kandidat dipilih</span>
+      </div>
+      <div class="comparison-dock-actions">
+        <button id="comparison-dock-clear" class="button-dock-clear" type="button">Bersihkan</button>
+        <button id="comparison-dock-open" class="button-dock-open" type="button" disabled>
+          <span>⚖</span> Bandingkan Side-by-Side (0)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="comparison-modal-backdrop" class="comparison-modal-backdrop hidden" tabindex="-1"></div>
+  <div id="analytics-modal-backdrop" class="analytics-modal-backdrop hidden" tabindex="-1"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/scorecard.js" defer></script>
+  <script src="/comparison.js" defer></script>
+  <script src="/analytics-modal.js" defer></script>
   <script src="/app.js" defer></script>
 </body>
 </html>

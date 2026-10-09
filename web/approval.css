@@ -29,9 +29,42 @@
 .toolbar-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
 #load-synthetic-button:disabled { opacity: .55; cursor: not-allowed; }
 
+.candidate-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 12px;
+}
+.candidate-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid #e3e9e3;
+  border-radius: 18px;
+  background: #fbfcfa;
+  color: #718078;
+  font: inherit;
+  font-size: 10px;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.candidate-filter:hover { border-color: #cbd9ce; color: #476551; }
+.candidate-filter:focus-visible { outline: 2px solid #73947b; outline-offset: 2px; }
+.candidate-filter.active { border-color: #cbdccd; background: #eaf2eb; color: #45654d; font-weight: 700; }
+.candidate-filter span { min-width: 17px; padding: 2px 5px; border-radius: 10px; background: rgba(70, 102, 78, .09); text-align: center; font-size: 9px; }
+.candidate-filter-summary { margin-left: auto; color: #929e95; font-size: 9px; }
+.candidate-detail-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 11px; }
+.candidate-delete { border: 1px solid #ecd8d4; border-radius: 7px; background: #fffafa; color: #9b5d55; padding: 7px 10px; font: inherit; font-size: 9px; font-weight: 700; }
+.candidate-delete:hover { border-color: #d9b6af; background: #fdf1ef; }
+.candidate-delete:focus-visible { outline: 2px solid #bc786e; outline-offset: 2px; }
+.candidate-delete:disabled { opacity: .55; cursor: wait; }
+
 @media (max-width: 720px) {
   .approval-panel { display: block; }
   .approval-form { width: 100%; margin-top: 11px; }
   .toolbar { align-items: flex-start; flex-wrap: wrap; }
-  .toolbar-actions { width: 100%; justify-content: space-between; }
+  .candidate-filter-summary { width: 100%; margin: 1px 0 0; }
+  .candidate-detail-actions { align-items: flex-start; }
 }

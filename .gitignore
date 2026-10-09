@@ -1,4 +1,5 @@
 __pycache__/
+.venv*/
 *.py[cod]
 .env
 .env.*
@@ -7,3 +8,7 @@ data/copilot.sqlite3
 data/copilot.sqlite3-shm
 data/copilot.sqlite3-wal
 data/uploads/
+*.db
+*.sqlite
+*.sqlite3
+
