@@ -527,6 +527,16 @@
           </div>
         </div>
 
+        <!-- STAR Guide Helper Banner -->
+        <div class="scorecard-star-guide-banner">
+          <div class="scorecard-star-guide-copy">
+            <strong>🎯 Panduan Wawancara STAR:</strong> Butuh referensi pertanyaan perilaku berbasis Situation, Task, Action, Result untuk kriteria lowongan ini?
+          </div>
+          <button type="button" class="button button-secondary button-sm star-guide-btn" data-candidate-id="${escapeHtml(candidateId)}" title="Buka panduan pertanyaan wawancara STAR">
+            <span class="btn-icon">🎯</span> Panduan Wawancara STAR
+          </button>
+        </div>
+
         <!-- Criteria List -->
         <div class="scorecard-field-label" style="margin-bottom:8px;">
           Penilaian Rubrik per Kriteria (Skala 1–5) <span class="required-star">*</span>

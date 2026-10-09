@@ -132,6 +132,9 @@
               <button id="export-json-button" class="button button-secondary button-export" type="button" title="Ekspor data debrief lengkap ke format JSON">
                 <span class="btn-icon">⤓</span> Ekspor JSON Debrief
               </button>
+              <button id="export-dossier-button" class="button button-secondary button-export" type="button" title="Ekspor dokumen debrief dossier lengkap ke tab baru">
+                <span class="btn-icon">📄</span> Ekspor Dokumen Debrief (Dossier)
+              </button>
             </div>
             <button id="load-synthetic-button" class="button button-secondary" type="button" disabled>Muat CV uji</button>
             <button id="upload-label" class="button button-primary upload-button" type="button" aria-controls="resume-file" disabled>＋ Tambah CV</button>
@@ -252,6 +255,12 @@
 
   <div id="comparison-modal-backdrop" class="comparison-modal-backdrop hidden" tabindex="-1"></div>
   <div id="analytics-modal-backdrop" class="analytics-modal-backdrop hidden" tabindex="-1"></div>
+  <div id="feedback-modal-backdrop" class="feedback-modal-backdrop hidden" tabindex="-1">
+    <div id="feedback-modal" class="feedback-modal" role="dialog" aria-modal="true" aria-labelledby="feedback-modal-title"></div>
+  </div>
+  <div id="star-modal-backdrop" class="star-modal-backdrop hidden" tabindex="-1">
+    <div id="star-modal" class="star-modal" role="dialog" aria-modal="true" aria-labelledby="star-modal-title"></div>
+  </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <script src="/scorecard.js" defer></script>
   <script src="/comparison.js" defer></script>

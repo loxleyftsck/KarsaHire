@@ -574,6 +574,25 @@ class TestServerEndpoints(ServerTestCase):
         status, _, _ = self.get_raw("/api/jobs/job_missing999/export/csv")
         self.assertEqual(status, 404)
 
+        # Test Dossier HTML export
+        status, headers, body = self.get_raw(f"/api/jobs/{job_id}/export/dossier")
+        self.assertEqual(status, 200)
+        self.assertIn("text/html", headers.get("content-type", ""))
+        self.assertIn("charset=utf-8", headers.get("content-type", "").lower())
+        html_text = body.decode("utf-8")
+        self.assertIn("PT KARSA HIRE NUSANTARA", html_text)
+        self.assertIn("Data Engineer", html_text)
+        self.assertIn("Alice", html_text)
+        self.assertIn("Bob", html_text)
+        self.assertIn("UU PDP No. 27/2022", html_text)
+        self.assertIn("NYC LL144", html_text)
+        self.assertIn("EU AI Act", html_text)
+        self.assertIn("@media print", html_text)
+
+        # Test dossier on non-existent job
+        status, _, _ = self.get_raw("/api/jobs/job_missing999/export/dossier")
+        self.assertEqual(status, 404)
+
     def test_comparison_static_assets(self):
         # Test comparison.css
         status, headers, body = self.get_raw("/comparison.css")
@@ -749,6 +768,112 @@ class TestServerEndpoints(ServerTestCase):
         self.assertEqual(len(sc_data["scorecards"]), 1)
         self.assertEqual(sc_data["scorecards"][0]["reviewer"], "Alice Recruiter")
 
+    def test_criteria_recommendations_endpoint(self):
+        """Test POST /api/criteria-recommendations with valid and invalid payloads."""
+        status, recs = self.post_json("/api/criteria-recommendations", {
+            "title": "Software Developer",
+            "department": "Engineering",
+        })
+        self.assertEqual(status, 200)
+        self.assertEqual(recs["title"], "Software Developer")
+        self.assertIn("recommendations", recs)
+        self.assertIn("calibration", recs)
+        self.assertGreaterEqual(len(recs["recommendations"]), 4)
+        self.assertEqual(recs["calibration"]["status"], "well_calibrated")
+
+        # Missing title should return 400
+        status, err = self.post_json("/api/criteria-recommendations", {"title": ""})
+        self.assertEqual(status, 400)
+        self.assertIn("error", err)
+
+    def test_job_star_questions_endpoint(self):
+        """Test GET /api/jobs/{id}/star-questions before and after approval."""
+        _, job = self.post_json("/api/jobs", {
+            "title": "Fullstack Engineer",
+            "criteria": [
+                {"label": "python", "type": "required"},
+                {"label": "react", "type": "preferred"},
+            ],
+        })
+        job_id = job["id"]
+
+        # Before dual approval -> 409
+        status, err = self.get(f"/api/jobs/{job_id}/star-questions")
+        self.assertEqual(status, 409)
+        self.assertIn("error", err)
+
+        # Dual approve
+        self.post_json(f"/api/jobs/{job_id}/approvals", {"reviewer": "Recruiter Alice", "role": "recruiter"})
+        self.post_json(f"/api/jobs/{job_id}/approvals", {"reviewer": "Manager Bob", "role": "hiring_manager"})
+
+        # After dual approval -> 200
+        status, star_data = self.get(f"/api/jobs/{job_id}/star-questions")
+        self.assertEqual(status, 200)
+        self.assertEqual(star_data["job_id"], job_id)
+        self.assertEqual(star_data["status"], "criteria_approved")
+        self.assertIn("star_questions", star_data)
+        self.assertIn("calibration", star_data)
+        self.assertEqual(len(star_data["star_questions"]), 2)
+
+        # Nonexistent job -> 404
+        status, err = self.get("/api/jobs/job_ghost999/star-questions")
+        self.assertEqual(status, 404)
+        self.assertIn("error", err)
+
+    def test_candidate_feedback_endpoint(self):
+        """Test GET /api/candidates/{id}/feedback returns full PDP-compliant feedback."""
+        _, job = self.post_json("/api/jobs", {
+            "title": "DevOps Engineer",
+            "criteria": [{"label": "docker", "type": "required"}],
+        })
+        job_id = job["id"]
+        self.post_json(f"/api/jobs/{job_id}/approvals", {"reviewer": "Recruiter Alice", "role": "recruiter"})
+        self.post_json(f"/api/jobs/{job_id}/approvals", {"reviewer": "Manager Bob", "role": "hiring_manager"})
+
+        status, cand = self.post_multipart(f"/api/jobs/{job_id}/candidates", "resume.txt", "Senior Docker and Cloud Specialist")
+        self.assertEqual(status, 201)
+        cand_id = cand["id"]
+
+        status, fb = self.get(f"/api/candidates/{cand_id}/feedback")
+        self.assertEqual(status, 200)
+        self.assertEqual(fb["candidate_id"], cand_id)
+        self.assertEqual(fb["job_title"], "DevOps Engineer")
+        self.assertIn("strengths", fb)
+        self.assertIn("growth_areas", fb)
+        self.assertIn("decision_summary", fb)
+        self.assertIn("transparency_notice", fb)
+        self.assertIn("feedback_email_draft", fb)
+        self.assertIn("UU No. 27", fb["transparency_notice"])
+        self.assertIn("Pasal 40", fb["transparency_notice"])
+
+        # Nonexistent candidate -> 404
+        status, err = self.get("/api/candidates/cand_ghost999/feedback")
+        self.assertEqual(status, 404)
+        self.assertIn("error", err)
+
+    def test_job_dossier_export_endpoint(self):
+        """Test GET /api/jobs/{id}/export/dossier returns print-ready HTML dossier."""
+        _, job = self.post_json("/api/jobs", {
+            "title": "Security Lead",
+            "department": "InfoSec",
+            "criteria": [{"label": "security monitoring", "type": "required"}],
+        })
+        job_id = job["id"]
+        self.post_json(f"/api/jobs/{job_id}/approvals", {"reviewer": "Recruiter Alice", "role": "recruiter"})
+        self.post_json(f"/api/jobs/{job_id}/approvals", {"reviewer": "Manager Bob", "role": "hiring_manager"})
+
+        status, headers, body = self.get_raw(f"/api/jobs/{job_id}/export/dossier")
+        self.assertEqual(status, 200)
+        self.assertIn("text/html", headers.get("content-type", ""))
+        self.assertIn("charset=utf-8", headers.get("content-type", "").lower())
+        html_str = body.decode("utf-8")
+        self.assertIn("Security Lead", html_str)
+        self.assertIn("KarsaHire", html_str)
+        self.assertIn("@media print", html_str)
+
+        # Nonexistent job -> 404
+        status, _, _ = self.get_raw("/api/jobs/job_ghost999/export/dossier")
+        self.assertEqual(status, 404)
 
 
 if __name__ == "__main__":

@@ -350,6 +350,554 @@ def export_job_report_json(db: sqlite3.Connection, job_id: str) -> dict[str, Any
     }
 
 
+def export_job_dossier_html(db: sqlite3.Connection, job_id: str) -> str:
+    """Generate an executive debrief dossier HTML report for a job requisition."""
+    report = export_job_report_json(db, job_id)
+    job_meta = report["metadata"]
+    criteria = report["criteria"]
+    approvers = report["approvers"]
+    candidates = report["candidates"]
+    audit_events = report["audit_events"]
+
+    # Try fetching interview summary for candidates if interview_service is available
+    try:
+        from interview_service import get_candidate_interview_summary
+    except ImportError:
+        get_candidate_interview_summary = None
+
+    def esc(text: Any) -> str:
+        s = str(text if text is not None else "")
+        return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+    status_labels = {
+        "needs_review": "Perlu Review",
+        "advance": "Lanjut Proses",
+        "needs_info": "Perlu Informasi",
+        "not_selected": "Tidak Lanjut",
+        "awaiting_approval": "Menunggu Persetujuan",
+        "approved": "Disetujui",
+        "active": "Aktif",
+    }
+
+    # Criteria table rows
+    crit_rows = []
+    for idx, c in enumerate(criteria, start=1):
+        if isinstance(c, dict):
+            label = c.get("label", "")
+            req_type = c.get("type", "required")
+            weight = c.get("weight", 2.0 if req_type == "required" else 1.0)
+        elif isinstance(c, (list, tuple)) and len(c) >= 2:
+            req_type = c[0]
+            label = c[1]
+            weight = 2.0 if req_type in ("required", "wajib") else 1.0
+        else:
+            label = str(c)
+            req_type = "required"
+            weight = 2.0
+
+        type_badge = "Wajib" if req_type in ("required", "wajib") else "Diutamakan"
+        crit_rows.append(f"""
+        <tr>
+          <td><strong>{idx}</strong></td>
+          <td>{esc(label)}</td>
+          <td><span class="badge badge-{req_type}">{type_badge}</span></td>
+          <td>{weight}</td>
+        </tr>
+        """)
+
+    # Candidates leaderboard rows
+    cand_rows = []
+    for idx, cand in enumerate(candidates, start=1):
+        cand_id = cand["id"]
+        score = round(cand.get("score", 0))
+        status = cand.get("status", "needs_review")
+        status_text = status_labels.get(status, status)
+        file_type = cand.get("file_type", "pdf").upper()
+        skills = ", ".join(cand.get("profile", {}).get("skills", [])[:6]) or "-"
+
+        # Interview scorecard score
+        interview_score_str = "-"
+        if get_candidate_interview_summary:
+            try:
+                sc_summary = get_candidate_interview_summary(db, cand_id)
+                if sc_summary and sc_summary.get("overall_average_score"):
+                    interview_score_str = f"{sc_summary['overall_average_score']:.1f} / 5.0"
+            except Exception:
+                pass
+
+        cand_rows.append(f"""
+        <tr>
+          <td><strong>#{idx}</strong></td>
+          <td><code>{esc(cand_id)}</code></td>
+          <td><strong>{score}%</strong></td>
+          <td><span class="badge badge-{status}">{esc(status_text)}</span></td>
+          <td>{esc(interview_score_str)}</td>
+          <td>{esc(file_type)}</td>
+          <td class="skills-cell">{esc(skills)}</td>
+        </tr>
+        """)
+
+    # Candidate detailed dossier sections
+    candidate_sections = []
+    for idx, cand in enumerate(candidates, start=1):
+        cand_id = cand["id"]
+        score = round(cand.get("score", 0))
+        status = cand.get("status", "needs_review")
+        profile = cand.get("profile", {})
+        evidence_list = cand.get("evidence", [])
+        reviews = cand.get("reviews", [])
+
+        exp_years = profile.get("experience_years_mentioned")
+        if exp_years is None:
+            exp_years = profile.get("experience_years")
+        exp_str = f"{exp_years} tahun" if exp_years is not None else "Belum diketahui"
+
+        edu_list = profile.get("education_levels_mentioned") or profile.get("education") or []
+        edu_str = ", ".join(edu_list) if edu_list else "Belum diketahui"
+        skills_str = ", ".join(profile.get("skills", [])) or "Belum terdeteksi"
+
+        # Evidence rows
+        evi_html = []
+        for e in evidence_list:
+            res = e.get("result", "unknown")
+            res_labels = {
+                "matched": ("Ada bukti tekstual", "badge-matched"),
+                "partial": ("Bukti parsial", "badge-partial"),
+                "needs_verification": ("Perlu verifikasi", "badge-verification"),
+                "unknown": ("Belum ditemukan", "badge-unknown"),
+            }
+            lbl, badge_cls = res_labels.get(res, (res, "badge-unknown"))
+            snippet = f"“{esc(e.get('snippet'))}”" if e.get("snippet") else "<em>Belum ditemukan pada dokumen CV.</em>"
+            page_info = f"Hal. {e.get('page_number')}" if e.get("page_number") else "Dokumen"
+
+            evi_html.append(f"""
+            <div class="evidence-box">
+              <div class="evidence-box-header">
+                <strong>{esc(e.get('criterion'))}</strong>
+                <span class="badge {badge_cls}">{lbl}</span>
+              </div>
+              <div class="evidence-box-snippet">{snippet}</div>
+              <div class="evidence-box-footer">{page_info} &bull; Bobot {e.get('weight', 1.0)}</div>
+            </div>
+            """)
+
+        # Reviews summary
+        rev_html = []
+        for r in reviews:
+            rev_role = "Recruiter" if r.get("role") == "recruiter" else "Hiring Manager"
+            rev_dec = status_labels.get(r.get("decision"), r.get("decision"))
+            note_str = f" — {esc(r.get('note'))}" if r.get("note") else ""
+            rev_html.append(f"<li><strong>{esc(r.get('reviewer'))}</strong> ({rev_role}): <span class='badge badge-{r.get('decision')}'>{rev_dec}</span>{note_str}</li>")
+
+        reviews_block = f"<ul class='reviews-list'>{''.join(rev_html)}</ul>" if rev_html else "<p class='muted'>Belum ada catatan review manusia.</p>"
+
+        candidate_sections.append(f"""
+        <article class="candidate-dossier-card">
+          <div class="candidate-card-header">
+            <div>
+              <h3>Kandidat #{idx} &bull; <code>{esc(cand_id)}</code></h3>
+              <p class="muted">Format: {esc(cand.get('file_type', '').upper())} &bull; Pengalaman: {esc(exp_str)} &bull; Pendidikan: {esc(edu_str)}</p>
+            </div>
+            <div class="candidate-card-score">
+              <div class="score-pill">{score}%</div>
+              <div class="score-sub">Indikator Evidence</div>
+            </div>
+          </div>
+          <div class="candidate-card-skills">
+            <strong>Keahlian Terdeteksi:</strong> {esc(skills_str)}
+          </div>
+          <div class="evidence-grid">
+            {''.join(evi_html)}
+          </div>
+          <div class="reviews-section">
+            <h4>Catatan &amp; Keputusan Tim Review:</h4>
+            {reviews_block}
+          </div>
+        </article>
+        """)
+
+    # Audit events rows
+    audit_rows = []
+    for a in audit_events:
+        evt_type = a.get("event_type", "")
+        actor = a.get("actor", "-")
+        created = a.get("created_at", "-")
+        cand_id_str = a.get("candidate_id") or "-"
+        audit_rows.append(f"""
+        <tr>
+          <td><small>{esc(created)}</small></td>
+          <td><strong>{esc(actor)}</strong></td>
+          <td><code>{esc(evt_type)}</code></td>
+          <td><small>{esc(cand_id_str)}</small></td>
+        </tr>
+        """)
+
+    recruiter_sign = approvers.get("recruiter") or "<em>Belum menandatangani</em>"
+    hm_sign = approvers.get("hiring_manager") or "<em>Belum menandatangani</em>"
+
+    html = f"""<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Dossier Debrief Rekrutmen — {esc(job_meta.get('title'))} | KarsaHire</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {{
+      --bg: #f8faf9;
+      --card-bg: #ffffff;
+      --text: #1d2825;
+      --muted: #5e6c66;
+      --border: #e0e6e3;
+      --primary: #2d5a43;
+      --primary-light: #eaf3ee;
+      --accent: #d97706;
+      --success: #15803d;
+      --danger: #b91c1c;
+      --info: #0369a1;
+    }}
+    * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    body {{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 32px 24px;
+    }}
+    .dossier-container {{
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }}
+    .topbar {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }}
+    .brand {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }}
+    .brand-mark {{
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 20px;
+    }}
+    .brand-title {{
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }}
+    .print-button {{
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }}
+    .print-button:hover {{ background: #224433; }}
+    .header-section {{
+      margin-bottom: 32px;
+    }}
+    .eyebrow {{
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }}
+    h1 {{
+      font-size: 28px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }}
+    .job-meta-line {{
+      display: flex;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }}
+    .job-desc {{
+      background: var(--primary-light);
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #244133;
+      border-left: 4px solid var(--primary);
+      margin-bottom: 24px;
+    }}
+    .signoff-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }}
+    .signoff-card {{
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fafcfb;
+    }}
+    .signoff-card strong {{ display: block; font-size: 15px; color: var(--primary); margin-bottom: 4px; }}
+    .signoff-card p {{ font-size: 13px; color: var(--muted); }}
+    h2 {{
+      font-size: 18px;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      color: var(--primary);
+    }}
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }}
+    th, td {{
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }}
+    th {{
+      background: #f1f5f3;
+      font-weight: 600;
+      color: var(--text);
+    }}
+    .badge {{
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }}
+    .badge-required {{ background: #e0f2fe; color: #0369a1; }}
+    .badge-preferred {{ background: #fef3c7; color: #92400e; }}
+    .badge-advance {{ background: #dcfce7; color: #15803d; }}
+    .badge-needs_review {{ background: #fef9c3; color: #854d0e; }}
+    .badge-needs_info {{ background: #e0e7ff; color: #4338ca; }}
+    .badge-not_selected {{ background: #fee2e2; color: #b91c1c; }}
+    .badge-matched {{ background: #dcfce7; color: #166534; }}
+    .badge-partial {{ background: #fef3c7; color: #92400e; }}
+    .badge-verification {{ background: #fee2e2; color: #991b1b; }}
+    .badge-unknown {{ background: #f3f4f6; color: #4b5563; }}
+    .candidate-dossier-card {{
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }}
+    .candidate-card-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }}
+    .candidate-card-header h3 {{
+      font-size: 16px;
+      color: var(--text);
+    }}
+    .score-pill {{
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: right;
+    }}
+    .score-sub {{
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }}
+    .candidate-card-skills {{
+      font-size: 13px;
+      margin-bottom: 16px;
+      color: #374151;
+      padding: 8px 12px;
+      background: #f9fafb;
+      border-radius: 6px;
+    }}
+    .evidence-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }}
+    .evidence-box {{
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 10px;
+      background: #fafafa;
+      font-size: 13px;
+    }}
+    .evidence-box-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }}
+    .evidence-box-snippet {{
+      color: #4b5563;
+      font-style: italic;
+      margin-bottom: 6px;
+      font-size: 12px;
+      max-height: 80px;
+      overflow: hidden;
+    }}
+    .evidence-box-footer {{
+      font-size: 11px;
+      color: #9ca3af;
+    }}
+    .reviews-section {{
+      background: #f8faf9;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 13px;
+    }}
+    .reviews-section h4 {{
+      font-size: 13px;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }}
+    .reviews-list {{
+      list-style-type: none;
+    }}
+    .reviews-list li {{
+      margin-bottom: 4px;
+    }}
+    .footer-note {{
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }}
+    @media print {{
+      body {{ background: #fff; padding: 0; }}
+      .dossier-container {{ border: none; box-shadow: none; padding: 0; max-width: 100%; }}
+      .print-button {{ display: none; }}
+      .candidate-dossier-card {{ break-inside: avoid; }}
+    }}
+  </style>
+</head>
+<body>
+  <div class="dossier-container">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">K</div>
+        <div class="brand-title">KarsaHire Dossier</div>
+      </div>
+      <button class="print-button" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+    </div>
+
+    <div class="header-section">
+      <div class="eyebrow">DOKUMEN DEBRIEF REKRUTMEN BERSAMA</div>
+      <h1>{esc(job_meta.get('title'))}</h1>
+      <div class="job-meta-line">
+        <span><strong>Departemen:</strong> {esc(job_meta.get('department') or '-')}</span>
+        <span><strong>Status:</strong> <span class="badge badge-{job_meta.get('status')}">{esc(status_labels.get(job_meta.get('status'), job_meta.get('status')))}</span></span>
+        <span><strong>Total Pelamar:</strong> {len(candidates)}</span>
+        <span><strong>Tanggal Ekspor:</strong> {esc(report.get('created_at', ''))[:10]}</span>
+      </div>
+      <div class="job-desc">
+        <strong>Ringkasan Peran:</strong><br>
+        {esc(job_meta.get('description') or 'Tidak ada deskripsi pekerjaan.')}
+      </div>
+    </div>
+
+    <div class="signoff-grid">
+      <div class="signoff-card">
+        <strong>Persetujuan Recruiter:</strong>
+        <p>{recruiter_sign}</p>
+      </div>
+      <div class="signoff-card">
+        <strong>Persetujuan Hiring Manager:</strong>
+        <p>{hm_sign}</p>
+      </div>
+    </div>
+
+    <h2>1. Matriks Kriteria Penilaian Berbasis Bukti</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kriteria Kompetensi</th>
+          <th>Tipe Persyaratan</th>
+          <th>Bobot</th>
+        </tr>
+      </thead>
+      <tbody>
+        {''.join(crit_rows)}
+      </tbody>
+    </table>
+
+    <h2>2. Rekapitulasi &amp; Peringkat Kandidat</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Peringkat</th>
+          <th>ID Kandidat</th>
+          <th>Evidence Match</th>
+          <th>Status Rekrutmen</th>
+          <th>Scorecard Rata-rata</th>
+          <th>Format</th>
+          <th>Keahlian Terdeteksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        {''.join(cand_rows) if cand_rows else '<tr><td colspan="7" style="text-align:center;">Belum ada kandidat pada posisi ini.</td></tr>'}
+      </tbody>
+    </table>
+
+    <h2>3. Berkas Bukti &amp; Evaluasi Mendalam per Kandidat</h2>
+    {''.join(candidate_sections) if candidate_sections else '<p class="muted">Belum ada kandidat terdaftar.</p>'}
+
+    <h2>4. Jejak Audit Kepatuhan (Audit Trail)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Waktu (UTC)</th>
+          <th>Aktor</th>
+          <th>Jenis Aktivitas</th>
+          <th>Kandidat</th>
+        </tr>
+      </thead>
+      <tbody>
+        {''.join(audit_rows) if audit_rows else '<tr><td colspan="4" style="text-align:center;">Belum ada riwayat aktivitas.</td></tr>'}
+      </tbody>
+    </table>
+
+    <div class="footer-note">
+      KarsaHire &bull; Rekrutmen Berbasis Bukti &amp; Evaluasi Manusia Terstandarisasi &bull; Berkas Rahasia Tim Rekrutmen
+    </div>
+  </div>
+</body>
+</html>"""
+    return html
+
+
 def verify_exports(db_path: str | Path = "data/copilot.sqlite3") -> dict[str, Any]:
     """Verification helper testing all export functions against a database."""
     resolved_path = Path(db_path)

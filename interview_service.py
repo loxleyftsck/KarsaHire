@@ -550,3 +550,262 @@ def get_candidate_interview_summary(db: sqlite3.Connection, candidate_id: str) -
     summary["hiring_manager_average"] = summary["by_role"]["hiring_manager"]["average_score"]
 
     return summary
+
+
+def generate_star_interview_guide(
+    criteria: list[Any],
+    job_title: str = "",
+    job_description: str = "",
+) -> dict[str, Any]:
+    """Generate structured behavioral STAR (Situation, Task, Action, Result) interview guide per criterion."""
+    star_questions = []
+
+    for idx, c in enumerate(criteria or []):
+        crit_id = f"crit_{idx}"
+        if isinstance(c, dict):
+            label = str(c.get("label") or c.get("criterion") or f"Kriteria #{idx+1}").strip()
+            req_type = str(c.get("type") or c.get("requirement_type") or "required").strip().lower()
+            weight = float(c.get("weight") or (2.0 if req_type == "required" else 1.0))
+        elif isinstance(c, (list, tuple)) and len(c) >= 2:
+            req_type = str(c[0]).strip().lower()
+            label = str(c[1]).strip()
+            weight = 2.0 if req_type in ("required", "wajib") else 1.0
+        else:
+            label = str(c).strip()
+            req_type = "required"
+            weight = 2.0
+
+        lowered = label.lower()
+
+        # Categorize competency
+        if any(w in lowered for w in ("python", "code", "programming", "software", "developer", "git", "api", "sql", "testing", "backend", "frontend", "rekayasa")):
+            competency = "Keahlian Teknis & Pemecahan Masalah Perangkat Lunak"
+            action_focus = f"penerapan arsitektur kode, penanganan bugs, dan eksekusi best practices pada {label}"
+        elif any(w in lowered for w in ("network", "server", "linux", "cloud", "infrastructure", "backup", "monitoring", "sysadmin", "jaringan")):
+            competency = "Infrastruktur Sistem, Jaringan & Keandalan Operasional"
+            action_focus = f"penyelarasan konfigurasi, mitigasi downtime, dan pemeliharaan keandalan terkait {label}"
+        elif any(w in lowered for w in ("security", "cyber", "vulnerability", "incident", "access control", "keamanan")):
+            competency = "Keamanan Informasi, Kepatuhan & Mitigasi Ancaman"
+            action_focus = f"analisis kerentanan, kepatuhan protokol keamanan, dan respons insiden pada {label}"
+        elif any(w in lowered for w in ("recruit", "sourcing", "interview", "hr", "talent", "training", "employee", "komunikasi", "rekrutmen")):
+            competency = "Manajemen Bakat, Komunikasi & Hubungan Organisasi"
+            action_focus = f"pendekatan komunikasi, pengelolaan stakeholder, dan konsistensi proses terkait {label}"
+        elif any(w in lowered for w in ("account", "ledger", "tax", "reconcil", "finance", "pajak", "keuangan", "audit")):
+            competency = "Akurasi Finansial, Pelaporan & Kepatuhan Tata Kelola"
+            action_focus = f"verifikasi data, akurasi perhitungan, dan kepatuhan standar pembukuan pada {label}"
+        elif any(w in lowered for w in ("kolaborasi", "team", "lead", "manage", "agile", "scrum", "proyek")):
+            competency = "Kolaborasi Antar-Fungsi & Manajemen Proyek"
+            action_focus = f"koordinasi tim, resolusi hambatan, dan pencapaian target kolektif dalam lingkup {label}"
+        else:
+            competency = "Kompetensi Inti & Penerapan Profesional"
+            action_focus = f"pendekatan metodologis, inisiatif mandiri, dan penyelesaian masalah terkait {label}"
+
+        questions = {
+            "situation": (
+                f"Ceritakan situasi atau proyek nyata paling menantang di mana Anda harus menerapkan atau menangani {label}."
+            ),
+            "task": (
+                f"Apa ekspektasi utama, tanggung jawab spesifik Anda, serta kendala batas waktu atau sumber daya yang Anda hadapi saat itu terkait {label}?"
+            ),
+            "action": (
+                f"Langkah konkret dan metodologi apa yang Anda ambil secara langsung? Bagaimana Anda mengeksekusi {action_focus}?"
+            ),
+            "result": (
+                f"Bagaimana dampak akhir atau hasil terukur dari tindakan Anda? Apa indikator keberhasilannya dan apa pelajaran penting yang Anda dapatkan dari pengalaman {label} tersebut?"
+            ),
+        }
+
+        probing_questions = [
+            f"Trade-off atau kompromi apa yang Anda pertimbangkan ketika mengambil keputusan terkait {label} tersebut?",
+            f"Bagaimana Anda memverifikasi atau menguji bahwa implementasi {label} Anda berjalan dengan benar dan andal?",
+            f"Jika Anda harus mengulang proyek tersebut dengan situasi hari ini, perbaikan spesifik apa yang akan Anda lakukan?",
+        ]
+
+        positive_indicators = [
+            f"Menjelaskan pengalaman langsung dan pemahaman mendalam tentang {label} secara runut dan berbasis fakta.",
+            "Menunjukkan kepemilikan solusi ('ownership') dengan menjelaskan peran dan aksi individual secara transparan.",
+            "Menyertakan dampak atau metrik terukur nyata bagi tim atau pengguna akhir.",
+        ]
+
+        red_flags = [
+            f"Penjelasan dangkal atau murni teoritis tanpa bukti pengalaman terapan pada {label}.",
+            "Menyalahkan rekan kerja atau lingkungan luar ketika mendiskusikan kendala atau kegagalan.",
+            "Tidak dapat menjelaskan logika teknis atau alasan di balik langkah yang diklaim diambil.",
+        ]
+
+        star_questions.append({
+            "criterion_id": crit_id,
+            "criterion": label,
+            "requirement_type": req_type,
+            "weight": weight,
+            "competency": competency,
+            "questions": questions,
+            "probing_questions": probing_questions,
+            "positive_indicators": positive_indicators,
+            "red_flags": red_flags,
+        })
+
+    return {
+        "job_title": job_title,
+        "job_description": job_description,
+        "criteria_count": len(star_questions),
+        "star_questions": star_questions,
+    }
+
+
+def generate_candidate_feedback(db: sqlite3.Connection, candidate_id: str) -> dict[str, Any]:
+    """Generate transparent feedback for a candidate, including qualifications met, development areas, and an email draft."""
+    cur = db.cursor()
+    cur.execute(
+        "SELECT c.id, c.job_id, c.file_type, c.score, c.status, c.profile_json, c.created_at, "
+        "       j.title, j.department, j.criteria_json "
+        "FROM candidates c "
+        "JOIN jobs j ON c.job_id = j.id "
+        "WHERE c.id = ?",
+        (candidate_id,),
+    )
+    row = cur.fetchone()
+    if not row:
+        raise ValueError(f"Kandidat dengan ID '{candidate_id}' tidak ditemukan.")
+
+    cand_id = row[0]
+    job_id = row[1]
+    file_type = row[2]
+    score = float(row[3])
+    status = row[4]
+    profile_raw = row[5]
+    created_at = row[6]
+    job_title = row[7]
+    job_department = row[8]
+    criteria_raw = row[9]
+
+    try:
+        profile = json.loads(profile_raw) if profile_raw else {}
+    except (json.JSONDecodeError, TypeError):
+        profile = {}
+
+    # Fetch evidence records
+    cur.execute(
+        "SELECT criterion, requirement_type, weight, result, confidence, snippet, page_number "
+        "FROM evidence "
+        "WHERE candidate_id = ? "
+        "ORDER BY weight DESC, criterion ASC",
+        (cand_id,),
+    )
+    evidence_rows = cur.fetchall()
+
+    # Fetch review history
+    cur.execute(
+        "SELECT reviewer, role, decision, note, created_at "
+        "FROM reviews "
+        "WHERE candidate_id = ? "
+        "ORDER BY created_at DESC",
+        (cand_id,),
+    )
+    reviews = cur.fetchall()
+
+    # Categorize qualifications met vs development areas
+    qualifications_met = []
+    development_areas = []
+
+    for er in evidence_rows:
+        criterion = er[0]
+        req_type = er[1]
+        weight = float(er[2])
+        res = er[3]
+        snippet = er[5]
+        page_num = er[6]
+
+        if res in ("matched", "partial"):
+            qualifications_met.append({
+                "criterion": criterion,
+                "requirement_type": req_type,
+                "weight": weight,
+                "result": res,
+                "snippet": snippet or "Bukti kompetensi ditemukan pada resume kandidat.",
+                "page_number": page_num,
+                "strength_note": f"Pengalaman dan kompetensi '{criterion}' terbukti selaras dengan kebutuhan peran.",
+            })
+        else:
+            growth_tip = (
+                f"Pertimbangkan untuk memperdalam pemahaman praktis dan portofolio berbasis proyek pada bidang '{criterion}'."
+            )
+            development_areas.append({
+                "criterion": criterion,
+                "requirement_type": req_type,
+                "weight": weight,
+                "result": res,
+                "gap_reason": "Belum ditemukan penyebutan atau bukti terverifikasi pada berkas yang diproses.",
+                "growth_recommendation": growth_tip,
+            })
+
+    candidate_label = f"Kandidat #{cand_id[-4:].upper()}"
+
+    # Construct thoughtful email drafts based on candidate status
+    met_bullets = "\n".join(
+        [f"  • {item['criterion']}: {item['snippet']}" for item in qualifications_met[:4]]
+    ) or "  • Resume menunjukkan latar belakang relevan secara umum."
+
+    dev_bullets = "\n".join(
+        [f"  • {item['criterion']}: {item['growth_recommendation']}" for item in development_areas[:3]]
+    ) or "  • Terus kembangkan portofolio teknis dan kepemimpinan proyek."
+
+    if status == "advance":
+        subject = f"Pembaruan Proses Seleksi: Undangan Wawancara — {job_title} | KarsaHire"
+        body = (
+            f"Halo {candidate_label},\n\n"
+            f"Terima kasih atas antusiasme dan waktu yang Anda luangkan dalam melamar posisi {job_title} di perusahaan kami.\n\n"
+            f"Tim rekrutmen telah menyelesaikan peninjauan berkas CV Anda berbasis kriteria posisi. Berdasarkan bukti yang kami temukan, Anda menunjukkan kecocokan kuat pada beberapa kompetensi kunci:\n"
+            f"{met_bullets}\n\n"
+            f"Dengan senang hati kami mengundang Anda untuk melanjutkan ke tahapan wawancara terstruktur. Tim kami akan segera menghubungi Anda dengan jadwal dan tautan pertemuan berikutnya.\n\n"
+            f"Salam hangat,\n"
+            f"Tim Rekrutmen KarsaHire"
+        )
+    elif status == "needs_info":
+        subject = f"Pembaruan Proses Seleksi: Permintaan Informasi Tambahan — {job_title} | KarsaHire"
+        body = (
+            f"Halo {candidate_label},\n\n"
+            f"Terima kasih atas lamaran Anda untuk posisi {job_title}.\n\n"
+            f"Dalam proses review bukti resume, tim kami menemukan kekuatan pada:\n"
+            f"{met_bullets}\n\n"
+            f"Namun, ada beberapa area di mana kami membutuhkan informasi tambahan atau portofolio pendukung untuk melengkapi evaluasi:\n"
+            f"{dev_bullets}\n\n"
+            f"Mohon membalas email ini dengan ringkasan proyek atau dokumen portofolio yang dapat memverifikasi pengalaman terkait agar kami dapat memperbarui catatan review Anda.\n\n"
+            f"Salam hangat,\n"
+            f"Tim Rekrutmen KarsaHire"
+        )
+    else:  # not_selected or needs_review default
+        subject = f"Pembaruan Proses Seleksi & Umpan Balik Kualifikasi — {job_title} | KarsaHire"
+        body = (
+            f"Halo {candidate_label},\n\n"
+            f"Terima kasih banyak atas ketertarikan Anda untuk bergabung sebagai {job_title} bersama kami.\n\n"
+            f"Sebagai komitmen KarsaHire terhadap transparansi rekrutmen berbasis bukti, kami ingin membagikan umpan balik langsung dari evaluasi resume Anda.\n\n"
+            f"Aspek positif dan kualifikasi yang Anda tunjukkan:\n"
+            f"{met_bullets}\n\n"
+            f"Area pengembangan yang dapat memperkuat profil Anda di masa depan:\n"
+            f"{dev_bullets}\n\n"
+            f"Meskipun saat ini kami memutuskan untuk melanjutkan kandidat lain yang memiliki keselarasan bukti kriteria lebih dekat dengan kebutuhan mendesak tim, kami sangat mengapresiasi upaya Anda dan menyimpan profil Anda dalam talent pool kami.\n\n"
+            f"Semoga sukses dalam perjalanan karier profesional Anda.\n\n"
+            f"Salam hangat,\n"
+            f"Tim Rekrutmen KarsaHire"
+        )
+
+    return {
+        "candidate_id": cand_id,
+        "candidate_label": candidate_label,
+        "job_id": job_id,
+        "job_title": job_title,
+        "job_department": job_department,
+        "score": round(score),
+        "status": status,
+        "qualifications_met_count": len(qualifications_met),
+        "qualifications_met": qualifications_met,
+        "development_areas_count": len(development_areas),
+        "development_areas": development_areas,
+        "email_draft": {
+            "subject": subject,
+            "recipient": candidate_label,
+            "body": body,
+        },
+    }
+

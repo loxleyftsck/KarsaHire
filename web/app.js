@@ -324,8 +324,10 @@ function renderCandidates(job) {
 
   const exportCsvBtn = $("#export-csv-button");
   const exportJsonBtn = $("#export-json-button");
+  const exportDossierBtn = $("#export-dossier-button");
   if (exportCsvBtn) exportCsvBtn.disabled = !candidates.length;
   if (exportJsonBtn) exportJsonBtn.disabled = !candidates.length;
+  if (exportDossierBtn) exportDossierBtn.disabled = !job?.id;
 
   const filtered = candidates.filter((candidate) => {
     if (state.candidateFilter !== "all" && candidate.status !== state.candidateFilter) {
@@ -422,12 +424,15 @@ function renderCandidates(job) {
       </div>
       <div class="candidate-actions">
         <button class="candidate-expand" type="button" aria-label="Buka bukti dan catat tinjauan untuk ${escapeHtml(candidateName(candidate, index))}" aria-expanded="false" aria-controls="candidate-details-${escapeHtml(candidate.id)}"><span class="chev" aria-hidden="true">⌄</span> Buka evidence dan catat review manusia</button>
+        <button class="button button-secondary candidate-feedback-btn" type="button" data-candidate-id="${escapeHtml(candidate.id)}" title="Buka umpan balik transparan &amp; draft email untuk kandidat ini">
+          <span class="btn-icon">✉️</span> Umpan Balik Kandidat
+        </button>
         <button class="candidate-delete" type="button" data-candidate-id="${escapeHtml(candidate.id)}" aria-label="Hapus ${escapeHtml(candidateName(candidate, index))} beserta bukti dan tinjauannya">Hapus kandidat</button>
       </div>
       <div class="candidate-details" id="candidate-details-${escapeHtml(candidate.id)}"><div class="candidate-detail-actions"><span class="review-hint">Data profil, evidence, dan review dapat dihapus dari antrean.</span></div><div class="profile-tags">${tags}</div><div class="evidence-list">${evidenceRows}</div>
         <form class="review-form" data-candidate-id="${escapeHtml(candidate.id)}">
           <div class="review-grid"><input name="reviewer" aria-label="Nama reviewer" placeholder="Nama reviewer" required maxlength="100" value="${escapeHtml(state.reviewer)}"><select name="role" aria-label="Peran reviewer"><option value="recruiter">Recruiter</option><option value="hiring_manager">Hiring manager</option></select><select name="decision" aria-label="Keputusan reviewer"><option value="advance">Lanjut proses</option><option value="needs_info">Perlu informasi</option><option value="not_selected">Tidak lanjut</option></select></div>
-          <label class="visually-hidden" for="review-note-${escapeHtml(candidate.id)}">Catatan berbasis kriteria/evidence (opsional)</label><textarea id="review-note-${escapeHtml(candidate.id)}" name="note" placeholder="Catatan berbasis kriteria/evidence (opsional)" maxlength="2000"></textarea><div class="review-actions"><span class="review-hint">Keputusan ini dicatat sebagai review manusia.</span><button class="button button-secondary" type="submit">Simpan review</button></div>
+          <label class="visually-hidden" for="review-note-${escapeHtml(candidate.id)}">Catatan berbasis kriteria/evidence (opsional)</label><textarea id="review-note-${escapeHtml(candidate.id)}" name="note" placeholder="Catatan berbasis kriteria/evidence (opsional)" maxlength="2000"></textarea><div class="review-actions"><span class="review-hint">Keputusan ini dicatat sebagai review manusia.</span><button class="button button-secondary candidate-feedback-btn" type="button" data-candidate-id="${escapeHtml(candidate.id)}" title="Lihat umpan balik transparan dan draft email"><span class="btn-icon">✉️</span> Umpan Balik Kandidat</button><button class="button button-secondary" type="submit">Simpan review</button></div>
         </form>${reviews}
         <section class="candidate-scorecard-section" data-candidate-id="${escapeHtml(candidate.id)}" id="scorecard-section-${escapeHtml(candidate.id)}">
           <div class="scorecard-section-header">
@@ -438,9 +443,14 @@ function renderCandidates(job) {
                 <p class="scorecard-subheading">Rubrik penilaian objektif skala 1–5 &amp; konsensus Recruiter vs Hiring Manager</p>
               </div>
             </div>
-            <button class="scorecard-toggle-form-btn" type="button" data-candidate-id="${escapeHtml(candidate.id)}">
-              <span class="btn-icon">✏️</span> Isi Scorecard
-            </button>
+            <div class="scorecard-header-actions">
+              <button class="button button-secondary star-guide-btn" type="button" data-candidate-id="${escapeHtml(candidate.id)}" title="Buka panduan pertanyaan wawancara perilaku STAR per kriteria">
+                <span class="btn-icon">🎯</span> Panduan Wawancara STAR
+              </button>
+              <button class="scorecard-toggle-form-btn" type="button" data-candidate-id="${escapeHtml(candidate.id)}">
+                <span class="btn-icon">✏️</span> Isi Scorecard
+              </button>
+            </div>
           </div>
           <div class="scorecard-body" id="scorecard-body-${escapeHtml(candidate.id)}" data-candidate-id="${escapeHtml(candidate.id)}">
             <div class="scorecard-loading"><span class="scorecard-spinner"></span> Memuat scorecard wawancara…</div>
@@ -1003,6 +1013,14 @@ async function exportCandidatesJson() {
 
 $("#export-csv-button")?.addEventListener("click", exportCandidatesCsv);
 $("#export-json-button")?.addEventListener("click", exportCandidatesJson);
+$("#export-dossier-button")?.addEventListener("click", () => {
+  const job = state.activeJob;
+  if (!job?.id) {
+    toast("Pilih requisition terlebih dahulu.");
+    return;
+  }
+  window.open(`/api/jobs/${encodeURIComponent(job.id)}/export/dossier`, "_blank");
+});
 $("#analytics-button")?.addEventListener("click", () => {
   if (!state.activeJob?.id) {
     toast("Pilih requisition lebih dulu.");
@@ -1035,6 +1053,751 @@ $("#candidate-search-clear")?.addEventListener("click", () => {
 $("#candidate-sort")?.addEventListener("change", (event) => {
   state.candidateSort = event.target.value;
   if (state.activeJob) renderCandidates(state.activeJob);
+});
+
+/* --------------------------------------------------------------------------
+   Candidate Feedback Modal & PDP Transparency Logic
+   -------------------------------------------------------------------------- */
+async function copyToClipboard(text, successMsg = "Berhasil disalin ke clipboard.") {
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+    toast(successMsg);
+  } catch (err) {
+    toast("Gagal menyalin: " + err.message);
+  }
+}
+
+function closeFeedbackModal() {
+  const backdrop = $("#feedback-modal-backdrop");
+  if (backdrop) backdrop.classList.add("hidden");
+  document.body.classList.remove("feedback-modal-open");
+}
+
+function generateClientCandidateFeedback(candidate, job) {
+  const candId = candidate.id;
+  const isBlind = window.ComparisonModule?.isBlindMode() || false;
+  const candIndex = (job.candidates || []).indexOf(candidate);
+  const candLabel = isBlind
+    ? (window.ComparisonModule?.getBlindIdentifier(candidate, candIndex) || `Kandidat Anonim #${candIndex + 1}`)
+    : candidateName(candidate, candIndex);
+
+  const evidence = candidate.evidence || [];
+  const strengths = [];
+  const growthAreas = [];
+
+  evidence.forEach((e) => {
+    const isRequired = e.requirement_type === "required";
+    const reqBadge = isRequired ? "Wajib" : "Diutamakan";
+    if (e.result === "matched" || e.result === "partial") {
+      strengths.push({
+        criterion_id: e.criterion_id || e.criterion,
+        criterion: e.criterion,
+        requirement_type: e.requirement_type,
+        weight: e.weight || (isRequired ? 2.0 : 1.0),
+        result: e.result,
+        snippet: e.snippet || "Bukti kualifikasi teridentifikasi pada teks CV.",
+        explanation: e.result === "matched"
+          ? `Kandidat menunjukkan bukti kuat untuk kualifikasi ${reqBadge} (${e.criterion}).`
+          : `Kandidat memiliki keselarasan awal untuk kualifikasi ${reqBadge} (${e.criterion}), namun disarankan untuk verifikasi kedalaman teknis.`,
+      });
+    } else {
+      growthAreas.push({
+        criterion_id: e.criterion_id || e.criterion,
+        criterion: e.criterion,
+        requirement_type: e.requirement_type,
+        weight: e.weight || (isRequired ? 2.0 : 1.0),
+        result: e.result,
+        explanation: `Bukti eksplisit untuk kualifikasi ${reqBadge} (${e.criterion}) belum teridentifikasi pada berkas CV yang diproses.`,
+        recommendation: `Disarankan untuk melengkapi portofolio proyek terapan atau sertifikasi relevan pada bidang ${e.criterion} untuk memperkuat profil profesional.`,
+      });
+    }
+  });
+
+  const metList = strengths.length
+    ? strengths.slice(0, 4).map((s) => `  • ${s.criterion}: ${s.snippet}`).join("\n")
+    : "  • Profil menunjukkan latar belakang umum yang potensial.";
+  const devList = growthAreas.length
+    ? growthAreas.slice(0, 3).map((g) => `  • ${g.criterion}: ${g.recommendation}`).join("\n")
+    : "  • Terus kembangkan portofolio dan proyek mandiri.";
+
+  let emailDraft = "";
+  if (candidate.status === "advance") {
+    emailDraft = `Halo ${candLabel},\n\nTerima kasih atas minat dan waktu yang Anda luangkan dalam melamar posisi ${job.title} di tim kami.\n\nBerdasarkan peninjauan bukti berkas yang disepakati bersama, Anda menunjukkan kecocokan kuat pada kompetensi berikut:\n${metList}\n\nDengan senang hati kami mengundang Anda untuk melanjutkan ke tahapan wawancara terstruktur berikutnya. Tim kami akan segera menghubungi Anda terkait detail jadwal pertemuan.\n\nSalam hangat,\nTim Rekrutmen KarsaHire`;
+  } else if (candidate.status === "needs_info") {
+    emailDraft = `Halo ${candLabel},\n\nTerima kasih atas lamaran Anda untuk posisi ${job.title}.\n\nDalam proses peninjauan bukti awal, tim kami melihat potensi baik pada:\n${metList}\n\nUntuk melengkapi evaluasi kualifikasi, kami membutuhkan informasi tambahan atau portofolio pendukung terkait:\n${devList}\n\nMohon membalas email ini dengan dokumen atau tautan portofolio pendukung agar kami dapat memperbarui status review Anda.\n\nSalam hangat,\nTim Rekrutmen KarsaHire`;
+  } else {
+    emailDraft = `Halo ${candLabel},\n\nTerima kasih banyak atas ketertarikan Anda untuk bergabung sebagai ${job.title} bersama kami.\n\nSebagai bagian dari komitmen transparansi rekrutmen berbasis bukti di KarsaHire, kami ingin membagikan umpan balik terstruktur mengenai profil Anda:\n\nKualifikasi Terpenuhi:\n${metList}\n\nArea Rekomendasi Pengembangan:\n${devList}\n\nSaat ini kami memutuskan untuk melanjutkan kandidat lain yang memiliki keselarasan kriteria lebih mendesak dengan kebutuhan tim. Namun, profil Anda tetap kami simpan dalam talent pool kami untuk kesempatan mendatang.\n\nSemoga sukses dalam perjalanan karier Anda!\n\nSalam hangat,\nTim Rekrutmen KarsaHire`;
+  }
+
+  return {
+    candidate_id: candId,
+    job_title: job.title,
+    candidate_label: candLabel,
+    score: Math.round(candidate.score || 0),
+    status: candidate.status || "needs_review",
+    strengths,
+    growth_areas: growthAreas,
+    decision_summary: `Status saat ini: ${statusLabel(candidate.status)}. Keputusan berbasis tinjauan manusia (Recruiter & Hiring Manager) dengan bukti kriteria nyata.`,
+    transparency_notice: "Sesuai Pasal 40 UU No. 27/2022 tentang Pelindungan Data Pribadi (UU PDP), keputusan rekrutmen di KarsaHire sepenuhnya dipimpin oleh peninjau manusia (Human-in-the-Loop), bukan keputusan algoritma AI otomatis.",
+    feedback_email_draft: emailDraft,
+  };
+}
+
+function buildEmailDraftBody(tone, data, candidateDisplayName, jobTitle) {
+  const metList = (data.strengths || data.qualifications_met || []).slice(0, 4)
+    .map((s) => `  • ${s.criterion}: ${s.snippet || s.explanation || "Terverifikasi"}`).join("\n")
+    || "  • Resume menunjukkan latar belakang umum yang potensial.";
+  const devList = (data.growth_areas || data.development_areas || []).slice(0, 3)
+    .map((g) => `  • ${g.criterion}: ${g.recommendation || g.growth_recommendation || "Perluas portofolio terkait"}`).join("\n")
+    || "  • Terus kembangkan portofolio teknis dan kepemimpinan proyek.";
+
+  if (tone === "advance") {
+    return `Halo ${candidateDisplayName},\n\nTerima kasih atas minat dan waktu yang Anda luangkan dalam melamar posisi ${jobTitle} di tim kami.\n\nBerdasarkan peninjauan bukti berkas yang disepakati bersama, Anda menunjukkan kecocokan kuat pada kompetensi berikut:\n${metList}\n\nDengan senang hati kami mengundang Anda untuk melanjutkan ke tahapan wawancara terstruktur berikutnya. Tim kami akan segera menghubungi Anda terkait detail jadwal pertemuan.\n\nSalam hangat,\nTim Rekrutmen KarsaHire`;
+  }
+  if (tone === "needs_info") {
+    return `Halo ${candidateDisplayName},\n\nTerima kasih atas lamaran Anda untuk posisi ${jobTitle}.\n\nDalam proses peninjauan bukti awal, tim kami melihat potensi baik pada:\n${metList}\n\nUntuk melengkapi evaluasi kualifikasi, kami membutuhkan informasi tambahan atau portofolio pendukung terkait:\n${devList}\n\nMohon membalas email ini dengan dokumen atau tautan portofolio pendukung agar kami dapat memperbarui status review Anda.\n\nSalam hangat,\nTim Rekrutmen KarsaHire`;
+  }
+  if (tone === "not_selected") {
+    return `Halo ${candidateDisplayName},\n\nTerima kasih banyak atas ketertarikan Anda untuk bergabung sebagai ${jobTitle} bersama kami.\n\nSebagai bagian dari komitmen transparansi rekrutmen berbasis bukti di KarsaHire, kami ingin membagikan umpan balik terstruktur mengenai profil Anda:\n\nKualifikasi Terpenuhi:\n${metList}\n\nArea Rekomendasi Pengembangan:\n${devList}\n\nSaat ini kami memutuskan untuk melanjutkan kandidat lain yang memiliki keselarasan kriteria lebih mendesak dengan kebutuhan tim. Namun, profil Anda tetap kami simpan dalam talent pool kami untuk kesempatan mendatang.\n\nSemoga sukses dalam perjalanan karier Anda!\n\nSalam hangat,\nTim Rekrutmen KarsaHire`;
+  }
+  return data.feedback_email_draft || data.email_draft?.body || "";
+}
+
+function renderFeedbackModalContent(modal, data, candidateDisplayName, isBlind, activeTone = "auto") {
+  const strengths = data.strengths || data.qualifications_met || [];
+  const growthAreas = data.growth_areas || data.development_areas || [];
+  const score = data.score != null ? data.score : "-";
+  const status = data.status || "needs_review";
+  const jobTitle = data.job_title || state.activeJob?.title || "Lowongan";
+
+  let emailBody = buildEmailDraftBody(activeTone === "auto" ? status : activeTone, data, candidateDisplayName, jobTitle);
+  let emailSubject = `Pembaruan Proses Seleksi: ${jobTitle} — ${candidateDisplayName}`;
+
+  const strengthsHtml = strengths.length ? strengths.map((s, idx) => {
+    const isRequired = s.requirement_type === "required";
+    const badgeCls = isRequired ? "badge-required" : "badge-preferred";
+    const badgeLabel = isRequired ? "Wajib · Bobot 2" : "Diutamakan · Bobot 1";
+    const snippetText = s.snippet ? `“${escapeHtml(s.snippet)}”` : "Bukti kualifikasi terverifikasi pada teks CV.";
+    const explanationText = s.explanation || s.strength_note || "Kualifikasi ini selaras dengan kriteria yang disepakati.";
+    const pageText = s.page_number ? `Hal. ${s.page_number} · ` : "";
+
+    return `
+      <div class="feedback-card strength">
+        <div class="feedback-card-header">
+          <div class="feedback-card-title">
+            <span class="feedback-check-icon">✓</span>
+            <strong>${escapeHtml(s.criterion)}</strong>
+          </div>
+          <span class="badge ${badgeCls}">${badgeLabel}</span>
+        </div>
+        <div class="feedback-snippet-box">
+          <span class="feedback-snippet-quote">${pageText}${snippetText}</span>
+        </div>
+        <p class="feedback-explanation">${escapeHtml(explanationText)}</p>
+      </div>
+    `;
+  }).join("") : `
+    <div class="feedback-empty-card">
+      <p>Belum ada bukti kriteria yang teridentifikasi secara eksplisit pada berkas CV yang diproses.</p>
+    </div>
+  `;
+
+  const growthHtml = growthAreas.length ? growthAreas.map((g, idx) => {
+    const isRequired = g.requirement_type === "required";
+    const badgeCls = isRequired ? "badge-required" : "badge-preferred";
+    const badgeLabel = isRequired ? "Wajib · Bobot 2" : "Diutamakan · Bobot 1";
+    const explanationText = g.explanation || g.gap_reason || "Bukti belum ditemukan pada resume.";
+    const recText = g.recommendation || g.growth_recommendation || "Disarankan untuk memperkuat bukti portofolio atau sertifikasi pada kompetensi ini.";
+
+    return `
+      <div class="feedback-card growth">
+        <div class="feedback-card-header">
+          <div class="feedback-card-title">
+            <span class="feedback-growth-icon">💡</span>
+            <strong>${escapeHtml(g.criterion)}</strong>
+          </div>
+          <span class="badge ${badgeCls}">${badgeLabel}</span>
+        </div>
+        <p class="feedback-gap-text">${escapeHtml(explanationText)}</p>
+        <div class="feedback-rec-box">
+          <strong>Rekomendasi Peningkatan:</strong>
+          <span>${escapeHtml(recText)}</span>
+        </div>
+      </div>
+    `;
+  }).join("") : `
+    <div class="feedback-empty-card">
+      <p>Kandidat telah memenuhi seluruh bukti kriteria lowongan tanpa area kesenjangan yang signifikan.</p>
+    </div>
+  `;
+
+  modal.innerHTML = `
+    <header class="modal-header">
+      <div class="modal-title-group">
+        <div class="modal-title-icon">✉️</div>
+        <div>
+          <h2 id="feedback-modal-title">Umpan Balik Kandidat &amp; Transparansi Kualifikasi</h2>
+          <p class="modal-subtitle">
+            <strong>${escapeHtml(candidateDisplayName)}</strong> · Posisi: <strong>${escapeHtml(jobTitle)}</strong>
+            ${isBlind ? '<span class="badge badge-blind">Mode Buta Aktif</span>' : ""}
+          </p>
+        </div>
+      </div>
+      <button class="modal-close-btn" id="feedback-modal-close" type="button" aria-label="Tutup modal umpan balik" title="Tutup (ESC)">✕</button>
+    </header>
+
+    <div class="modal-body feedback-modal-body">
+      <!-- Candidate Overview Banner -->
+      <div class="feedback-overview-banner">
+        <div class="feedback-overview-left">
+          <span class="badge badge-${escapeHtml(status)} status-large">${escapeHtml(statusLabel(status))}</span>
+          <span class="feedback-score-pill">Indikator Bukti: <strong>${score}%</strong></span>
+        </div>
+        <div class="feedback-pdp-notice">
+          <span class="pdp-badge">UU PDP No. 27/2022</span>
+          <span>Prinsip Human-in-the-Loop: Evaluasi dilakukan manusia berdasarkan bukti objektif, bebas penolakan otomatis algoritma black-box.</span>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="feedback-tabs" role="tablist">
+        <button class="feedback-tab active" type="button" role="tab" data-tab="tab-strengths" aria-selected="true">
+          <span>✅ Kualifikasi Terpenuhi</span>
+          <span class="feedback-tab-count">${strengths.length}</span>
+        </button>
+        <button class="feedback-tab" type="button" role="tab" data-tab="tab-growth" aria-selected="false">
+          <span>💡 Area Pengembangan</span>
+          <span class="feedback-tab-count">${growthAreas.length}</span>
+        </button>
+        <button class="feedback-tab" type="button" role="tab" data-tab="tab-email" aria-selected="false">
+          <span>📧 Draft Email Transparan</span>
+        </button>
+      </div>
+
+      <!-- Tab Content: Strengths -->
+      <div id="tab-strengths" class="feedback-tab-panel active" role="tabpanel">
+        <div class="feedback-panel-intro">
+          <p>Kriteria dan kompetensi yang terverifikasi memiliki kecocokan bukti tekstual pada resume kandidat:</p>
+        </div>
+        <div class="feedback-cards-grid">
+          ${strengthsHtml}
+        </div>
+      </div>
+
+      <!-- Tab Content: Growth Areas -->
+      <div id="tab-growth" class="feedback-tab-panel hidden" role="tabpanel">
+        <div class="feedback-panel-intro">
+          <p>Kriteria yang belum ditemukan buktinya pada berkas (unknown), disertai saran konstruktif untuk pengembangan profesional kandidat:</p>
+        </div>
+        <div class="feedback-cards-grid">
+          ${growthHtml}
+        </div>
+      </div>
+
+      <!-- Tab Content: Email Draft -->
+      <div id="tab-email" class="feedback-tab-panel hidden" role="tabpanel">
+        <div class="feedback-email-controls">
+          <div class="email-tone-selector-wrap">
+            <label for="email-tone-select">Template / Nada Pesan:</label>
+            <div class="email-tone-buttons" role="group">
+              <button class="email-tone-btn ${activeTone === 'auto' ? 'active' : ''}" type="button" data-tone="auto">Sesuai Status</button>
+              <button class="email-tone-btn ${activeTone === 'advance' ? 'active' : ''}" type="button" data-tone="advance">Lanjut Wawancara</button>
+              <button class="email-tone-btn ${activeTone === 'needs_info' ? 'active' : ''}" type="button" data-tone="needs_info">Permintaan Info</button>
+              <button class="email-tone-btn ${activeTone === 'not_selected' ? 'active' : ''}" type="button" data-tone="not_selected">Penolakan Apresiatif</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feedback-email-form">
+          <div class="feedback-email-field">
+            <label for="feedback-email-subject">Subjek Email:</label>
+            <input id="feedback-email-subject" class="feedback-email-input" value="${escapeHtml(emailSubject)}" />
+          </div>
+          <div class="feedback-email-field">
+            <label for="feedback-email-textarea">Isi Pesan Umpan Balik (Dapat disunting langsung):</label>
+            <textarea id="feedback-email-textarea" class="feedback-email-textarea" rows="12">${escapeHtml(emailBody)}</textarea>
+          </div>
+        </div>
+
+        <div class="feedback-email-actions">
+          <button id="copy-feedback-email-btn" class="button button-primary" type="button">
+            <span>📋</span> Salin Draft Email
+          </button>
+          <a id="mailto-feedback-btn" class="button button-secondary" href="mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}" target="_blank" rel="noopener">
+            <span>✉️</span> Buka di Mail Client
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="modal-footer">
+      <span class="muted footer-legal-note">KarsaHire · Umpan balik transparan memprioritaskan privasi kandidat dan standar etika AI.</span>
+      <button class="button button-secondary" id="feedback-modal-close-btn" type="button">Tutup</button>
+    </footer>
+  `;
+
+  // Attach tab switching listeners
+  const tabs = modal.querySelectorAll(".feedback-tab");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+
+      const targetId = tab.dataset.tab;
+      modal.querySelectorAll(".feedback-tab-panel").forEach((panel) => {
+        panel.classList.toggle("hidden", panel.id !== targetId);
+        panel.classList.toggle("active", panel.id === targetId);
+      });
+    });
+  });
+
+  // Attach tone switcher listeners
+  const toneBtns = modal.querySelectorAll(".email-tone-btn");
+  toneBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectedTone = btn.dataset.tone;
+      renderFeedbackModalContent(modal, data, candidateDisplayName, isBlind, selectedTone);
+      // Ensure email tab stays active
+      const emailTab = modal.querySelector('.feedback-tab[data-tab="tab-email"]');
+      if (emailTab) emailTab.click();
+    });
+  });
+
+  // Attach copy email listener
+  const copyBtn = modal.querySelector("#copy-feedback-email-btn");
+  copyBtn?.addEventListener("click", () => {
+    const text = modal.querySelector("#feedback-email-textarea")?.value || emailBody;
+    copyToClipboard(text, "Draft email umpan balik berhasil disalin ke clipboard.");
+  });
+
+  // Close listeners
+  modal.querySelector("#feedback-modal-close")?.addEventListener("click", closeFeedbackModal);
+  modal.querySelector("#feedback-modal-close-btn")?.addEventListener("click", closeFeedbackModal);
+}
+
+async function openFeedbackModal(candidateId) {
+  const backdrop = $("#feedback-modal-backdrop");
+  const modal = $("#feedback-modal");
+  if (!backdrop || !modal) return;
+
+  const candidate = (state.activeJob?.candidates || []).find((c) => c.id === candidateId);
+  const isBlind = window.ComparisonModule?.isBlindMode() || false;
+  let candidateDisplayName = candidate?.id || candidateId;
+  if (candidate) {
+    const candIndex = (state.activeJob?.candidates || []).indexOf(candidate);
+    candidateDisplayName = isBlind
+      ? (window.ComparisonModule?.getBlindIdentifier(candidate, candIndex) || `Kandidat Anonim #${candIndex + 1}`)
+      : candidateName(candidate, candIndex);
+  }
+
+  backdrop.classList.remove("hidden");
+  document.body.classList.add("feedback-modal-open");
+
+  modal.innerHTML = `
+    <header class="modal-header">
+      <div class="modal-title-group">
+        <div class="modal-title-icon">✉️</div>
+        <div>
+          <h2 id="feedback-modal-title">Umpan Balik Kandidat &amp; Transparansi Kualifikasi</h2>
+          <p class="modal-subtitle">Memuat data untuk ${escapeHtml(candidateDisplayName)}…</p>
+        </div>
+      </div>
+      <button class="modal-close-btn" type="button" aria-label="Tutup modal umpan balik" title="Tutup (ESC)">✕</button>
+    </header>
+    <div class="modal-body feedback-modal-body">
+      <div class="modal-loading-state">
+        <span class="scorecard-spinner"></span>
+        <p>Menghubungkan ke layanan umpan balik transparan &amp; menganalisis bukti…</p>
+      </div>
+    </div>
+  `;
+
+  modal.querySelector(".modal-close-btn")?.addEventListener("click", closeFeedbackModal);
+
+  try {
+    let data;
+    try {
+      data = await api(`/api/candidates/${encodeURIComponent(candidateId)}/feedback`);
+    } catch (apiErr) {
+      if (candidate && state.activeJob) {
+        data = generateClientCandidateFeedback(candidate, state.activeJob);
+      } else {
+        throw apiErr;
+      }
+    }
+    renderFeedbackModalContent(modal, data, candidateDisplayName, isBlind);
+  } catch (err) {
+    modal.innerHTML = `
+      <header class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-title-icon">⚠️</div>
+          <div><h2>Gagal Memuat Umpan Balik</h2></div>
+        </div>
+        <button class="modal-close-btn" id="err-close-btn" type="button">✕</button>
+      </header>
+      <div class="modal-body feedback-modal-body">
+        <div class="feedback-error-box">
+          <p>${escapeHtml(err.message)}</p>
+          <button class="button button-secondary" id="retry-feedback-btn">Coba Lagi</button>
+        </div>
+      </div>
+    `;
+    modal.querySelector("#err-close-btn")?.addEventListener("click", closeFeedbackModal);
+    modal.querySelector("#retry-feedback-btn")?.addEventListener("click", () => openFeedbackModal(candidateId));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   STAR Interview Guide Modal & Drawer Logic
+   -------------------------------------------------------------------------- */
+function closeStarModal() {
+  const backdrop = $("#star-modal-backdrop");
+  if (backdrop) backdrop.classList.add("hidden");
+  document.body.classList.remove("star-modal-open");
+}
+
+function generateClientStarQuestions(job) {
+  const criteria = job.criteria || [];
+  const starQuestions = criteria.map((c, idx) => {
+    const label = typeof c === "string" ? c : Array.isArray(c) ? c[1] : c.label || c.criterion || `Kriteria #${idx+1}`;
+    const type = Array.isArray(c) ? c[0] : (typeof c === "object" ? c.type : "required");
+    const weight = type === "required" ? 2.0 : 1.0;
+    const lowered = String(label).toLowerCase();
+
+    return {
+      criterion: label,
+      type: type,
+      weight: weight,
+      question: `Ceritakan situasi atau proyek nyata paling menantang di mana Anda harus menerapkan atau menangani ${label}.`,
+      star_probe: {
+        situation: `Apa latar belakang masalah dan konteks spesifik dari proyek yang melibatkan ${label} tersebut?`,
+        task: `Apa target teknis/operasional dan batasan (waktu/sumber daya) yang menjadi tanggung jawab Anda?`,
+        action: `Langkah nyata dan metodologi apa yang Anda ambil sendiri atau bersama tim dalam mengimplementasikan ${label}?`,
+        result: `Apa dampak atau metrik terukur yang membuktikan keberhasilan solusi ${label} tersebut?`,
+      },
+      look_for: [
+        `Menunjukkan pemahaman mendalam tentang konsep dan eksekusi ${label}.`,
+        `Mampu mengartikulasikan kontribusi dan keputusan individual secara spesifik.`,
+        `Menyertakan dampak atau metrik bisnis/teknis yang terukur.`,
+      ],
+      red_flags: [
+        `Jawaban murni teoretis tanpa bukti pengalaman langsung pada ${label}.`,
+        `Menyalahkan pihak lain ketika mendiskusikan kendala atau kegagalan.`,
+        `Tidak memahami logika di balik keputusan atau kode yang diklaim ditulis sendiri.`,
+      ],
+    };
+  });
+
+  return {
+    job_id: job.id,
+    title: job.title,
+    department: job.department || "",
+    criteria: criteria,
+    star_questions: starQuestions,
+  };
+}
+
+function renderStarModalContent(modal, data, job, activeFilter = "all") {
+  const jobTitle = data.title || job.title || "Posisi Rekrutmen";
+  const starQuestions = data.star_questions || [];
+
+  const filterTabsHtml = `
+    <button class="star-filter-tab ${activeFilter === 'all' ? 'active' : ''}" type="button" data-crit="all">
+      Semua Kriteria (${starQuestions.length})
+    </button>
+    ${starQuestions.map((sq, idx) => `
+      <button class="star-filter-tab ${activeFilter === sq.criterion ? 'active' : ''}" type="button" data-crit="${escapeHtml(sq.criterion)}">
+        ${idx + 1}. ${escapeHtml(sq.criterion)}
+      </button>
+    `).join("")}
+  `;
+
+  const visibleQuestions = activeFilter === "all"
+    ? starQuestions
+    : starQuestions.filter((q) => q.criterion === activeFilter);
+
+  const questionsCardsHtml = visibleQuestions.map((sq, idx) => {
+    const isRequired = sq.type === "required";
+    const badgeCls = isRequired ? "badge-required" : "badge-preferred";
+    const badgeLabel = isRequired ? "Wajib · Bobot 2" : "Diutamakan · Bobot 1";
+    const probes = sq.star_probe || sq.questions || {};
+    const lookForList = sq.look_for || sq.positive_indicators || [];
+    const redFlagsList = sq.red_flags || [];
+
+    const copyText = `[Panduan Wawancara STAR: ${sq.criterion}]\nPertanyaan Utama: ${sq.question || ""}\n- Situasi: ${probes.situation || ""}\n- Tugas: ${probes.task || ""}\n- Aksi: ${probes.action || ""}\n- Hasil: ${probes.result || ""}`;
+
+    return `
+      <article class="star-card" data-criterion="${escapeHtml(sq.criterion)}">
+        <header class="star-card-header">
+          <div class="star-card-title-group">
+            <span class="star-card-badge-num">${idx + 1}</span>
+            <div>
+              <h3 class="star-card-heading">${escapeHtml(sq.criterion)}</h3>
+              <span class="badge ${badgeCls}">${badgeLabel}</span>
+            </div>
+          </div>
+          <button class="button button-ghost button-sm copy-star-btn" type="button" data-copy="${escapeHtml(copyText)}" title="Salin pertanyaan kriteria ini">
+            <span>📋</span> Salin Pertanyaan
+          </button>
+        </header>
+
+        <!-- Core Behavioral Question Box -->
+        <div class="star-main-question-box">
+          <span class="star-quote-icon">“</span>
+          <p class="star-main-question-text">${escapeHtml(sq.question || probes.situation || "Ceritakan pengalaman Anda terkait kriteria ini.")}</p>
+        </div>
+
+        <!-- 4-Quadrant STAR Probe Grid -->
+        <div class="star-quadrant-grid">
+          <div class="star-probe-item probe-situation">
+            <div class="probe-header">
+              <span class="probe-letter">S</span>
+              <strong>Situasi (Situation)</strong>
+            </div>
+            <p class="probe-text">${escapeHtml(probes.situation || "Apa konteks dan tantangan utama yang dihadapi?")}</p>
+          </div>
+
+          <div class="star-probe-item probe-task">
+            <div class="probe-header">
+              <span class="probe-letter">T</span>
+              <strong>Tugas (Task)</strong>
+            </div>
+            <p class="probe-text">${escapeHtml(probes.task || "Apa peran spesifik dan ekspektasi yang harus Anda capai?")}</p>
+          </div>
+
+          <div class="star-probe-item probe-action">
+            <div class="probe-header">
+              <span class="probe-letter">A</span>
+              <strong>Aksi (Action)</strong>
+            </div>
+            <p class="probe-text">${escapeHtml(probes.action || "Langkah nyata dan teknologi apa yang Anda terapkan?")}</p>
+          </div>
+
+          <div class="star-probe-item probe-result">
+            <div class="probe-header">
+              <span class="probe-letter">R</span>
+              <strong>Hasil (Result)</strong>
+            </div>
+            <p class="probe-text">${escapeHtml(probes.result || "Bagaimana hasil terukur dan evaluasi dari inisiatif tersebut?")}</p>
+          </div>
+        </div>
+
+        <!-- Behavioral Indicators -->
+        <div class="star-indicators-grid">
+          <div class="star-indicators-col positive">
+            <div class="indicators-header">
+              <span>🌟</span>
+              <strong>Indikator Skor Tinggi (Skor 4–5 / Kuat &amp; Luar Biasa)</strong>
+            </div>
+            <ul class="indicators-list">
+              ${lookForList.map((lf) => `<li>${escapeHtml(lf)}</li>`).join("")}
+            </ul>
+          </div>
+
+          <div class="star-indicators-col negative">
+            <div class="indicators-header">
+              <span>⚠️</span>
+              <strong>Sinyal Waspada / Red Flags (Skor 1–2 / Tidak Memadai)</strong>
+            </div>
+            <ul class="indicators-list">
+              ${redFlagsList.map((rf) => `<li>${escapeHtml(rf)}</li>`).join("")}
+            </ul>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  modal.innerHTML = `
+    <header class="modal-header">
+      <div class="modal-title-group">
+        <div class="modal-title-icon">🎯</div>
+        <div>
+          <h2 id="star-modal-title">Panduan Wawancara Perilaku STAR</h2>
+          <p class="modal-subtitle">Situation · Task · Action · Result untuk posisi <strong>${escapeHtml(jobTitle)}</strong></p>
+        </div>
+      </div>
+      <button class="modal-close-btn" id="star-modal-close" type="button" aria-label="Tutup panduan STAR" title="Tutup (ESC)">✕</button>
+    </header>
+
+    <div class="modal-body star-modal-body">
+      <!-- Educational Framework Ribbon -->
+      <div class="star-method-ribbon">
+        <div class="star-method-col">
+          <span class="star-pill star-s">S · Situasi</span>
+          <p>Minta kandidat menggambarkan konteks spesifik masa lalu.</p>
+        </div>
+        <div class="star-method-col">
+          <span class="star-pill star-t">T · Tugas</span>
+          <p>Eksplorasi tanggung jawab dan target yang harus diselesaikan.</p>
+        </div>
+        <div class="star-method-col">
+          <span class="star-pill star-a">A · Aksi</span>
+          <p>Gali tindakan nyata, tools, dan keputusan individual kandidat.</p>
+        </div>
+        <div class="star-method-col">
+          <span class="star-pill star-r">R · Hasil</span>
+          <p>Ukur dampak keberhasilan, metrik terukur, dan refleksi diri.</p>
+        </div>
+      </div>
+
+      <!-- Quick Criteria Jump Filter -->
+      <div class="star-filter-nav" role="tablist">
+        ${filterTabsHtml}
+      </div>
+
+      <!-- Questions List -->
+      <div class="star-questions-list">
+        ${questionsCardsHtml}
+      </div>
+    </div>
+
+    <footer class="modal-footer">
+      <span class="muted footer-legal-note">Gunakan panduan ini saat mengisi Scorecard Wawancara 1–5 untuk memastikan konsistensi evaluasi.</span>
+      <button class="button button-secondary" id="star-modal-close-btn" type="button">Tutup</button>
+    </footer>
+  `;
+
+  // Attach filter click listeners
+  modal.querySelectorAll(".star-filter-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      renderStarModalContent(modal, data, job, tab.dataset.crit);
+    });
+  });
+
+  // Attach copy question listeners
+  modal.querySelectorAll(".copy-star-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      copyToClipboard(btn.dataset.copy, "Pertanyaan STAR berhasil disalin ke clipboard.");
+    });
+  });
+
+  // Close listeners
+  modal.querySelector("#star-modal-close")?.addEventListener("click", closeStarModal);
+  modal.querySelector("#star-modal-close-btn")?.addEventListener("click", closeStarModal);
+}
+
+async function openStarModal(candidateId = null) {
+  if (!state.activeJob?.id) {
+    toast("Pilih requisition terlebih dahulu.");
+    return;
+  }
+
+  const backdrop = $("#star-modal-backdrop");
+  const modal = $("#star-modal");
+  if (!backdrop || !modal) return;
+
+  const job = state.activeJob;
+  backdrop.classList.remove("hidden");
+  document.body.classList.add("star-modal-open");
+
+  modal.innerHTML = `
+    <header class="modal-header">
+      <div class="modal-title-group">
+        <div class="modal-title-icon">🎯</div>
+        <div>
+          <h2 id="star-modal-title">Panduan Wawancara Perilaku STAR</h2>
+          <p class="modal-subtitle">Menyiapkan panduan pertanyaan terstruktur untuk ${escapeHtml(job.title)}…</p>
+        </div>
+      </div>
+      <button class="modal-close-btn" type="button" aria-label="Tutup panduan STAR" title="Tutup (ESC)">✕</button>
+    </header>
+    <div class="modal-body star-modal-body">
+      <div class="modal-loading-state">
+        <span class="scorecard-spinner"></span>
+        <p>Menyusun rubrik pertanyaan perilaku STAR berbasis kriteria yang disepakati…</p>
+      </div>
+    </div>
+  `;
+
+  modal.querySelector(".modal-close-btn")?.addEventListener("click", closeStarModal);
+
+  try {
+    let data;
+    try {
+      data = await api(`/api/jobs/${encodeURIComponent(job.id)}/star-questions`);
+    } catch (apiErr) {
+      data = generateClientStarQuestions(job);
+    }
+    renderStarModalContent(modal, data, job);
+  } catch (err) {
+    modal.innerHTML = `
+      <header class="modal-header">
+        <div class="modal-title-group">
+          <div class="modal-title-icon">⚠️</div>
+          <div><h2>Gagal Memuat Panduan STAR</h2></div>
+        </div>
+        <button class="modal-close-btn" id="star-err-close-btn" type="button">✕</button>
+      </header>
+      <div class="modal-body star-modal-body">
+        <div class="feedback-error-box">
+          <p>${escapeHtml(err.message)}</p>
+          <button class="button button-secondary" id="retry-star-btn">Coba Lagi</button>
+        </div>
+      </div>
+    `;
+    modal.querySelector("#star-err-close-btn")?.addEventListener("click", closeStarModal);
+    modal.querySelector("#retry-star-btn")?.addEventListener("click", () => openStarModal());
+  }
+}
+
+// Global click delegation for candidate feedback and star guide buttons
+document.addEventListener("click", (event) => {
+  const feedbackBtn = event.target.closest(".candidate-feedback-btn");
+  if (feedbackBtn) {
+    const candidateId = feedbackBtn.dataset.candidateId;
+    if (candidateId) {
+      openFeedbackModal(candidateId);
+    }
+    return;
+  }
+
+  const starBtn = event.target.closest(".star-guide-btn");
+  if (starBtn) {
+    const candidateId = starBtn.dataset.candidateId;
+    openStarModal(candidateId);
+    return;
+  }
+});
+
+// ESC key listener for modals
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    if (!$("#feedback-modal-backdrop")?.classList.contains("hidden")) {
+      closeFeedbackModal();
+    }
+    if (!$("#star-modal-backdrop")?.classList.contains("hidden")) {
+      closeStarModal();
+    }
+  }
+});
+
+// Backdrop click listener to close modals
+$("#feedback-modal-backdrop")?.addEventListener("click", (e) => {
+  if (e.target === $("#feedback-modal-backdrop")) {
+    closeFeedbackModal();
+  }
+});
+
+$("#star-modal-backdrop")?.addEventListener("click", (e) => {
+  if (e.target === $("#star-modal-backdrop")) {
+    closeStarModal();
+  }
 });
 
 window.state = state;

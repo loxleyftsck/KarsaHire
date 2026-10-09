@@ -1677,17 +1677,18 @@ class Handler(BaseHTTPRequestHandler):
         if path in (
             "/", "/index.html", "/app.js", "/app.css", "/approval.css",
             "/api/health", "/api/health/live", "/api/health/ready", "/api/metrics", "/api/jobs",
+            "/api/criteria-recommendations",
         ):
             return path
         parts = [part for part in path.strip("/").split("/") if part]
         if len(parts) == 3 and parts[:2] == ["api", "jobs"]:
             return "/api/jobs/:id"
-        if len(parts) == 4 and parts[:2] == ["api", "jobs"] and parts[3] in ("approvals", "candidates", "events", "ask", "load-synthetic-data", "load-demo-candidate"):
+        if len(parts) == 4 and parts[:2] == ["api", "jobs"] and parts[3] in ("approvals", "candidates", "events", "ask", "load-synthetic-data", "load-demo-candidate", "analytics", "star-questions"):
             return f"/api/jobs/:id/{parts[3]}"
         if len(parts) == 3 and parts[:2] == ["api", "candidates"]:
             return "/api/candidates/:id"
-        if len(parts) == 4 and parts[:2] == ["api", "candidates"] and parts[3] == "reviews":
-            return "/api/candidates/:id/reviews"
+        if len(parts) == 4 and parts[:2] == ["api", "candidates"] and parts[3] in ("reviews", "scorecards", "feedback"):
+            return f"/api/candidates/:id/{parts[3]}"
         return "/<other>"
 
     def log_message(self, fmt: str, *args) -> None:
@@ -1923,6 +1924,9 @@ class Handler(BaseHTTPRequestHandler):
             if parts[4] == "json":
                 self.export_job_json(parts[2])
                 return
+            if parts[4] == "dossier":
+                self.export_job_dossier(parts[2])
+                return
         if len(parts) == 4 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "analytics":
             with connect() as db:
                 try:
@@ -1931,6 +1935,9 @@ class Handler(BaseHTTPRequestHandler):
                     self.send_json(200, summary)
                 except ValueError as exc:
                     self.send_json(404, {"error": str(exc)})
+            return
+        if len(parts) == 4 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "star-questions":
+            self.get_job_star_questions(parts[2])
             return
         if len(parts) == 4 and parts[0] == "api" and parts[1] == "candidates" and parts[3] == "scorecards":
             with connect() as db:
@@ -1941,6 +1948,17 @@ class Handler(BaseHTTPRequestHandler):
                     self.send_json(200, {"scorecards": scorecards, "summary": summary})
                 except Exception as exc:
                     self.send_json(400, {"error": str(exc)})
+            return
+        if len(parts) == 4 and parts[0] == "api" and parts[1] == "candidates" and parts[3] == "feedback":
+            with connect() as db:
+                try:
+                    from feedback_service import generate_candidate_feedback
+                    feedback = generate_candidate_feedback(db, parts[2])
+                    self.send_json(200, feedback)
+                except ValueError as exc:
+                    self.send_json(404, {"error": str(exc)})
+                except Exception as exc:
+                    self.send_json(500, {"error": str(exc)})
             return
         self.send_json(404, {"error": "Endpoint tidak ditemukan."})
 
@@ -2111,6 +2129,66 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
+    def export_job_dossier(self, job_id: str) -> None:
+        with connect() as db:
+            from dossier_service import generate_job_dossier_html
+            try:
+                html_content = generate_job_dossier_html(db, job_id)
+            except ValueError as exc:
+                self.send_json(404, {"error": str(exc)})
+                return
+            except Exception as exc:
+                self.send_json(500, {"error": f"Gagal membuat dossier: {exc}"})
+                return
+
+        data = html_content.encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+
+    def get_job_star_questions(self, job_id: str) -> None:
+        with connect() as db:
+            job = db.execute("SELECT * FROM jobs WHERE id=?", (job_id,)).fetchone()
+            if not job:
+                self.send_json(404, {"error": "Lowongan tidak ditemukan."})
+                return
+            if job["status"] != "criteria_approved":
+                self.send_json(409, {"error": "Panduan wawancara STAR hanya tersedia untuk lowongan yang telah disetujui kedua peran."})
+                return
+            criteria = json.loads(job["criteria_json"])
+        from criteria_assistant import generate_star_interview_guide, audit_criteria_calibration
+        guide = generate_star_interview_guide(criteria)
+        calibration = audit_criteria_calibration(criteria)
+        self.send_json(200, {
+            "job_id": job_id,
+            "title": job["title"],
+            "department": job["department"],
+            "status": job["status"],
+            "criteria": criteria,
+            "star_questions": guide,
+            "calibration": calibration,
+        })
+
+    def get_criteria_recommendations_endpoint(self) -> None:
+        data = self.read_json()
+        title = str(data.get("title", "")).strip()[:160]
+        department = str(data.get("department", "")).strip()[:120]
+        if not title:
+            raise ValueError("Nama posisi (title) wajib diisi.")
+        from criteria_assistant import get_criteria_recommendations, audit_criteria_calibration
+        recommendations = get_criteria_recommendations(title, department)
+        calibration = audit_criteria_calibration(recommendations)
+        self.send_json(200, {
+            "title": title,
+            "department": department,
+            "recommendations": recommendations,
+            "criteria": recommendations,
+            "calibration": calibration,
+        })
+
     def do_POST(self) -> None:  # noqa: N802
         if not self.require_same_origin_mutation():
             return
@@ -2123,6 +2201,8 @@ class Handler(BaseHTTPRequestHandler):
             parts = [unquote(p) for p in path.strip("/").split("/")]
             if path == "/api/jobs":
                 self.create_job()
+            elif path == "/api/criteria-recommendations":
+                self.get_criteria_recommendations_endpoint()
             elif len(parts) == 4 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "approvals":
                 self.approve_job(parts[2])
             elif len(parts) == 4 and parts[0] == "api" and parts[1] == "jobs" and parts[3] == "load-synthetic-data":

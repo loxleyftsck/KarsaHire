@@ -86,6 +86,26 @@ KarsaHire/
 - **Rincian Evidence ke CSV (`export_evidence_csv`)**: Menghasilkan audit rincian bukti per kriteria untuk setiap kandidat lengkap dengan jenis kriteria, bobot, hasil (`matched`/`partial`/`unknown`), confidence, cuplikan teks (*snippet*), dan nomor halaman CV.
 - **Debrief Lengkap ke JSON (`export_job_report_json`)**: Menghasilkan berkas JSON komprehensif berisi metadata lowongan, kriteria yang disetujui, approver, seluruh profil dan evidence kandidat, riwayat review, serta seluruh jejak `audit_events`.
 
+### 7. `criteria_assistant.py` — Asisten Kriteria & Generator Pertanyaan STAR
+- **Rekomendasi Kriteria Otomatis (`get_criteria_recommendations`)**: Menyarankan 4–6 kriteria standar terkalibrasi berdasarkan judul posisi (Software Dev, SysAdmin, Accountant, HR, dll.) lengkap dengan pemisahan kualifikasi wajib (bobot 1.0) dan preferensi (bobot 0.8).
+- **Audit Kalibrasi Kriteria (`audit_criteria_calibration`)**: Menganalisis keseimbangan bobot, mendeteksi risiko monopoli kriteria (>40% total bobot), dan merekomendasikan perbaikan saat sesi job intake.
+- **Generator Pertanyaan Wawancara STAR (`generate_star_interview_guide`)**: Memetakan setiap kriteria ke pertanyaan perilaku berbasis kerangka STAR (*Situation, Task, Action, Result*), lengkap dengan indikator skor tinggi (4–5) dan sinyal waspada (*red flags* 1–2).
+
+### 8. `feedback_service.py` — Umpan Balik Transparan & Etika UU PDP No. 27/2022
+- **Umpan Balik Konstruktif Objektif (`generate_candidate_feedback`)**: Mengelompokkan bukti kompetensi kandidat menjadi *strengths* (kriteria dengan bukti nyata) dan *growth areas* (kualifikasi yang belum terverifikasi di berkas).
+- **Kepatuhan Pasal 40 UU PDP**: Menyertakan konfirmasi transparansi mutlak bahwa seleksi dievaluasi oleh peninjau manusia terverifikasi (*Human-in-the-Loop*), tanpa penolakan otomatis sepihak oleh black-box AI.
+- **Draft Pesan Profesional**: Menghasilkan draft email umpan balik profesional yang sopan, apresiatif, dan *actionable* bagi pelamar kerja.
+
+### 9. `dossier_service.py` — Dokumen Eksekutif Dossier Siap Cetak (HTML/PDF)
+- **Laporan Debrief Siap Cetak (`generate_job_dossier_html`)**: Menghasilkan dokumen laporan eksekutif mandiri berstandar korporat yang siap dicetak ke PDF (`@media print`):
+  * Kop resmi PT Karsa Hire Nusantara & Metadata Requisition.
+  * Log Dual-Approval dengan stempel integritas digital kriptografis (`KRS-XXXX-XXXX-XXXX`).
+  * Ringkasan Pipeline Funnel & metrik skor bukti.
+  * Analisis keselarasan reviewer (Konsensus %, Cohen's Kappa $\kappa$).
+  * Matriks komparasi kandidat teratas & scorecard wawancara terstruktur.
+  * Pernyataan kepatuhan etika & regulasi (UU PDP, NYC LL144, EU AI Act Art. 14).
+  * Lembar tanda tangan fisik/digital untuk Komite Perekrutan.
+
 ---
 
 ## Fitur Antarmuka Workspace (/app)
@@ -110,17 +130,23 @@ Antarmuka web KarsaHire dirancang khusus untuk alur kerja tim rekrutmen kolabora
 4. **Modal Analisis Seleksi (Debrief Analytics Modal)**:
    - Menyajikan dashboard visual metrik seleksi untuk rapat debrief tim rekrutmen:
      - *Pipeline Funnel*: Grafik konversi status pelamar dan rentang skor bukti.
-     - *Inter-Rater Consensus*: Tingkat keselarasan Recruiter vs Hiring Manager beserta daftar kandidat yang memiliki perbedaan keputusan.
+     - *Inter-Rater Consensus*: Tingkat keselarasan Recruiter vs Hiring Manager beserta skor Cohen's Kappa ($\kappa$).
      - *Criteria Health*: Status kesehatan kriteria yang mengidentifikasi *bottleneck* (terlalu sulit) atau kriteria yang kurang diskriminatif.
+     - *Matriks Unjuk Kerja Ilmiah*: Penelusuran bukti 100% anti-halusinasi, skor IR Ranking (NDCG/MRR), dan audit kepatuhan anti-bias.
 
 5. **Form Scorecard Wawancara Terstruktur**:
    - Form pencatatan hasil wawancara terstandarisasi berbasis skala rubrik 1–5 untuk tiap kompetensi.
    - Kolom catatan bukti berbasis perilaku konkret (*STAR method*) dan pilihan rekomendasi akhir yang objektif.
+   - Tombol **🎯 Panduan Wawancara STAR** yang menampilkan kuadran pertanyaan perilaku per kriteria secara instan.
    - Ringkasan komparasi otomatis antara nilai Recruiter dan Hiring Manager.
 
-6. **Tombol Ekspor CSV & JSON**:
-   - **Ekspor CSV Rekap**: Mengunduh rekapitulasi data kandidat dan keputusan review dalam format CSV siap olah.
-   - **Ekspor JSON Debrief**: Mengunduh seluruh data requisition, kriteria, kandidat, evidence, dan log aktivitas audit trail ke format JSON.
+6. **Modal Umpan Balik Transparan Kandidat**:
+   - Menampilkan ringkasan kualifikasi yang terpenuhi (*strengths*) dan area pengembangan (*growth areas*).
+   - Menyediakan draft email umpan balik profesional yang dapat disunting dan disalin satu klik, menjamin pemenuhan hak transparansi pelamar di bawah UU PDP No. 27/2022.
+
+7. **Tombol Ekspor Dokumen Debrief (Dossier)**:
+   - Tombol **📄 Ekspor Dokumen Debrief (Dossier)** pada toolbar lowongan yang membuka laporan eksekutif lengkap siap cetak di tab baru.
+   - Tombol **Ekspor CSV Rekap** dan **Ekspor JSON Debrief** untuk pengolahan data tabular dan audit log.
 
 ---
 
@@ -253,22 +279,26 @@ Semua endpoint API disajikan melalui protokol REST JSON lokal (`127.0.0.1`):
 - `POST /api/jobs/{id}/approvals` — Mencatat persetujuan kriteria dari Recruiter atau Hiring Manager (kedua peran wajib menyetujui sebelum CV dapat diproses).
 - `POST /api/jobs/{id}/load-synthetic-data` — Memuat corpus 32 CV uji sintetis secara idempoten setelah kriteria disetujui.
 - `GET /api/jobs/{id}/events` — Menampilkan riwayat jejak audit (*audit trail*) untuk requisition tertentu.
+- `POST /api/criteria-recommendations` — Menyarankan kriteria standar terkalibrasi dan audit keseimbangan bobot berdasarkan judul posisi & departemen.
+- `GET /api/jobs/{id}/star-questions` — Mengambil panduan wawancara perilaku STAR (*Situation, Task, Action, Result*) untuk setiap kriteria requisition yang disetujui.
 
 ### 2. Pemrosesan & Evaluasi Kandidat
 - `POST /api/jobs/{id}/candidates` — Mengunggah dan memproses berkas CV multipart (`.txt`, `.pdf`, `.docx`, `.png`, `.jpg`). Berkas asli tidak disimpan; sistem hanya mengekstrak teks dan bukti leksikal.
 - `POST /api/candidates/{id}/reviews` — Mencatat keputusan review manusia (`advance`, `needs_info`, `not_selected`) beserta catatan reviewer.
 - `DELETE /api/candidates/{id}` — Menghapus data kandidat, profil, evidence, dan riwayat review dari database (event penghapusan dicatat ke audit trail).
+- `GET /api/candidates/{id}/feedback` — Mengambil ringkasan umpan balik transparan (*strengths* vs *growth areas*), konfirmasi non-blackbox AI sesuai Pasal 40 UU PDP, dan draft email profesional siap kirim.
 
 ### 3. Wawancara Terstruktur (Structured Interview Scorecards)
 - `GET /api/candidates/{id}/scorecards` — Mengambil riwayat scorecard wawancara kandidat beserta komparasi Recruiter vs Hiring Manager.
 - `POST /api/candidates/{id}/scorecards` — Mencatat penilaian wawancara terstruktur baru lengkap dengan rating 1–5 per kriteria, catatan bukti STAR, dan rekomendasi akhir.
 
 ### 4. Analisis Rekrutmen (Hiring Debrief Analytics)
-- `GET /api/jobs/{id}/analytics` — Mengambil ringkasan metrik analitik seleksi: funnel pipeline, rasio konsensus keselarasan pewawancara (*inter-rater agreement*), dan diagnostik kesehatan kriteria (*bottleneck*).
+- `GET /api/jobs/{id}/analytics` — Mengambil ringkasan metrik analitik seleksi: funnel pipeline, rasio konsensus keselarasan pewawancara (*inter-rater agreement*), Cohen's Kappa ($\kappa$), diagnostik kesehatan kriteria (*bottleneck*), temu balik IR (NDCG/MRR), dan bukti groundedness.
 
 ### 5. Ekspor Data & Pelaporan Debrief
 - `GET /api/jobs/{id}/export/csv` — Mengunduh rekapitulasi data seluruh kandidat dalam format file CSV (dengan UTF-8 BOM untuk kompatibilitas Excel).
 - `GET /api/jobs/{id}/export/json` — Mengunduh laporan debrief lengkap dalam format JSON yang mencakup metadata lowongan, kriteria, daftar approver, kandidat, evidence, review, dan log audit.
+- `GET /api/jobs/{id}/export/dossier` — Menghasilkan dokumen eksekutif mandiri siap cetak (HTML Standalone Executive Dossier) lengkap dengan stempel dual-approval, ringkasan komparasi kandidat, dan catatan kepatuhan regulasi.
 
 ### 6. Grounded Requisition Q&A & Health Probes
 - `POST /api/jobs/{id}/ask` — Mengajukan pertanyaan seputar isi requisition; sistem mengembalikan kutipan sumber resmi berbasis BM25 token overlap tanpa halusinasi LLM.
