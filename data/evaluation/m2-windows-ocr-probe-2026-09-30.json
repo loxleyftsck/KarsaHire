@@ -1,0 +1,31 @@
+{
+  "dataset": "synthetic-cv-32",
+  "sample_id": "r00003",
+  "pipeline_version": "local-ce5ab0a3068761f1f4bf6e968c9cb8e23399d2057c6cbe201a2d1232f3",
+  "ocr_model": null,
+  "dataset_manifest_sha256": "21916b5cd34e3a29a8e411c5a990d85a555d8cddb032950f3e8898de54a6fb86",
+  "sample_pdf_sha256": "49a872726708274653d5d51455d59c376d64895245c67cf8e339f1a46edc5dfc",
+  "reference_text_sha256": "12f8067f79583c900ab90ddc5e0dedba9f51f3a4ff31cf9750d8734c2da3d099",
+  "evaluator_sha256": "c9ba3fa30f49d2f1d75dc17fd3a0783a9fed9f2688da6ae0c8d302df8468c794",
+  "pdf_pages": 2,
+  "ocr_images_planned": 2,
+  "ocr_requests_sent": 0,
+  "network_mode": "disabled_local_windows_ocr",
+  "ocr_engine": "Windows.Media.Ocr",
+  "ocr_engine_version": "Windows.Media.Ocr; system-managed model; Windows build 10.0.26200",
+  "ocr_language": "en-US",
+  "ocr_model_fingerprint": null,
+  "ocr_model_revision": "Windows-managed; stable fingerprint unavailable",
+  "ocr_bridge_sha256": "02de9e28b244705ed69e65741c0ed20fdb736b64fc93577b4d630d17c1022ae9",
+  "ocr_images_processed": 2,
+  "ocr_pages_returned": 2,
+  "reference_word_count": 526,
+  "ocr_word_count": 526,
+  "word_edits": 16,
+  "word_error_rate": 0.0304,
+  "limitations": [
+    "WER is compared with the corpus text reference, not human-adjudicated OCR ground truth.",
+    "One synthetic English PDF does not establish OCR quality across layouts or languages.",
+    "OCR output text is not printed or persisted by this script."
+  ]
+}

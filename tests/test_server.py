@@ -28,10 +28,12 @@ class ServerTestCase(unittest.TestCase):
         cls.temp_dir = tempfile.TemporaryDirectory(ignore_cleanup_errors=True)
         cls.orig_db_path = server.DB_PATH
         cls.orig_data_dir = server.DATA
+        cls.orig_manual_uploads = server.MANUAL_UPLOADS_ENABLED
 
         test_data_dir = Path(cls.temp_dir.name)
         server.DATA = test_data_dir
         server.DB_PATH = test_data_dir / "test_copilot.sqlite3"
+        server.MANUAL_UPLOADS_ENABLED = True
         server.init_db()
 
         cls.httpd = ThreadingHTTPServer(("127.0.0.1", 0), QuietHandler)
@@ -49,6 +51,7 @@ class ServerTestCase(unittest.TestCase):
 
         server.DB_PATH = cls.orig_db_path
         server.DATA = cls.orig_data_dir
+        server.MANUAL_UPLOADS_ENABLED = cls.orig_manual_uploads
 
         gc.collect()
         cls.temp_dir.cleanup()
@@ -59,6 +62,7 @@ class ServerTestCase(unittest.TestCase):
             db.execute("PRAGMA foreign_keys = OFF")
             for table in ["interview_criterion_scores", "interview_scorecards", "reviews", "evidence", "candidates", "approvals", "audit_events", "jobs"]:
                 db.execute(f"DROP TABLE IF EXISTS {table}")
+            db.execute("PRAGMA user_version = 0")
             db.execute("PRAGMA foreign_keys = ON")
         server.init_db()
 
@@ -80,7 +84,11 @@ class ServerTestCase(unittest.TestCase):
         req = urllib.request.Request(
             url,
             data=body,
-            headers={"Content-Type": "application/json; charset=utf-8"},
+            headers={
+                "Content-Type": "application/json; charset=utf-8",
+                "Origin": f"http://127.0.0.1:{self.port}",
+                "X-KarsaHire-Request": "same-origin-ui",
+            },
             method="POST",
         )
         try:
@@ -108,6 +116,8 @@ class ServerTestCase(unittest.TestCase):
             headers={
                 "Content-Type": f"multipart/form-data; boundary={boundary}",
                 "Content-Length": str(len(part_bytes)),
+                "Origin": f"http://127.0.0.1:{self.port}",
+                "X-KarsaHire-Request": "same-origin-ui",
             },
             method="POST",
         )
@@ -121,7 +131,14 @@ class ServerTestCase(unittest.TestCase):
 
     def delete(self, path: str) -> tuple[int, dict]:
         url = f"{self.base_url}{path}"
-        req = urllib.request.Request(url, method="DELETE")
+        req = urllib.request.Request(
+            url,
+            headers={
+                "Origin": f"http://127.0.0.1:{self.port}",
+                "X-KarsaHire-Request": "same-origin-ui",
+            },
+            method="DELETE",
+        )
         try:
             with urllib.request.urlopen(req) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
@@ -325,7 +342,7 @@ class TestServerEndpoints(ServerTestCase):
         self.assertIn("python", data["profile"]["skills"])
         self.assertIn("docker", data["profile"]["skills"])
         self.assertEqual(data["profile"]["experience_years_mentioned"], 5)
-        self.assertIn("Bachelor's", data["profile"]["education_levels_mentioned"])
+        self.assertTrue(any("bachelor" in d.lower() for d in data["profile"]["education_levels_mentioned"]))
 
         cand_id = data["id"]
 

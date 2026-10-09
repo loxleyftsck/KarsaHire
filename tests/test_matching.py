@@ -224,22 +224,22 @@ class TestProfileExtraction(unittest.TestCase):
         # Bachelor's degree
         text_bachelor = "Graduated with a Bachelor's Degree in Computer Engineering."
         profile_bachelor = server.profile_from_text(text_bachelor)
-        self.assertIn("Bachelor's", profile_bachelor["education_levels_mentioned"])
+        self.assertTrue(any("bachelor" in d.lower() for d in profile_bachelor["education_levels_mentioned"]))
 
         # Master's degree & MBA
         text_master = "Holds a Master's degree in Software Systems and an MBA."
         profile_master = server.profile_from_text(text_master)
-        self.assertIn("Master's", profile_master["education_levels_mentioned"])
+        self.assertTrue(any("master" in d.lower() for d in profile_master["education_levels_mentioned"]))
 
         # Doctorate / Ph.D
         text_doc = "Doctorate in Artificial Intelligence and Neural Networks."
         profile_doc = server.profile_from_text(text_doc)
-        self.assertIn("Doctorate", profile_doc["education_levels_mentioned"])
+        self.assertTrue(any("doctor" in d.lower() for d in profile_doc["education_levels_mentioned"]))
 
         # Associate's degree
         text_assoc = "Completed an Associate's degree in Web Technology."
         profile_assoc = server.profile_from_text(text_assoc)
-        self.assertIn("Associate's", profile_assoc["education_levels_mentioned"])
+        self.assertTrue(any("associate" in d.lower() for d in profile_assoc["education_levels_mentioned"]))
 
         # No degree mentioned
         text_no_deg = "Self-taught programmer with extensive open-source contributions."

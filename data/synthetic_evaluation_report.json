@@ -1,19 +1,19 @@
 {
   "metadata": {
     "title": "KarsaHire Synthetic CV Benchmark & Evaluation Report",
-    "timestamp": "2026-10-09T02:47:26Z",
+    "timestamp": "2026-10-09T03:24:35Z",
     "dataset_directory": "C:\\Users\\heraldmichain.intern\\Documents\\KarsaHire\\data\\synthetic-cv-32",
     "total_samples": 32,
     "python_runtime": "3.12.14"
   },
   "performance_latency_ms": {
-    "avg_extraction_time_per_candidate": 35.432,
-    "median_extraction_time_per_candidate": 36.562,
-    "avg_scoring_time_per_candidate": 21.7,
-    "median_scoring_time_per_candidate": 20.856,
-    "avg_total_time_per_candidate": 57.132,
-    "median_total_time_per_candidate": 57.482,
-    "total_benchmark_time": 1838.35
+    "avg_extraction_time_per_candidate": 27.599,
+    "median_extraction_time_per_candidate": 27.216,
+    "avg_scoring_time_per_candidate": 15.944,
+    "median_scoring_time_per_candidate": 15.938,
+    "avg_total_time_per_candidate": 43.543,
+    "median_total_time_per_candidate": 44.843,
+    "total_benchmark_time": 1402.83
   },
   "profile_extraction_metrics": {
     "total_candidates": 32,
@@ -176,9 +176,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 12.5
       },
-      "extraction_time_ms": 61.616,
-      "scoring_time_ms": 31.344,
-      "total_time_ms": 92.96
+      "extraction_time_ms": 44.523,
+      "scoring_time_ms": 18.369,
+      "total_time_ms": 62.892
     },
     {
       "sample_id": "r00005",
@@ -204,9 +204,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 40.592,
-      "scoring_time_ms": 21.648,
-      "total_time_ms": 62.239
+      "extraction_time_ms": 31.149,
+      "scoring_time_ms": 22.873,
+      "total_time_ms": 54.022
     },
     {
       "sample_id": "r00015",
@@ -230,9 +230,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 35.201,
-      "scoring_time_ms": 19.637,
-      "total_time_ms": 54.838
+      "extraction_time_ms": 35.708,
+      "scoring_time_ms": 15.206,
+      "total_time_ms": 50.914
     },
     {
       "sample_id": "r00035",
@@ -259,9 +259,9 @@
         "Network & Systems Administrator": 0.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 17.919,
-      "scoring_time_ms": 12.929,
-      "total_time_ms": 30.848
+      "extraction_time_ms": 14.643,
+      "scoring_time_ms": 10.323,
+      "total_time_ms": 24.966
     },
     {
       "sample_id": "r00062",
@@ -289,9 +289,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 30.933,
-      "scoring_time_ms": 18.475,
-      "total_time_ms": 49.407
+      "extraction_time_ms": 24.526,
+      "scoring_time_ms": 15.578,
+      "total_time_ms": 40.104
     },
     {
       "sample_id": "r00068",
@@ -321,9 +321,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 36.933,
-      "scoring_time_ms": 20.535,
-      "total_time_ms": 57.468
+      "extraction_time_ms": 33.713,
+      "scoring_time_ms": 18.393,
+      "total_time_ms": 52.106
     },
     {
       "sample_id": "r00075",
@@ -353,9 +353,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 39.169,
-      "scoring_time_ms": 22.851,
-      "total_time_ms": 62.021
+      "extraction_time_ms": 33.515,
+      "scoring_time_ms": 19.19,
+      "total_time_ms": 52.704
     },
     {
       "sample_id": "r00099",
@@ -389,9 +389,9 @@
         "Network & Systems Administrator": 75.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 30.673,
-      "scoring_time_ms": 17.179,
-      "total_time_ms": 47.852
+      "extraction_time_ms": 27.833,
+      "scoring_time_ms": 18.862,
+      "total_time_ms": 46.694
     },
     {
       "sample_id": "r00160",
@@ -419,9 +419,9 @@
         "Network & Systems Administrator": 75.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 29.856,
-      "scoring_time_ms": 19.236,
-      "total_time_ms": 49.092
+      "extraction_time_ms": 25.822,
+      "scoring_time_ms": 15.242,
+      "total_time_ms": 41.064
     },
     {
       "sample_id": "r00169",
@@ -453,9 +453,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 45.191,
-      "scoring_time_ms": 27.802,
-      "total_time_ms": 72.993
+      "extraction_time_ms": 30.675,
+      "scoring_time_ms": 16.299,
+      "total_time_ms": 46.974
     },
     {
       "sample_id": "r00193",
@@ -486,9 +486,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 49.24,
-      "scoring_time_ms": 24.201,
-      "total_time_ms": 73.441
+      "extraction_time_ms": 29.39,
+      "scoring_time_ms": 18.471,
+      "total_time_ms": 47.861
     },
     {
       "sample_id": "r00196",
@@ -524,9 +524,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 37.137,
-      "scoring_time_ms": 21.182,
-      "total_time_ms": 58.319
+      "extraction_time_ms": 31.279,
+      "scoring_time_ms": 19.326,
+      "total_time_ms": 50.605
     },
     {
       "sample_id": "r00213",
@@ -558,9 +558,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 36.757,
-      "scoring_time_ms": 19.062,
-      "total_time_ms": 55.819
+      "extraction_time_ms": 26.455,
+      "scoring_time_ms": 14.468,
+      "total_time_ms": 40.923
     },
     {
       "sample_id": "r00220",
@@ -587,9 +587,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 28.193,
-      "scoring_time_ms": 16.399,
-      "total_time_ms": 44.592
+      "extraction_time_ms": 25.679,
+      "scoring_time_ms": 15.124,
+      "total_time_ms": 40.802
     },
     {
       "sample_id": "r00226",
@@ -616,9 +616,9 @@
         "Network & Systems Administrator": 0.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 20.493,
-      "scoring_time_ms": 19.444,
-      "total_time_ms": 39.938
+      "extraction_time_ms": 17.866,
+      "scoring_time_ms": 12.408,
+      "total_time_ms": 30.274
     },
     {
       "sample_id": "r00244",
@@ -644,9 +644,9 @@
         "Network & Systems Administrator": 0.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 21.395,
-      "scoring_time_ms": 11.968,
-      "total_time_ms": 33.363
+      "extraction_time_ms": 15.323,
+      "scoring_time_ms": 10.443,
+      "total_time_ms": 25.766
     },
     {
       "sample_id": "r00248",
@@ -675,9 +675,9 @@
         "Network & Systems Administrator": 100.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 22.202,
-      "scoring_time_ms": 14.798,
-      "total_time_ms": 36.999
+      "extraction_time_ms": 21.497,
+      "scoring_time_ms": 13.936,
+      "total_time_ms": 35.433
     },
     {
       "sample_id": "r00253",
@@ -708,9 +708,9 @@
         "Network & Systems Administrator": 100.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 20.6,
-      "scoring_time_ms": 21.177,
-      "total_time_ms": 41.777
+      "extraction_time_ms": 21.044,
+      "scoring_time_ms": 11.715,
+      "total_time_ms": 32.759
     },
     {
       "sample_id": "r00285",
@@ -743,9 +743,9 @@
         "Network & Systems Administrator": 0.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 44.828,
-      "scoring_time_ms": 23.005,
-      "total_time_ms": 67.833
+      "extraction_time_ms": 40.885,
+      "scoring_time_ms": 21.225,
+      "total_time_ms": 62.109
     },
     {
       "sample_id": "r00292",
@@ -781,9 +781,9 @@
         "Network & Systems Administrator": 75.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 28.9,
-      "scoring_time_ms": 17.565,
-      "total_time_ms": 46.465
+      "extraction_time_ms": 20.777,
+      "scoring_time_ms": 13.502,
+      "total_time_ms": 34.28
     },
     {
       "sample_id": "r00295",
@@ -818,9 +818,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 59.9,
-      "scoring_time_ms": 36.328,
-      "total_time_ms": 96.228
+      "extraction_time_ms": 40.67,
+      "scoring_time_ms": 21.773,
+      "total_time_ms": 62.443
     },
     {
       "sample_id": "r00330",
@@ -846,9 +846,9 @@
         "Network & Systems Administrator": 0.0,
         "Accountant": 25.0
       },
-      "extraction_time_ms": 42.867,
-      "scoring_time_ms": 28.818,
-      "total_time_ms": 71.685
+      "extraction_time_ms": 30.025,
+      "scoring_time_ms": 16.551,
+      "total_time_ms": 46.575
     },
     {
       "sample_id": "r00334",
@@ -883,9 +883,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 36.367,
-      "scoring_time_ms": 24.497,
-      "total_time_ms": 60.863
+      "extraction_time_ms": 29.658,
+      "scoring_time_ms": 16.752,
+      "total_time_ms": 46.41
     },
     {
       "sample_id": "r00344",
@@ -914,9 +914,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 36.282,
-      "scoring_time_ms": 24.406,
-      "total_time_ms": 60.688
+      "extraction_time_ms": 30.586,
+      "scoring_time_ms": 16.669,
+      "total_time_ms": 47.255
     },
     {
       "sample_id": "r00345",
@@ -946,9 +946,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 23.335,
-      "scoring_time_ms": 18.129,
-      "total_time_ms": 41.464
+      "extraction_time_ms": 18.857,
+      "scoring_time_ms": 11.473,
+      "total_time_ms": 30.331
     },
     {
       "sample_id": "r00349",
@@ -979,9 +979,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 41.163,
-      "scoring_time_ms": 22.873,
-      "total_time_ms": 64.035
+      "extraction_time_ms": 26.598,
+      "scoring_time_ms": 16.679,
+      "total_time_ms": 43.277
     },
     {
       "sample_id": "r00361",
@@ -1012,9 +1012,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 39.693,
-      "scoring_time_ms": 17.804,
-      "total_time_ms": 57.496
+      "extraction_time_ms": 25.789,
+      "scoring_time_ms": 14.502,
+      "total_time_ms": 40.291
     },
     {
       "sample_id": "r00370",
@@ -1046,9 +1046,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 23.415,
-      "scoring_time_ms": 14.985,
-      "total_time_ms": 38.401
+      "extraction_time_ms": 19.834,
+      "scoring_time_ms": 12.393,
+      "total_time_ms": 32.227
     },
     {
       "sample_id": "r00375",
@@ -1087,9 +1087,9 @@
         "Network & Systems Administrator": 50.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 46.987,
-      "scoring_time_ms": 27.243,
-      "total_time_ms": 74.23
+      "extraction_time_ms": 39.136,
+      "scoring_time_ms": 19.974,
+      "total_time_ms": 59.11
     },
     {
       "sample_id": "r00380",
@@ -1114,9 +1114,9 @@
         "Network & Systems Administrator": 0.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 22.695,
-      "scoring_time_ms": 20.227,
-      "total_time_ms": 42.921
+      "extraction_time_ms": 15.538,
+      "scoring_time_ms": 9.907,
+      "total_time_ms": 25.445
     },
     {
       "sample_id": "r00402",
@@ -1140,9 +1140,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 38.656,
-      "scoring_time_ms": 26.33,
-      "total_time_ms": 64.985
+      "extraction_time_ms": 24.676,
+      "scoring_time_ms": 15.043,
+      "total_time_ms": 39.718
     },
     {
       "sample_id": "r00420",
@@ -1174,9 +1174,9 @@
         "Network & Systems Administrator": 25.0,
         "Accountant": 0.0
       },
-      "extraction_time_ms": 44.636,
-      "scoring_time_ms": 32.334,
-      "total_time_ms": 76.97
+      "extraction_time_ms": 29.505,
+      "scoring_time_ms": 17.537,
+      "total_time_ms": 47.043
     }
   ]
 }

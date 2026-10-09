@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f5f1">
-  <title>KarsaHire — AI Recruitment Copilot</title>
+  <meta name="description" content="Tinjau bukti CV berdasarkan kriteria lowongan yang disepakati bersama.">
+  <title>KarsaHire — Rekrutmen berbasis bukti</title>
   <link rel="stylesheet" href="/app.css">
   <link rel="stylesheet" href="/approval.css">
   <link rel="stylesheet" href="/role-templates.css">
@@ -20,22 +21,26 @@
     </a>
     <div class="topbar-right">
       <span id="ocr-indicator" class="local-pill" aria-live="polite"><i></i> Memeriksa OCR…</span>
+      <span class="local-pill"><i></i> Prototipe lokal · data sintetis</span>
       <span class="avatar">HR</span>
     </div>
   </header>
 
   <main class="layout">
+    <div class="prototype-notice" role="note">
+      <span class="prototype-notice-label">Prototipe lokal</span>
+      <p><strong>Gunakan data sintetis saja.</strong> Jangan unggah CV pelamar; autentikasi pengguna dan pembatasan akses belum tersedia.</p>
+    </div>
     <aside class="intake-column">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">WORKSPACE</p>
-          <h1>Requisition</h1>
+          <p class="eyebrow">RUANG KERJA</p>
+          <h1>Posisi</h1>
         </div>
-        <span class="step-count">01 / 04</span>
       </div>
-      <p class="muted intro">Sepakati kriteria bersama hiring manager sebelum kandidat diranking.</p>
+      <p class="muted intro">Sepakati kriteria bersama manajer perekrutan sebelum meninjau CV.</p>
 
-      <form id="job-form" class="panel intake-form">
+      <form id="job-form" class="panel intake-form" novalidate>
         <label for="role-template">Pilih posisi / template</label>
         <select id="role-template" aria-describedby="template-hint">
           <option value="">Pilih template posisi (opsional)</option>
@@ -59,7 +64,8 @@
         <p id="template-hint" class="field-hint template-hint" aria-live="polite">Template mengisi posisi, ringkasan, dan kriteria awal. Semua kolom tetap bisa disunting.</p>
 
         <label for="job-title">Nama posisi <span class="required">*</span></label>
-        <input id="job-title" name="title" placeholder="Contoh: Backend Engineer" required maxlength="160">
+        <input id="job-title" name="title" placeholder="Contoh: Backend Engineer" required maxlength="160" aria-describedby="job-title-error">
+        <p id="job-title-error" class="field-hint field-error" role="alert" aria-live="assertive"></p>
 
         <label for="department">Tim / departemen</label>
         <input id="department" name="department" placeholder="Contoh: Platform Engineering" maxlength="120">
@@ -71,10 +77,11 @@
           <label for="criteria">Kriteria penilaian <span class="required">*</span></label>
           <button id="fill-example" class="text-button" type="button">Isi contoh</button>
         </div>
-        <textarea id="criteria" name="criteria" rows="8" required placeholder="Satu kriteria per baris:&#10;Wajib | Python&#10;Wajib | FastAPI&#10;Diutamakan | PostgreSQL&#10;Diutamakan | Kolaborasi lintas fungsi"></textarea>
-        <p class="field-hint">Bobot kriteria wajib = 2, diutamakan = 1. “Belum ada bukti” tidak sama dengan tidak memenuhi.</p>
+        <textarea id="criteria" name="criteria" rows="7" required aria-describedby="criteria-error criteria-hint" placeholder="Satu kriteria per baris:&#10;Wajib | Python&#10;Wajib | FastAPI&#10;Diutamakan | PostgreSQL&#10;Diutamakan | Kolaborasi lintas fungsi"></textarea>
+        <p id="criteria-error" class="field-hint field-error" role="alert" aria-live="assertive"></p>
+        <p id="criteria-hint" class="field-hint">Bobot kriteria wajib = 2, diutamakan = 1. “Belum ada bukti” tidak sama dengan tidak memenuhi.</p>
 
-        <button class="button button-primary button-wide" type="submit"><span>＋</span> Buat requisition</button>
+        <button class="button button-primary button-wide" type="submit"><span>＋</span> Buat lowongan</button>
         <button id="demo-button" class="button button-secondary button-wide" type="button">Coba dengan data sintetis</button>
       </form>
       <div id="jobs-list" class="jobs-list"></div>
@@ -83,33 +90,31 @@
     <section class="review-column">
       <div class="page-title-row">
         <div>
-          <p class="eyebrow">CANDIDATE REVIEW</p>
-          <h2 id="active-title">Belum ada requisition</h2>
-          <p id="active-subtitle" class="muted">Buat requisition atau muat contoh sintetis untuk memulai.</p>
+          <p class="eyebrow">TINJAUAN KANDIDAT</p>
+          <h2 id="active-title">Belum ada lowongan</h2>
+          <p id="active-subtitle" class="muted">Buat lowongan atau muat contoh sintetis untuk memulai.</p>
         </div>
-        <div id="pipeline-chip" class="pipeline-chip"><span class="pulse"></span> Setup</div>
+        <div id="pipeline-chip" class="pipeline-chip"><span class="pulse"></span> Persiapan</div>
       </div>
 
       <div id="active-workspace" class="workspace hidden">
-        <div class="workflow-rail" aria-label="Tahapan rekrutmen">
-          <span class="workflow-step active"><b>1</b> Kriteria</span><span class="workflow-line"></span>
-          <span class="workflow-step active"><b>2</b> Review</span><span class="workflow-line"></span>
-          <span class="workflow-step"><b>3</b> Wawancara</span><span class="workflow-line"></span>
-          <span class="workflow-step"><b>4</b> Keputusan</span>
+        <div class="workflow-rail" role="group" aria-label="Tahapan rekrutmen">
+          <span class="workflow-step active" data-workflow-step="criteria" aria-current="step"><b>1</b> Kriteria</span><span class="workflow-line"></span>
+          <span class="workflow-step" data-workflow-step="review"><b>2</b> Tinjauan bukti</span>
         </div>
 
         <section id="approval-panel" class="approval-panel">
-          <div class="approval-copy"><p class="eyebrow">DUAL REVIEW</p><h3>Persetujuan kriteria</h3><p class="muted">Recruiter dan hiring manager menandatangani kriteria secara terpisah sebelum CV diproses.</p><div id="approval-status" class="approval-status"></div></div>
+          <div class="approval-copy"><p class="eyebrow">PERSETUJUAN BERSAMA</p><h3>Persetujuan kriteria</h3><p id="approval-identity-note" class="muted">Perekrut dan manajer perekrutan mengisi persetujuan secara terpisah. Nama dan peran dicatat manual dan belum diverifikasi oleh akun.</p><div id="approval-status" class="approval-status"></div></div>
           <form id="approval-form" class="approval-form">
-            <input name="reviewer" placeholder="Nama approver" aria-label="Nama approver" required maxlength="100">
-            <select name="role" aria-label="Peran approver"><option value="recruiter">Recruiter</option><option value="hiring_manager">Hiring manager</option></select>
+            <input name="reviewer" placeholder="Nama pemberi persetujuan" aria-label="Nama pemberi persetujuan" aria-describedby="approval-identity-note" required maxlength="100">
+            <select name="role" aria-label="Peran pemberi persetujuan" aria-describedby="approval-identity-note"><option value="recruiter">Perekrut</option><option value="hiring_manager">Manajer perekrutan</option></select>
             <button class="button button-secondary" type="submit">Catat persetujuan</button>
           </form>
         </section>
 
         <div class="toolbar">
           <div class="candidate-heading">
-            <h3>Kandidat <span id="candidate-count" class="count-badge">0</span></h3>
+            <h3 id="candidate-heading" tabindex="-1">Kandidat <span id="candidate-count" class="count-badge">0</span></h3>
             <span class="sort-label">Kecocokan bukti &amp; profil</span>
           </div>
           <div class="toolbar-actions">
@@ -129,10 +134,12 @@
               </button>
             </div>
             <button id="load-synthetic-button" class="button button-secondary" type="button" disabled>Muat CV uji</button>
-            <label id="upload-label" class="button button-primary upload-button" for="resume-file">＋ Tambah CV</label>
+            <button id="upload-label" class="button button-primary upload-button" type="button" aria-controls="resume-file" disabled>＋ Tambah CV</button>
+            <span id="manual-upload-help" class="visually-hidden"></span>
           </div>
-          <input id="resume-file" class="visually-hidden" type="file" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg">
+          <input id="resume-file" class="visually-hidden" type="file" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" aria-hidden="true" tabindex="-1" disabled>
         </div>
+
         <div id="blind-mode-banner" class="blind-mode-banner hidden" role="status">
           <div class="blind-mode-banner-content">
             <span class="blind-mode-banner-icon">🕶️</span>
@@ -142,7 +149,20 @@
           </div>
           <span class="blind-mode-banner-badge">Blind-First</span>
         </div>
-        <p class="privacy-note"><span>◈</span> File unggahan tidak disimpan. Batch uji lokal memakai teks sintetis dan tanpa OCR. OCR lokal memakai PaddleOCR setelah dependensi dipasang; API internal tetap tersedia sebagai opsi.</p>
+        <p id="privacy-note" class="privacy-note"><span aria-hidden="true">◈</span> File unggahan tidak disimpan. Batch uji lokal memakai teks sintetis dan tanpa OCR. OCR lokal memakai PaddleOCR setelah dependensi dipasang; API internal tetap tersedia sebagai opsi. Persentase menunjukkan kecocokan frasa dan token, bukan penilaian kelayakan.</p>
+
+        <section id="evidence-summary" class="panel evidence-summary hidden" aria-labelledby="evidence-summary-title">
+          <div class="panel-title-row">
+            <div><p class="eyebrow">RINGKASAN BUKTI</p><h3 id="evidence-summary-title">Status bukti kriteria di seluruh CV</h3></div>
+            <span id="evidence-summary-total" class="summary-total"></span>
+          </div>
+          <figure class="evidence-figure">
+            <div id="evidence-summary-bar" class="evidence-bar" aria-hidden="true"></div>
+            <figcaption id="evidence-summary-caption" class="muted" aria-live="polite"></figcaption>
+          </figure>
+          <ul id="evidence-summary-legend" class="evidence-legend" aria-label="Jumlah pemeriksaan untuk setiap status"></ul>
+          <p class="evidence-summary-note">Ringkasan ini menghitung hasil pencocokan frasa dan token pada teks CV. “Belum ditemukan” bukan berarti kandidat tidak memiliki kemampuan; periksa kutipan dan konteks sebelum mengambil keputusan.</p>
+        </section>
 
         <div class="candidate-controls" aria-label="Kontrol pencarian dan pengurutan kandidat">
           <div class="search-input-wrapper">
@@ -172,38 +192,47 @@
 
         <div id="candidate-list" class="candidate-list"></div>
         <div id="empty-candidates" class="empty-state">
-          <div class="empty-icon">↥</div>
+          <div class="empty-icon" aria-hidden="true">↥</div>
           <h3>Belum ada kandidat</h3>
-          <p>Unggah CV PDF teks, DOCX, atau TXT untuk melihat bukti kecocokan per kriteria.</p>
+          <p>Unggah CV PDF teks, DOCX, atau TXT untuk melihat bukti pada tiap kriteria.</p>
         </div>
 
         <div class="lower-grid">
           <section class="panel rag-panel">
             <div class="panel-title-row">
-              <div><p class="eyebrow">JOB KNOWLEDGE</p><h3>Tanya requisition</h3></div>
+              <div><p class="eyebrow">TANYA POSISI</p><h3>Tanya tentang lowongan</h3></div>
               <span class="source-tag">Sumber disetujui</span>
             </div>
-            <p class="muted">Cari jawaban pada deskripsi dan kriteria requisition ini.</p>
+            <p class="muted">Cari jawaban pada deskripsi dan kriteria lowongan ini.</p>
             <form id="ask-form" class="ask-form">
+              <label class="visually-hidden" for="question">Pertanyaan tentang posisi</label>
               <input id="question" placeholder="Contoh: skill mana yang wajib?" maxlength="500">
               <button class="button button-dark" type="submit" aria-label="Cari">↗</button>
             </form>
-            <div id="ask-result" class="ask-result"></div>
+            <div id="ask-result" class="ask-result" role="status" aria-live="polite" aria-atomic="true"></div>
           </section>
           <section class="panel activity-panel">
-            <div class="panel-title-row"><div><p class="eyebrow">AUDIT TRAIL</p><h3>Aktivitas tim</h3></div><span class="lock-icon">⌑</span></div>
-            <div id="activity-list" class="activity-list"><p class="muted">Aktivitas akan muncul setelah review dicatat.</p></div>
+            <div class="panel-title-row"><div><p class="eyebrow">RIWAYAT AKTIVITAS</p><h3>Aktivitas tim</h3></div></div>
+            <div id="activity-list" class="activity-list"><p class="muted">Aktivitas akan muncul setelah tinjauan dicatat.</p></div>
           </section>
         </div>
       </div>
 
       <div id="setup-state" class="setup-state">
-        <div class="setup-illustration"><span>✳</span><div class="mini-card mini-card-one"></div><div class="mini-card mini-card-two"></div></div>
-        <p class="eyebrow">EVIDENCE FIRST</p>
-        <h3>Shortlist yang bisa ditelusuri.</h3>
-        <p>Setiap sinyal kecocokan terhubung ke kutipan CV dan kriteria yang sudah disepakati. Keputusan tetap di tangan tim.</p>
+        <div class="setup-illustration" aria-hidden="true">
+          <div class="setup-preview">
+            <div class="setup-preview-heading"><span></span><span></span></div>
+            <div class="setup-preview-row"><i class="preview-dot found"></i><span class="preview-line long"></span><b></b></div>
+            <div class="setup-preview-row"><i class="preview-dot partial"></i><span class="preview-line medium"></span><b></b></div>
+            <div class="setup-preview-row"><i class="preview-dot unknown"></i><span class="preview-line short"></span><b></b></div>
+            <div class="setup-preview-quote"><span></span><span></span></div>
+          </div>
+        </div>
+        <p class="eyebrow">BUKTI DULU</p>
+        <h3>Tinjau bukti, bukan skor semata.</h3>
+        <p>Bandingkan isi CV dengan kriteria yang disepakati. Setiap sinyal mengarah ke kutipan sumber; keputusan tetap di tangan tim.</p>
       </div>
-      <footer class="footer-note">KarsaHire · ranking leksikal baseline · keputusan manusia</footer>
+      <footer class="footer-note">KarsaHire · sinyal frasa dan token · keputusan manusia</footer>
     </section>
   </main>
   <div id="comparison-dock" class="comparison-dock hidden" role="region" aria-label="Aksi Perbandingan Kandidat">

@@ -2,7 +2,9 @@
 
 KarsaHire adalah purwarupa copilot rekrutmen kolaboratif lokal (*explainable, evidence-first recruitment copilot*) yang dirancang untuk tim rekrutmen modern (Recruiter & Hiring Manager). KarsaHire membantu tim menyepakati kriteria secara objektif sebelum membaca berkas pelamar, mengekstrak bukti (*evidence snippet*) langsung dari CV, mencegah bias kognitif melalui mode *blind-first review*, serta memelihara jejak audit yang transparan tanpa bergantung pada model ranking *black-box* atau halusinasi LLM.
 
-Lihat [Rencana Arsitektur KarsaHire](KarsaHire-Architecture-Plan.md) untuk cetak biru sistem, tata kelola data, dan mitigasi bias yang lebih komprehensif.
+- Cetak biru arsitektur lengkap: [Rencana Arsitektur KarsaHire](KarsaHire-Architecture-Plan.md)
+- Kajian bisnis & psikologi seleksi: [HR Psychology & Business Case](HR-PSYCHOLOGY-AND-BUSINESS-CASE.md)
+- Catatan handoff pengembangan & runbook QC: [Antigravity Handoff](ANTIGRAVITY_HANDOFF.md)
 
 ---
 
@@ -10,18 +12,19 @@ Lihat [Rencana Arsitektur KarsaHire](KarsaHire-Architecture-Plan.md) untuk cetak
 
 1. [Arsitektur Modular](#arsitektur-modular)
 2. [Fitur Antarmuka Workspace (/app)](#fitur-antarmuka-workspace-app)
-3. [Panduan Menjalankan Aplikasi](#panduan-menjalankan-aplikasi)
+3. [Panduan Menjalankan Aplikasi & Batas Parser](#panduan-menjalankan-aplikasi--batas-parser)
 4. [Menjalankan Automated Test Suite](#menjalankan-automated-test-suite)
-5. [Skema Database SQLite](#skema-database-sqlite)
-6. [Dokumentasi API Outline](#dokumentasi-api-outline)
-7. [OCR Lokal (PaddleOCR) & OCR API Internal](#ocr-lokal-paddleocr--ocr-api-internal)
-8. [Prinsip Tata Kelola, Privasi, & Explainability](#prinsip-tata-kelola-privasi--explainability)
+5. [Skrip Evaluasi & Tolok Ukur Sintetis](#skrip-evaluasi--tolok-ukur-sintetis)
+6. [Skema Database SQLite, Backup, & Snapshot](#skema-database-sqlite-backup--snapshot)
+7. [Dokumentasi API Outline](#dokumentasi-api-outline)
+8. [OCR Lokal (PaddleOCR) & OCR API Internal](#ocr-lokal-paddleocr--ocr-api-internal)
+9. [Prinsip Tata Kelola, Privasi, & Kepatuhan UU PDP](#prinsip-tata-kelola-privasi--kepatuhan-uu-pdp)
 
 ---
 
 ## Arsitektur Modular
 
-KarsaHire dibangun dengan arsitektur modular berbasis Python standar yang terstruktur, modular, dan teruji tanpa ketergantungan tersembunyi pada model eksternal:
+KarsaHire dibangun dengan arsitektur modular berbasis Python standar yang terstruktur, deterministik, dan teruji tanpa ketergantungan tersembunyi pada model eksternal:
 
 ```
 KarsaHire/
@@ -32,9 +35,11 @@ KarsaHire/
 ├── analytics_service.py    # Hiring analytics (funnel, inter-rater consensus, criteria health)
 ├── export_service.py       # Ekspor data kandidat ke CSV, evidence CSV, & JSON debrief
 ├── server.py               # HTTP server multithreaded, endpoint REST, & static handler
+├── pdf_parser_worker.py    # Isolated process PDF parser worker (memory-bounded)
 ├── ocr_local.py            # Local on-device OCR wrapper berbasis PP-OCRv6 CPU
 ├── database/
 │   └── schema.sql          # Skema canonical SQLite bersyarat FK & indeks teroptimasi
+├── scripts/                # Evaluation runbooks, backup/restore, & synthetic smoke test
 └── web/                    # Antarmuka web vanilla responsif (HTML5, modern CSS, ES Modules)
 ```
 
@@ -51,11 +56,7 @@ KarsaHire/
   4. *HR & Talent Acquisition* (Sourcing, ATS, Behavioral Interview, HRIS, Industrial Relations, L&D, dll.)
   5. *Accounting & Finance Ops* (Bookkeeping, General Ledger, Accounts Payable/Receivable, PPh/PPN, ERP, dll.)
 - **Bilingual Synonyms & Aliases (ID/EN)**: Kamus sinonim bilingual otomatis dua arah (misalnya `pembukuan` ↔ `bookkeeping`, `penyaringan cv` ↔ `resume screening`, `rekayasa perangkat lunak` ↔ `software engineering`, serta akronim seperti `AP`, `AR`, `GL`, `TNA`).
-- **Normalisasi Gelar Pendidikan**: Regex multi-pola untuk mendeteksi kualifikasi pendidikan formal:
-  - *Doctorate / S3* (Ph.D, Doktor, Strata 3)
-  - *Master's / S2* (Magister, M.Sc, MBA, M.Kom, M.M, Strata 2)
-  - *Bachelor's / S1* (Sarjana, S.Kom, S.T, S.E, S.Si, B.Sc, B.A, Strata 1)
-  - *Associate's / D3 / D4* (Diploma, Ahli Madya, D3, D4, A.Md)
+- **Normalisasi Gelar Pendidikan**: Regex multi-pola untuk mendeteksi kualifikasi pendidikan formal (Doctorate/S3, Master's/S2, Bachelor's/S1, Associate/D3/D4).
 - **Ekstraksi Pengalaman Kerja**: Pola regex bilingual untuk mendeteksi lama pengalaman kerja kandidat dalam tahun (misal: `"5 tahun"`, `"3+ years"`, `"pengalaman minimal 4 tahun"`).
 
 ### 3. `rag_service.py` — Grounded Internal RAG Retrieval (BM25 Token Overlap)
@@ -64,7 +65,7 @@ KarsaHire/
 - **BM25 & Token Overlap Ranking**: Mempertahankan identitas teknis khusus (misalnya `C++`, `.NET`, `CI/CD`, `Node.js`), menerapkan penyaringan kata henti dwibahasa (*bilingual stop words*), penguatan bobot istilah teknis (*technical term boost*), dan bonus pencocokan frasa multi-token.
 
 ### 4. `interview_service.py` — Scorecard Wawancara Terstruktur & Komparasi Peran
-- **Standardized Rubric Scale 1–5**:
+- **Standardized Rubric Scale 1–5 (BARS)**:
   - `1`: *Tidak memadai* (Unsatisfactory / Poor)
   - `2`: *Kurang* (Below Expectations / Needs Improvement)
   - `3`: *Memenuhi syarat* (Meets Expectations / Competent)
@@ -79,7 +80,6 @@ KarsaHire/
 - **Criteria Bottleneck & Health Diagnostics**: Mendiagnosis kesehatan kriteria requisition:
   - *Bottleneck Warning*: Kriteria terlalu ketat jika persentase bukti tidak ditemukan (*unknown*) > 80%.
   - *Too-Common Warning*: Kriteria tidak memiliki daya pembeda jika persentase bukti cocok (*matched*) > 90%.
-  - Memberikan rekomendasi penyesuaian kriteria untuk tim rekrutmen.
 
 ### 6. `export_service.py` — Ekspor Data & Audit Trail Lengkap
 - **Rekap Kandidat ke CSV (`export_candidates_csv`)**: Menghasilkan file CSV berstandar Excel (UTF-8 BOM) yang mencakup ID kandidat, skor bukti, status, ringkasan skill, pengalaman, pendidikan, dan keputusan reviewer.
@@ -93,7 +93,7 @@ KarsaHire/
 Antarmuka web KarsaHire dirancang khusus untuk alur kerja tim rekrutmen kolaboratif dengan fitur-fitur modern:
 
 1. **Pencarian & Sorting Fleksibel**:
-   - **Pencarian Real-Time**: Pencarian instan kandidat berdasarkan potongan ID kandidat, keahlian (*skills*), tingkat pendidikan, format file, atau kata kunci profil.
+   - **Pencarian Real-Time**: Pencarian instan kandidat berdasarkan ID kandidat, keahlian (*skills*), tingkat pendidikan, atau kata kunci profil.
    - **Multi-Option Sorting**: Pilihan pengurutan dinamis: *Nilai tertinggi (default)*, *Nilai terendah*, *Terbaru diunggah*, dan *Terlama diunggah*.
    - **Filter Status**: Filter cepat satu klik untuk melihat status *Semua*, *Perlu review*, *Lanjut proses*, *Perlu informasi*, atau *Tidak lanjut*.
 
@@ -124,7 +124,7 @@ Antarmuka web KarsaHire dirancang khusus untuk alur kerja tim rekrutmen kolabora
 
 ---
 
-## Panduan Menjalankan Aplikasi
+## Panduan Menjalankan Aplikasi & Batas Parser
 
 ### Persyaratan Sistem
 - Python 3.10 atau versi yang lebih baru.
@@ -133,90 +133,112 @@ Antarmuka web KarsaHire dirancang khusus untuk alur kerja tim rekrutmen kolabora
 ### Menjalankan Server Lokal (PowerShell / Terminal)
 
 ```powershell
-# Pasang dependensi utama
-python -m pip install -r requirements.txt
+# Pasang dependensi utama dalam virtualenv terisolasi
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 
 # Jalankan server lokal
-python .\server.py
+.\.venv\Scripts\python.exe .\server.py
 ```
 
 Setelah server aktif:
-- Buka **Landing Page**: <http://127.0.0.1:8765>
-- Buka **Workspace Rekrutmen**: <http://127.0.0.1:8765/app>
+- **Landing Page**: <http://127.0.0.1:8765>
+- **Workspace Rekrutmen**: <http://127.0.0.1:8765/app>
 
-Port default adalah `8765`. Anda dapat mengubah port melalui environment variable `RECRUITMENT_COPILOT_PORT` bila diperlukan:
-```powershell
-$env:RECRUITMENT_COPILOT_PORT="8900"
-python .\server.py
-```
+### Pengaturan Environment Variables
+- `RECRUITMENT_COPILOT_PORT`: Mengubah port HTTP (default: `8765`). Server menolak alamat non-loopback untuk keamanan lokal.
+- `RECRUITMENT_COPILOT_DB_PATH`: Menentukan lokasi SQLite (default: `data/copilot.sqlite3`).
+- `RECRUITMENT_COPILOT_MANUAL_UPLOADS_ENABLED`: Unggah file manual dinonaktifkan secara default untuk melindungi privasi. Setel ke `'true'` untuk menguji parsing berkas sintetis lokal.
+- `RECRUITMENT_COPILOT_SHUTDOWN_GRACE_SECONDS`: Jendela drain graceful shutdown (default: 5 detik, rentang 0-120).
 
-### Dataset Pengujian Sintetis (32 CV)
-Repositori menyertakan corpus uji 32 CV sintetis di `data/synthetic-cv-32` yang bersumber dari [sukhrobnurali/resume-parsing-vision](https://huggingface.co/datasets/sukhrobnurali/resume-parsing-vision) (lisensi CC BY 4.0). Dataset ini sepenuhnya sintetis dan bebas dari data pribadi riil.
-
-Alur pengujian cepat:
-1. Buka Workspace (<http://127.0.0.1:8765/app>).
-2. Klik **Coba dengan data sintetis** atau buat requisition baru.
-3. Catat persetujuan kriteria dari kedua peran: **Recruiter** dan **Hiring Manager**.
-4. Klik tombol **Muat CV uji (0/32)** untuk memuat berkas teks sintetis secara lokal tanpa memanggil OCR.
+### Batas Keamanan Parser & Isolasi Worker PDF
+- Batas unggahan: 8 MB per file.
+- Batas ekstraksi: 1.000.000 karakter dan 20.000 baris per dokumen across TXT, PDF, DOCX, dan OCR.
+- Batas PDF: Maksimal 40 halaman dan 6 gambar OCR per PDF.
+- Worker PDF terisolasi (`pdf_parser_worker.py`): Berjalan di subproses terpisah dengan batas memori 256 MiB (diterapkan via Windows Job Object di Windows dan `RLIMIT_AS` di POSIX), batas waktu eksekusi 30 detik, serta batas payload hasil 48 MiB.
+- DOCX: Maksimal 32 MiB uncompressed size dan 2.000 file zip component.
+- Konkurensi: Maksimal 2 proses parsing unggahan bersamaan per instance (permintaan selebihnya menerima HTTP 503 dengan header `Retry-After: 2`).
 
 ---
 
 ## Menjalankan Automated Test Suite
 
-KarsaHire dilengkapi dengan rangkaian automated test suite menyeluruh (unit test & integration test) yang menguji endpoint server, engine pencocokan, taksonomi, internal RAG, scorecard wawancara, hiring analytics, dan export service.
+KarsaHire dilengkapi rangkaian automated test suite menyeluruh (90 unit & integration test) yang mencakup endpoint server, engine pencocokan, taksonomi, internal RAG, scorecard wawancara, hiring analytics, dan export service.
 
-Jalankan test suite menggunakan environment virtual Python:
+Jalankan test suite menggunakan runtime virtual Python:
 
 ```powershell
 .\.venv-ocr\Scripts\python.exe -m unittest discover -s tests -p "test_*.py"
 ```
 
-Atau menggunakan instalasi Python standar sistem:
-
-```powershell
-python -m unittest discover -s tests -p "test_*.py"
-```
-
-Untuk menjalankan file pengujian tertentu secara spesifik:
-```powershell
-# Pengujian server & endpoint API
-python -m unittest tests/test_server.py
-
-# Pengujian matching & taxonomy
-python -m unittest tests/test_matching.py
-
-# Pengujian RAG service & BM25 retrieval
-python -m unittest tests/test_rag_service.py
-
-# Pengujian interview service & scorecards
-python -m unittest tests/test_interview.py
-
-# Pengujian analytics & governance
-python -m unittest tests/test_analytics.py
-```
+Seluruh pengujian dirancang independen menggunakan basis data SQLite in-memory atau file temporary terisolasi sehingga tidak mencemari basis data aktif di `data/`.
 
 ---
 
-## Skema Database SQLite
+## Skrip Evaluasi & Tolok Ukur Sintetis
 
-Database disimpan secara lokal di `data/copilot.sqlite3` dan diinisialisasi otomatis dari [`database/schema.sql`](database/schema.sql) pada saat server dinyalakan.
+KarsaHire menyertakan modul benchmark komprehensif di folder `scripts/` dan root:
 
-| Tabel | Deskripsi & Fungsi |
+1. **Benchmark Korpus Sintetis Cepat (`evaluate_synthetic.py`)**:
+   ```powershell
+   .\.venv-ocr\Scripts\python.exe evaluate_synthetic.py
+   ```
+   Mengevaluasi performa ekstraksi profil dan pencocokan 32 CV sintetis terhadap 3 template posisi standar (Software Developer, SysAdmin, Accountant). Mengukur throughput per CV, rasio deteksi skill, dan sebaran skor.
+
+2. **Konsistensi Format Multi-Dokumen (`scripts/evaluate_synthetic_formats.py`)**:
+   ```powershell
+   python .\scripts\evaluate_synthetic_formats.py
+   ```
+   Menguji konsistensi ekstraksi lintas format TXT, DOCX, dan PDF untuk memastikan hasil parsing tetap identik terlepas dari format kontainer dokumen.
+
+3. **Pemeriksaan Preprocessing OCR Windows (`scripts/evaluate_synthetic_ocr_preprocessing.py`)**:
+   ```powershell
+   python .\scripts\evaluate_synthetic_ocr_preprocessing.py --sample-id r00196 --sample-id r00169 --language en-US
+   ```
+
+4. **Smoke Test Operasional Terisolasi (`scripts/smoke_test_local.py`)**:
+   ```powershell
+   python .\scripts\smoke_test_local.py
+   ```
+   Menguji batas konkurensi, penolakan slow-header, migrasi database, penghapusan kandidat, dan audit trails pada instance database terisolasi.
+
+5. **Preflight Rilis Lokal (`scripts/preflight_local_release.py`)**:
+   ```powershell
+   python .\scripts\preflight_local_release.py
+   ```
+
+---
+
+## Skema Database SQLite, Backup, & Snapshot
+
+Basis data SQLite disimpan secara lokal di `data/copilot.sqlite3` dan dikecualikan dari Git repository (`.gitignore`). Skema dikelola melalui migrasi versi transaksional (`PRAGMA user_version`):
+
+| Tabel | Deskripsi |
 |---|---|
-| `jobs` | Menyimpan data lowongan (*requisition*), deskripsi peran, kriteria terstruktur JSON, status persetujuan, dan stempel waktu. |
-| `approvals` | Mencatat tanda tangan persetujuan kriteria terpisah antara Recruiter dan Hiring Manager sebelum CV dapat diproses (`UNIQUE(job_id, role)`). |
-| `candidates` | Menyimpan profil kandidat yang diekstrak (JSON), format file, skor kecocokan evidence (0–100), dan status review manusia. |
-| `evidence` | Menyimpan rincian bukti per kriteria: ID kriteria, jenis syarat (*required*/*preferred*), bobot, hasil (*matched*/*partial*/*unknown*), nilai confidence, cuplikan teks (*snippet*), dan nomor halaman CV. |
-| `reviews` | Menyimpan keputusan review manual evaluator manusia (`advance`, `needs_info`, `not_selected`), peran reviewer, dan catatan evaluasi. |
-| `audit_events` | Catatan jejak audit append-only yang merekam setiap aksi sistem (pengajuan kriteria, approval, pemrosesan CV, review, scorecard, penghapusan kandidat). |
-| `interview_scorecards` | Menyimpan rekaman kartu penilaian wawancara terstruktur per kandidat: reviewer, peran, rekomendasi umum (*overall recommendation*), dan catatan umum wawancara. |
-| `interview_criterion_scores` | Menyimpan nilai skor rubrik 1–5 per kriteria wawancara, label kompetensi, dan catatan bukti spesifik (*STAR evidence notes*) yang terhubung ke `interview_scorecards`. |
+| `jobs` | Metadata posisi lowongan, departemen, deskripsi, dan kriteria kualifikasi berbobot. |
+| `approvals` | Log persetujuan kriteria oleh Recruiter dan Hiring Manager sebelum seleksi dibuka. |
+| `candidates` | Berkas kandidat, tipe dokumen, persentase skor kecocokan, dan status seleksi. |
+| `evidence` | Cuplikan bukti kontekstual (*snippets*) yang terhubung ke nomor halaman CV dan kriteria. |
+| `reviews` | Catatan dan keputusan evaluasi manusia (*advance*, *needs_info*, *not_selected*). |
+| `interview_scorecards` | Evaluasi wawancara terstruktur kandidat, peran reviewer, dan rekomendasi akhir. |
+| `interview_criterion_scores` | Rincian skor rubrik 1–5 per kriteria beserta catatan bukti perilaku (*STAR notes*). |
+| `audit_events` | Log audit append-only yang merekam setiap peristiwa perubahan kriteria dan keputusan. |
+
+### Pembuatan Snapshot & Pemulihan Basis Data
+- **Point-in-Time Backup**:
+  ```powershell
+  python .\scripts\backup_database.py --output D:\safe-backups\karsahire-snapshot.sqlite3
+  ```
+- **Restore Snapshot**:
+  ```powershell
+  python .\scripts\restore_database.py --source D:\safe-backups\karsahire-snapshot.sqlite3 --target data\copilot.sqlite3
+  ```
 
 ---
 
 ## Dokumentasi API Outline
 
-Semua endpoint API disajikan melalui protokol REST JSON lokal:
+Semua endpoint API disajikan melalui protokol REST JSON lokal (`127.0.0.1`):
 
 ### 1. Manajemen Requisition & Persetujuan Kriteria
 - `POST /api/jobs` — Membuat requisition baru beserta kriteria wajib dan preferensi.
@@ -232,22 +254,21 @@ Semua endpoint API disajikan melalui protokol REST JSON lokal:
 - `DELETE /api/candidates/{id}` — Menghapus data kandidat, profil, evidence, dan riwayat review dari database (event penghapusan dicatat ke audit trail).
 
 ### 3. Wawancara Terstruktur (Structured Interview Scorecards)
-- `GET /api/candidates/{id}/scorecards` — Mengambil daftar scorecard wawancara kandidat beserta ringkasan komparasi nilai per peran (Recruiter vs Hiring Manager) dan breakdown kriteria.
-- `POST /api/candidates/{id}/scorecards` — Menyimpan scorecard wawancara terstruktur baru lengkap dengan skor rubrik 1–5 per kriteria, catatan bukti STAR, dan rekomendasi akhir.
+- `GET /api/candidates/{id}/scorecards` — Mengambil riwayat scorecard wawancara kandidat beserta komparasi Recruiter vs Hiring Manager.
+- `POST /api/candidates/{id}/scorecards` — Mencatat penilaian wawancara terstruktur baru lengkap dengan rating 1–5 per kriteria, catatan bukti STAR, dan rekomendasi akhir.
 
 ### 4. Analisis Rekrutmen (Hiring Debrief Analytics)
-- `GET /api/jobs/{id}/analytics` — Mengambil ringkasan metrik analitik seleksi untuk debrief tim, meliputi:
-  - *Funnel pipeline*: distribusi status kandidat dan kalkulasi skor evidence.
-  - *Inter-rater agreement*: persentase konsensus recruiter vs hiring manager dan daftar kasus divergensi (*override*).
-  - *Criteria health*: diagnosis bottleneck atau kriteria yang kurang diskriminatif.
+- `GET /api/jobs/{id}/analytics` — Mengambil ringkasan metrik analitik seleksi: funnel pipeline, rasio konsensus keselarasan pewawancara (*inter-rater agreement*), dan diagnostik kesehatan kriteria (*bottleneck*).
 
 ### 5. Ekspor Data & Pelaporan Debrief
 - `GET /api/jobs/{id}/export/csv` — Mengunduh rekapitulasi data seluruh kandidat dalam format file CSV (dengan UTF-8 BOM untuk kompatibilitas Excel).
 - `GET /api/jobs/{id}/export/json` — Mengunduh laporan debrief lengkap dalam format JSON yang mencakup metadata lowongan, kriteria, daftar approver, kandidat, evidence, review, dan log audit.
 
-### 6. Grounded Requisition Q&A & Health Check
+### 6. Grounded Requisition Q&A & Health Probes
 - `POST /api/jobs/{id}/ask` — Mengajukan pertanyaan seputar isi requisition; sistem mengembalikan kutipan sumber resmi berbasis BM25 token overlap tanpa halusinasi LLM.
-- `GET /api/health` — Menampilkan status kesehatan server, status backend OCR yang aktif, dan konfigurasi environment.
+- `GET /api/health/live` — Probe keaktifan proses server (*liveness*).
+- `GET /api/health/ready` & `GET /api/health` — Probe kesiapan basis data dan status server (*readiness*).
+- `GET /api/metrics` — Menampilkan metrik operasional lokal (uptime, hitungan request per endpoint, byte transfer, beban upload).
 
 ---
 
@@ -256,9 +277,9 @@ Semua endpoint API disajikan melalui protokol REST JSON lokal:
 KarsaHire mendukung ekstraksi teks dari berkas pindaian (*scanned PDF/PNG/JPG*) secara lokal atau melalui API internal:
 
 ### Opsi A: PaddleOCR Lokal (Default & On-Device)
-PaddleOCR menjalankan pemrosesan OCR langsung di komputer lokal pengguna menggunakan model PP-OCRv6 CPU berlisensi Apache-2.0. Berkas gambar tidak dikirim ke jaringan eksternal.
+PaddleOCR menjalankan pemrosesan OCR langsung di komputer lokal pengguna menggunakan model PP-OCRv6 CPU berlisensi Apache-2.0. Berkas gambar tidak pernah dikirim ke jaringan eksternal.
 
-Instalasi pada virtual environment Windows:
+Instalasi pada virtual environment:
 ```powershell
 python -m venv .venv-ocr
 .\.venv-ocr\Scripts\python.exe -m pip install -r requirements.txt
@@ -267,30 +288,24 @@ python -m venv .venv-ocr
 .\.venv-ocr\Scripts\python.exe .\server.py
 ```
 
-Environment variable opsional:
-- `RECRUITMENT_COPILOT_OCR_BACKEND`: bernilai `paddle` (default) atau `api`.
-- `RECRUITMENT_COPILOT_PADDLE_LANG`: bahasa OCR (default: `en`).
-- `RECRUITMENT_COPILOT_PADDLE_DEVICE`: target komputasi (default: `cpu`).
-
 ### Opsi B: API OCR Internal OpenAI-Compatible
 Jika memilih backend API internal, atur environment variable sebelum server dijalankan:
 - `RECRUITMENT_COPILOT_OCR_BACKEND=api`
 - `RECRUITMENT_COPILOT_OCR_API_KEY`: API key internal Anda.
 - `RECRUITMENT_COPILOT_OCR_API_URL`: Base URL endpoint chat completions.
+- `RECRUITMENT_COPILOT_OCR_ALLOWED_ORIGINS`: Daftar origin HTTPS yang diizinkan (allowlist ketat tanpa redirect).
 - `RECRUITMENT_COPILOT_OCR_MODEL`: Model OCR (default: `ocr-lighton`).
-
-*Catatan Keamanan*: Jangan mencatat kredensial API atau token rahasia ke dalam berkas repositori Git. Server lokal dilengkapi mekanisme pelindung rate-limiting 6 request per menit dan 5 panggilan simultan.
 
 ---
 
-## Prinsip Tata Kelola, Privasi, & Explainability
+## Prinsip Tata Kelola, Privasi, & Kepatuhan UU PDP
 
-KarsaHire dibangun dengan prinsip etika dan tata kelola AI rekrutmen:
+KarsaHire dibangun dengan prinsip etika dan kepatuhan regulasi data pribadi (termasuk UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi / UU PDP):
 
-1. **Human-in-the-Loop & Penolakan Otomatis Ditiadakan**: Sistem tidak pernah menolak atau meloloskan pelamar secara otomatis. Skor persentase adalah representasi sintaksis atas bukti yang ditemukan dalam dokumen, bukan tolok ukur kapabilitas hakiki pelamar.
+1. **Human-in-the-Loop & Penolakan Otomatis Ditiadakan**: Sistem tidak pernah menolak atau meloloskan pelamar secara otomatis. Skor persentase adalah representasi sintaksis atas bukti yang ditemukan dalam dokumen, bukan tolok ukur kelayakan hakiki pelamar.
 2. **Ketiadaan Halusinasi (No Generative Hallucination)**: Tidak menggunakan model generatif probabilistik untuk mengarang profil kandidat. Semua poin kecocokan wajib memiliki kutipan teks (*evidence snippet*) yang dapat diaudit langsung ke nomor halaman dokumen aslinya.
 3. **Penyimpanan Minimalis (Data Minimization)**: Berkas asli pelamar (PDF/DOCX) dan teks lengkap CV tidak disimpan di SQLite setelah ekstraksi selesai. Hanya atribut terstruktur, entitas keterampilan, dan cuplikan bukti yang disimpan.
-4. **Pencegahan Bias Melalui Dual Sign-Off & Blind Mode**: Kriteria wajib disetujui bersama oleh Recruiter dan Hiring Manager sebelum pemrosesan dimulai. Fitur review buta meminimalkan bias nama, gender, atau asal institusi saat screening awal.
+4. **Pencegahan Bias Melalui Dual Sign-Off & Blind Mode**: Kriteria wajib disetujui bersama oleh Recruiter dan Hiring Manager sebelum pemrosesan dimulai. Fitur review buta meminimalkan bias nama, gender, usia, atau asal institusi saat screening awal.
 5. **Jejak Audit Kekal (Append-Only Audit Trail)**: Setiap perubahan kriteria, aksi approval, pemrosesan CV, review, scorecard, dan penghapusan kandidat terekam dalam log audit yang tidak dapat dimanipulasi.
 
 ---
